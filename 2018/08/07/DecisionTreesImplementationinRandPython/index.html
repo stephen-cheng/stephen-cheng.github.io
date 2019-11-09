@@ -3,20 +3,20 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Are Tree Based Models Better than Linear Models? | The Way to Artificial Intelligence</title>
+  <title>Decision Trees Implementation in R and Python | The Way to Artificial Intelligence</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
     <meta name="keywords" content="Artificial Intelligence, Machine Learning, Deep Learning" />
   
-  <meta name="description" content="&amp;nbsp; Stephen Cheng   Intro“If I can use logistic regression for classification problems and linear regression for regression problems, why is there a need to use trees”? Many of us have this questio">
-<meta name="keywords" content="Tree model,Linear model,Machine Learning">
+  <meta name="description" content="&amp;nbsp; Stephen Cheng   IntroFor R users and Python users, decision tree is quite easy to implement. Let’s quickly look at the set of codes which can get you started with this algorithm. For ease of us">
+<meta name="keywords" content="Python,Decision Tree,R">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Are Tree Based Models Better than Linear Models?">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2018&#x2F;07&#x2F;27&#x2F;AreTreeBasedModelsBetterThanLinearModels&#x2F;index.html">
+<meta property="og:title" content="Decision Trees Implementation in R and Python">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2018&#x2F;08&#x2F;07&#x2F;DecisionTreesImplementationinRandPython&#x2F;index.html">
 <meta property="og:site_name" content="The Way to Artificial Intelligence">
-<meta property="og:description" content="&amp;nbsp; Stephen Cheng   Intro“If I can use logistic regression for classification problems and linear regression for regression problems, why is there a need to use trees”? Many of us have this questio">
+<meta property="og:description" content="&amp;nbsp; Stephen Cheng   IntroFor R users and Python users, decision tree is quite easy to implement. Let’s quickly look at the set of codes which can get you started with this algorithm. For ease of us">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-11-09T10:23:03.976Z">
+<meta property="og:updated_time" content="2019-11-09T10:27:17.954Z">
 <meta name="twitter:card" content="summary">
   
   
@@ -108,14 +108,14 @@
     </div>
 </header>
       <div class="outer">
-        <section id="main" class="body-wrap"><article id="post-AreTreeBasedModelsBetterThanLinearModels" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main" class="body-wrap"><article id="post-DecisionTreesImplementationinRandPython" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="post-title" itemprop="name">
-      Are Tree Based Models Better than Linear Models?
+      Decision Trees Implementation in R and Python
     </h1>
     <div class="post-title-bar">
       <ul>
@@ -130,7 +130,7 @@
               </li>
           
         <li>
-          <i class="fa fa-calendar"></i>  2018-07-27
+          <i class="fa fa-calendar"></i>  2018-08-07
         </li>
         <li>
           <i class="fa fa-eye"></i>
@@ -150,16 +150,23 @@
 <center>Stephen Cheng</center>
 
 
-<h2 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a><center>Intro</center></h2><p>“If I can use logistic regression for classification problems and linear regression for regression problems, why is there a need to use trees”? Many of us have this question. And, this is a valid one too.</p>
-<h2 id="How-to-choose-a-proper-algorithms"><a href="#How-to-choose-a-proper-algorithms" class="headerlink" title="How to choose a proper algorithms?"></a><center>How to choose a proper algorithms?</center></h2><p>Actually, you can use any algorithm. It is dependent on the type of problem you are solving. Let’s look at some key factors which will help you to decide which algorithm to use:</p>
-<p>1) If the relationship between dependent &amp; independent variable is well approximated by a linear model, linear regression will outperform tree based model.</p>
-<p>2) If there is a high non-linearity &amp; complex relationship between dependent &amp; independent variables, a tree model will outperform a classical regression method.</p>
-<p>3) If you need to build a model which is easy to explain to people, a decision tree model will always do better than a linear model. Decision tree models are even simpler to interpret than linear regression!</p>
+<h2 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a><center>Intro</center></h2><p>For R users and Python users, decision tree is quite easy to implement. Let’s quickly look at the set of codes which can get you started with this algorithm. For ease of use, I’ve shared standard codes where you’ll need to replace your dataset name and variables to get started.</p>
+<h2 id="R"><a href="#R" class="headerlink" title="R"></a><center>R</center></h2><p>For R users, there are multiple packages available to implement decision tree such as ctree, rpart, tree etc.</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="keyword">library</span>(rpart)</span><br><span class="line">&gt; x &lt;- cbind(x_train,y_train)</span><br><span class="line"><span class="comment"># grow tree</span></span><br><span class="line">&gt; fit &lt;- rpart(y_train ~ ., data = x,method=<span class="string">"class"</span>)</span><br><span class="line">&gt; summary(fit)</span><br><span class="line"><span class="comment">#Predict Output</span></span><br><span class="line">&gt; predicted= predict(fit,x_test)</span><br><span class="line">&gt; <span class="keyword">library</span>(rpart)</span><br><span class="line">&gt; x &lt;- cbind(x_train,y_train)</span><br><span class="line"><span class="comment"># grow tree</span></span><br><span class="line">&gt; fit &lt;- rpart(y_train ~ ., data = x,method=<span class="string">"class"</span>)</span><br><span class="line">&gt; summary(fit)</span><br><span class="line"><span class="comment">#Predict Output</span></span><br><span class="line">&gt; predicted= predict(fit,x_test)</span><br></pre></td></tr></table></figure>
+
+<p>In the code above:</p>
+<ul>
+<li>y_train – represents dependent variable.</li>
+<li>x_train – represents independent variable</li>
+<li>x – represents training data.</li>
+</ul>
+<h2 id="Python"><a href="#Python" class="headerlink" title="Python"></a><center>Python</center></h2><p>For Python users, below is the code:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#Import necessary libraries like pandas, numpy...</span></span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> tree</span><br><span class="line"><span class="comment">#Assumed you have, X (predictor) and Y (target) for training data set and x_test(predictor) of test_dataset</span></span><br><span class="line"><span class="comment"># Create tree object</span></span><br><span class="line"><span class="comment"># for classification, here you can change the algorithm as gini or entropy (information gain) by default it is gini  </span></span><br><span class="line">model = tree.DecisionTreeClassifier(criterion=<span class="string">'gini'</span>)</span><br><span class="line"><span class="comment"># model = tree.DecisionTreeRegressor() for regression</span></span><br><span class="line"><span class="comment"># Train the model using the training sets and check score</span></span><br><span class="line">model.fit(X, y)</span><br><span class="line">model.score(X, y)</span><br><span class="line"><span class="comment">#Predict Output</span></span><br><span class="line">predicted= model.predict(x_test)</span><br></pre></td></tr></table></figure>
 
             <div class="post-copyright">
     <div class="content">
-        <p>最后更新： 2019年11月09日 18:23</p>
-        <p>原始链接： <a class="post-url" href="/2018/07/27/AreTreeBasedModelsBetterThanLinearModels/" title="Are Tree Based Models Better than Linear Models?">http://yoursite.com/2018/07/27/AreTreeBasedModelsBetterThanLinearModels/</a></p>
+        <p>最后更新： 2019年11月09日 18:27</p>
+        <p>原始链接： <a class="post-url" href="/2018/08/07/DecisionTreesImplementationinRandPython/" title="Decision Trees Implementation in R and Python">http://yoursite.com/2018/08/07/DecisionTreesImplementationinRandPython/</a></p>
         <footer>
             <a href="http://yoursite.com">
                 <img src="/images/logo.png" alt="Stephen Cheng">
@@ -216,7 +223,7 @@
     <div class="post-share-list" id="share-list">
         <ul class="share-icons">
           <li>
-            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2018/07/27/AreTreeBasedModelsBetterThanLinearModels/&title=《Are Tree Based Models Better than Linear Models?》 — The Way to Artificial Intelligence&pic=https://raw.githubusercontent.com/Malaysia-Online/site/master/resource/images/section/ai/0.jpg" data-title="微博">
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2018/08/07/DecisionTreesImplementationinRandPython/&title=《Decision Trees Implementation in R and Python》 — The Way to Artificial Intelligence&pic=/images/banner.jpg" data-title="微博">
               <i class="fa fa-weibo"></i>
             </a>
           </li>
@@ -226,22 +233,22 @@
             </a>
           </li>
           <li>
-            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2018/07/27/AreTreeBasedModelsBetterThanLinearModels/&title=《Are Tree Based Models Better than Linear Models?》 — The Way to Artificial Intelligence&source=Dream it. Believe it. Make it." data-title="QQ">
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2018/08/07/DecisionTreesImplementationinRandPython/&title=《Decision Trees Implementation in R and Python》 — The Way to Artificial Intelligence&source=Dream it. Believe it. Make it." data-title="QQ">
               <i class="fa fa-qq"></i>
             </a>
           </li>
           <li>
-            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2018/07/27/AreTreeBasedModelsBetterThanLinearModels/" data-title="Facebook">
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2018/08/07/DecisionTreesImplementationinRandPython/" data-title="Facebook">
               <i class="fa fa-facebook"></i>
             </a>
           </li>
           <li>
-            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Are Tree Based Models Better than Linear Models?》 — The Way to Artificial Intelligence&url=http://yoursite.com/2018/07/27/AreTreeBasedModelsBetterThanLinearModels/&via=http://yoursite.com" data-title="Twitter">
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Decision Trees Implementation in R and Python》 — The Way to Artificial Intelligence&url=http://yoursite.com/2018/08/07/DecisionTreesImplementationinRandPython/&via=http://yoursite.com" data-title="Twitter">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
           <li>
-            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2018/07/27/AreTreeBasedModelsBetterThanLinearModels/" data-title="Google+">
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2018/08/07/DecisionTreesImplementationinRandPython/" data-title="Google+">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -251,7 +258,7 @@
 <div class="post-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;" target="_blank" rel="noopener" id="wxShare-close">×</a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://yoursite.com/2018/07/27/AreTreeBasedModelsBetterThanLinearModels/" alt="微信分享二维码">
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://yoursite.com/2018/08/07/DecisionTreesImplementationinRandPython/" alt="微信分享二维码">
 </div>
 
 <div class="mask"></div>
@@ -263,11 +270,11 @@
   <li class="article-footer-tags">
     <i class="fa fa-tags"></i>
       
-    <a href="/tags/Treemodel/" class="color1">Tree model</a>
+    <a href="/tags/Python/" class="color2">Python</a>
       
-    <a href="/tags/Linearmodel/" class="color3">Linear model</a>
+    <a href="/tags/DecisionTree/" class="color4">Decision Tree</a>
       
-    <a href="/tags/MachineLearning/" class="color2">Machine Learning</a>
+    <a href="/tags/R/" class="color2">R</a>
       
   </li>
 
@@ -280,23 +287,28 @@
 
     <aside class="post-toc-pos post-toc-top" id="post-toc">
         <nav class="post-toc-wrap">
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Intro"><span class="post-toc-text">Intro</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#How-to-choose-a-proper-algorithms"><span class="post-toc-text">How to choose a proper algorithms?</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Intro"><span class="post-toc-text">Intro</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#R"><span class="post-toc-text">R</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Python"><span class="post-toc-text">Python</span></a></li></ol>
         </nav>
     </aside>
     
 
 <nav id="article-nav">
   
-    <a href="/2018/08/07/DecisionTreesImplementationinRandPython/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/12/24/AwesomeProgramminSkillsforPythonUser/" id="article-nav-newer" class="article-nav-link-wrap">
 
       <span class="article-nav-title">
         <i class="fa fa-hand-o-left" aria-hidden="true"></i>
         
-          Decision Trees Implementation in R and Python
+          Awesome Programming Skills for Python User
         
       </span>
     </a>
   
+  
+    <a href="/2018/07/27/AreTreeBasedModelsBetterThanLinearModels/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">Are Tree Based Models Better than Linear Models?</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
   
 </nav>
 
