@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>What Are The Key Parameters of Tree Modelling and How to Avoid Over-fitting in Decision Trees? | The Way to Artificial Intelligence</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="Artificial Intelligence" />
+  
+  <meta name="description" content="&amp;nbsp; Stephen Cheng   IntroOverfitting is one of the key challenges faced while modeling decision trees. If there is no limit set of a decision tree, it will give you 100% accuracy on training set be">
+<meta name="keywords" content="Decision Tree,overfitting">
+<meta property="og:type" content="article">
+<meta property="og:title" content="What Are The Key Parameters of Tree Modelling and How to Avoid Over-fitting in Decision Trees?">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2018&#x2F;06&#x2F;06&#x2F;WhatAreTheKeyParametersofTreeModellingandHowtoAvoidOver-fittinginDecisionTrees&#x2F;index.html">
+<meta property="og:site_name" content="The Way to Artificial Intelligence">
+<meta property="og:description" content="&amp;nbsp; Stephen Cheng   IntroOverfitting is one of the key challenges faced while modeling decision trees. If there is no limit set of a decision tree, it will give you 100% accuracy on training set be">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;Malaysia-Online&#x2F;site&#x2F;master&#x2F;resource&#x2F;images&#x2F;2018&#x2F;201806&#x2F;20180606&#x2F;0.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;Malaysia-Online&#x2F;site&#x2F;master&#x2F;resource&#x2F;images&#x2F;2018&#x2F;201806&#x2F;20180606&#x2F;1.png">
+<meta property="og:updated_time" content="2019-11-09T11:45:51.838Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;Malaysia-Online&#x2F;site&#x2F;master&#x2F;resource&#x2F;images&#x2F;2018&#x2F;201806&#x2F;20180606&#x2F;0.png">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+  
+
+  
+  
+
+</head>
+
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">The Way to AI</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a  href="/">
+                        <i class="fa fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                    
+                    <a  href="/archives">
+                        <i class="fa fa-archive"></i>
+                        <span>Archives</span>
+                    </a>
+                    
+                    <a  href="/about">
+                        <i class="fa fa-user"></i>
+                        <span>About</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/logo.png" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        The Way to AI
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        Dream it. Believe it. Make it.
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="Sin-Ma" target="_blank" href="//sin-ma.com">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" href="//github.com/jetrobert">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                        <a title="Weibo" target="_blank" href="//weibo.com/2142234635/">
+                            <i class="fa fa-weibo fa-2x"></i></a>
+                    
+                        <a title="Twitter" target="_blank" href="//twitter.com/stephen2cheng">
+                            <i class="fa fa-twitter fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-WhatAreTheKeyParametersofTreeModellingandHowtoAvoidOver-fittinginDecisionTrees" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      What Are The Key Parameters of Tree Modelling and How to Avoid Over-fitting in Decision Trees?
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+              <li>
+                  <i class="fa fa-book"></i>
+                  
+                      <a href="/categories/ArtificialIntelligence/">Artificial Intelligence</a>
+                  
+                      <a href="/categories/MachineLearning/">Machine Learning</a>
+                  
+              </li>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2018-06-06
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <p>&nbsp;</p>
+<center>Stephen Cheng</center>
+
+
+<h2 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a><center>Intro</center></h2><p>Overfitting is one of the key challenges faced while modeling decision trees. If there is no limit set of a decision tree, it will give you 100% accuracy on training set because in the worse case it will end up making 1 leaf for each observation. Thus, preventing overfitting is pivotal while modeling a decision tree and it can be done in 2 ways:</p>
+<p>1) Setting constraints on tree size.<br>2) Tree pruning.</p>
+<p>Let’s discuss both of these briefly.</p>
+<h2 id="Setting-Constraints-on-Tree-Size"><a href="#Setting-Constraints-on-Tree-Size" class="headerlink" title="Setting Constraints on Tree Size"></a><center>Setting Constraints on Tree Size</center></h2><p>This can be done by using various parameters which are used to define a tree. First, let‘s look at the general structure of a decision tree.</p>
+<p><img src="https://raw.githubusercontent.com/Malaysia-Online/site/master/resource/images/2018/201806/20180606/0.png" alt=""></p>
+<p>The parameters used for defining a tree are further explained below. The parameters described below are irrespective of tool. It is important to understand the role of parameters used in tree modeling. These parameters are available in R &amp; Python.</p>
+<h4><center>Minimum samples for a node split</center></h4>
+
+<p>1) Defines the minimum number of samples (or observations) which are required in a node to be considered for splitting.<br>2) Used to control over-fitting. Higher values prevent a model from learning relations which might be highly specific to the particular sample selected for a tree.<br>3) Too high values can lead to under-fitting hence, it should be tuned using CV.</p>
+<h4><center>Minimum samples for a terminal node (leaf)</center></h4>
+
+<p>1) Defines the minimum samples (or observations) required in a terminal node or leaf.<br>2) Used to control over-fitting similar to min_samples_split.<br>3) Generally lower values should be chosen for imbalanced class problems because the regions in which the minority class will be in majority will be very small.</p>
+<h4><center>Maximum depth of tree (vertical depth)</center></h4>
+
+<p>1) The maximum depth of a tree.<br>2) Used to control over-fitting as higher depth will allow model to learn relations very specific to a particular sample.<br>3) Should be tuned using CV.</p>
+<h4><center>Maximum number of terminal nodes</center></h4>
+
+<p>1) The maximum number of terminal nodes or leaves in a tree.<br>2) Can be defined in place of max_depth. Since binary trees are created, a depth of ‘n’ would produce a maximum of 2^n leaves.</p>
+<h4><center>Maximum features to consider for split</center></h4>
+
+<p>1) The number of features to consider while searching for a best split. These will be randomly selected.<br>2) As a thumb-rule, square root of the total number of features works great but we should check up to 30-40% of the total number of features.<br>3) Higher values can lead to over-fitting but depends on case to case.</p>
+<h2 id="Tree-Pruning"><a href="#Tree-Pruning" class="headerlink" title="Tree Pruning"></a><center>Tree Pruning</center></h2><p>As discussed earlier, the technique of setting constraint is a greedy-approach. In other words, it will check for the best split instantaneously and move forward until one of the specified stopping condition is reached. Let’s consider the following case when you’re driving.</p>
+<p><img src="https://raw.githubusercontent.com/Malaysia-Online/site/master/resource/images/2018/201806/20180606/1.png" alt=""></p>
+<p>There are 2 lanes:</p>
+<p>1) A lane with cars moving at 80km/h.<br>2) A lane with trucks moving at 30km/h.</p>
+<p>At this instant, you are the yellow car and you have 2 choices:</p>
+<p>1) Take a left and overtake the other 2 cars quickly.<br>2) Keep moving in the present lane.</p>
+<p>Let’s analyze these choice. In the former choice, you’ll immediately overtake the car ahead and reach behind the truck and start moving at 30 km/h, looking for an opportunity to move back right. All cars originally behind you move ahead in the meanwhile. This would be the optimum choice if your objective is to maximize the distance covered in next say 10 seconds. In the later choice, you sale through at same speed, cross trucks and then overtake maybe depending on situation ahead. Greedy you!</p>
+<p>This is exactly the difference between normal decision tree &amp; pruning. A decision tree with constraints won’t see the truck ahead and adopt a greedy approach by taking a left. On the other hand if we use pruning, we in effect look at a few steps ahead and make a choice.</p>
+<h4><center>How to prune?</center></h4>
+
+<p>So we know pruning is better. But how to implement it in decision tree? The idea is simple.</p>
+<p>1) We first make the decision tree to a large depth.<br>2) Then we start at the bottom and start removing leaves which are giving us negative returns when compared from the top.<br>3) Suppose a split is giving us a gain of say -10 (loss of 10) and then the next split on that gives us a gain of 20. A simple decision tree will stop at step 1 but in pruning, we will see that the overall gain is +10 and keep both leaves.</p>
+<h4><center>Note</center></h4>
+
+<p>Note that sklearn’s decision tree classifier does not currently support pruning. Advanced packages like xgboost have adopted tree pruning in their implementation. But the library rpart in R, provides a function to prune. Good for R users!</p>
+
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2019年11月09日 19:45</p>
+        <p>原始链接： <a class="post-url" href="/2018/06/06/WhatAreTheKeyParametersofTreeModellingandHowtoAvoidOver-fittinginDecisionTrees/" title="What Are The Key Parameters of Tree Modelling and How to Avoid Over-fitting in Decision Trees?">http://yoursite.com/2018/06/06/WhatAreTheKeyParametersofTreeModellingandHowtoAvoidOver-fittinginDecisionTrees/</a></p>
+        <footer>
+            <a href="http://yoursite.com">
+                <img src="/images/logo.png" alt="Stephen Cheng">
+                Stephen Cheng
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+        
+            
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" target="_blank" rel="noopener">赏</a>
+</div>
+
+<div id="reward" class="post-modal reward-lay">
+    <a class="close" href="javascript:;" target="_blank" rel="noopener" id="reward-close">×</a>
+    <span class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        Support Me!
+        <i class="icon icon-quote-right"></i>
+    </span>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/images/wechat_code.jpg" alt="打赏二维码">
+        </div>
+        <div class="reward-select">
+            
+            <label class="reward-select-item checked" data-id="wechat" data-wechat="/images/wechat_code.jpg">
+                <img class="reward-select-item-wechat" src="/images/wechat.png" alt="微信">
+            </label>
+            
+            
+            <label class="reward-select-item" data-id="alipay" data-alipay="/images/alipay_code.jpg">
+                <img class="reward-select-item-alipay" src="/images/alipay.png" alt="支付宝">
+            </label>
+            
+        </div>
+    </div>
+</div>
+
+
+        
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" target="_blank" rel="noopener" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2018/06/06/WhatAreTheKeyParametersofTreeModellingandHowtoAvoidOver-fittinginDecisionTrees/&title=《What Are The Key Parameters of Tree Modelling and How to Avoid Over-fitting in Decision Trees?》 — The Way to Artificial Intelligence&pic=https://raw.githubusercontent.com/Malaysia-Online/site/master/resource/images/2018/201806/20180606/0.png" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" target="_blank" rel="noopener" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2018/06/06/WhatAreTheKeyParametersofTreeModellingandHowtoAvoidOver-fittinginDecisionTrees/&title=《What Are The Key Parameters of Tree Modelling and How to Avoid Over-fitting in Decision Trees?》 — The Way to Artificial Intelligence&source=Dream it. Believe it. Make it." data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2018/06/06/WhatAreTheKeyParametersofTreeModellingandHowtoAvoidOver-fittinginDecisionTrees/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《What Are The Key Parameters of Tree Modelling and How to Avoid Over-fitting in Decision Trees?》 — The Way to Artificial Intelligence&url=http://yoursite.com/2018/06/06/WhatAreTheKeyParametersofTreeModellingandHowtoAvoidOver-fittinginDecisionTrees/&via=http://yoursite.com" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2018/06/06/WhatAreTheKeyParametersofTreeModellingandHowtoAvoidOver-fittinginDecisionTrees/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" target="_blank" rel="noopener" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://yoursite.com/2018/06/06/WhatAreTheKeyParametersofTreeModellingandHowtoAvoidOver-fittinginDecisionTrees/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/DecisionTree/" class="color4">Decision Tree</a>
+      
+    <a href="/tags/overfitting/" class="color2">overfitting</a>
+      
+  </li>
+
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Intro"><span class="post-toc-text">Intro</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Setting-Constraints-on-Tree-Size"><span class="post-toc-text">Setting Constraints on Tree Size</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#null"><span class="post-toc-text">Minimum samples for a node split</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#null"><span class="post-toc-text">Minimum samples for a terminal node (leaf)</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#null"><span class="post-toc-text">Maximum depth of tree (vertical depth)</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#null"><span class="post-toc-text">Maximum number of terminal nodes</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#null"><span class="post-toc-text">Maximum features to consider for split</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Tree-Pruning"><span class="post-toc-text">Tree Pruning</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#null"><span class="post-toc-text">How to prune?</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#null"><span class="post-toc-text">Note</span></a></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+    <a href="/2018/07/27/AreTreeBasedModelsBetterThanLinearModels/" id="article-nav-newer" class="article-nav-link-wrap">
+
+      <span class="article-nav-title">
+        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+        
+          Are Tree Based Models Better than Linear Models?
+        
+      </span>
+    </a>
+  
+  
+    <a href="/2018/05/19/MergeSort/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">Merge Sort</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
+      &copy; 2019 Stephen Cheng<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "http://yoursite.com",
+      animate: true,
+      isHome: false,
+      share: true,
+      reward: 1
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            <a class="category-link" href="/categories/Artificial-Intelligence/">Artificial Intelligence</a><a class="category-link" href="/categories/Artificial-Intelligence/Basic-Algorithm/">Basic Algorithm</a><a class="category-link" href="/categories/Artificial-Intelligence/Machine-Learning/">Machine Learning</a><a class="category-link" href="/categories/Artificial-Intelligence/Programming/">Programming</a><a class="category-link" href="/categories/Artificial-Intelligence/System/">System</a>
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/Algorithm/" style="font-size: 15px;">Algorithm</a> <a href="/tags/Azure/" style="font-size: 10px;">Azure</a> <a href="/tags/Bagging/" style="font-size: 10px;">Bagging</a> <a href="/tags/Bias/" style="font-size: 10px;">Bias</a> <a href="/tags/Classification-Tree/" style="font-size: 10px;">Classification Tree</a> <a href="/tags/Classifier/" style="font-size: 10px;">Classifier</a> <a href="/tags/Code/" style="font-size: 10px;">Code</a> <a href="/tags/Decision-Tree/" style="font-size: 20px;">Decision Tree</a> <a href="/tags/Distance-metrics/" style="font-size: 10px;">Distance metrics</a> <a href="/tags/Ensemble/" style="font-size: 10px;">Ensemble</a> <a href="/tags/Jupyter-Notebook/" style="font-size: 10px;">Jupyter Notebook</a> <a href="/tags/Levenshtein-Distance/" style="font-size: 10px;">Levenshtein Distance</a> <a href="/tags/Linear-model/" style="font-size: 10px;">Linear model</a> <a href="/tags/Machine-Learning/" style="font-size: 20px;">Machine Learning</a> <a href="/tags/Merge-Sort/" style="font-size: 10px;">Merge Sort</a> <a href="/tags/Programming/" style="font-size: 10px;">Programming</a> <a href="/tags/Python/" style="font-size: 15px;">Python</a> <a href="/tags/R/" style="font-size: 10px;">R</a> <a href="/tags/Regression-Tree/" style="font-size: 10px;">Regression Tree</a> <a href="/tags/Sorting/" style="font-size: 10px;">Sorting</a> <a href="/tags/Tree-model/" style="font-size: 10px;">Tree model</a> <a href="/tags/Variance/" style="font-size: 10px;">Variance</a> <a href="/tags/Virtual-Machines/" style="font-size: 10px;">Virtual Machines</a> <a href="/tags/overfitting/" style="font-size: 10px;">overfitting</a>
+        </div>
+    </div>
+    <a href="javascript:;" target="_blank" rel="noopener" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a  href="/">
+                    <i class="fa fa-home"></i><span>Home</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/archives">
+                    <i class="fa fa-archive"></i><span>Archives</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/about">
+                    <i class="fa fa-user"></i><span>About</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/tags/Algorithm/" style="font-size: 15px;">Algorithm</a> <a href="/tags/Azure/" style="font-size: 10px;">Azure</a> <a href="/tags/Bagging/" style="font-size: 10px;">Bagging</a> <a href="/tags/Bias/" style="font-size: 10px;">Bias</a> <a href="/tags/Classification-Tree/" style="font-size: 10px;">Classification Tree</a> <a href="/tags/Classifier/" style="font-size: 10px;">Classifier</a> <a href="/tags/Code/" style="font-size: 10px;">Code</a> <a href="/tags/Decision-Tree/" style="font-size: 20px;">Decision Tree</a> <a href="/tags/Distance-metrics/" style="font-size: 10px;">Distance metrics</a> <a href="/tags/Ensemble/" style="font-size: 10px;">Ensemble</a> <a href="/tags/Jupyter-Notebook/" style="font-size: 10px;">Jupyter Notebook</a> <a href="/tags/Levenshtein-Distance/" style="font-size: 10px;">Levenshtein Distance</a> <a href="/tags/Linear-model/" style="font-size: 10px;">Linear model</a> <a href="/tags/Machine-Learning/" style="font-size: 20px;">Machine Learning</a> <a href="/tags/Merge-Sort/" style="font-size: 10px;">Merge Sort</a> <a href="/tags/Programming/" style="font-size: 10px;">Programming</a> <a href="/tags/Python/" style="font-size: 15px;">Python</a> <a href="/tags/R/" style="font-size: 10px;">R</a> <a href="/tags/Regression-Tree/" style="font-size: 10px;">Regression Tree</a> <a href="/tags/Sorting/" style="font-size: 10px;">Sorting</a> <a href="/tags/Tree-model/" style="font-size: 10px;">Tree model</a> <a href="/tags/Variance/" style="font-size: 10px;">Variance</a> <a href="/tags/Virtual-Machines/" style="font-size: 10px;">Virtual Machines</a> <a href="/tags/overfitting/" style="font-size: 10px;">overfitting</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" target="_blank" rel="noopener" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;" target="_blank" rel="noopener">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/js/search.js"></script>
+<script src="/js/main.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/js/animate.js"></script>
+
+
+  <script src="/js/pop-img.js"></script>
+  <script>
+     $(".article-entry p img").popImg();
+  </script>
+
+  </div>
+</body>
+</html>
