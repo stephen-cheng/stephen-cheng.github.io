@@ -3,23 +3,23 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Levenshtein Distance | The Way to AI</title>
+  <title>How to Install and Run MongoDB on Mac OS | The Way to AI</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
     <meta name="keywords" content="CS, AI, ML, NLP, CV" />
   
-  <meta name="description" content="&amp;nbsp; Stephen Cheng   IntroLevenshtein distance is a string metric for measuring the difference between two sequences. Informally, the Levenshtein distance between two words is the minimum number of">
-<meta name="keywords" content="Levenshtein,Distance,Algorithm">
+  <meta name="description" content="&amp;nbsp; Stephen Cheng   Intro MongoDB is a document database which belongs to a family of databases called NoSQL - not only SQL. In MongoDB, records are documents which behave a lot like JSON objects i">
+<meta name="keywords" content="MongoDB">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Levenshtein Distance">
-<meta property="og:url" content="https:&#x2F;&#x2F;jetrobert.github.io&#x2F;2018&#x2F;04&#x2F;18&#x2F;LevenshteinDistance&#x2F;index.html">
+<meta property="og:title" content="How to Install and Run MongoDB on Mac OS">
+<meta property="og:url" content="https:&#x2F;&#x2F;jetrobert.github.io&#x2F;2019&#x2F;03&#x2F;11&#x2F;Install-MongoDB-on-Mac&#x2F;index.html">
 <meta property="og:site_name" content="The Way to AI">
-<meta property="og:description" content="&amp;nbsp; Stephen Cheng   IntroLevenshtein distance is a string metric for measuring the difference between two sequences. Informally, the Levenshtein distance between two words is the minimum number of">
+<meta property="og:description" content="&amp;nbsp; Stephen Cheng   Intro MongoDB is a document database which belongs to a family of databases called NoSQL - not only SQL. In MongoDB, records are documents which behave a lot like JSON objects i">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;Malaysia-Online&#x2F;site&#x2F;master&#x2F;resource&#x2F;images&#x2F;section&#x2F;jetrobert&#x2F;2018&#x2F;201804&#x2F;20180418&#x2F;0.png">
-<meta property="og:updated_time" content="2019-11-14T19:04:32.355Z">
+<meta property="og:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;Malaysia-Online&#x2F;site&#x2F;master&#x2F;resource&#x2F;images&#x2F;section&#x2F;jetrobert&#x2F;2019&#x2F;201903&#x2F;20180316&#x2F;0.png">
+<meta property="og:updated_time" content="2019-12-11T09:17:29.972Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;Malaysia-Online&#x2F;site&#x2F;master&#x2F;resource&#x2F;images&#x2F;section&#x2F;jetrobert&#x2F;2018&#x2F;201804&#x2F;20180418&#x2F;0.png">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;Malaysia-Online&#x2F;site&#x2F;master&#x2F;resource&#x2F;images&#x2F;section&#x2F;jetrobert&#x2F;2019&#x2F;201903&#x2F;20180316&#x2F;0.png">
   
   
     <link rel="icon" href="/favicon.ico">
@@ -110,14 +110,14 @@
     </div>
 </header>
       <div class="outer">
-        <section id="main" class="body-wrap"><article id="post-LevenshteinDistance" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main" class="body-wrap"><article id="post-Install-MongoDB-on-Mac" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="post-title" itemprop="name">
-      Levenshtein Distance
+      How to Install and Run MongoDB on Mac OS
     </h1>
     <div class="post-title-bar">
       <ul>
@@ -125,12 +125,12 @@
               <li>
                   <i class="fa fa-book"></i>
                   
-                      <a href="/categories/Algorithm/">Algorithm</a>
+                      <a href="/categories/System/">System</a>
                   
               </li>
           
         <li>
-          <i class="fa fa-calendar"></i>  2018-04-18
+          <i class="fa fa-calendar"></i>  2019-03-11
         </li>
         <li>
           <i class="fa fa-eye"></i>
@@ -150,15 +150,67 @@
 <center>Stephen Cheng</center>
 
 
-<h2 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a><center>Intro</center></h2><p>Levenshtein distance is a string metric for measuring the difference between two sequences. Informally, the Levenshtein distance between two words is the minimum number of single-character edits (insertions, deletions or substitutions) required to change one word into the other. It is named after Vladimir Levenshtein, who considered this distance in 1965.</p>
-<p>Levenshtein distance may also be referred to as edit distance, although that term may also denote a larger family of distance metrics.</p>
-<h2 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a><center>Definition</center></h2><p>Mathematically, the Levenshtein distance between two strings a,b (of length |a| and |b| respectively) is given by lev_a,b(|a|,|b|)</p>
-<p>where</p>
-<p><img src="https://raw.githubusercontent.com/Malaysia-Online/site/master/resource/images/section/jetrobert/2018/201804/20180418/0.png" alt=""></p>
-<h2 id="Example"><a href="#Example" class="headerlink" title="Example"></a><center>Example</center></h2><p>The Levenshtein distance between “kitten” and “sitting” is 3, since the following three edits change one into the other, and there is no way to do it with fewer than three edits:</p>
-<p>1) kitten → sitten (substitution of “s” for “k”)<br>2) sitten → sittin (substitution of “i” for “e”)<br>3) sittin → sitting (insertion of “g” at the end)</p>
-<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a><center>Code</center></h2><p><b>Python</b></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#-*- coding: utf-8 -*-</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">Levenshtein distance for measuring string difference</span></span><br><span class="line"><span class="string">Created on Apr. 6th, 2017</span></span><br><span class="line"><span class="string">@author: Stephen</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">levenshtein_distance</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">le_dis</span><span class="params">(self, input_x, input_y)</span>:</span></span><br><span class="line">        xlen = len(input_x) + <span class="number">1</span></span><br><span class="line">        ylen = len(input_y) + <span class="number">1</span></span><br><span class="line">        dp = np.zeros(shape=(xlen, ylen), dtype=int)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, xlen):</span><br><span class="line">            dp[i][<span class="number">0</span>] = i</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">0</span>, ylen):</span><br><span class="line">            dp[<span class="number">0</span>][j] = j</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, xlen):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">1</span>, ylen):</span><br><span class="line">                <span class="keyword">if</span> input_x[i - <span class="number">1</span>] == input_y[j - <span class="number">1</span>]:</span><br><span class="line">                    dp[i][j] = dp[i - <span class="number">1</span>][j - <span class="number">1</span>]</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    dp[i][j] = <span class="number">1</span> + min(dp[i - <span class="number">1</span>][j], dp[i][j - <span class="number">1</span>], dp[i - <span class="number">1</span>][j - <span class="number">1</span>])</span><br><span class="line">        <span class="keyword">return</span> dp[xlen - <span class="number">1</span>][ylen - <span class="number">1</span>]</span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    ld = levenshtein_distance()</span><br><span class="line">    print(ld.le_dis(<span class="string">'abcd'</span>, <span class="string">'abd'</span>)) <span class="comment"># print out 1</span></span><br><span class="line">    print(ld.le_dis(<span class="string">'ace'</span>, <span class="string">'abcd'</span>)) <span class="comment"># print out 2</span></span><br><span class="line">    print(ld.le_dis(<span class="string">'hello world'</span>, <span class="string">'hey word'</span>)) <span class="comment"># print out 4</span></span><br></pre></td></tr></table></figure>
+<h2 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a><center>Intro</center></h2><p><img src="https://raw.githubusercontent.com/Malaysia-Online/site/master/resource/images/section/jetrobert/2019/201903/20180316/0.png" alt=""></p>
+<p>MongoDB is a document database which belongs to a family of databases called NoSQL - not only SQL. In MongoDB, records are documents which behave a lot like JSON objects in JavaScript. Values in documents can be looked up by their field’s key. Documents can have some fields/keys and not others, which makes Mongo extremely flexible. This is much different than SQL databases like MySQL, where fields correspond to columns in a table and individual records correspond to rows.</p>
+<h2 id="How-to-install-and-run-MongoDB-on-Mac-OS"><a href="#How-to-install-and-run-MongoDB-on-Mac-OS" class="headerlink" title="How to install and run MongoDB on Mac OS"></a><center>How to install and run MongoDB on Mac OS</center></h2><h4><center>Install and Run MongoDB with Homebrew</center></h4>
+
+<ul>
+<li><p>Make sure Homebrew already installed on Mac (Homebrew is a package manager for the Mac – it makes installing most open source software).</p>
+</li>
+<li><p>Open the Mac terminal application and type <b>brew update</b>, then type <b>brew install mongodb</b></p>
+</li>
+<li><p>After MongoDB is downloaded, create a directory to store MongoDB data files, type <b>mkdir -p /data/db</b></p>
+</li>
+<li><p>Make sure the directory has the right permissions:</p>
+</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> sudo chown -R `id -un` /data/db</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> <span class="comment"># Enter your psd</span></span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>Run the Mongo daemon by typing <b>mongod</b> in your terminal window.</p>
+</li>
+<li><p>Run the Mongo shell by typing <b>mongo</b> in another terminal window.</p>
+</li>
+<li><p>To exit the Mongo shell run <b>quit()</b>, to stop the Mongo daemon hit <b>ctrl+c</b></p>
+</li>
+</ul>
+<hr>
+<h4><center>Install and Run MongoDB by Downloading it Manually</center></h4>
+
+<ul>
+<li><p>1) Go to the MongoDB <a href="https://www.mongodb.com/" target="_blank" rel="noopener">website</a> and download the correct version of MongoDB.</p>
+</li>
+<li><p>2) After downloading MongoDB, move the gzipped tar file to the folder where you want MongoDB installed by typing commands like these in your terminal:</p>
+</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> <span class="built_in">cd</span> Downloads</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> mv mongodb-macos-x86_64-4.2.2.tgz ~/</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>3) Extract MongoDB from the downloaded archive and change the name of the directory to something more concise by following commands:</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> <span class="built_in">cd</span> ~/ &gt; tar -zxvf mongodb-macos-x86_64-4.2.2.tgz</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> mv mongodb-macos-x86_64-4.2.2 mongodb</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>4) Create a directory to store MongoDB data files, type <b>mkdir -p /data/db</b></p>
+</li>
+<li><p>5) Make sure the directory has the right permissions:</p>
+</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> sudo chown -R `id -un` /data/db</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> <span class="comment"># Enter your psd</span></span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>6) If you can’t create <b>/data/db</b> directory, you can also use other directory to replace it by running command like this:</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~/mongodb/bin/mongod --dbpath ~/mongodb/data</span><br></pre></td></tr></table></figure>
+
+<p>then jump to step 8.</p>
+<ul>
+<li><p>7) Run the Mongo daemon by typing <b>~/mongodb/bin/mongod</b> in your terminal window.</p>
+</li>
+<li><p>8) Run the Mongo shell by typing <b>~/mongodb/bin/mongo</b> in another terminal window.</p>
+</li>
+<li><p>To exit the Mongo shell run <b>quit()</b>, to stop the Mongo daemon hit <b>ctrl+c</b></p>
+</li>
+</ul>
 
             <div class="post-copyright">
     <div class="content">
@@ -215,7 +267,7 @@
     <div class="post-share-list" id="share-list">
         <ul class="share-icons">
           <li>
-            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://jetrobert.github.io/2018/04/18/LevenshteinDistance/&title=《Levenshtein Distance》 — The Way to AI&pic=https://raw.githubusercontent.com/Malaysia-Online/site/master/resource/images/section/jetrobert/2018/201804/20180418/0.png" data-title="Weibo">
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://jetrobert.github.io/2019/03/11/Install-MongoDB-on-Mac/&title=《How to Install and Run MongoDB on Mac OS》 — The Way to AI&pic=https://raw.githubusercontent.com/Malaysia-Online/site/master/resource/images/section/jetrobert/2019/201903/20180316/0.png" data-title="Weibo">
               <i class="fa fa-weibo"></i>
             </a>
           </li>
@@ -225,22 +277,22 @@
             </a>
           </li>
           <li>
-            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://jetrobert.github.io/2018/04/18/LevenshteinDistance/&title=《Levenshtein Distance》 — The Way to AI&source=Dream it. Believe it. Make it." data-title="QQ">
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://jetrobert.github.io/2019/03/11/Install-MongoDB-on-Mac/&title=《How to Install and Run MongoDB on Mac OS》 — The Way to AI&source=Dream it. Believe it. Make it." data-title="QQ">
               <i class="fa fa-qq"></i>
             </a>
           </li>
           <li>
-            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://jetrobert.github.io/2018/04/18/LevenshteinDistance/" data-title="Facebook">
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://jetrobert.github.io/2019/03/11/Install-MongoDB-on-Mac/" data-title="Facebook">
               <i class="fa fa-facebook"></i>
             </a>
           </li>
           <li>
-            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Levenshtein Distance》 — The Way to AI&url=https://jetrobert.github.io/2018/04/18/LevenshteinDistance/&via=https://jetrobert.github.io" data-title="Twitter">
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《How to Install and Run MongoDB on Mac OS》 — The Way to AI&url=https://jetrobert.github.io/2019/03/11/Install-MongoDB-on-Mac/&via=https://jetrobert.github.io" data-title="Twitter">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
           <li>
-            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://jetrobert.github.io/2018/04/18/LevenshteinDistance/" data-title="Google+">
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://jetrobert.github.io/2019/03/11/Install-MongoDB-on-Mac/" data-title="Google+">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -250,7 +302,7 @@
 <div class="post-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;" target="_blank" rel="noopener" id="wxShare-close">×</a>
     <p>Scan QRcode and Share</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://jetrobert.github.io/2018/04/18/LevenshteinDistance/" alt="Wecaht QRcode">
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://jetrobert.github.io/2019/03/11/Install-MongoDB-on-Mac/" alt="Wecaht QRcode">
 </div>
 
 <div class="mask"></div>
@@ -262,11 +314,7 @@
   <li class="article-footer-tags">
     <i class="fa fa-tags"></i>
       
-    <a href="/tags/Levenshtein/" class="color2">Levenshtein</a>
-      
-    <a href="/tags/Distance/" class="color4">Distance</a>
-      
-    <a href="/tags/Algorithm/" class="color5">Algorithm</a>
+    <a href="/tags/MongoDB/" class="color3">MongoDB</a>
       
   </li>
 
@@ -279,26 +327,16 @@
 
     <aside class="post-toc-pos post-toc-top" id="post-toc">
         <nav class="post-toc-wrap">
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Intro"><span class="post-toc-text">Intro</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Definition"><span class="post-toc-text">Definition</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Example"><span class="post-toc-text">Example</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Code"><span class="post-toc-text">Code</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Intro"><span class="post-toc-text">Intro</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#How-to-install-and-run-MongoDB-on-Mac-OS"><span class="post-toc-text">How to install and run MongoDB on Mac OS</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#null"><span class="post-toc-text">Install and Run MongoDB with Homebrew</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#null"><span class="post-toc-text">Install and Run MongoDB by Downloading it Manually</span></a></li></ol></li></ol></li></ol>
         </nav>
     </aside>
     
 
 <nav id="article-nav">
   
-    <a href="/2018/05/06/RegressionTreesvs-ClassificationTrees/" id="article-nav-newer" class="article-nav-link-wrap">
-
-      <span class="article-nav-title">
-        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
-        
-          Regression Trees vs. Classification Trees
-        
-      </span>
-    </a>
   
-  
-    <a href="/2018/04/15/WhatIsADecisionTreeHowDoesItWork/" id="article-nav-older" class="article-nav-link-wrap">
-      <span class="article-nav-title">What Is A Decision Tree ? How Does It Work ?</span>
+    <a href="/2019/01/28/HowtoTransferFiles/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">How to Transfer Files &amp; Connect to Jupyter Notebook Between Azure Virtual Machines and Local Systems</span>
       <i class="fa fa-hand-o-right" aria-hidden="true"></i>
     </a>
   
