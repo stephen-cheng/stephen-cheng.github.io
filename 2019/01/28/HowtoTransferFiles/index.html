@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="AI">
 <meta property="og:description" content="&amp;nbsp; Stephen Cheng   IntroRecently, cloud platforms are popular among various companies and conferences. Virtual Machines are one of the main applications provided by cloud platforms. For instance,">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-11-14T19:03:22.112Z">
+<meta property="og:updated_time" content="2019-12-25T10:09:37.592Z">
 <meta name="twitter:card" content="summary">
   
   
@@ -145,8 +145,8 @@
 <center>Stephen Cheng</center>
 
 
-<h2 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a><center>Intro</center></h2><p>Recently, cloud platforms are popular among various companies and conferences. Virtual Machines are one of the main applications provided by cloud platforms. For instance, Microsoft Azure offers Data Science Virtual Machines. Even though we have cloud platforms do us a favour to process hundreds and thousands of data remotely, I do need to upload files or download results from remote server. So how to interact between remote cloud servers and local systems? We’ll take Azure Virtual Machines as a case study.</p>
-<h2 id="Transfer-Files"><a href="#Transfer-Files" class="headerlink" title="Transfer Files"></a><center>Transfer Files</center></h2><ul>
+<h3 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h3><p>Recently, cloud platforms are popular among various companies and conferences. Virtual Machines are one of the main applications provided by cloud platforms. For instance, Microsoft Azure offers Data Science Virtual Machines. Even though we have cloud platforms do us a favour to process hundreds and thousands of data remotely, I do need to upload files or download results from remote server. So how to interact between remote cloud servers and local systems? We’ll take Azure Virtual Machines as a case study.</p>
+<h3 id="Transfer-Files"><a href="#Transfer-Files" class="headerlink" title="Transfer Files"></a>Transfer Files</h3><ul>
 <li>Copy a Local File to a Azure Virtual Machine with the scp Command:</li>
 </ul>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp /local/path/file.txt azure_username@azure_host_ip:/remote/directory</span><br></pre></td></tr></table></figure>
@@ -171,10 +171,10 @@
 </ul>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp azure_username1@azure_host_ip1:/directory/file.txt azure_username2@azure_host_ip2:/directory</span><br></pre></td></tr></table></figure>
 
-<h2 id="Connect-to-Azure-Virtual-Machine"><a href="#Connect-to-Azure-Virtual-Machine" class="headerlink" title="Connect to Azure Virtual Machine"></a><center>Connect to Azure Virtual Machine</center></h2><p>Here, we can use SSH command to connect to the Azure Virtual Machine from local path.</p>
+<h3 id="Connect-to-Azure-Virtual-Machine"><a href="#Connect-to-Azure-Virtual-Machine" class="headerlink" title="Connect to Azure Virtual Machine"></a>Connect to Azure Virtual Machine</h3><p>Here, we can use SSH command to connect to the Azure Virtual Machine from local path.</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh azure_username@azure_host_ip</span><br></pre></td></tr></table></figure>
 
-<h2 id="Connect-to-Jupyter-Notebook-application"><a href="#Connect-to-Jupyter-Notebook-application" class="headerlink" title="Connect to Jupyter Notebook application"></a><center>Connect to Jupyter Notebook application</center></h2><p>Here, we use SSH command to connect to the Jupyter Notebook Application.</p>
+<h3 id="Connect-to-Jupyter-Notebook-application"><a href="#Connect-to-Jupyter-Notebook-application" class="headerlink" title="Connect to Jupyter Notebook application"></a>Connect to Jupyter Notebook application</h3><p>Here, we use SSH command to connect to the Jupyter Notebook Application.</p>
 <ul>
 <li>First, install and start the Jupyter Notebook Application in the Azure Virtual Machines, then open the local terminal and input the following command:</li>
 </ul>
@@ -196,7 +196,7 @@
         
             
 <div class="page-reward">
-    <a id="rewardBtn" href="javascript:;" target="_blank" rel="noopener">Donate</a>
+    <a id="rewardBtn" href="javascript:;" target="_blank" rel="noopener">👍</a>
 </div>
 
 <div id="reward" class="post-modal reward-lay">
@@ -303,7 +303,7 @@
 
     <aside class="post-toc-pos post-toc-top" id="post-toc">
         <nav class="post-toc-wrap">
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Intro"><span class="post-toc-text">Intro</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Transfer-Files"><span class="post-toc-text">Transfer Files</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Connect-to-Azure-Virtual-Machine"><span class="post-toc-text">Connect to Azure Virtual Machine</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Connect-to-Jupyter-Notebook-application"><span class="post-toc-text">Connect to Jupyter Notebook application</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Intro"><span class="post-toc-text">Intro</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Transfer-Files"><span class="post-toc-text">Transfer Files</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Connect-to-Azure-Virtual-Machine"><span class="post-toc-text">Connect to Azure Virtual Machine</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Connect-to-Jupyter-Notebook-application"><span class="post-toc-text">Connect to Jupyter Notebook application</span></a></li></ol>
         </nav>
     </aside>
     

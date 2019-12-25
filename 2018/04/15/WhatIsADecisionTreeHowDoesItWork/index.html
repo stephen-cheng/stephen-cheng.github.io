@@ -18,7 +18,7 @@
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;Malaysia-Online&#x2F;site&#x2F;master&#x2F;resource&#x2F;images&#x2F;section&#x2F;jetrobert&#x2F;2018&#x2F;201804&#x2F;20180415&#x2F;0.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;Malaysia-Online&#x2F;site&#x2F;master&#x2F;resource&#x2F;images&#x2F;section&#x2F;jetrobert&#x2F;2018&#x2F;201804&#x2F;20180415&#x2F;1.png">
-<meta property="og:updated_time" content="2019-11-14T19:06:47.620Z">
+<meta property="og:updated_time" content="2019-12-25T10:12:19.689Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;Malaysia-Online&#x2F;site&#x2F;master&#x2F;resource&#x2F;images&#x2F;section&#x2F;jetrobert&#x2F;2018&#x2F;201804&#x2F;20180415&#x2F;0.png">
   
@@ -148,18 +148,18 @@
 <center>Stephen Cheng</center>
 
 
-<h2 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a><center>Intro</center></h2><p>Decision tree is a type of supervised learning algorithm (having a pre-defined target variable) that is mostly used in classification problems. It works for both categorical and continuous input and output variables. In this technique, the population or sample are split into two or more homogeneous sets (or sub-populations) based on most significant splitter differentiator in input variables.</p>
-<h2 id="Example"><a href="#Example" class="headerlink" title="Example"></a><center>Example</center></h2><p>Say we have a sample of 30 students with three variables: Gender (Boy/Girl), Class(IX/X) and Height (5 to 6 ft). 15 out of these 30 play cricket in leisure time. Now, we want to create a model to predict who will play cricket during leisure period? In this problem, we need to segregate students who play cricket in their leisure time based on highly significant input variable among all three.</p>
+<h3 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h3><p>Decision tree is a type of supervised learning algorithm (having a pre-defined target variable) that is mostly used in classification problems. It works for both categorical and continuous input and output variables. In this technique, the population or sample are split into two or more homogeneous sets (or sub-populations) based on most significant splitter differentiator in input variables.</p>
+<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><p>Say we have a sample of 30 students with three variables: Gender (Boy/Girl), Class(IX/X) and Height (5 to 6 ft). 15 out of these 30 play cricket in leisure time. Now, we want to create a model to predict who will play cricket during leisure period? In this problem, we need to segregate students who play cricket in their leisure time based on highly significant input variable among all three.</p>
 <p>This is where decision tree helps, it will segregate the students based on all values of three variables and identify the variable, which creates the best homogeneous sets of students (which are heterogeneous to each other). In the snapshot below, you can see that variable Gender is able to identify best homogeneous sets compared to the other two variables.</p>
 <p><img src="https://raw.githubusercontent.com/Malaysia-Online/site/master/resource/images/section/jetrobert/2018/201804/20180415/0.png" alt=""></p>
 <p>As mentioned above, decision tree identifies the most significant variable and its value that gives best homogeneous sets of population. Now the question which arises is, how does it identify the variable and the split? To do this, decision tree uses various algorithms, which we will shall discuss in the following section.</p>
-<h2 id="Types-of-Decision-Trees"><a href="#Types-of-Decision-Trees" class="headerlink" title="Types of Decision Trees"></a><center>Types of Decision Trees</center></h2><p>Types of decision tree are based on the type of target variable we have. It can be of two types:</p>
+<h3 id="Types-of-Decision-Trees"><a href="#Types-of-Decision-Trees" class="headerlink" title="Types of Decision Trees"></a>Types of Decision Trees</h3><p>Types of decision tree are based on the type of target variable we have. It can be of two types:</p>
 <p><b>1) Categorical Variable Decision Tree</b></p>
 <p>This type of Decision Tree which has categorical target variable then it called as categorical variable decision tree. E.g., in above scenario of student problem, where the target variable was “Student will play cricket or not” i.e. YES or NO.</p>
 <p><b>2) Continuous Variable Decision Tree</b></p>
 <p>This type of Decision Tree has continuous target variable then it is called as Continuous Variable Decision Tree.</p>
-<h2 id="Example-1"><a href="#Example-1" class="headerlink" title="Example"></a><center>Example</center></h2><p>Let’s say we have a problem to predict whether a customer will pay his renewal premium with an insurance company (yes/no). Here we know that income of a customer is a significant variable but insurance company does not have income details for all customers. Now, as we know this is an important variable, then we can build a decision tree to predict customer income based on occupation, age and various other variables. In this case, we are predicting values for continuous variable.</p>
-<h2 id="Important-Terminology"><a href="#Important-Terminology" class="headerlink" title="Important Terminology"></a><center>Important Terminology</center></h2><p>Let’s look at the basic terminology used with Decision trees:</p>
+<h3 id="Example-1"><a href="#Example-1" class="headerlink" title="Example"></a>Example</h3><p>Let’s say we have a problem to predict whether a customer will pay his renewal premium with an insurance company (yes/no). Here we know that income of a customer is a significant variable but insurance company does not have income details for all customers. Now, as we know this is an important variable, then we can build a decision tree to predict customer income based on occupation, age and various other variables. In this case, we are predicting values for continuous variable.</p>
+<h3 id="Important-Terminology"><a href="#Important-Terminology" class="headerlink" title="Important Terminology"></a>Important Terminology</h3><p>Let’s look at the basic terminology used with Decision trees:</p>
 <p><b>1) Root Node</b></p>
 <p>It represents entire population or sample and this further gets divided into two or more homogeneous sets.</p>
 <p><b>2) Splitting</b></p>
@@ -175,7 +175,7 @@
 <p>A node, which is divided into sub-nodes is called parent node of sub-nodes where as sub-nodes are the child of parent node.</p>
 <p><img src="https://raw.githubusercontent.com/Malaysia-Online/site/master/resource/images/section/jetrobert/2018/201804/20180415/1.png" alt=""></p>
 <p>These above are the terms commonly used for decision trees. As we know that every algorithm has advantages and disadvantages, below are the important factors which one should know.</p>
-<h2 id="Advantages"><a href="#Advantages" class="headerlink" title="Advantages"></a><center>Advantages</center></h2><p><b>1) Easy to Understand</b></p>
+<h3 id="Advantages"><a href="#Advantages" class="headerlink" title="Advantages"></a>Advantages</h3><p><b>1) Easy to Understand</b></p>
 <p>Decision tree output is very easy to understand even for people from non-analytical background. It does not require any statistical knowledge to read and interpret them. Its graphical representation is very intuitive and users can easily relate their hypothesis.</p>
 <p><b>2) Useful in Data Exploration</b></p>
 <p>Decision tree is one of the fastest way to identify most significant variables and relation between two or more variables. With the help of decision trees, we can create new variables/features that has better power to predict target variable. For example, we are working on a problem where we have information available in hundreds of variables, there decision tree will help to identify most significant variable.</p>
@@ -185,7 +185,7 @@
 <p>It can handle both numerical and categorical variables.</p>
 <p><b>5) Non Parametric Method</b></p>
 <p>Decision tree is considered to be a non-parametric method. This means that decision trees have no assumptions about the space distribution and the classifier structure.</p>
-<h2 id="Disadvantages"><a href="#Disadvantages" class="headerlink" title="Disadvantages"></a><center>Disadvantages</center></h2><p><b>1) Over Fitting</b></p>
+<h3 id="Disadvantages"><a href="#Disadvantages" class="headerlink" title="Disadvantages"></a>Disadvantages</h3><p><b>1) Over Fitting</b></p>
 <p>Over fitting is one of the most practical difficulty for decision tree models. This problem gets solved by setting constraints on model parameters and pruning (discussed in detailed below).</p>
 <p><b>2) Not Fit for Continuous Variables</b></p>
 <p>While working with continuous numerical variables, decision tree looses information when it categorizes variables in different categories.</p>
@@ -202,7 +202,7 @@
         
             
 <div class="page-reward">
-    <a id="rewardBtn" href="javascript:;" target="_blank" rel="noopener">Donate</a>
+    <a id="rewardBtn" href="javascript:;" target="_blank" rel="noopener">👍</a>
 </div>
 
 <div id="reward" class="post-modal reward-lay">
@@ -307,7 +307,7 @@
 
     <aside class="post-toc-pos post-toc-top" id="post-toc">
         <nav class="post-toc-wrap">
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Intro"><span class="post-toc-text">Intro</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Example"><span class="post-toc-text">Example</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Types-of-Decision-Trees"><span class="post-toc-text">Types of Decision Trees</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Example-1"><span class="post-toc-text">Example</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Important-Terminology"><span class="post-toc-text">Important Terminology</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Advantages"><span class="post-toc-text">Advantages</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Disadvantages"><span class="post-toc-text">Disadvantages</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Intro"><span class="post-toc-text">Intro</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Example"><span class="post-toc-text">Example</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Types-of-Decision-Trees"><span class="post-toc-text">Types of Decision Trees</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Example-1"><span class="post-toc-text">Example</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Important-Terminology"><span class="post-toc-text">Important Terminology</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Advantages"><span class="post-toc-text">Advantages</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Disadvantages"><span class="post-toc-text">Disadvantages</span></a></li></ol>
         </nav>
     </aside>
     
