@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Keras for Data Science | AI</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="CS, AI, ML, NLP, CV" />
+  
+  <meta name="description" content="&amp;nbsp; Stephen Cheng   Intro Keras is a powerful and easy-to-use deep learning library for Theano and TensorFlow that provides a high-level neural networks API to develop and evaluate deep learning mo">
+<meta name="keywords" content="Keras,Data Science,Deep Learning">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Keras for Data Science">
+<meta property="og:url" content="https:&#x2F;&#x2F;jetrobert.github.io&#x2F;2019&#x2F;09&#x2F;21&#x2F;Keras-for-Data-Science&#x2F;index.html">
+<meta property="og:site_name" content="AI">
+<meta property="og:description" content="&amp;nbsp; Stephen Cheng   Intro Keras is a powerful and easy-to-use deep learning library for Theano and TensorFlow that provides a high-level neural networks API to develop and evaluate deep learning mo">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;Malaysia-Online&#x2F;site&#x2F;master&#x2F;resource&#x2F;images&#x2F;section&#x2F;jetrobert&#x2F;2019&#x2F;201909&#x2F;20190921&#x2F;0.jpg">
+<meta property="og:updated_time" content="2020-01-27T14:07:52.924Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;Malaysia-Online&#x2F;site&#x2F;master&#x2F;resource&#x2F;images&#x2F;section&#x2F;jetrobert&#x2F;2019&#x2F;201909&#x2F;20190921&#x2F;0.jpg">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+  
+
+  
+  
+
+</head>
+
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">CS | AI</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a  href="/">
+                        <i class="fa fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                    
+                    <a  href="/archives">
+                        <i class="fa fa-Archives"></i>
+                        <span>Archives</span>
+                    </a>
+                    
+                    <a  href="/about">
+                        <i class="fa fa-about"></i>
+                        <span>About</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/logo.png" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        CS | AI
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        Dream it. Believe it. Make it.
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="Github" target="_blank" href="//github.com/jetrobert">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                        <a title="Linkedin" target="_blank" href="//linkedin.com/in/stephen-cheng">
+                            <i class="fa fa-linkedin fa-2x"></i></a>
+                    
+                        <a title="Twitter" target="_blank" href="//twitter.com/stephen2cheng">
+                            <i class="fa fa-twitter fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-Keras-for-Data-Science" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      Keras for Data Science
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+              <li>
+                  <i class="fa fa-book"></i>
+                  
+                      <a href="/categories/ML/">ML</a>
+                  
+              </li>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2019-09-21
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <p>&nbsp;</p>
+<center>Stephen Cheng</center>
+
+
+<h3 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h3><p><img src="https://raw.githubusercontent.com/Malaysia-Online/site/master/resource/images/section/jetrobert/2019/201909/20190921/0.jpg" alt=""></p>
+<p>Keras is a powerful and easy-to-use deep learning library for Theano and TensorFlow that provides a high-level neural networks API to develop and evaluate deep learning models.</p>
+<h4 id="A-Basic-Example"><a href="#A-Basic-Example" class="headerlink" title="A Basic Example:"></a>A Basic Example:</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> keras.models <span class="keyword">import</span> Sequential</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> keras.layers <span class="keyword">import</span> Dense</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>data = np.random.random((<span class="number">1000</span>,<span class="number">100</span>))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>labels = np.random.randint(<span class="number">2</span>,size=(<span class="number">1000</span>,<span class="number">1</span>))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>model = Sequential()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>model.add(Dense(<span class="number">32</span>,</span><br><span class="line"> activation=<span class="string">'relu'</span>,</span><br><span class="line"> input_dim=<span class="number">100</span>))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>model.add(Dense(<span class="number">1</span>, activation=<span class="string">'sigmoid'</span>))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>model.compile(optimizer=<span class="string">'rmsprop'</span>,</span><br><span class="line"> loss=<span class="string">'binary_crossentropy'</span>,</span><br><span class="line"> metrics=[<span class="string">'accuracy'</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>model.fit(data,labels,epochs=<span class="number">10</span>,batch_size=<span class="number">32</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>predictions = model.predict(data)</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="Data"><a href="#Data" class="headerlink" title="Data"></a>Data</h3><p>Your data needs to be stored as NumPy arrays or as a list of NumPy arrays. Ideally, you split the data in training and test sets, for which you can also resort to the <em>train_test_split</em> module of <em>sklearn.cross_validation</em>.</p>
+<h4 id="Keras-Data-Sets"><a href="#Keras-Data-Sets" class="headerlink" title="Keras Data Sets:"></a>Keras Data Sets:</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> keras.datasets <span class="keyword">import</span> boston_housing,</span><br><span class="line"> mnist,</span><br><span class="line"> cifar10,</span><br><span class="line"> imdb</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>(x_train,y_train),(x_test,y_test) = mnist.load_data()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>(x_train2,y_train2),(x_test2,y_test2) = boston_housing.load_data()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>(x_train3,y_train3),(x_test3,y_test3) = cifar10.load_data()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>(x_train4,y_train4),(x_test4,y_test4) = imdb.load_data(num_words=<span class="number">20000</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>num_classes = <span class="number">10</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="Other"><a href="#Other" class="headerlink" title="Other:"></a>Other:</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> urllib.request <span class="keyword">import</span> urlopen</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>data = np.loadtxt(urlopen(<span class="string">"http://archive.ics.uci.edu/ml/machine-learning-databases/pima-indians-diabetes/pima-indians-diabetes.data"</span>),delimiter=<span class="string">","</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>X = data[:,<span class="number">0</span>:<span class="number">8</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>y = data [:,<span class="number">8</span>]</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="Preprocessing"><a href="#Preprocessing" class="headerlink" title="Preprocessing"></a>Preprocessing</h3><h4 id="Sequence-Padding"><a href="#Sequence-Padding" class="headerlink" title="Sequence Padding:"></a>Sequence Padding:</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> keras.preprocessing <span class="keyword">import</span> sequence</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>x_train4 = sequence.pad_sequences(x_train4,maxlen=<span class="number">80</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>x_test4 = sequence.pad_sequences(x_test4,maxlen=<span class="number">80</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="One-Hot-Encoding"><a href="#One-Hot-Encoding" class="headerlink" title="One-Hot Encoding:"></a>One-Hot Encoding:</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> keras.utils <span class="keyword">import</span> to_categorical</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>Y_train = to_categorical(y_train, num_classes)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>Y_test = to_categorical(y_test, num_classes)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>Y_train3 = to_categorical(y_train3, num_classes)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>Y_test3 = to_categorical(y_test3, num_classes)</span><br></pre></td></tr></table></figure>
+
+<h4 id="Train-and-Test-Sets"><a href="#Train-and-Test-Sets" class="headerlink" title="Train and Test Sets:"></a>Train and Test Sets:</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>X_train5,X_test5,y_train5,y_test5 = train_test_split(X, y, test_size=<span class="number">0.33</span>, random_state=<span class="number">42</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="Standardization-Normalization"><a href="#Standardization-Normalization" class="headerlink" title="Standardization/Normalization:"></a>Standardization/Normalization:</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> StandardScaler</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>scaler = StandardScaler().fit(x_train2)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>standardized_X = scaler.transform(x_train2)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>standardized_X_test = scaler.transform(x_test2)</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="Model-Architecture"><a href="#Model-Architecture" class="headerlink" title="Model Architecture"></a>Model Architecture</h3><h4 id="Sequential-Model"><a href="#Sequential-Model" class="headerlink" title="Sequential Model:"></a>Sequential Model:</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> keras.models <span class="keyword">import</span> Sequential</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>model = Sequential()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>model2 = Sequential()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>model3 = Sequential()</span><br></pre></td></tr></table></figure>
+
+<h4 id="Multilayer-Perceptron-MLP"><a href="#Multilayer-Perceptron-MLP" class="headerlink" title="Multilayer Perceptron (MLP):"></a>Multilayer Perceptron (MLP):</h4><p><b>Binary Classification</b></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> keras.layers <span class="keyword">import</span> Dense</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>model.add(Dense(<span class="number">12</span>,</span><br><span class="line"> input_dim=<span class="number">8</span>,</span><br><span class="line"> kernel_initializer=<span class="string">'uniform'</span>,</span><br><span class="line"> activation=<span class="string">'relu'</span>))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>model.add(Dense(<span class="number">8</span>,kernel_initializer=<span class="string">'uniform'</span>,activation=<span class="string">'relu'</span>))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>model.add(Dense(<span class="number">1</span>,kernel_initializer=<span class="string">'uniform'</span>,activation=<span class="string">'sigmoid'</span>))</span><br></pre></td></tr></table></figure>
+
+<p><b>Multi-Class Classification</b></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> keras.layers <span class="keyword">import</span> Dropout</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>model.add(Dense(<span class="number">512</span>,activation=<span class="string">'relu'</span>,input_shape=(<span class="number">784</span>,)))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>model.add(Dropout(<span class="number">0.2</span>))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>model.add(Dense(<span class="number">512</span>,activation=<span class="string">'relu'</span>))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>model.add(Dropout(<span class="number">0.2</span>))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>model.add(Dense(<span class="number">10</span>,activation=<span class="string">'softmax'</span>))</span><br></pre></td></tr></table></figure>
+
+<p><b>Regression</b></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>model.add(Dense(<span class="number">64</span>,activation=<span class="string">'relu'</span>,input_dim=train_data.shape[<span class="number">1</span>]))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>model.add(Dense(<span class="number">1</span>))</span><br></pre></td></tr></table></figure>
+
+<h4 id="Convolutional-Neural-Network-CNN"><a href="#Convolutional-Neural-Network-CNN" class="headerlink" title="Convolutional Neural Network (CNN):"></a>Convolutional Neural Network (CNN):</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> keras.layers <span class="keyword">import</span> Activation,Conv2D,MaxPooling2D,Flatten</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>model2.add(Conv2D(<span class="number">32</span>,(<span class="number">3</span>,<span class="number">3</span>),padding=<span class="string">'same'</span>,input_shape=x_train.shape[<span class="number">1</span>:]))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>model2.add(Activation(<span class="string">'relu'</span>))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>model2.add(Conv2D(<span class="number">32</span>,(<span class="number">3</span>,<span class="number">3</span>)))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>model2.add(Activation(<span class="string">'relu'</span>))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>model2.add(MaxPooling2D(pool_size=(<span class="number">2</span>,<span class="number">2</span>)))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>model2.add(Dropout(<span class="number">0.25</span>))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>model2.add(Conv2D(<span class="number">64</span>,(<span class="number">3</span>,<span class="number">3</span>), padding=<span class="string">'same'</span>))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>model2.add(Activation(<span class="string">'relu'</span>))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>model2.add(Conv2D(<span class="number">64</span>,(<span class="number">3</span>, <span class="number">3</span>)))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>model2.add(Activation(<span class="string">'relu'</span>))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>model2.add(MaxPooling2D(pool_size=(<span class="number">2</span>,<span class="number">2</span>)))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>model2.add(Dropout(<span class="number">0.25</span>))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>model2.add(Flatten())</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>model2.add(Dense(<span class="number">512</span>))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>model2.add(Activation(<span class="string">'relu'</span>))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>model2.add(Dropout(<span class="number">0.5</span>))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>model2.add(Dense(num_classes))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>model2.add(Activation(<span class="string">'softmax'</span>))</span><br></pre></td></tr></table></figure>
+
+<h4 id="Recurrent-Neural-Network-RNN"><a href="#Recurrent-Neural-Network-RNN" class="headerlink" title="Recurrent Neural Network (RNN):"></a>Recurrent Neural Network (RNN):</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> keras.klayers <span class="keyword">import</span> Embedding,LSTM</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>model3.add(Embedding(<span class="number">20000</span>,<span class="number">128</span>))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>model3.add(LSTM(<span class="number">128</span>,dropout=<span class="number">0.2</span>,recurrent_dropout=<span class="number">0.2</span>))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>model3.add(Dense(<span class="number">1</span>,activation=<span class="string">'sigmoid'</span>))</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="Inspect-Model"><a href="#Inspect-Model" class="headerlink" title="Inspect Model"></a>Inspect Model</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Model output shape</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>model.output_shape</span><br><span class="line"><span class="comment"># Model summary representation</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>model.summary()</span><br><span class="line"><span class="comment"># Model configuration</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>model.get_config()</span><br><span class="line"><span class="comment"># List all weight tensors in the model</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>model.get_weights()</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="Compile-Model"><a href="#Compile-Model" class="headerlink" title="Compile Model"></a>Compile Model</h3><p><b>MLP: Binary Classification</b></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>model.compile(optimizer=<span class="string">'adam'</span>,</span><br><span class="line"> loss=<span class="string">'binary_crossentropy'</span>,</span><br><span class="line"> metrics=[<span class="string">'accuracy'</span>])</span><br></pre></td></tr></table></figure>
+
+<p><b>MLP: Multi-Class Classification</b></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>model.compile(optimizer=<span class="string">'rmsprop'</span>,</span><br><span class="line"> loss=<span class="string">'categorical_crossentropy'</span>,</span><br><span class="line"> metrics=[<span class="string">'accuracy'</span>])</span><br></pre></td></tr></table></figure>
+
+<p><b>MLP: Regression</b></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>model.compile(optimizer=<span class="string">'rmsprop'</span>, loss=<span class="string">'mse'</span>, metrics=[<span class="string">'mae'</span>])</span><br></pre></td></tr></table></figure>
+
+<p><b>Recurrent Neural Network</b></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>model3.compile(loss=<span class="string">'binary_crossentropy'</span>,</span><br><span class="line"> optimizer=<span class="string">'adam'</span>,</span><br><span class="line"> metrics=[<span class="string">'accuracy'</span>])</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="Model-Training"><a href="#Model-Training" class="headerlink" title="Model Training"></a>Model Training</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>model3.fit(x_train4,</span><br><span class="line"> y_train4,</span><br><span class="line"> batch_size=<span class="number">32</span>,</span><br><span class="line"> epochs=<span class="number">15</span>,</span><br><span class="line"> verbose=<span class="number">1</span>,</span><br><span class="line"> validation_data=(x_test4,y_test4))</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="Evaluate-Your-Model’s-Performance"><a href="#Evaluate-Your-Model’s-Performance" class="headerlink" title="Evaluate Your Model’s Performance"></a>Evaluate Your Model’s Performance</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>score = model3.evaluate(x_test,</span><br><span class="line"> y_test,</span><br><span class="line"> batch_size=<span class="number">32</span>)</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="Prediction"><a href="#Prediction" class="headerlink" title="Prediction"></a>Prediction</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>model3.predict(x_test4, batch_size=<span class="number">32</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>model3.predict_classes(x_test4,batch_size=<span class="number">32</span>)</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="Save-Reload-Models"><a href="#Save-Reload-Models" class="headerlink" title="Save/ Reload Models"></a>Save/ Reload Models</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> keras.models <span class="keyword">import</span> load_model</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>model3.save(<span class="string">'model_file.h5'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>my_model = load_model(<span class="string">'my_model.h5'</span>)</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="Model-Fine-tuning"><a href="#Model-Fine-tuning" class="headerlink" title="Model Fine-tuning"></a>Model Fine-tuning</h3><h4 id="Optimization-Parameters"><a href="#Optimization-Parameters" class="headerlink" title="Optimization Parameters:"></a>Optimization Parameters:</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> keras.optimizers <span class="keyword">import</span> RMSprop</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>opt = RMSprop(lr=<span class="number">0.0001</span>, decay=<span class="number">1e-6</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>model2.compile(loss=<span class="string">'categorical_crossentropy'</span>, optimizer=opt,</span><br><span class="line"> metrics=[<span class="string">'accuracy'</span>])</span><br></pre></td></tr></table></figure>
+
+<h4 id="Early-Stopping"><a href="#Early-Stopping" class="headerlink" title="Early Stopping:"></a>Early Stopping:</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> keras.callbacks <span class="keyword">import</span> EarlyStopping</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>early_stopping_monitor = EarlyStopping(patience=<span class="number">2</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>model3.fit(x_train4,</span><br><span class="line"> y_train4,</span><br><span class="line"> batch_size=<span class="number">32</span>,</span><br><span class="line"> epochs=<span class="number">15</span>,</span><br><span class="line"> validation_data=(x_test4,y_test4),</span><br><span class="line"> callbacks=[early_stopping_monitor])</span><br></pre></td></tr></table></figure>
+
+            <div class="post-copyright">
+    <div class="content">
+            <footer>
+            <b>END</b
+        </footer>
+    </div>
+</div>
+
+      
+        
+            
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" target="_blank" rel="noopener">👍</a>
+</div>
+
+<div id="reward" class="post-modal reward-lay">
+    <a class="close" href="javascript:;" target="_blank" rel="noopener" id="reward-close">×</a>
+    <span class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        Support
+        <i class="icon icon-quote-right"></i>
+    </span>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/images/wechat_code.png" alt="Reward QRcode">
+        </div>
+        <div class="reward-select">
+            
+            <label class="reward-select-item checked" data-id="wechat" data-wechat="/images/wechat_code.png">
+                <img class="reward-select-item-wechat" src="/images/wechat.png" alt="Wechat">
+            </label>
+            
+            
+            <label class="reward-select-item" data-id="alipay" data-alipay="/images/alipay_code.png">
+                <img class="reward-select-item-alipay" src="/images/alipay.png" alt="Wechat Blog">
+            </label>
+            
+        </div>
+    </div>
+</div>
+
+
+        
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" target="_blank" rel="noopener" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://jetrobert.github.io/2019/09/21/Keras-for-Data-Science/&title=《Keras for Data Science》 — AI&pic=https://raw.githubusercontent.com/Malaysia-Online/site/master/resource/images/section/jetrobert/2019/201909/20190921/0.jpg" data-title="Weibo">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" target="_blank" rel="noopener" data-title="Wechat">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://jetrobert.github.io/2019/09/21/Keras-for-Data-Science/&title=《Keras for Data Science》 — AI&source=Dream it. Believe it. Make it." data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://jetrobert.github.io/2019/09/21/Keras-for-Data-Science/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Keras for Data Science》 — AI&url=https://jetrobert.github.io/2019/09/21/Keras-for-Data-Science/&via=https://jetrobert.github.io" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://jetrobert.github.io/2019/09/21/Keras-for-Data-Science/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" target="_blank" rel="noopener" id="wxShare-close">×</a>
+    <p>Scan QRcode and Share</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://jetrobert.github.io/2019/09/21/Keras-for-Data-Science/" alt="Wecaht QRcode">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/Keras/" class="color1">Keras</a>
+      
+    <a href="/tags/DataScience/" class="color3">Data Science</a>
+      
+    <a href="/tags/DeepLearning/" class="color4">Deep Learning</a>
+      
+  </li>
+
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Intro"><span class="post-toc-text">Intro</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#A-Basic-Example"><span class="post-toc-text">A Basic Example:</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Data"><span class="post-toc-text">Data</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Keras-Data-Sets"><span class="post-toc-text">Keras Data Sets:</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Other"><span class="post-toc-text">Other:</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Preprocessing"><span class="post-toc-text">Preprocessing</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Sequence-Padding"><span class="post-toc-text">Sequence Padding:</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#One-Hot-Encoding"><span class="post-toc-text">One-Hot Encoding:</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Train-and-Test-Sets"><span class="post-toc-text">Train and Test Sets:</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Standardization-Normalization"><span class="post-toc-text">Standardization/Normalization:</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Model-Architecture"><span class="post-toc-text">Model Architecture</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Sequential-Model"><span class="post-toc-text">Sequential Model:</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Multilayer-Perceptron-MLP"><span class="post-toc-text">Multilayer Perceptron (MLP):</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Convolutional-Neural-Network-CNN"><span class="post-toc-text">Convolutional Neural Network (CNN):</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Recurrent-Neural-Network-RNN"><span class="post-toc-text">Recurrent Neural Network (RNN):</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Inspect-Model"><span class="post-toc-text">Inspect Model</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Compile-Model"><span class="post-toc-text">Compile Model</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Model-Training"><span class="post-toc-text">Model Training</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Evaluate-Your-Model’s-Performance"><span class="post-toc-text">Evaluate Your Model’s Performance</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Prediction"><span class="post-toc-text">Prediction</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Save-Reload-Models"><span class="post-toc-text">Save/ Reload Models</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Model-Fine-tuning"><span class="post-toc-text">Model Fine-tuning</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Optimization-Parameters"><span class="post-toc-text">Optimization Parameters:</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Early-Stopping"><span class="post-toc-text">Early Stopping:</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+  
+    <a href="/2019/06/18/Python-for-Data-Science-Cheat-Sheet-with-Scikit-Learn/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">Python for Data Science Cheat Sheet with Scikit-Learn</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        Visitors：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        Views：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+        
+      &copy; 2020 Stephen Cheng<br>
+      </p>
+    </div>
+  </div>
+</footer>
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "https://jetrobert.github.io",
+      animate: true,
+      isHome: false,
+      share: true,
+      reward: 1
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            <a class="category-link" href="/categories/Algorithm/">Algorithm</a><a class="category-link" href="/categories/ML/">ML</a><a class="category-link" href="/categories/Programming/">Programming</a><a class="category-link" href="/categories/System/">System</a>
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/Algorithm/" style="font-size: 13.33px;">Algorithm</a> <a href="/tags/Azure/" style="font-size: 10px;">Azure</a> <a href="/tags/Bagging/" style="font-size: 10px;">Bagging</a> <a href="/tags/Bias/" style="font-size: 10px;">Bias</a> <a href="/tags/Classification/" style="font-size: 10px;">Classification</a> <a href="/tags/Classifier/" style="font-size: 10px;">Classifier</a> <a href="/tags/Code/" style="font-size: 10px;">Code</a> <a href="/tags/Data-Science/" style="font-size: 13.33px;">Data Science</a> <a href="/tags/Deep-Learning/" style="font-size: 10px;">Deep Learning</a> <a href="/tags/Distance/" style="font-size: 10px;">Distance</a> <a href="/tags/Ensemble/" style="font-size: 10px;">Ensemble</a> <a href="/tags/Jupyter/" style="font-size: 10px;">Jupyter</a> <a href="/tags/Keras/" style="font-size: 10px;">Keras</a> <a href="/tags/Levenshtein/" style="font-size: 10px;">Levenshtein</a> <a href="/tags/Linear/" style="font-size: 10px;">Linear</a> <a href="/tags/ML/" style="font-size: 16.67px;">ML</a> <a href="/tags/Merge/" style="font-size: 10px;">Merge</a> <a href="/tags/MongoDB/" style="font-size: 10px;">MongoDB</a> <a href="/tags/Overfitting/" style="font-size: 10px;">Overfitting</a> <a href="/tags/Programming/" style="font-size: 10px;">Programming</a> <a href="/tags/Python/" style="font-size: 16.67px;">Python</a> <a href="/tags/R/" style="font-size: 10px;">R</a> <a href="/tags/Regression/" style="font-size: 10px;">Regression</a> <a href="/tags/Scikit-Learn/" style="font-size: 10px;">Scikit-Learn</a> <a href="/tags/Sklearn/" style="font-size: 10px;">Sklearn</a> <a href="/tags/Sort/" style="font-size: 10px;">Sort</a> <a href="/tags/Tree/" style="font-size: 20px;">Tree</a> <a href="/tags/VM/" style="font-size: 10px;">VM</a> <a href="/tags/Variance/" style="font-size: 10px;">Variance</a>
+        </div>
+    </div>
+    <a href="javascript:;" target="_blank" rel="noopener" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a  href="/">
+                    <i class="fa fa-home"></i><span>Home</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/archives">
+                    <i class="fa fa-Archives"></i><span>Archives</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/about">
+                    <i class="fa fa-about"></i><span>About</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/tags/Algorithm/" style="font-size: 13.33px;">Algorithm</a> <a href="/tags/Azure/" style="font-size: 10px;">Azure</a> <a href="/tags/Bagging/" style="font-size: 10px;">Bagging</a> <a href="/tags/Bias/" style="font-size: 10px;">Bias</a> <a href="/tags/Classification/" style="font-size: 10px;">Classification</a> <a href="/tags/Classifier/" style="font-size: 10px;">Classifier</a> <a href="/tags/Code/" style="font-size: 10px;">Code</a> <a href="/tags/Data-Science/" style="font-size: 13.33px;">Data Science</a> <a href="/tags/Deep-Learning/" style="font-size: 10px;">Deep Learning</a> <a href="/tags/Distance/" style="font-size: 10px;">Distance</a> <a href="/tags/Ensemble/" style="font-size: 10px;">Ensemble</a> <a href="/tags/Jupyter/" style="font-size: 10px;">Jupyter</a> <a href="/tags/Keras/" style="font-size: 10px;">Keras</a> <a href="/tags/Levenshtein/" style="font-size: 10px;">Levenshtein</a> <a href="/tags/Linear/" style="font-size: 10px;">Linear</a> <a href="/tags/ML/" style="font-size: 16.67px;">ML</a> <a href="/tags/Merge/" style="font-size: 10px;">Merge</a> <a href="/tags/MongoDB/" style="font-size: 10px;">MongoDB</a> <a href="/tags/Overfitting/" style="font-size: 10px;">Overfitting</a> <a href="/tags/Programming/" style="font-size: 10px;">Programming</a> <a href="/tags/Python/" style="font-size: 16.67px;">Python</a> <a href="/tags/R/" style="font-size: 10px;">R</a> <a href="/tags/Regression/" style="font-size: 10px;">Regression</a> <a href="/tags/Scikit-Learn/" style="font-size: 10px;">Scikit-Learn</a> <a href="/tags/Sklearn/" style="font-size: 10px;">Sklearn</a> <a href="/tags/Sort/" style="font-size: 10px;">Sort</a> <a href="/tags/Tree/" style="font-size: 20px;">Tree</a> <a href="/tags/VM/" style="font-size: 10px;">VM</a> <a href="/tags/Variance/" style="font-size: 10px;">Variance</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" target="_blank" rel="noopener" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;" target="_blank" rel="noopener">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/js/search.js"></script>
+<script src="/js/main.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/js/animate.js"></script>
+
+
+  <script src="/js/pop-img.js"></script>
+  <script>
+     $(".article-entry p img").popImg();
+  </script>
+
+  </div>
+</body>
+</html>
