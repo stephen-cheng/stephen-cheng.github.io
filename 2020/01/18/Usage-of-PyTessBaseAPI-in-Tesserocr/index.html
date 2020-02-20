@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Usage of PyTessBaseAPI in Tesserocr | AI</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="CS, AI, ML, NLP, CV" />
+  
+  <meta name="description" content="&amp;nbsp; Stephen Cheng   Intro Tesseroct is a simple, Pillow-friendly, wrapper around the tesseract-ocr API for Optical Character Recognition (OCR), it integrates directly with Tesseract’s C++ API using">
+<meta name="keywords" content="OCR,CV">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Usage of PyTessBaseAPI in Tesserocr">
+<meta property="og:url" content="https:&#x2F;&#x2F;jetrobert.github.io&#x2F;2020&#x2F;01&#x2F;18&#x2F;Usage-of-PyTessBaseAPI-in-Tesserocr&#x2F;index.html">
+<meta property="og:site_name" content="AI">
+<meta property="og:description" content="&amp;nbsp; Stephen Cheng   Intro Tesseroct is a simple, Pillow-friendly, wrapper around the tesseract-ocr API for Optical Character Recognition (OCR), it integrates directly with Tesseract’s C++ API using">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;Malaysia-Online&#x2F;site&#x2F;master&#x2F;resource&#x2F;images&#x2F;section&#x2F;jetrobert&#x2F;2020&#x2F;202001&#x2F;20200118&#x2F;0.jpg">
+<meta property="og:updated_time" content="2020-02-20T07:32:06.075Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;Malaysia-Online&#x2F;site&#x2F;master&#x2F;resource&#x2F;images&#x2F;section&#x2F;jetrobert&#x2F;2020&#x2F;202001&#x2F;20200118&#x2F;0.jpg">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+  
+
+  
+  
+
+</head>
+
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">CS | AI</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a  href="/">
+                        <i class="fa fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                    
+                    <a  href="/archives">
+                        <i class="fa fa-Archives"></i>
+                        <span>Archives</span>
+                    </a>
+                    
+                    <a  href="/about">
+                        <i class="fa fa-about"></i>
+                        <span>About</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/logo.png" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        CS | AI
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        Dream it. Believe it. Make it.
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="Github" target="_blank" href="//github.com/jetrobert">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                        <a title="Linkedin" target="_blank" href="//linkedin.com/in/stephen-cheng">
+                            <i class="fa fa-linkedin fa-2x"></i></a>
+                    
+                        <a title="Twitter" target="_blank" href="//twitter.com/stephen2cheng">
+                            <i class="fa fa-twitter fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-Usage-of-PyTessBaseAPI-in-Tesserocr" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      Usage of PyTessBaseAPI in Tesserocr
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+              <li>
+                  <i class="fa fa-book"></i>
+                  
+                      <a href="/categories/CV/">CV</a>
+                  
+              </li>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2020-01-18
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <p>&nbsp;</p>
+<center>Stephen Cheng</center>
+
+
+<h3 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h3><p><img src="https://raw.githubusercontent.com/Malaysia-Online/site/master/resource/images/section/jetrobert/2020/202001/20200118/0.jpg" alt=""></p>
+<p>Tesseroct is a simple, Pillow-friendly, wrapper around the tesseract-ocr API for Optical Character Recognition (OCR), it integrates directly with Tesseract’s C++ API using Cython which allows for a simple Pythonic and easy-to-read source code. It enables real concurrent execution when used with Python’s threading module by releasing the GIL while processing an image in tesseract.</p>
+<h3 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h3><ul>
+<li>Linux and BSD/MacOS</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> pip install tesserocr</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Windows</li>
+</ul>
+<p>The proposed downloads consist of stand-alone packages containing all the Windows libraries needed for execution. The recommended method of installation is via Conda as described below.</p>
+<p>1) Conda</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> conda install -c conda-forge tesserocr</span></span><br></pre></td></tr></table></figure>
+
+<p>2) pip<br>Download the wheel file corresponding to your Windows platform and Python installation from <a href="https://github.com/simonflueckiger/tesserocr-windows_build/releases" target="_blank" rel="noopener">tesserocr-windows_build</a> and install them via:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> pip install &lt;package_name&gt;.whl</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h3><ul>
+<li>Initialize and re-use the tesseract API instance to score multiple images:</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> tesserocr <span class="keyword">import</span> PyTessBaseAPI</span><br><span class="line"></span><br><span class="line">images = [<span class="string">'sample.jpg'</span>, <span class="string">'sample2.jpg'</span>, <span class="string">'sample3.jpg'</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> PyTessBaseAPI() <span class="keyword">as</span> api:</span><br><span class="line">    <span class="keyword">for</span> img <span class="keyword">in</span> images:</span><br><span class="line">        api.SetImageFile(img)</span><br><span class="line">        print(api.GetUTF8Text())</span><br><span class="line">        print(api.AllWordConfidences())</span><br><span class="line"><span class="comment"># api is automatically finalized when used in a with-statement (context manager).</span></span><br><span class="line"><span class="comment"># otherwise api.End() should be explicitly called when it's no longer needed.</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Advanced API Examples</li>
+</ul>
+<p>1) GetComponentImages example:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"><span class="keyword">from</span> tesserocr <span class="keyword">import</span> PyTessBaseAPI, RIL</span><br><span class="line"></span><br><span class="line">image = Image.open(<span class="string">'/usr/src/tesseract/testing/phototest.tif'</span>)</span><br><span class="line"><span class="keyword">with</span> PyTessBaseAPI() <span class="keyword">as</span> api:</span><br><span class="line">    api.SetImage(image)</span><br><span class="line">    boxes = api.GetComponentImages(RIL.TEXTLINE, <span class="literal">True</span>)</span><br><span class="line">    print(<span class="string">'Found &#123;&#125; textline image components.'</span>.format(len(boxes)))</span><br><span class="line">    <span class="keyword">for</span> i, (im, box, _, _) <span class="keyword">in</span> enumerate(boxes):</span><br><span class="line">        <span class="comment"># im is a PIL image object</span></span><br><span class="line">        <span class="comment"># box is a dict with x, y, w and h keys</span></span><br><span class="line">        api.SetRectangle(box[<span class="string">'x'</span>], box[<span class="string">'y'</span>], box[<span class="string">'w'</span>], box[<span class="string">'h'</span>])</span><br><span class="line">        ocrResult = api.GetUTF8Text()</span><br><span class="line">        conf = api.MeanTextConf()</span><br><span class="line">        print(<span class="string">u"Box[&#123;0&#125;]: x=&#123;x&#125;, y=&#123;y&#125;, w=&#123;w&#125;, h=&#123;h&#125;, "</span></span><br><span class="line">              <span class="string">"confidence: &#123;1&#125;, text: &#123;2&#125;"</span>.format(i, conf, ocrResult, **box))</span><br></pre></td></tr></table></figure>
+
+<p>2) Orientation and script detection (OSD):</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"><span class="keyword">from</span> tesserocr <span class="keyword">import</span> PyTessBaseAPI, PSM</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> PyTessBaseAPI(psm=PSM.AUTO_OSD) <span class="keyword">as</span> api:</span><br><span class="line">    image = Image.open(<span class="string">"/usr/src/tesseract/testing/eurotext.tif"</span>)</span><br><span class="line">    api.SetImage(image)</span><br><span class="line">    api.Recognize()</span><br><span class="line"></span><br><span class="line">    it = api.AnalyseLayout()</span><br><span class="line">    orientation, direction, order, deskew_angle = it.Orientation()</span><br><span class="line">    print(<span class="string">"Orientation: &#123;:d&#125;"</span>.format(orientation))</span><br><span class="line">    print(<span class="string">"WritingDirection: &#123;:d&#125;"</span>.format(direction))</span><br><span class="line">    print(<span class="string">"TextlineOrder: &#123;:d&#125;"</span>.format(order))</span><br><span class="line">    print(<span class="string">"Deskew angle: &#123;:.4f&#125;"</span>.format(deskew_angle))</span><br></pre></td></tr></table></figure>
+
+<p><strong>or simply with OSD_ONLY page segmentation mode:</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> tesserocr <span class="keyword">import</span> PyTessBaseAPI, PSM</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> PyTessBaseAPI(psm=PSM.OSD_ONLY) <span class="keyword">as</span> api:</span><br><span class="line">    api.SetImageFile(<span class="string">"/usr/src/tesseract/testing/eurotext.tif"</span>)</span><br><span class="line"></span><br><span class="line">    os = api.DetectOS()</span><br><span class="line">    print(<span class="string">"Orientation: &#123;orientation&#125;\nOrientation confidence: &#123;oconfidence&#125;\n"</span></span><br><span class="line">          <span class="string">"Script: &#123;script&#125;\nScript confidence: &#123;sconfidence&#125;"</span>.format(**os))</span><br></pre></td></tr></table></figure>
+<p><strong>more human-readable info with tesseract 4+ (with LSTM engine):</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> tesserocr <span class="keyword">import</span> PyTessBaseAPI, PSM, OEM</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> PyTessBaseAPI(psm=PSM.OSD_ONLY, oem=OEM.LSTM_ONLY) <span class="keyword">as</span> api:</span><br><span class="line">    api.SetImageFile(<span class="string">"/usr/src/tesseract/testing/eurotext.tif"</span>)</span><br><span class="line"></span><br><span class="line">    os = api.DetectOrientationScript()</span><br><span class="line">    print(<span class="string">"Orientation: &#123;orient_deg&#125;\nOrientation confidence: &#123;orient_conf&#125;\n"</span></span><br><span class="line">          <span class="string">"Script: &#123;script_name&#125;\nScript confidence: &#123;script_conf&#125;"</span>.format(**os))</span><br></pre></td></tr></table></figure>
+
+<p>3） Iterator over the classifier choices for a single symbol:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> __future__ <span class="keyword">import</span> print_function</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> tesserocr <span class="keyword">import</span> PyTessBaseAPI, RIL, iterate_level</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> PyTessBaseAPI() <span class="keyword">as</span> api:</span><br><span class="line">    api.SetImageFile(<span class="string">'/usr/src/tesseract/testing/phototest.tif'</span>)</span><br><span class="line">    api.SetVariable(<span class="string">"save_blob_choices"</span>, <span class="string">"T"</span>)</span><br><span class="line">    api.SetRectangle(<span class="number">37</span>, <span class="number">228</span>, <span class="number">548</span>, <span class="number">31</span>)</span><br><span class="line">    api.Recognize()</span><br><span class="line"></span><br><span class="line">    ri = api.GetIterator()</span><br><span class="line">    level = RIL.SYMBOL</span><br><span class="line">    <span class="keyword">for</span> r <span class="keyword">in</span> iterate_level(ri, level):</span><br><span class="line">        symbol = r.GetUTF8Text(level)  <span class="comment"># r == ri</span></span><br><span class="line">        conf = r.Confidence(level)</span><br><span class="line">        <span class="keyword">if</span> symbol:</span><br><span class="line">            print(<span class="string">u'symbol &#123;&#125;, conf: &#123;&#125;'</span>.format(symbol, conf), end=<span class="string">''</span>)</span><br><span class="line">        indent = <span class="literal">False</span></span><br><span class="line">        ci = r.GetChoiceIterator()</span><br><span class="line">        <span class="keyword">for</span> c <span class="keyword">in</span> ci:</span><br><span class="line">            <span class="keyword">if</span> indent:</span><br><span class="line">                print(<span class="string">'\t\t '</span>, end=<span class="string">''</span>)</span><br><span class="line">            print(<span class="string">'\t- '</span>, end=<span class="string">''</span>)</span><br><span class="line">            choice = c.GetUTF8Text()  <span class="comment"># c == ci</span></span><br><span class="line">            print(<span class="string">u'&#123;&#125; conf: &#123;&#125;'</span>.format(choice, c.Confidence()))</span><br><span class="line">            indent = <span class="literal">True</span></span><br><span class="line">        print(<span class="string">'----------'</span>)</span><br></pre></td></tr></table></figure>
+
+            <div class="post-copyright">
+    <div class="content">
+            <footer>
+            <b>END</b
+        </footer>
+    </div>
+</div>
+
+      
+        
+            
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" target="_blank" rel="noopener">👍</a>
+</div>
+
+<div id="reward" class="post-modal reward-lay">
+    <a class="close" href="javascript:;" target="_blank" rel="noopener" id="reward-close">×</a>
+    <span class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        Support
+        <i class="icon icon-quote-right"></i>
+    </span>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/images/wechat_code.png" alt="Reward QRcode">
+        </div>
+        <div class="reward-select">
+            
+            <label class="reward-select-item checked" data-id="wechat" data-wechat="/images/wechat_code.png">
+                <img class="reward-select-item-wechat" src="/images/wechat.png" alt="Wechat">
+            </label>
+            
+            
+            <label class="reward-select-item" data-id="alipay" data-alipay="/images/alipay_code.png">
+                <img class="reward-select-item-alipay" src="/images/alipay.png" alt="Wechat Blog">
+            </label>
+            
+        </div>
+    </div>
+</div>
+
+
+        
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" target="_blank" rel="noopener" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://jetrobert.github.io/2020/01/18/Usage-of-PyTessBaseAPI-in-Tesserocr/&title=《Usage of PyTessBaseAPI in Tesserocr》 — AI&pic=https://raw.githubusercontent.com/Malaysia-Online/site/master/resource/images/section/jetrobert/2020/202001/20200118/0.jpg" data-title="Weibo">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" target="_blank" rel="noopener" data-title="Wechat">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://jetrobert.github.io/2020/01/18/Usage-of-PyTessBaseAPI-in-Tesserocr/&title=《Usage of PyTessBaseAPI in Tesserocr》 — AI&source=Dream it. Believe it. Make it." data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://jetrobert.github.io/2020/01/18/Usage-of-PyTessBaseAPI-in-Tesserocr/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Usage of PyTessBaseAPI in Tesserocr》 — AI&url=https://jetrobert.github.io/2020/01/18/Usage-of-PyTessBaseAPI-in-Tesserocr/&via=https://jetrobert.github.io" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://jetrobert.github.io/2020/01/18/Usage-of-PyTessBaseAPI-in-Tesserocr/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" target="_blank" rel="noopener" id="wxShare-close">×</a>
+    <p>Scan QRcode and Share</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://jetrobert.github.io/2020/01/18/Usage-of-PyTessBaseAPI-in-Tesserocr/" alt="Wecaht QRcode">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/OCR/" class="color4">OCR</a>
+      
+    <a href="/tags/CV/" class="color3">CV</a>
+      
+  </li>
+
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Intro"><span class="post-toc-text">Intro</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Installation"><span class="post-toc-text">Installation</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Usage"><span class="post-toc-text">Usage</span></a></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+  
+    <a href="/2019/12/19/PyCharm-keyboard-shortcuts/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">PyCharm Keyboard Shortcuts</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        Visitors：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        Views：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+        
+      &copy; 2020 Stephen Cheng<br>
+      </p>
+    </div>
+  </div>
+</footer>
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "https://jetrobert.github.io",
+      animate: true,
+      isHome: false,
+      share: true,
+      reward: 1
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            <a class="category-link" href="/categories/Algorithm/">Algorithm</a><a class="category-link" href="/categories/CV/">CV</a><a class="category-link" href="/categories/DL/">DL</a><a class="category-link" href="/categories/ML/">ML</a><a class="category-link" href="/categories/Programming/">Programming</a><a class="category-link" href="/categories/System/">System</a>
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/Algorithm/" style="font-size: 13.33px;">Algorithm</a> <a href="/tags/Azure/" style="font-size: 10px;">Azure</a> <a href="/tags/Bagging/" style="font-size: 10px;">Bagging</a> <a href="/tags/Bias/" style="font-size: 10px;">Bias</a> <a href="/tags/CV/" style="font-size: 10px;">CV</a> <a href="/tags/Classification/" style="font-size: 10px;">Classification</a> <a href="/tags/Classifier/" style="font-size: 10px;">Classifier</a> <a href="/tags/Code/" style="font-size: 10px;">Code</a> <a href="/tags/Data-Science/" style="font-size: 13.33px;">Data Science</a> <a href="/tags/Deep-Learning/" style="font-size: 10px;">Deep Learning</a> <a href="/tags/Distance/" style="font-size: 10px;">Distance</a> <a href="/tags/Ensemble/" style="font-size: 10px;">Ensemble</a> <a href="/tags/Jupyter/" style="font-size: 10px;">Jupyter</a> <a href="/tags/Keras/" style="font-size: 10px;">Keras</a> <a href="/tags/Levenshtein/" style="font-size: 10px;">Levenshtein</a> <a href="/tags/Linear/" style="font-size: 10px;">Linear</a> <a href="/tags/ML/" style="font-size: 16.67px;">ML</a> <a href="/tags/Machine-Learning/" style="font-size: 10px;">Machine Learning</a> <a href="/tags/Merge/" style="font-size: 10px;">Merge</a> <a href="/tags/MongoDB/" style="font-size: 10px;">MongoDB</a> <a href="/tags/OCR/" style="font-size: 10px;">OCR</a> <a href="/tags/Overfitting/" style="font-size: 10px;">Overfitting</a> <a href="/tags/Programming/" style="font-size: 10px;">Programming</a> <a href="/tags/PyCharm/" style="font-size: 10px;">PyCharm</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/R/" style="font-size: 10px;">R</a> <a href="/tags/Regression/" style="font-size: 10px;">Regression</a> <a href="/tags/Scikit-Learn/" style="font-size: 10px;">Scikit-Learn</a> <a href="/tags/Shortcuts/" style="font-size: 10px;">Shortcuts</a> <a href="/tags/Sklearn/" style="font-size: 10px;">Sklearn</a> <a href="/tags/Sort/" style="font-size: 10px;">Sort</a> <a href="/tags/Tree/" style="font-size: 20px;">Tree</a> <a href="/tags/VM/" style="font-size: 10px;">VM</a> <a href="/tags/Variance/" style="font-size: 10px;">Variance</a>
+        </div>
+    </div>
+    <a href="javascript:;" target="_blank" rel="noopener" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a  href="/">
+                    <i class="fa fa-home"></i><span>Home</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/archives">
+                    <i class="fa fa-Archives"></i><span>Archives</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/about">
+                    <i class="fa fa-about"></i><span>About</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/tags/Algorithm/" style="font-size: 13.33px;">Algorithm</a> <a href="/tags/Azure/" style="font-size: 10px;">Azure</a> <a href="/tags/Bagging/" style="font-size: 10px;">Bagging</a> <a href="/tags/Bias/" style="font-size: 10px;">Bias</a> <a href="/tags/CV/" style="font-size: 10px;">CV</a> <a href="/tags/Classification/" style="font-size: 10px;">Classification</a> <a href="/tags/Classifier/" style="font-size: 10px;">Classifier</a> <a href="/tags/Code/" style="font-size: 10px;">Code</a> <a href="/tags/Data-Science/" style="font-size: 13.33px;">Data Science</a> <a href="/tags/Deep-Learning/" style="font-size: 10px;">Deep Learning</a> <a href="/tags/Distance/" style="font-size: 10px;">Distance</a> <a href="/tags/Ensemble/" style="font-size: 10px;">Ensemble</a> <a href="/tags/Jupyter/" style="font-size: 10px;">Jupyter</a> <a href="/tags/Keras/" style="font-size: 10px;">Keras</a> <a href="/tags/Levenshtein/" style="font-size: 10px;">Levenshtein</a> <a href="/tags/Linear/" style="font-size: 10px;">Linear</a> <a href="/tags/ML/" style="font-size: 16.67px;">ML</a> <a href="/tags/Machine-Learning/" style="font-size: 10px;">Machine Learning</a> <a href="/tags/Merge/" style="font-size: 10px;">Merge</a> <a href="/tags/MongoDB/" style="font-size: 10px;">MongoDB</a> <a href="/tags/OCR/" style="font-size: 10px;">OCR</a> <a href="/tags/Overfitting/" style="font-size: 10px;">Overfitting</a> <a href="/tags/Programming/" style="font-size: 10px;">Programming</a> <a href="/tags/PyCharm/" style="font-size: 10px;">PyCharm</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/R/" style="font-size: 10px;">R</a> <a href="/tags/Regression/" style="font-size: 10px;">Regression</a> <a href="/tags/Scikit-Learn/" style="font-size: 10px;">Scikit-Learn</a> <a href="/tags/Shortcuts/" style="font-size: 10px;">Shortcuts</a> <a href="/tags/Sklearn/" style="font-size: 10px;">Sklearn</a> <a href="/tags/Sort/" style="font-size: 10px;">Sort</a> <a href="/tags/Tree/" style="font-size: 20px;">Tree</a> <a href="/tags/VM/" style="font-size: 10px;">VM</a> <a href="/tags/Variance/" style="font-size: 10px;">Variance</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" target="_blank" rel="noopener" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;" target="_blank" rel="noopener">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/js/search.js"></script>
+<script src="/js/main.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/js/animate.js"></script>
+
+
+  <script src="/js/pop-img.js"></script>
+  <script>
+     $(".article-entry p img").popImg();
+  </script>
+
+  </div>
+</body>
+</html>
