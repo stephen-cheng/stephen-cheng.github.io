@@ -3,23 +3,19 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Regression Trees vs. Classification Trees | AI</title>
+  <title>Tag: PyTorch | AI</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
     <meta name="keywords" content="CS, AI, ML, NLP, CV" />
   
-  <meta name="description" content="&amp;nbsp; Steven Cheng   IntroWe all know that the terminal nodes (or leaves) lies at the bottom of the decision tree. This means that decision trees are typically drawn upside down such that leaves are">
-<meta name="keywords" content="Machine Learning,Regression,Classification">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Regression Trees vs. Classification Trees">
-<meta property="og:url" content="https:&#x2F;&#x2F;steven-cheng-com.github.io&#x2F;2018&#x2F;05&#x2F;06&#x2F;RegressionTreesvs-ClassificationTrees&#x2F;index.html">
+  <meta name="description" content="Dream it. Believe it. Make it.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="AI">
+<meta property="og:url" content="https:&#x2F;&#x2F;steven-cheng-com.github.io&#x2F;tags&#x2F;PyTorch&#x2F;index.html">
 <meta property="og:site_name" content="AI">
-<meta property="og:description" content="&amp;nbsp; Steven Cheng   IntroWe all know that the terminal nodes (or leaves) lies at the bottom of the decision tree. This means that decision trees are typically drawn upside down such that leaves are">
+<meta property="og:description" content="Dream it. Believe it. Make it.">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;Malaysia-Online&#x2F;site&#x2F;master&#x2F;resource&#x2F;images&#x2F;section&#x2F;jetrobert&#x2F;2018&#x2F;201805&#x2F;20180506&#x2F;0.png">
-<meta property="og:updated_time" content="2020-05-23T06:46:23.997Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;Malaysia-Online&#x2F;site&#x2F;master&#x2F;resource&#x2F;images&#x2F;section&#x2F;jetrobert&#x2F;2018&#x2F;201805&#x2F;20180506&#x2F;0.png">
   
   
     <link rel="icon" href="/favicon.ico">
@@ -107,204 +103,57 @@
     </div>
 </header>
       <div class="outer">
-        <section id="main" class="body-wrap"><article id="post-RegressionTreesvs-ClassificationTrees" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+        <section id="main" class="body-wrap">
   
-    <h1 class="post-title" itemprop="name">
-      Regression Trees vs. Classification Trees
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2020" class="archive-year">2020</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <a href="/2020/04/20/Convert-Pre-trained-Model-from-MXNet-to-PyTorch-or-TensorFlow/" class="archive-article-date">
+  <time datetime="2020-04-20T05:20:22.000Z" itemprop="datePublished">04-20</time>
+</a>
+      
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2020/04/20/Convert-Pre-trained-Model-from-MXNet-to-PyTorch-or-TensorFlow/"  >Convert Pre-trained Model from MXNet to PyTorch or TensorFlow</a>
     </h1>
-    <div class="post-title-bar">
-      <ul>
-          
-              <li>
-                  <i class="fa fa-book"></i>
-                  
-                      <a href="/categories/MachineLearning/">Machine Learning</a>
-                  
-              </li>
-          
-        <li>
-          <i class="fa fa-calendar"></i>  2018-05-06
-        </li>
-        <li>
-          <i class="fa fa-eye"></i>
-          <span id="busuanzi_value_page_pv"></span>
-        </li>
-      </ul>
-    </div>
   
 
-          
-      </header>
-    
-    <div class="article-entry post-content" itemprop="articleBody">
+    </header>
       
-            
-            <p>&nbsp;</p>
-<center>Steven Cheng</center>
-
-
-<h3 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h3><p>We all know that the terminal nodes (or leaves) lies at the bottom of the decision tree. This means that decision trees are typically drawn upside down such that leaves are the bottom &amp; roots are the tops (shown below).</p>
-<p><img src="https://raw.githubusercontent.com/Malaysia-Online/site/master/resource/images/section/jetrobert/2018/201805/20180506/0.png" alt=""></p>
-<p>Both the trees work almost similar to each other, let’s look at the primary differences &amp; similarity between classification and regression trees:</p>
-<p>1) Regression trees are used when dependent variable is continuous. Classification trees are used when dependent variable is categorical.</p>
-<p>2) In case of regression tree, the value obtained by terminal nodes in the training data is the mean response of observation falling in that region. Thus, if an unseen data observation falls in that region, we’ll make its prediction with mean value.</p>
-<p>3) In case of classification tree, the value (class) obtained by terminal node in the training data is the mode of observations falling in that region. Thus, if an unseen data observation falls in that region, we’ll make its prediction with mode value.</p>
-<p>4) Both the trees divide the predictor space (independent variables) into distinct and non-overlapping regions. For the sake of simplicity, you can think of these regions as high dimensional boxes or boxes.</p>
-<p>5) Both the trees follow a top-down greedy approach known as recursive binary splitting. We call it as ‘top-down’ because it begins from the top of tree when all the observations are available in a single region and successively splits the predictor space into two new branches down the tree. It is known as ‘greedy’ because, the algorithm cares (looks for best variable available) about only the current split, and not about future splits which will lead to a better tree.</p>
-<p>6) This splitting process is continued until a user defined stopping criteria is reached. For example: we can tell the algorithm to stop once the number of observations per node becomes less than 50.</p>
-<p>7) In both the cases, the splitting process results in fully grown trees until the stopping criteria is reached. But, the fully grown tree is likely to overfit data, leading to poor accuracy on unseen data. This bring ‘pruning’. Pruning is one of the technique used tackle overfitting.</p>
-
-            <div class="post-copyright">
-    <div class="content">
-            <footer>
-            <b>END</b
-        </footer>
-    </div>
-</div>
-
-      
-        
-            
-<div class="page-reward">
-    <a id="rewardBtn" href="javascript:;" target="_blank" rel="noopener">👍</a>
-</div>
-
-<div id="reward" class="post-modal reward-lay">
-    <a class="close" href="javascript:;" target="_blank" rel="noopener" id="reward-close">×</a>
-    <span class="reward-title">
-        <i class="icon icon-quote-left"></i>
-        Support
-        <i class="icon icon-quote-right"></i>
-    </span>
-    <div class="reward-content">
-        
-        <div class="reward-code">
-            <img id="rewardCode" src="/images/wechat_code.png" alt="Reward QRcode">
-        </div>
-        <div class="reward-select">
-            
-            <label class="reward-select-item checked" data-id="wechat" data-wechat="/images/wechat_code.png">
-                <img class="reward-select-item-wechat" src="/images/wechat.png" alt="Wechat">
-            </label>
-            
-            
-            <label class="reward-select-item" data-id="alipay" data-alipay="/images/alipay_code.png">
-                <img class="reward-select-item-alipay" src="/images/alipay.png" alt="Wechat Blog">
-            </label>
-            
-        </div>
-    </div>
-</div>
-
-
-        
-    </div>
-    <footer class="article-footer">
-        
-        
-<div class="post-share">
-    <a href="javascript:;" target="_blank" rel="noopener" id="share-sub" class="post-share-fab">
-        <i class="fa fa-share-alt"></i>
-    </a>
-    <div class="post-share-list" id="share-list">
-        <ul class="share-icons">
-          <li>
-            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://steven-cheng-com.github.io/2018/05/06/RegressionTreesvs-ClassificationTrees/&title=《Regression Trees vs. Classification Trees》 — AI&pic=https://raw.githubusercontent.com/Malaysia-Online/site/master/resource/images/section/jetrobert/2018/201805/20180506/0.png" data-title="Weibo">
-              <i class="fa fa-weibo"></i>
-            </a>
-          </li>
-          <li>
-            <a class="weixin share-sns" id="wxFab" href="javascript:;" target="_blank" rel="noopener" data-title="Wechat">
-              <i class="fa fa-weixin"></i>
-            </a>
-          </li>
-          <li>
-            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://steven-cheng-com.github.io/2018/05/06/RegressionTreesvs-ClassificationTrees/&title=《Regression Trees vs. Classification Trees》 — AI&source=Dream it. Believe it. Make it." data-title="QQ">
-              <i class="fa fa-qq"></i>
-            </a>
-          </li>
-          <li>
-            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://steven-cheng-com.github.io/2018/05/06/RegressionTreesvs-ClassificationTrees/" data-title="Facebook">
-              <i class="fa fa-facebook"></i>
-            </a>
-          </li>
-          <li>
-            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Regression Trees vs. Classification Trees》 — AI&url=https://steven-cheng-com.github.io/2018/05/06/RegressionTreesvs-ClassificationTrees/&via=https://steven-cheng-com.github.io" data-title="Twitter">
-              <i class="fa fa-twitter"></i>
-            </a>
-          </li>
-          <li>
-            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://steven-cheng-com.github.io/2018/05/06/RegressionTreesvs-ClassificationTrees/" data-title="Google+">
-              <i class="fa fa-google-plus"></i>
-            </a>
-          </li>
-        </ul>
-     </div>
-</div>
-<div class="post-modal wx-share" id="wxShare">
-    <a class="close" href="javascript:;" target="_blank" rel="noopener" id="wxShare-close">×</a>
-    <p>Scan QRcode and Share</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://steven-cheng-com.github.io/2018/05/06/RegressionTreesvs-ClassificationTrees/" alt="Wecaht QRcode">
-</div>
-
-<div class="mask"></div>
-
-        
-        <ul class="article-footer-menu">
-            
+        <div class="archive-post-footer">
             
   <li class="article-footer-tags">
     <i class="fa fa-tags"></i>
       
-    <a href="/tags/MachineLearning/" class="color2">Machine Learning</a>
+    <a href="/tags/PyTorch/" class="color3">PyTorch</a>
       
-    <a href="/tags/Regression/" class="color1">Regression</a>
+    <a href="/tags/TenforFlow/" class="color1">TenforFlow</a>
       
-    <a href="/tags/Classification/" class="color5">Classification</a>
+    <a href="/tags/Pre-trainedModel/" class="color3">Pre-trained Model</a>
       
   </li>
 
-        </ul>
-        
-    </footer>
+        </div>
+      
   </div>
 </article>
 
-
-    <aside class="post-toc-pos post-toc-top" id="post-toc">
-        <nav class="post-toc-wrap">
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Intro"><span class="post-toc-text">Intro</span></a></li></ol>
-        </nav>
-    </aside>
-    
-
-<nav id="article-nav">
-  
-    <a href="/2018/05/19/MergeSort/" id="article-nav-newer" class="article-nav-link-wrap">
-
-      <span class="article-nav-title">
-        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
-        
-          Merge Sort
-        
-      </span>
-    </a>
   
   
-    <a href="/2018/04/18/LevenshteinDistance/" id="article-nav-older" class="article-nav-link-wrap">
-      <span class="article-nav-title">Levenshtein Distance</span>
-      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
-    </a>
+    </div></section>
   
-</nav>
 
-
-
-    
 </section>
         
       </div>
