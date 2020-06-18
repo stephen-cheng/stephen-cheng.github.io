@@ -9,18 +9,18 @@
     <meta name="keywords" content="CS, AI, ML, NLP, CV" />
   
   <meta name="description" content="&amp;nbsp; Steven Cheng   IntroIn computer science, merge sort (also commonly spelled mergesort) is an efficient, general-purpose, comparison-based sorting algorithm. Most implementations produce a stable">
-<meta name="keywords" content="Algorithm,Merge,Sort">
+<meta name="keywords" content="Merge,Sort,Algorithm">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Merge Sort">
 <meta property="og:url" content="https:&#x2F;&#x2F;steven-cheng-com.github.io&#x2F;2018&#x2F;05&#x2F;19&#x2F;MergeSort&#x2F;index.html">
 <meta property="og:site_name" content="AI">
 <meta property="og:description" content="&amp;nbsp; Steven Cheng   IntroIn computer science, merge sort (also commonly spelled mergesort) is an efficient, general-purpose, comparison-based sorting algorithm. Most implementations produce a stable">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;Malaysia-Online&#x2F;site&#x2F;master&#x2F;resource&#x2F;images&#x2F;section&#x2F;jetrobert&#x2F;2018&#x2F;201805&#x2F;20180519&#x2F;0.gif">
-<meta property="og:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;Malaysia-Online&#x2F;site&#x2F;master&#x2F;resource&#x2F;images&#x2F;section&#x2F;jetrobert&#x2F;2018&#x2F;201805&#x2F;20180519&#x2F;1.gif">
-<meta property="og:updated_time" content="2020-05-23T06:45:55.177Z">
+<meta property="og:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;steven-cheng-com&#x2F;images&#x2F;master&#x2F;blog&#x2F;2018&#x2F;201805&#x2F;20180519&#x2F;0.gif">
+<meta property="og:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;steven-cheng-com&#x2F;images&#x2F;master&#x2F;blog&#x2F;2018&#x2F;201805&#x2F;20180519&#x2F;1.gif">
+<meta property="og:updated_time" content="2020-06-18T06:29:13.554Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;Malaysia-Online&#x2F;site&#x2F;master&#x2F;resource&#x2F;images&#x2F;section&#x2F;jetrobert&#x2F;2018&#x2F;201805&#x2F;20180519&#x2F;0.gif">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;steven-cheng-com&#x2F;images&#x2F;master&#x2F;blog&#x2F;2018&#x2F;201805&#x2F;20180519&#x2F;0.gif">
   
   
     <link rel="icon" href="/favicon.ico">
@@ -152,9 +152,9 @@
 <h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h3><p>Conceptually, a merge sort works as follows:</p>
 <p>1) Divide the unsorted list into n sublists, each containing 1 element (a list of 1 element is considered sorted).</p>
 <p>2) Repeatedly merge sublists to produce new sorted sublists until there is only 1 sublist remaining. This will be the sorted list.</p>
-<p><img src="https://raw.githubusercontent.com/Malaysia-Online/site/master/resource/images/section/jetrobert/2018/201805/20180519/0.gif" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/steven-cheng-com/images/master/blog/2018/201805/20180519/0.gif" alt=""></p>
 <h3 id="Details"><a href="#Details" class="headerlink" title="Details"></a>Details</h3><p><b>Class:</b> Sorting algorithm<br><b>Data structure:</b> Array<br><b>Worst-case performance:</b> O(n log n)<br><b>Best-case performance:<b/> O(n log n) typical, O(n) natural variant<br><b>Average performance:</b> O(n log n)<br><b>Worst-case space complexity:&lt;/1b&gt; О(n) total, O(n) auxiliary</p>
-<p><img src="https://raw.githubusercontent.com/Malaysia-Online/site/master/resource/images/section/jetrobert/2018/201805/20180519/1.gif" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/steven-cheng-com/images/master/blog/2018/201805/20180519/1.gif" alt=""></p>
 <p>Figure above, first divide the list into the smallest unit (1 element), then compare each element with the adjacent list to sort and merge the two adjacent lists. Finally all the elements are sorted and merged.</p>
 <h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><p>Python</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> deque</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">merge_sort</span><span class="params">(lst)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> len(lst) &lt;= <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">return</span> lst</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">merge</span><span class="params">(left, right)</span>:</span></span><br><span class="line">        merged,left,right = deque(),deque(left),deque(right)</span><br><span class="line">        <span class="keyword">while</span> left <span class="keyword">and</span> right:</span><br><span class="line">            <span class="comment"># deque popleft is also O(1)</span></span><br><span class="line">            merged.append(left.popleft() <span class="keyword">if</span> left[<span class="number">0</span>] &lt;= right[<span class="number">0</span>] <span class="keyword">else</span> right.popleft())  </span><br><span class="line">        merged.extend(right <span class="keyword">if</span> right <span class="keyword">else</span> left)</span><br><span class="line">        <span class="keyword">return</span> list(merged)</span><br><span class="line">    middle = int(len(lst) // <span class="number">2</span>)</span><br><span class="line">    left = merge_sort(lst[:middle])</span><br><span class="line">    right = merge_sort(lst[middle:])</span><br><span class="line">    <span class="keyword">return</span> merge(left, right)</span><br></pre></td></tr></table></figure>
@@ -214,7 +214,7 @@
     <div class="post-share-list" id="share-list">
         <ul class="share-icons">
           <li>
-            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://steven-cheng-com.github.io/2018/05/19/MergeSort/&title=《Merge Sort》 — AI&pic=https://raw.githubusercontent.com/Malaysia-Online/site/master/resource/images/section/jetrobert/ai/3.png" data-title="Weibo">
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://steven-cheng-com.github.io/2018/05/19/MergeSort/&title=《Merge Sort》 — AI&pic=https://raw.githubusercontent.com/steven-cheng-com/images/master/blog/ai/3.png" data-title="Weibo">
               <i class="fa fa-weibo"></i>
             </a>
           </li>
@@ -261,11 +261,11 @@
   <li class="article-footer-tags">
     <i class="fa fa-tags"></i>
       
-    <a href="/tags/Algorithm/" class="color5">Algorithm</a>
-      
     <a href="/tags/Merge/" class="color1">Merge</a>
       
     <a href="/tags/Sort/" class="color5">Sort</a>
+      
+    <a href="/tags/Algorithm/" class="color5">Algorithm</a>
       
   </li>
 

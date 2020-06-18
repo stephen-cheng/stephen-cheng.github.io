@@ -16,14 +16,14 @@
 <meta property="og:site_name" content="AI">
 <meta property="og:description" content="&amp;nbsp; Steven Cheng   Intro Luminoth is an open source toolkit for computer vision. It supports object detection and it’s built in Python, using TensorFlow. The code is open source and available on Gi">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;Malaysia-Online&#x2F;site&#x2F;master&#x2F;resource&#x2F;images&#x2F;section&#x2F;jetrobert&#x2F;2020&#x2F;202002&#x2F;20200214&#x2F;0.jpg">
-<meta property="og:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;Malaysia-Online&#x2F;site&#x2F;master&#x2F;resource&#x2F;images&#x2F;section&#x2F;jetrobert&#x2F;2020&#x2F;202002&#x2F;20200214&#x2F;1.jpg">
-<meta property="og:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;Malaysia-Online&#x2F;site&#x2F;master&#x2F;resource&#x2F;images&#x2F;section&#x2F;jetrobert&#x2F;2020&#x2F;202002&#x2F;20200214&#x2F;2.png">
-<meta property="og:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;Malaysia-Online&#x2F;site&#x2F;master&#x2F;resource&#x2F;images&#x2F;section&#x2F;jetrobert&#x2F;2020&#x2F;202002&#x2F;20200214&#x2F;3.png">
-<meta property="og:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;Malaysia-Online&#x2F;site&#x2F;master&#x2F;resource&#x2F;images&#x2F;section&#x2F;jetrobert&#x2F;2020&#x2F;202002&#x2F;20200214&#x2F;4.jpg">
-<meta property="og:updated_time" content="2020-05-23T06:46:03.995Z">
+<meta property="og:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;steven-cheng-com&#x2F;images&#x2F;master&#x2F;blog&#x2F;2020&#x2F;202002&#x2F;20200214&#x2F;0.jpg">
+<meta property="og:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;steven-cheng-com&#x2F;images&#x2F;master&#x2F;blog&#x2F;2020&#x2F;202002&#x2F;20200214&#x2F;1.jpg">
+<meta property="og:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;steven-cheng-com&#x2F;images&#x2F;master&#x2F;blog&#x2F;2020&#x2F;202002&#x2F;20200214&#x2F;2.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;steven-cheng-com&#x2F;images&#x2F;master&#x2F;blog&#x2F;2020&#x2F;202002&#x2F;20200214&#x2F;3.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;steven-cheng-com&#x2F;images&#x2F;master&#x2F;blog&#x2F;2020&#x2F;202002&#x2F;20200214&#x2F;4.jpg">
+<meta property="og:updated_time" content="2020-06-18T06:29:17.192Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;Malaysia-Online&#x2F;site&#x2F;master&#x2F;resource&#x2F;images&#x2F;section&#x2F;jetrobert&#x2F;2020&#x2F;202002&#x2F;20200214&#x2F;0.jpg">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;steven-cheng-com&#x2F;images&#x2F;master&#x2F;blog&#x2F;2020&#x2F;202002&#x2F;20200214&#x2F;0.jpg">
   
   
     <link rel="icon" href="/favicon.ico">
@@ -151,7 +151,7 @@
 <center>Steven Cheng</center>
 
 
-<h3 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h3><p><img src="https://raw.githubusercontent.com/Malaysia-Online/site/master/resource/images/section/jetrobert/2020/202002/20200214/0.jpg" alt=""></p>
+<h3 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h3><p><img src="https://raw.githubusercontent.com/steven-cheng-com/images/master/blog/2020/202002/20200214/0.jpg" alt=""></p>
 <p>Luminoth is an open source toolkit for computer vision. It supports object detection and it’s built in Python, using TensorFlow. The code is open source and available on <a href="https://github.com/tryolabs/luminoth" target="_blank" rel="noopener">GitHub</a>.</p>
 <h3 id="Detecting-Objects-with-a-Pre-trained-Model"><a href="#Detecting-Objects-with-a-Pre-trained-Model" class="headerlink" title="Detecting Objects with a Pre-trained Model"></a>Detecting Objects with a Pre-trained Model</h3><p>The first thing is being familiarized with the Luminoth CLI tool, that is, the tool that you interact with using the lumi command. This is the main gate to Luminoth, allowing you to train new models, evaluate them, use them for predictions, manage the checkpoints and more.</p>
 <p>If we want Luminoth to predict the objects present in one of  pictures (image.jpg). The way to do that is by running the following command:</p>
@@ -176,7 +176,7 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lumi predict img.jpg --checkpoint fast -f preds/objects.json -d preds/</span><br></pre></td></tr></table></figure>
 
 <h3 id="Playing-Around-with-the-Built-in-Interface"><a href="#Playing-Around-with-the-Built-in-Interface" class="headerlink" title="Playing Around with the Built-in Interface"></a>Playing Around with the Built-in Interface</h3><p>Luminoth includes a simple web frontend so you can play around with detected objects in images using different thresholds. To launch this, simply type lumi server web and then open your browser at <a href="http://localhost:5000" target="_blank" rel="noopener">http://localhost:5000</a>. If you are running on an external VM, you can do lumi server web –host 0.0.0.0 –port <port> to open in a custom port.</p>
-<p><img src="https://raw.githubusercontent.com/Malaysia-Online/site/master/resource/images/section/jetrobert/2020/202002/20200214/1.jpg" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/steven-cheng-com/images/master/blog/2020/202002/20200214/1.jpg" alt=""></p>
 <h3 id="Building-Custom-dataset"><a href="#Building-Custom-dataset" class="headerlink" title="Building Custom dataset"></a>Building Custom dataset</h3><p>In order to use a custom dataset, we must first transform whatever format your data is in, to TFRecords files (one for each split — train, val, test). Luminoth reads datasets natively only in TensorFlow’s TFRecords format. This is a binary format that will let Luminoth consume the data very efficiently. Fortunately, Luminoth provides several CLI tools for transforming popular dataset format (such as Pascal VOC, ImageNet, COCO, CSV, etc.) into TFRecords.</p>
 <p>We should start by downloading the <a href="https://storage.googleapis.com/openimages/web/download.html" target="_blank" rel="noopener">annotation files</a> (<a href="https://storage.googleapis.com/openimages/2018_04/train/train-annotations-bbox.csv" target="_blank" rel="noopener">this</a> and <a href="https://storage.googleapis.com/openimages/2018_04/train/train-annotations-human-imagelabels-boxable.csv" target="_blank" rel="noopener">this</a>, for train) and the <a href="https://storage.googleapis.com/openimages/2018_04/class-descriptions-boxable.csv" target="_blank" rel="noopener">class description</a> file.</p>
 <p>After we get the class-descriptions-boxable.csv file, we can go over all the classes available in the OpenImages dataset and see which ones are related to traffic dataset. The following were hand-picked after examining the full file:</p>
@@ -224,16 +224,16 @@
 
 <p>If you are running from an external VM, make sure to use <code>--host 0.0.0.0</code> and <code>--port</code> if you need other one than the default 6006.</p>
 <h5 id="What-to-look-for"><a href="#What-to-look-for" class="headerlink" title="What to look for"></a>What to look for</h5><p>First, go to the “Scalars” tab. You are going to see several tags.</p>
-<p><img src="https://raw.githubusercontent.com/Malaysia-Online/site/master/resource/images/section/jetrobert/2020/202002/20200214/2.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/steven-cheng-com/images/master/blog/2020/202002/20200214/2.png" alt=""></p>
 <h5 id="validation-losses"><a href="#validation-losses" class="headerlink" title="validation_losses"></a>validation_losses</h5><p>Here, you will get the same loss values that Luminoth computes for the train, but for the chosen dataset split (validation, in this case). As in the case of train, you should mostly look at validation_losses/no_reg_loss.</p>
 <p>These will be the mAP metrics that will help you judge how well your model perform:</p>
-<p><img src="https://raw.githubusercontent.com/Malaysia-Online/site/master/resource/images/section/jetrobert/2020/202002/20200214/3.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/steven-cheng-com/images/master/blog/2020/202002/20200214/3.png" alt=""></p>
 <p>The mAP values refer to the entire dataset split, so it will not jump around as much as other metrics.</p>
 <h5 id="Manually-inspecting-with-lumi-server-web"><a href="#Manually-inspecting-with-lumi-server-web" class="headerlink" title="Manually inspecting with lumi server web"></a>Manually inspecting with lumi server web</h5><p>You can also use lumi server web command that we have seen before and try your partially trained model in a bunch of novel images. For this, you can launch it with a config file like:</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lumi server web -c config.yml</span><br></pre></td></tr></table></figure>
 
 <p>Here you can also use –host and –port options.</p>
-<p><img src="https://raw.githubusercontent.com/Malaysia-Online/site/master/resource/images/section/jetrobert/2020/202002/20200214/4.jpg" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/steven-cheng-com/images/master/blog/2020/202002/20200214/4.jpg" alt=""></p>
 <h3 id="Creating-and-Sharing-Your-Own-Checkpoints"><a href="#Creating-and-Sharing-Your-Own-Checkpoints" class="headerlink" title="Creating and Sharing Your Own Checkpoints"></a>Creating and Sharing Your Own Checkpoints</h3><h5 id="Creating-a-checkpoint"><a href="#Creating-a-checkpoint" class="headerlink" title="Creating a checkpoint"></a>Creating a checkpoint</h5><p>We can create checkpoints and set some metadata like name, alias, etc. This time, we are going to create the checkpoint for our traffic model:</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">lumi checkpoint create \</span><br><span class="line">    config.yml \</span><br><span class="line">    -e name="OpenImages Traffic" \</span><br><span class="line">    -e alias=traffic</span><br></pre></td></tr></table></figure>
 
@@ -302,7 +302,7 @@
     <div class="post-share-list" id="share-list">
         <ul class="share-icons">
           <li>
-            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://steven-cheng-com.github.io/2020/02/14/object-detection-with-luminoth-step-by-step/&title=《Object Detection with Luminoth Step by Step》 — AI&pic=https://raw.githubusercontent.com/Malaysia-Online/site/master/resource/images/section/jetrobert/2020/202002/20200214/0.jpg" data-title="Weibo">
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://steven-cheng-com.github.io/2020/02/14/object-detection-with-luminoth-step-by-step/&title=《Object Detection with Luminoth Step by Step》 — AI&pic=https://raw.githubusercontent.com/steven-cheng-com/images/master/blog/2020/202002/20200214/0.jpg" data-title="Weibo">
               <i class="fa fa-weibo"></i>
             </a>
           </li>
