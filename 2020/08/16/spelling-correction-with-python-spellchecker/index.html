@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Spelling Correction with Python Spellchecker | AI</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="CS, AI, ML, NLP, CV" />
+  
+  <meta name="description" content="&amp;nbsp; Steven Cheng   Intro Spelling checking or spelling correction is a basic requirement in any text processing or analysis. The python package pyspellchecker provides us this feature to find the w">
+<meta name="keywords" content="Spelling Correction,Natural Language Processing">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spelling Correction with Python Spellchecker">
+<meta property="og:url" content="https:&#x2F;&#x2F;steven-cheng-com.github.io&#x2F;2020&#x2F;08&#x2F;16&#x2F;spelling-correction-with-python-spellchecker&#x2F;index.html">
+<meta property="og:site_name" content="AI">
+<meta property="og:description" content="&amp;nbsp; Steven Cheng   Intro Spelling checking or spelling correction is a basic requirement in any text processing or analysis. The python package pyspellchecker provides us this feature to find the w">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;steven-cheng-com&#x2F;images&#x2F;master&#x2F;blog&#x2F;2020&#x2F;202008&#x2F;20200816&#x2F;0.jpg">
+<meta property="og:updated_time" content="2020-10-19T07:39:58.148Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;steven-cheng-com&#x2F;images&#x2F;master&#x2F;blog&#x2F;2020&#x2F;202008&#x2F;20200816&#x2F;0.jpg">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+  
+
+  
+  
+
+</head>
+
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">Steven Cheng</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a  href="/">
+                        <i class="fa fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                    
+                    <a  href="/archives">
+                        <i class="fa fa-Archives"></i>
+                        <span>Archives</span>
+                    </a>
+                    
+                    <a  href="/about">
+                        <i class="fa fa-about"></i>
+                        <span>About</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/logo.png" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        Steven Cheng
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="Github" target="_blank" href="//github.com/steven-cheng-com">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                        <a title="Linkedin" target="_blank" href="//linkedin.com/in/stephen-cheng">
+                            <i class="fa fa-linkedin fa-2x"></i></a>
+                    
+                        <a title="Twitter" target="_blank" href="//twitter.com/steven2cheng">
+                            <i class="fa fa-twitter fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-spelling-correction-with-python-spellchecker" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      Spelling Correction with Python Spellchecker
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+              <li>
+                  <i class="fa fa-book"></i>
+                  
+                      <a href="/categories/NaturalLanguageProcessing/">Natural Language Processing</a>
+                  
+              </li>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2020-08-16
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <p>&nbsp;</p>
+<center>Steven Cheng</center>
+
+
+<h3 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h3><p><img src="https://raw.githubusercontent.com/steven-cheng-com/images/master/blog/2020/202008/20200816/0.jpg" alt=""></p>
+<p>Spelling checking or spelling correction is a basic requirement in any text processing or analysis. The python package <code>pyspellchecker</code> provides us this feature to find the words that may have been mis-spelled and also suggest the possible corrections. <code>pyspellchecker</code> supports multiple languages including English, Spanish, German, French, and Portuguese. And it supports Python 3 and Python 2.7. <code>pyspellchecker</code> allows for the setting of the Levenshtein Distance to check. For longer words, it is highly recommended to use a distance of 1 and not the default 2.</p>
+<h3 id="How-to-install"><a href="#How-to-install" class="headerlink" title="How to install?"></a>How to install?</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install pyspellchecker</span><br></pre></td></tr></table></figure>
+
+<h3 id="How-to-use"><a href="#How-to-use" class="headerlink" title="How to use?"></a>How to use?</h3><ul>
+<li>With the default Word Frequency list</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> spellchecker <span class="keyword">import</span> SpellChecker</span><br><span class="line"></span><br><span class="line">spell = SpellChecker()</span><br><span class="line"></span><br><span class="line"><span class="comment"># find those words that may be misspelled</span></span><br><span class="line">misspelled = spell.unknown([<span class="string">'let'</span>, <span class="string">'us'</span>, <span class="string">'wlak'</span>,<span class="string">'on'</span>,<span class="string">'the'</span>,<span class="string">'groun'</span>])</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> word <span class="keyword">in</span> misspelled:</span><br><span class="line">    <span class="comment"># Get the one `most likely` answer</span></span><br><span class="line">    print(spell.correction(word))</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Get a list of `likely` options</span></span><br><span class="line">    print(spell.candidates(word))</span><br></pre></td></tr></table></figure>
+
+<p>Output:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">group</span><br><span class="line">&#123;'group', 'ground', 'groan', 'grout', 'grown', 'groin'&#125;</span><br><span class="line">walk</span><br><span class="line">&#123;'flak', 'weak', 'walk'&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>With the customized Word Frequency list</li>
+</ul>
+<p>You can add additional text to generate a more appropriate list for your use case.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> spellchecker <span class="keyword">import</span> SpellChecker</span><br><span class="line"></span><br><span class="line">spell = SpellChecker()  <span class="comment"># loads default word frequency list</span></span><br><span class="line">spell.word_frequency.load_text_file(<span class="string">'./word_frequency.txt'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># if you just want to make sure some words are not flagged as misspelled</span></span><br><span class="line">spell.word_frequency.load_words([<span class="string">'microsoft'</span>, <span class="string">'apple'</span>, <span class="string">'google'</span>])</span><br><span class="line">spell.known([<span class="string">'microsoft'</span>, <span class="string">'google'</span>])  <span class="comment"># will return both now!</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Set the distance parameter</li>
+</ul>
+<p>If the words that you wish to check are long, it is recommended to reduce the distance to 1. This can be accomplished either when initializing the spell check class or after the fact.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> spellchecker <span class="keyword">import</span> SpellChecker</span><br><span class="line"></span><br><span class="line">spell = SpellChecker(distance=<span class="number">1</span>)  <span class="comment"># set at initialization</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># do some work on longer words</span></span><br><span class="line"></span><br><span class="line">spell.distance = <span class="number">2</span>  <span class="comment"># set the distance parameter back to the default</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Additional-Methods"><a href="#Additional-Methods" class="headerlink" title="Additional Methods"></a>Additional Methods</h3><p><code>candidates(word)</code>: Returns a set of possible candidates for the misspelled word</p>
+<p><code>word_probability(word)</code>: The frequency of the given word out of all words in the frequency list</p>
+<p><code>correction(word)</code>: Returns the most probable result for the misspelled word</p>
+<p><code>known([words])</code>: Returns those words that are in the word frequency list</p>
+<p><code>unknown([words])</code>: Returns those words that are not in the frequency list</p>
+
+            <div class="post-copyright">
+    <div class="content">
+            <footer>
+            <b>END</b
+        </footer>
+    </div>
+</div>
+
+      
+        
+            
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" target="_blank" rel="noopener">👍</a>
+</div>
+
+<div id="reward" class="post-modal reward-lay">
+    <a class="close" href="javascript:;" target="_blank" rel="noopener" id="reward-close">×</a>
+    <span class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        Support
+        <i class="icon icon-quote-right"></i>
+    </span>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/images/wechat_code.png" alt="Reward QRcode">
+        </div>
+        <div class="reward-select">
+            
+            <label class="reward-select-item checked" data-id="wechat" data-wechat="/images/wechat_code.png">
+                <img class="reward-select-item-wechat" src="/images/wechat.png" alt="Wechat">
+            </label>
+            
+            
+            <label class="reward-select-item" data-id="alipay" data-alipay="/images/alipay_code.png">
+                <img class="reward-select-item-alipay" src="/images/alipay.png" alt="Wechat Blog">
+            </label>
+            
+        </div>
+    </div>
+</div>
+
+
+        
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" target="_blank" rel="noopener" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://steven-cheng-com.github.io/2020/08/16/spelling-correction-with-python-spellchecker/&title=《Spelling Correction with Python Spellchecker》 — AI&pic=https://raw.githubusercontent.com/steven-cheng-com/images/master/blog/2020/202008/20200816/0.jpg" data-title="Weibo">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" target="_blank" rel="noopener" data-title="Wechat">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://steven-cheng-com.github.io/2020/08/16/spelling-correction-with-python-spellchecker/&title=《Spelling Correction with Python Spellchecker》 — AI&source=Dream it. Believe it. Make it." data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://steven-cheng-com.github.io/2020/08/16/spelling-correction-with-python-spellchecker/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Spelling Correction with Python Spellchecker》 — AI&url=https://steven-cheng-com.github.io/2020/08/16/spelling-correction-with-python-spellchecker/&via=https://steven-cheng-com.github.io" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://steven-cheng-com.github.io/2020/08/16/spelling-correction-with-python-spellchecker/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" target="_blank" rel="noopener" id="wxShare-close">×</a>
+    <p>Scan QRcode and Share</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://steven-cheng-com.github.io/2020/08/16/spelling-correction-with-python-spellchecker/" alt="Wecaht QRcode">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/SpellingCorrection/" class="color5">Spelling Correction</a>
+      
+    <a href="/tags/NaturalLanguageProcessing/" class="color3">Natural Language Processing</a>
+      
+  </li>
+
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Intro"><span class="post-toc-text">Intro</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#How-to-install"><span class="post-toc-text">How to install?</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#How-to-use"><span class="post-toc-text">How to use?</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Additional-Methods"><span class="post-toc-text">Additional Methods</span></a></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+  
+    <a href="/2020/06/19/Spelling-Corrector-from-Scratch/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">Spelling Corrector from Scratch</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        Visitors：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        Views：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+        
+      &copy; 2020 Steven Cheng<br>
+      </p>
+    </div>
+  </div>
+</footer>
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "https://steven-cheng-com.github.io",
+      animate: true,
+      isHome: false,
+      share: true,
+      reward: 1
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            <a class="category-link" href="/categories/Algorithm/">Algorithm</a><a class="category-link" href="/categories/Computer-Vision/">Computer Vision</a><a class="category-link" href="/categories/Deep-Learning/">Deep Learning</a><a class="category-link" href="/categories/Machine-Learning/">Machine Learning</a><a class="category-link" href="/categories/Natural-Language-Processing/">Natural Language Processing</a><a class="category-link" href="/categories/Programming/">Programming</a><a class="category-link" href="/categories/System/">System</a>
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/Algorithm/" style="font-size: 13.33px;">Algorithm</a> <a href="/tags/Azure/" style="font-size: 10px;">Azure</a> <a href="/tags/Bagging/" style="font-size: 10px;">Bagging</a> <a href="/tags/Bias/" style="font-size: 10px;">Bias</a> <a href="/tags/Classification/" style="font-size: 10px;">Classification</a> <a href="/tags/Classifier/" style="font-size: 10px;">Classifier</a> <a href="/tags/Code/" style="font-size: 10px;">Code</a> <a href="/tags/Computer-Vision/" style="font-size: 13.33px;">Computer Vision</a> <a href="/tags/Data-Science/" style="font-size: 13.33px;">Data Science</a> <a href="/tags/Decision-Tree/" style="font-size: 10px;">Decision Tree</a> <a href="/tags/Deep-Learning/" style="font-size: 10px;">Deep Learning</a> <a href="/tags/Distance/" style="font-size: 10px;">Distance</a> <a href="/tags/Ensemble/" style="font-size: 10px;">Ensemble</a> <a href="/tags/Hierarchical-Clustering/" style="font-size: 10px;">Hierarchical Clustering</a> <a href="/tags/Jupyter/" style="font-size: 10px;">Jupyter</a> <a href="/tags/Keras/" style="font-size: 10px;">Keras</a> <a href="/tags/Levenshtein/" style="font-size: 10px;">Levenshtein</a> <a href="/tags/Linear/" style="font-size: 10px;">Linear</a> <a href="/tags/Machine-Learning/" style="font-size: 16.67px;">Machine Learning</a> <a href="/tags/Merge/" style="font-size: 10px;">Merge</a> <a href="/tags/MongoDB/" style="font-size: 10px;">MongoDB</a> <a href="/tags/Natural-Language-Processing/" style="font-size: 13.33px;">Natural Language Processing</a> <a href="/tags/OCR/" style="font-size: 10px;">OCR</a> <a href="/tags/Object-Detection/" style="font-size: 10px;">Object Detection</a> <a href="/tags/Overfitting/" style="font-size: 10px;">Overfitting</a> <a href="/tags/Pre-trained-Model/" style="font-size: 10px;">Pre-trained Model</a> <a href="/tags/Programming/" style="font-size: 10px;">Programming</a> <a href="/tags/PyCharm/" style="font-size: 10px;">PyCharm</a> <a href="/tags/PyTorch/" style="font-size: 10px;">PyTorch</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/R/" style="font-size: 10px;">R</a> <a href="/tags/Regression/" style="font-size: 10px;">Regression</a> <a href="/tags/Scikit-Learn/" style="font-size: 10px;">Scikit-Learn</a> <a href="/tags/Shortcuts/" style="font-size: 10px;">Shortcuts</a> <a href="/tags/Silhouette/" style="font-size: 10px;">Silhouette</a> <a href="/tags/Sklearn/" style="font-size: 10px;">Sklearn</a> <a href="/tags/Sort/" style="font-size: 10px;">Sort</a> <a href="/tags/Spelling-Correction/" style="font-size: 13.33px;">Spelling Correction</a> <a href="/tags/TenforFlow/" style="font-size: 10px;">TenforFlow</a> <a href="/tags/Tree/" style="font-size: 20px;">Tree</a> <a href="/tags/VM/" style="font-size: 10px;">VM</a> <a href="/tags/Variance/" style="font-size: 10px;">Variance</a>
+        </div>
+    </div>
+    <a href="javascript:;" target="_blank" rel="noopener" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a  href="/">
+                    <i class="fa fa-home"></i><span>Home</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/archives">
+                    <i class="fa fa-Archives"></i><span>Archives</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/about">
+                    <i class="fa fa-about"></i><span>About</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/tags/Algorithm/" style="font-size: 13.33px;">Algorithm</a> <a href="/tags/Azure/" style="font-size: 10px;">Azure</a> <a href="/tags/Bagging/" style="font-size: 10px;">Bagging</a> <a href="/tags/Bias/" style="font-size: 10px;">Bias</a> <a href="/tags/Classification/" style="font-size: 10px;">Classification</a> <a href="/tags/Classifier/" style="font-size: 10px;">Classifier</a> <a href="/tags/Code/" style="font-size: 10px;">Code</a> <a href="/tags/Computer-Vision/" style="font-size: 13.33px;">Computer Vision</a> <a href="/tags/Data-Science/" style="font-size: 13.33px;">Data Science</a> <a href="/tags/Decision-Tree/" style="font-size: 10px;">Decision Tree</a> <a href="/tags/Deep-Learning/" style="font-size: 10px;">Deep Learning</a> <a href="/tags/Distance/" style="font-size: 10px;">Distance</a> <a href="/tags/Ensemble/" style="font-size: 10px;">Ensemble</a> <a href="/tags/Hierarchical-Clustering/" style="font-size: 10px;">Hierarchical Clustering</a> <a href="/tags/Jupyter/" style="font-size: 10px;">Jupyter</a> <a href="/tags/Keras/" style="font-size: 10px;">Keras</a> <a href="/tags/Levenshtein/" style="font-size: 10px;">Levenshtein</a> <a href="/tags/Linear/" style="font-size: 10px;">Linear</a> <a href="/tags/Machine-Learning/" style="font-size: 16.67px;">Machine Learning</a> <a href="/tags/Merge/" style="font-size: 10px;">Merge</a> <a href="/tags/MongoDB/" style="font-size: 10px;">MongoDB</a> <a href="/tags/Natural-Language-Processing/" style="font-size: 13.33px;">Natural Language Processing</a> <a href="/tags/OCR/" style="font-size: 10px;">OCR</a> <a href="/tags/Object-Detection/" style="font-size: 10px;">Object Detection</a> <a href="/tags/Overfitting/" style="font-size: 10px;">Overfitting</a> <a href="/tags/Pre-trained-Model/" style="font-size: 10px;">Pre-trained Model</a> <a href="/tags/Programming/" style="font-size: 10px;">Programming</a> <a href="/tags/PyCharm/" style="font-size: 10px;">PyCharm</a> <a href="/tags/PyTorch/" style="font-size: 10px;">PyTorch</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/R/" style="font-size: 10px;">R</a> <a href="/tags/Regression/" style="font-size: 10px;">Regression</a> <a href="/tags/Scikit-Learn/" style="font-size: 10px;">Scikit-Learn</a> <a href="/tags/Shortcuts/" style="font-size: 10px;">Shortcuts</a> <a href="/tags/Silhouette/" style="font-size: 10px;">Silhouette</a> <a href="/tags/Sklearn/" style="font-size: 10px;">Sklearn</a> <a href="/tags/Sort/" style="font-size: 10px;">Sort</a> <a href="/tags/Spelling-Correction/" style="font-size: 13.33px;">Spelling Correction</a> <a href="/tags/TenforFlow/" style="font-size: 10px;">TenforFlow</a> <a href="/tags/Tree/" style="font-size: 20px;">Tree</a> <a href="/tags/VM/" style="font-size: 10px;">VM</a> <a href="/tags/Variance/" style="font-size: 10px;">Variance</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" target="_blank" rel="noopener" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;" target="_blank" rel="noopener">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/js/search.js"></script>
+<script src="/js/main.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/js/animate.js"></script>
+
+
+  <script src="/js/pop-img.js"></script>
+  <script>
+     $(".article-entry p img").popImg();
+  </script>
+
+  </div>
+</body>
+</html>
