@@ -3,19 +3,24 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Tag: Merge | Steven Cheng</title>
+  <title>Table Detection with Detectron2 &amp; Mask R-CNN | Steven Cheng</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
     <meta name="keywords" content="CS, AI, ML, NLP, CV" />
   
-  <meta name="description" content="Dream it. Believe it. Make it.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Steven Cheng">
-<meta property="og:url" content="https:&#x2F;&#x2F;steven-cheng-com.github.io&#x2F;tags&#x2F;Merge&#x2F;index.html">
+  <meta name="description" content="&amp;nbsp; Steven Cheng   Intro Detectron2 is Facebook AI Research’s new software system that implements state-of-the-art object detection algorithms. It is a ground-up rewrite of the previous version, De">
+<meta name="keywords" content="Object Detection,Table Detection">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Table Detection with Detectron2 &amp; Mask R-CNN">
+<meta property="og:url" content="https:&#x2F;&#x2F;steven-cheng-com.github.io&#x2F;2020&#x2F;11&#x2F;22&#x2F;table-detection-with-detectron2-n-maskrcnn&#x2F;index.html">
 <meta property="og:site_name" content="Steven Cheng">
-<meta property="og:description" content="Dream it. Believe it. Make it.">
+<meta property="og:description" content="&amp;nbsp; Steven Cheng   Intro Detectron2 is Facebook AI Research’s new software system that implements state-of-the-art object detection algorithms. It is a ground-up rewrite of the previous version, De">
 <meta property="og:locale" content="en">
+<meta property="og:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;steven-cheng-com&#x2F;images&#x2F;master&#x2F;blog&#x2F;2020&#x2F;202011&#x2F;20201122&#x2F;0.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;steven-cheng-com&#x2F;images&#x2F;master&#x2F;blog&#x2F;2020&#x2F;202011&#x2F;20201122&#x2F;1.gif">
+<meta property="og:updated_time" content="2020-12-07T04:42:42.111Z">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;steven-cheng-com&#x2F;images&#x2F;master&#x2F;blog&#x2F;2020&#x2F;202011&#x2F;20201122&#x2F;0.png">
   
   
     <link rel="icon" href="/favicon.ico">
@@ -99,57 +104,211 @@
     </div>
 </header>
       <div class="outer">
-        <section id="main" class="body-wrap">
-  
-  
+        <section id="main" class="body-wrap"><article id="post-table-detection-with-detectron2-n-maskrcnn" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/05/19/MergeSort/" class="archive-article-date">
-  <time datetime="2018-05-18T16:23:47.000Z" itemprop="datePublished">05-19</time>
-</a>
-      
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/19/MergeSort/"  >Merge Sort</a>
+    <h1 class="post-title" itemprop="name">
+      Table Detection with Detectron2 &amp; Mask R-CNN
     </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+              <li>
+                  <i class="fa fa-book"></i>
+                  
+                      <a href="/categories/ComputerVision/">Computer Vision</a>
+                  
+              </li>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2020-11-22
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
   
 
-    </header>
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
       
-        <div class="archive-post-footer">
+            
+            <p>&nbsp;</p>
+<center>Steven Cheng</center>
+
+
+<h3 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h3><p><img src="https://raw.githubusercontent.com/steven-cheng-com/images/master/blog/2020/202011/20201122/0.png" alt=""></p>
+<p><a href="https://github.com/facebookresearch/detectron2" target="_blank" rel="noopener">Detectron2</a> is Facebook AI Research’s new software system that implements state-of-the-art object detection algorithms. It is a ground-up rewrite of the previous version, <a href="https://github.com/facebookresearch/Detectron/" target="_blank" rel="noopener">Detectron</a>, and it originates from <a href="https://github.com/facebookresearch/maskrcnn-benchmark/" target="_blank" rel="noopener">Mask R-CNN</a>.</p>
+<p><img src="https://raw.githubusercontent.com/steven-cheng-com/images/master/blog/2020/202011/20201122/1.gif" alt=""></p>
+<p>Table detection is a crucial step in many document analysis applications as tables are used for presenting essential information to the reader in a structured manner. It is a hard problem due to varying layouts and encodings of the tables. Researchers have proposed numerous techniques for table detection based on layout analysis of documents. Most of these techniques fail to generalize because they rely on hand engineered features which are not robust to layout variations. In this post, we propose a detectron2 based method for table detection.</p>
+<h3 id="Why-use-detectron2"><a href="#Why-use-detectron2" class="headerlink" title="Why use detectron2?"></a>Why use detectron2?</h3><ul>
+<li>It is powered by the PyTorch deep learning framework.</li>
+<li>It Include more features such as panoptic segmentation, Densepose, Cascade R-CNN, rotated bounding boxes, PointRend, DeepLab, etc.</li>
+<li>It can be used as a library to support different projects on top of it.</li>
+<li>It trains very faster.</li>
+<li>The Models can be exported to torchscript format or caffe2 format for deployment.</li>
+</ul>
+<h3 id="How-to-implement"><a href="#How-to-implement" class="headerlink" title="How to implement?"></a>How to implement?</h3><p>The implemented <a href="https://github.com/steven-cheng-com/table_detection_with_detectron2_n_mask_rcnn" target="_blank" rel="noopener">CODE</a> contains THREE parts:</p>
+<ol>
+<li>Create custom COCO dataset</li>
+</ol>
+<p>You can run the <code>voc2coco.py</code> script to generate a COCO data formatted JSON file.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python voc2coco.py ./dataset/annotations ./dataset/coco/output.json</span><br></pre></td></tr></table></figure>
+
+<p>Then you can run the following Jupyter notebook to visualize the coco annotations.</p>
+<p><code>COCO_Image_Viewer.ipynb</code></p>
+<ol start="2">
+<li>Training</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python table_detect_train.py</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>Evaluation</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python table_detect_test.py</span><br></pre></td></tr></table></figure>
+
+            <div class="post-copyright">
+    <div class="content">
+            <footer>
+            <b>END</b
+        </footer>
+    </div>
+</div>
+
+      
+        
+            
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" target="_blank" rel="noopener">👍</a>
+</div>
+
+<div id="reward" class="post-modal reward-lay">
+    <a class="close" href="javascript:;" target="_blank" rel="noopener" id="reward-close">×</a>
+    <span class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        Support
+        <i class="icon icon-quote-right"></i>
+    </span>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/images/wechat_code.png" alt="Reward QRcode">
+        </div>
+        <div class="reward-select">
+            
+            <label class="reward-select-item checked" data-id="wechat" data-wechat="/images/wechat_code.png">
+                <img class="reward-select-item-wechat" src="/images/wechat.png" alt="Wechat">
+            </label>
+            
+            
+            <label class="reward-select-item" data-id="alipay" data-alipay="/images/alipay_code.png">
+                <img class="reward-select-item-alipay" src="/images/alipay.png" alt="Wechat Blog">
+            </label>
+            
+        </div>
+    </div>
+</div>
+
+
+        
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" target="_blank" rel="noopener" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://steven-cheng-com.github.io/2020/11/22/table-detection-with-detectron2-n-maskrcnn/&title=《Table Detection with Detectron2 & Mask R-CNN》 — Steven Cheng&pic=https://raw.githubusercontent.com/steven-cheng-com/images/master/blog/2020/202011/20201122/0.png" data-title="Weibo">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" target="_blank" rel="noopener" data-title="Wechat">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://steven-cheng-com.github.io/2020/11/22/table-detection-with-detectron2-n-maskrcnn/&title=《Table Detection with Detectron2 & Mask R-CNN》 — Steven Cheng&source=Dream it. Believe it. Make it." data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://steven-cheng-com.github.io/2020/11/22/table-detection-with-detectron2-n-maskrcnn/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Table Detection with Detectron2 & Mask R-CNN》 — Steven Cheng&url=https://steven-cheng-com.github.io/2020/11/22/table-detection-with-detectron2-n-maskrcnn/&via=https://steven-cheng-com.github.io" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://steven-cheng-com.github.io/2020/11/22/table-detection-with-detectron2-n-maskrcnn/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" target="_blank" rel="noopener" id="wxShare-close">×</a>
+    <p>Scan QRcode and Share</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://steven-cheng-com.github.io/2020/11/22/table-detection-with-detectron2-n-maskrcnn/" alt="Wecaht QRcode">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
             
   <li class="article-footer-tags">
     <i class="fa fa-tags"></i>
       
-    <a href="/tags/Algorithm/" class="color5">Algorithm</a>
+    <a href="/tags/ObjectDetection/" class="color2">Object Detection</a>
       
-    <a href="/tags/Merge/" class="color1">Merge</a>
-      
-    <a href="/tags/Sort/" class="color5">Sort</a>
+    <a href="/tags/TableDetection/" class="color1">Table Detection</a>
       
   </li>
 
-        </div>
-      
+        </ul>
+        
+    </footer>
   </div>
 </article>
 
-  
-  
-    </div></section>
-  
 
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Intro"><span class="post-toc-text">Intro</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Why-use-detectron2"><span class="post-toc-text">Why use detectron2?</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#How-to-implement"><span class="post-toc-text">How to implement?</span></a></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+  
+    <a href="/2020/10/19/Grammatical-Error-Correction-with-The-Pretrained-BERT-Transformer-Encoder/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">Grammatical-Error-Correction Sequence Tagging System with an Pretrained BERT-like Transformer Encoder</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
 </section>
         
       </div>
