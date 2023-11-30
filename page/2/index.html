@@ -1,944 +1,359 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
+
+  <!-- Minima -->
+  <!-- Hexo theme created by @adisaktijrs -->
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <meta charset="utf-8">
-  
 
   
   <title>Stephen Cheng</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <link rel="canonical" href="https://stephen-cheng.github.io/page/2/">
+  
   <meta name="description" content="Personal sharings about Tech &amp; Work.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Stephen Cheng">
-<meta property="og:url" content="https://stephen-cheng.github.io/page/2/index.html">
-<meta property="og:site_name" content="Stephen Cheng">
-<meta property="og:description" content="Personal sharings about Tech &amp; Work.">
-<meta property="og:locale" content="en_US">
-<meta property="article:author" content="Stephen Cheng">
-<meta property="article:tag" content="AI">
-<meta property="article:tag" content=" Tech">
-<meta property="article:tag" content=" CS">
-<meta name="twitter:card" content="summary">
-  
-    <link rel="alternate" href="/atom.xml" title="Stephen Cheng" type="application/atom+xml">
   
   
-    <link rel="icon" href="/favicon.png">
+  <meta name="keywords" content="AI, Tech, CS">
+  
+  <meta name="author" content="Stephen Cheng">
   
   
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <meta property="og:image" content="https://stephen-cheng.github.io/images/thumbnail.jpg">
   
   
-<link rel="stylesheet" href="/css/style.css">
+  <meta property="og:site_name" content="Stephen Cheng" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Stephen Cheng" />
+  
+  <meta property="og:description" content="Personal sharings about Tech &amp; Work.">
+  
+  <meta property="og:url" content="https://stephen-cheng.github.io/page/2/" />
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Stephen Cheng">
+  
+  <meta name="twitter:description" content="Personal sharings about Tech &amp; Work.">
+  
+  
+  
+  <meta name="twitter:image" content="https://stephen-cheng.github.io/images/thumbnail.jpg">
+  
+  
+  <meta name="twitter:url" content="https://stephen-cheng.github.io/page/2/" />
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Preload fonts
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="preload" href="/fonts/dm-serif-display-v4-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/inter-v2-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  
+<link rel="stylesheet" href="/css/normalize.css">
+
+  
+<link rel="stylesheet" href="/css/skeleton.css">
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+  
+<link rel="stylesheet" href="/css/prism-dark.css">
+
+  
+<link rel="stylesheet" href="/css/prism-line-numbers.css">
+
+  <!-- User css -->
+  
+  
+<link rel="stylesheet" href="/css/user.css">
+
+  
+
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="icon" type="image/png" href="/images/favicon.png">
+
+  <!-- Custom Theme Color Style
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <style>
+  a:not(.icon) {
+    text-decoration-color: #0FA0CE;
+    background-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 50%,
+      #0FA0CE 50%
+    );
+  }
+  blockquote {
+    border-left: 8px solid #0FA0CE;
+  }
+  .nanobar .bar {
+    background: #0FA0CE;
+  }
+  .button.button-primary:hover,
+  button.button-primary:hover,
+  input[type="submit"].button-primary:hover,
+  input[type="reset"].button-primary:hover,
+  input[type="button"].button-primary:hover,
+  .button.button-primary:focus,
+  button.button-primary:focus,
+  input[type="submit"].button-primary:focus,
+  input[type="reset"].button-primary:focus,
+  input[type="button"].button-primary:focus {
+    background-color: #0FA0CE;
+    border-color: #0FA0CE;
+  }
+  input[type="email"]:focus,
+  input[type="number"]:focus,
+  input[type="search"]:focus,
+  input[type="text"]:focus,
+  input[type="tel"]:focus,
+  input[type="url"]:focus,
+  input[type="password"]:focus,
+  textarea:focus,
+  select:focus {
+    border: 1px solid #0FA0CE;
+  }
+</style>
+
+  <!-- Google Analytics (With Privacy Settings On)
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  
+
+  
+  <script src="/js/pic.min.js" defer></script>
+  
+
+  
 
 <meta name="generator" content="Hexo 4.2.1"></head>
 
 <body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Stephen Cheng</a>
-      </h1>
-      
-        <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">AI | Tech</a>
-        </h2>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
+  <div class="container">
+    <div class="row">
+      <div>
+
+        <div class="row">
+  <div class="two columns" style="max-width: 50px">
+    <h1 class="mt-2 mode">
+      <div onclick=setDarkMode(true) id="darkBtn">🌑</div>
+      <div onclick=setDarkMode(false) id="lightBtn" class=hidden>☀️</div>
+      <script >
+        if (localStorage.getItem('preferredTheme') == 'dark') {
+          setDarkMode(true)
+        }
+        function setDarkMode(isDark) {
+          var darkBtn = document.getElementById('darkBtn')
+          var lightBtn = document.getElementById('lightBtn')
+          if (isDark) {
+            lightBtn.style.display = "block"
+            darkBtn.style.display = "none"
+            localStorage.setItem('preferredTheme', 'dark');
+          } else {
+            lightBtn.style.display = "none"
+            darkBtn.style.display = "block"
+            localStorage.removeItem('preferredTheme');
+          }
+          document.body.classList.toggle("darkmode");
+        }
+      </script>
+    </h1>
+  </div>
+
+  <div class="six columns ml-1">
+    <h1 class="mt-2">
+      Hi Folks.
+    </h1>
+  </div>
+
+  <div class="twelve columns">
+    <div class="row">
+      <div class="nine columns left">
+        <a href="/">Home</a>
         
-          <a class="main-nav-link" href="/archives">Archives</a>
+          
+          <a href="/archives" class="ml">Archives</a>
+          
         
-          <a class="main-nav-link" href="/categories">Categories</a>
+          
+          <a href="/categories" class="ml">Categories</a>
+          
         
-          <a class="main-nav-link" href="/about">About</a>
+          
+          <a href="/About" class="ml">About</a>
+          
         
-          <a class="main-nav-link" href="/">Home</a>
+          
+          <a href="/Works" class="ml">Works</a>
+          
         
-      </nav>
-      <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+          
+            <a href="mailto:test@test.test" target="_blank" class="ml">Email</a>
+          
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://stephen-cheng.github.io"></form>
       </div>
     </div>
+    <hr style="margin-bottom: 2.6rem">
   </div>
-</header>
-      <div class="outer">
-        <section id="main">
-  
-    <article id="post-PyCharm-keyboard-shortcuts" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/12/19/PyCharm-keyboard-shortcuts/" class="article-date">
-  <time datetime="2019-12-20T03:17:38.000Z" itemprop="datePublished">2019-12-19</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Programming/">Programming</a>
-  </div>
+</div>
 
+        <div class="trans">
+          <div class="row">
+  <div class="column">
+    <!-- Main information, edit it on theme/_config.yml -->
+    <h2 class="mb-2">I am Adi Sakti Jrs</h2>
+    <p>A student and web developer from Indonesia 🇮🇩</p>
+    <p>This is Minima, an undoubtedly simple and lightweight dark/light mode theme for Hexo. I created this from scratch using Skeleton CSS boilerplate. It only uses CSS and Vanilla JS, without using unnecessary third-party &#39;render-blocking&#39; libraries! 😁</p>
   </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+</div>
+
+<h3>Recent Posts</h3>
+
+
+<div class="row">
+
+  <div class="three columns left lit">
+    <p class="bottom">Nov 22, 2020</p>
+  </div>
+  <div class="nine columns left mb-3">
+    <a href="/2020/11/22/table-detection-with-detectron2-n-maskrcnn/" >
+      
+        Table Detection with Detectron2 & Mask R-CNN
+      
+    </a>
+  </div>
+</div>
+
+<div class="row">
+
+  <div class="three columns left lit">
+    <p class="bottom">Oct 19, 2020</p>
+  </div>
+  <div class="nine columns left mb-3">
+    <a href="/2020/10/19/Grammatical-Error-Correction-with-The-Pretrained-BERT-Transformer-Encoder/" >
+      
+        Grammatical-Error-Correction Sequence Tagging System with an Pretrained BERT-like Transformer Encoder
+      
+    </a>
+  </div>
+</div>
+
+<div class="row">
+
+  <div class="three columns left lit">
+    <p class="bottom">Sep 6, 2020</p>
+  </div>
+  <div class="nine columns left mb-3">
+    <a href="/2020/09/06/spelling-correction-with-soft-masked-bert/" >
+      
+        Spelling Correction with Soft-Masked BERT
+      
+    </a>
+  </div>
+</div>
+
+<div class="row">
+
+  <div class="three columns left lit">
+    <p class="bottom">Aug 16, 2020</p>
+  </div>
+  <div class="nine columns left mb-3">
+    <a href="/2020/08/16/spelling-correction-with-python-spellchecker/" >
+      
+        Spelling Correction with Python Spellchecker
+      
+    </a>
+  </div>
+</div>
+
+
+<h4> <a href="/archives">All Posts</a></h4>
+
+        </div>
+        <div class="row mt-2">
+  <h3>Search</h3>
+  <div><input id="search-text" title="search" class="search-text" type="text" placeholder="search......"></div>
+  <div style="margin-top: 1.5rem;">
+    <ul id="result"></ul>
+  </div>
+</div>
+        <div class="row mt-2">
+  
+    <div class="eight columns">
+      <p id="madewith">Made with ❤ and
+        <a class="footer-link icon" href="https://hexo.io" target="_blank" style="text-decoration: none;" rel="noreferrer" aria-label="Hexo.io">
+        <svg class="hexo svg-hov" width="14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Hexo.js</title><path d="M12 .007L1.57 6.056V18.05L12 23.995l10.43-6.049V5.952L12 .007zm4.798 17.105l-.939.521-.939-.521V12.94H9.08v4.172l-.94.521-.938-.521V6.89l.939-.521.939.521v4.172h5.84V6.89l.94-.521.938.521v10.222z"/></svg>
+        </a>
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/12/19/PyCharm-keyboard-shortcuts/">PyCharm Keyboard Shortcuts</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>&nbsp;</p>
-<center>Stephen Cheng</center>
-
-
-<h3 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h3><p><img src="https://raw.githubusercontent.com/steven-cheng-com/images/master/blog/2019/201912/20191219/0.png" alt=""></p>
-<p>PyCharm is an integrated development environment for computer programming, specifically for the Python language. It is developed by the Czech company JetBrains on February 3, 2010.</p>
-<h3 id="Part-one"><a href="#Part-one" class="headerlink" title="Part one"></a>Part one</h3><p><img src="https://raw.githubusercontent.com/steven-cheng-com/images/master/blog/2019/201912/20191219/1.png" alt=""></p>
-<h3 id="Part-two"><a href="#Part-two" class="headerlink" title="Part two"></a>Part two</h3><p><img src="https://raw.githubusercontent.com/steven-cheng-com/images/master/blog/2019/201912/20191219/2.png" alt=""></p>
-<h3 id="Part-three"><a href="#Part-three" class="headerlink" title="Part three"></a>Part three</h3><p><img src="https://raw.githubusercontent.com/steven-cheng-com/images/master/blog/2019/201912/20191219/3.png" alt=""></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://stephen-cheng.github.io/2019/12/19/PyCharm-keyboard-shortcuts/" data-id="clpllv7vl000kt4xvf6ludka8" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PyCharm/" rel="tag">PyCharm</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/" rel="tag">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Shortcuts/" rel="tag">Shortcuts</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Keras-for-Data-Science" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/09/21/Keras-for-Data-Science/" class="article-date">
-  <time datetime="2019-09-22T01:36:52.000Z" itemprop="datePublished">2019-09-21</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Deep-Learning/">Deep-Learning</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+        at <a href="https://en.wikipedia.org/wiki/Earth" target="_blank" rel="noreferrer">Earth</a>.</p>
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/21/Keras-for-Data-Science/">Keras for Data Science</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>&nbsp;</p>
-<center>Stephen Cheng</center>
-
-
-<h3 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h3><p><img src="https://raw.githubusercontent.com/steven-cheng-com/images/master/blog/2019/201909/20190921/0.jpg" alt=""></p>
-<p>Keras is a powerful and easy-to-use deep learning library for Theano and TensorFlow that provides a high-level neural networks API to develop and evaluate deep learning models.</p>
-<h4 id="A-Basic-Example"><a href="#A-Basic-Example" class="headerlink" title="A Basic Example:"></a>A Basic Example:</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> keras.models <span class="keyword">import</span> Sequential</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> keras.layers <span class="keyword">import</span> Dense</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>data = np.random.random((<span class="number">1000</span>,<span class="number">100</span>))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>labels = np.random.randint(<span class="number">2</span>,size=(<span class="number">1000</span>,<span class="number">1</span>))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>model = Sequential()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>model.add(Dense(<span class="number">32</span>,</span><br><span class="line"> activation=<span class="string">'relu'</span>,</span><br><span class="line"> input_dim=<span class="number">100</span>))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>model.add(Dense(<span class="number">1</span>, activation=<span class="string">'sigmoid'</span>))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>model.compile(optimizer=<span class="string">'rmsprop'</span>,</span><br><span class="line"> loss=<span class="string">'binary_crossentropy'</span>,</span><br><span class="line"> metrics=[<span class="string">'accuracy'</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>model.fit(data,labels,epochs=<span class="number">10</span>,batch_size=<span class="number">32</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>predictions = model.predict(data)</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h3 id="Data"><a href="#Data" class="headerlink" title="Data"></a>Data</h3><p>Your data needs to be stored as NumPy arrays or as a list of NumPy arrays. Ideally, you split the data in training and test sets, for which you can also resort to the <em>train_test_split</em> module of <em>sklearn.cross_validation</em>.</p>
-<h4 id="Keras-Data-Sets"><a href="#Keras-Data-Sets" class="headerlink" title="Keras Data Sets:"></a>Keras Data Sets:</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> keras.datasets <span class="keyword">import</span> boston_housing,</span><br><span class="line"> mnist,</span><br><span class="line"> cifar10,</span><br><span class="line"> imdb</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>(x_train,y_train),(x_test,y_test) = mnist.load_data()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>(x_train2,y_train2),(x_test2,y_test2) = boston_housing.load_data()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>(x_train3,y_train3),(x_test3,y_test3) = cifar10.load_data()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>(x_train4,y_train4),(x_test4,y_test4) = imdb.load_data(num_words=<span class="number">20000</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>num_classes = <span class="number">10</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="Other"><a href="#Other" class="headerlink" title="Other:"></a>Other:</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> urllib.request <span class="keyword">import</span> urlopen</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>data = np.loadtxt(urlopen(<span class="string">"http://archive.ics.uci.edu/ml/machine-learning-databases/pima-indians-diabetes/pima-indians-diabetes.data"</span>),delimiter=<span class="string">","</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>X = data[:,<span class="number">0</span>:<span class="number">8</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>y = data [:,<span class="number">8</span>]</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h3 id="Preprocessing"><a href="#Preprocessing" class="headerlink" title="Preprocessing"></a>Preprocessing</h3><h4 id="Sequence-Padding"><a href="#Sequence-Padding" class="headerlink" title="Sequence Padding:"></a>Sequence Padding:</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> keras.preprocessing <span class="keyword">import</span> sequence</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>x_train4 = sequence.pad_sequences(x_train4,maxlen=<span class="number">80</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>x_test4 = sequence.pad_sequences(x_test4,maxlen=<span class="number">80</span>)</span><br></pre></td></tr></table></figure>
-
-<h4 id="One-Hot-Encoding"><a href="#One-Hot-Encoding" class="headerlink" title="One-Hot Encoding:"></a>One-Hot Encoding:</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> keras.utils <span class="keyword">import</span> to_categorical</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>Y_train = to_categorical(y_train, num_classes)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>Y_test = to_categorical(y_test, num_classes)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>Y_train3 = to_categorical(y_train3, num_classes)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>Y_test3 = to_categorical(y_test3, num_classes)</span><br></pre></td></tr></table></figure>
-
-<h4 id="Train-and-Test-Sets"><a href="#Train-and-Test-Sets" class="headerlink" title="Train and Test Sets:"></a>Train and Test Sets:</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>X_train5,X_test5,y_train5,y_test5 = train_test_split(X, y, test_size=<span class="number">0.33</span>, random_state=<span class="number">42</span>)</span><br></pre></td></tr></table></figure>
-
-<h4 id="Standardization-Normalization"><a href="#Standardization-Normalization" class="headerlink" title="Standardization/Normalization:"></a>Standardization/Normalization:</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> StandardScaler</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>scaler = StandardScaler().fit(x_train2)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>standardized_X = scaler.transform(x_train2)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>standardized_X_test = scaler.transform(x_test2)</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h3 id="Model-Architecture"><a href="#Model-Architecture" class="headerlink" title="Model Architecture"></a>Model Architecture</h3><h4 id="Sequential-Model"><a href="#Sequential-Model" class="headerlink" title="Sequential Model:"></a>Sequential Model:</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> keras.models <span class="keyword">import</span> Sequential</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>model = Sequential()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>model2 = Sequential()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>model3 = Sequential()</span><br></pre></td></tr></table></figure>
-
-<h4 id="Multilayer-Perceptron-MLP"><a href="#Multilayer-Perceptron-MLP" class="headerlink" title="Multilayer Perceptron (MLP):"></a>Multilayer Perceptron (MLP):</h4><p><b>Binary Classification</b></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> keras.layers <span class="keyword">import</span> Dense</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>model.add(Dense(<span class="number">12</span>,</span><br><span class="line"> input_dim=<span class="number">8</span>,</span><br><span class="line"> kernel_initializer=<span class="string">'uniform'</span>,</span><br><span class="line"> activation=<span class="string">'relu'</span>))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>model.add(Dense(<span class="number">8</span>,kernel_initializer=<span class="string">'uniform'</span>,activation=<span class="string">'relu'</span>))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>model.add(Dense(<span class="number">1</span>,kernel_initializer=<span class="string">'uniform'</span>,activation=<span class="string">'sigmoid'</span>))</span><br></pre></td></tr></table></figure>
-
-<p><b>Multi-Class Classification</b></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> keras.layers <span class="keyword">import</span> Dropout</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>model.add(Dense(<span class="number">512</span>,activation=<span class="string">'relu'</span>,input_shape=(<span class="number">784</span>,)))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>model.add(Dropout(<span class="number">0.2</span>))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>model.add(Dense(<span class="number">512</span>,activation=<span class="string">'relu'</span>))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>model.add(Dropout(<span class="number">0.2</span>))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>model.add(Dense(<span class="number">10</span>,activation=<span class="string">'softmax'</span>))</span><br></pre></td></tr></table></figure>
-
-<p><b>Regression</b></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>model.add(Dense(<span class="number">64</span>,activation=<span class="string">'relu'</span>,input_dim=train_data.shape[<span class="number">1</span>]))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>model.add(Dense(<span class="number">1</span>))</span><br></pre></td></tr></table></figure>
-
-<h4 id="Convolutional-Neural-Network-CNN"><a href="#Convolutional-Neural-Network-CNN" class="headerlink" title="Convolutional Neural Network (CNN):"></a>Convolutional Neural Network (CNN):</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> keras.layers <span class="keyword">import</span> Activation,Conv2D,MaxPooling2D,Flatten</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>model2.add(Conv2D(<span class="number">32</span>,(<span class="number">3</span>,<span class="number">3</span>),padding=<span class="string">'same'</span>,input_shape=x_train.shape[<span class="number">1</span>:]))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>model2.add(Activation(<span class="string">'relu'</span>))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>model2.add(Conv2D(<span class="number">32</span>,(<span class="number">3</span>,<span class="number">3</span>)))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>model2.add(Activation(<span class="string">'relu'</span>))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>model2.add(MaxPooling2D(pool_size=(<span class="number">2</span>,<span class="number">2</span>)))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>model2.add(Dropout(<span class="number">0.25</span>))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>model2.add(Conv2D(<span class="number">64</span>,(<span class="number">3</span>,<span class="number">3</span>), padding=<span class="string">'same'</span>))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>model2.add(Activation(<span class="string">'relu'</span>))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>model2.add(Conv2D(<span class="number">64</span>,(<span class="number">3</span>, <span class="number">3</span>)))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>model2.add(Activation(<span class="string">'relu'</span>))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>model2.add(MaxPooling2D(pool_size=(<span class="number">2</span>,<span class="number">2</span>)))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>model2.add(Dropout(<span class="number">0.25</span>))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>model2.add(Flatten())</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>model2.add(Dense(<span class="number">512</span>))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>model2.add(Activation(<span class="string">'relu'</span>))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>model2.add(Dropout(<span class="number">0.5</span>))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>model2.add(Dense(num_classes))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>model2.add(Activation(<span class="string">'softmax'</span>))</span><br></pre></td></tr></table></figure>
-
-<h4 id="Recurrent-Neural-Network-RNN"><a href="#Recurrent-Neural-Network-RNN" class="headerlink" title="Recurrent Neural Network (RNN):"></a>Recurrent Neural Network (RNN):</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> keras.klayers <span class="keyword">import</span> Embedding,LSTM</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>model3.add(Embedding(<span class="number">20000</span>,<span class="number">128</span>))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>model3.add(LSTM(<span class="number">128</span>,dropout=<span class="number">0.2</span>,recurrent_dropout=<span class="number">0.2</span>))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>model3.add(Dense(<span class="number">1</span>,activation=<span class="string">'sigmoid'</span>))</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h3 id="Inspect-Model"><a href="#Inspect-Model" class="headerlink" title="Inspect Model"></a>Inspect Model</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Model output shape</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>model.output_shape</span><br><span class="line"><span class="comment"># Model summary representation</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>model.summary()</span><br><span class="line"><span class="comment"># Model configuration</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>model.get_config()</span><br><span class="line"><span class="comment"># List all weight tensors in the model</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>model.get_weights()</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h3 id="Compile-Model"><a href="#Compile-Model" class="headerlink" title="Compile Model"></a>Compile Model</h3><p><b>MLP: Binary Classification</b></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>model.compile(optimizer=<span class="string">'adam'</span>,</span><br><span class="line"> loss=<span class="string">'binary_crossentropy'</span>,</span><br><span class="line"> metrics=[<span class="string">'accuracy'</span>])</span><br></pre></td></tr></table></figure>
-
-<p><b>MLP: Multi-Class Classification</b></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>model.compile(optimizer=<span class="string">'rmsprop'</span>,</span><br><span class="line"> loss=<span class="string">'categorical_crossentropy'</span>,</span><br><span class="line"> metrics=[<span class="string">'accuracy'</span>])</span><br></pre></td></tr></table></figure>
-
-<p><b>MLP: Regression</b></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>model.compile(optimizer=<span class="string">'rmsprop'</span>, loss=<span class="string">'mse'</span>, metrics=[<span class="string">'mae'</span>])</span><br></pre></td></tr></table></figure>
-
-<p><b>Recurrent Neural Network</b></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>model3.compile(loss=<span class="string">'binary_crossentropy'</span>,</span><br><span class="line"> optimizer=<span class="string">'adam'</span>,</span><br><span class="line"> metrics=[<span class="string">'accuracy'</span>])</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h3 id="Model-Training"><a href="#Model-Training" class="headerlink" title="Model Training"></a>Model Training</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>model3.fit(x_train4,</span><br><span class="line"> y_train4,</span><br><span class="line"> batch_size=<span class="number">32</span>,</span><br><span class="line"> epochs=<span class="number">15</span>,</span><br><span class="line"> verbose=<span class="number">1</span>,</span><br><span class="line"> validation_data=(x_test4,y_test4))</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h3 id="Evaluate-Your-Model’s-Performance"><a href="#Evaluate-Your-Model’s-Performance" class="headerlink" title="Evaluate Your Model’s Performance"></a>Evaluate Your Model’s Performance</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>score = model3.evaluate(x_test,</span><br><span class="line"> y_test,</span><br><span class="line"> batch_size=<span class="number">32</span>)</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h3 id="Prediction"><a href="#Prediction" class="headerlink" title="Prediction"></a>Prediction</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>model3.predict(x_test4, batch_size=<span class="number">32</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>model3.predict_classes(x_test4,batch_size=<span class="number">32</span>)</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h3 id="Save-Reload-Models"><a href="#Save-Reload-Models" class="headerlink" title="Save/ Reload Models"></a>Save/ Reload Models</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> keras.models <span class="keyword">import</span> load_model</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>model3.save(<span class="string">'model_file.h5'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>my_model = load_model(<span class="string">'my_model.h5'</span>)</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h3 id="Model-Fine-tuning"><a href="#Model-Fine-tuning" class="headerlink" title="Model Fine-tuning"></a>Model Fine-tuning</h3><h4 id="Optimization-Parameters"><a href="#Optimization-Parameters" class="headerlink" title="Optimization Parameters:"></a>Optimization Parameters:</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> keras.optimizers <span class="keyword">import</span> RMSprop</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>opt = RMSprop(lr=<span class="number">0.0001</span>, decay=<span class="number">1e-6</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>model2.compile(loss=<span class="string">'categorical_crossentropy'</span>, optimizer=opt,</span><br><span class="line"> metrics=[<span class="string">'accuracy'</span>])</span><br></pre></td></tr></table></figure>
-
-<h4 id="Early-Stopping"><a href="#Early-Stopping" class="headerlink" title="Early Stopping:"></a>Early Stopping:</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> keras.callbacks <span class="keyword">import</span> EarlyStopping</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>early_stopping_monitor = EarlyStopping(patience=<span class="number">2</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>model3.fit(x_train4,</span><br><span class="line"> y_train4,</span><br><span class="line"> batch_size=<span class="number">32</span>,</span><br><span class="line"> epochs=<span class="number">15</span>,</span><br><span class="line"> validation_data=(x_test4,y_test4),</span><br><span class="line"> callbacks=[early_stopping_monitor])</span><br></pre></td></tr></table></figure>
-
-      
     </div>
-    <footer class="article-footer">
-      <a data-url="https://stephen-cheng.github.io/2019/09/21/Keras-for-Data-Science/" data-id="clpllv7vv000rt4xv7lde185x" class="article-share-link">Share</a>
+
+    <!-- Sepcial thanks to https://simpleicons.org/ for the icons -->
+    <div class="four columns mb-3 posisi" >
       
+      <a class="ml-0 footer-link icon" href="https://github.com/adisaktijrs" target="_blank" style="text-decoration: none" rel="noreferrer" aria-label="GitHub">
+        <svg class="github svg-hov" width="18" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+      </a>
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Data-Science/" rel="tag">Data-Science</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Deep-Learning/" rel="tag">Deep-Learning</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Keras/" rel="tag">Keras</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Python-for-Data-Science-Cheat-Sheet-with-Scikit-Learn" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/06/18/Python-for-Data-Science-Cheat-Sheet-with-Scikit-Learn/" class="article-date">
-  <time datetime="2019-06-18T20:33:19.000Z" itemprop="datePublished">2019-06-18</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Machine-Learning/">Machine-Learning</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/18/Python-for-Data-Science-Cheat-Sheet-with-Scikit-Learn/">Python for Data Science Cheat Sheet with Scikit-Learn</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>&nbsp;</p>
-<center>Stephen Cheng</center>
-
-
-<p><img src="https://raw.githubusercontent.com/steven-cheng-com/images/master/blog/2019/201906/20190618/0.png" alt=""></p>
-<hr>
-<h3 id="Intro-of-Scikit-Learn"><a href="#Intro-of-Scikit-Learn" class="headerlink" title="Intro of Scikit-Learn"></a>Intro of Scikit-Learn</h3><p>Scikit-learn is an open source Python library that implements a range of machine learning, data preprocessing, cross-validation and visualization algorithms using a unified interface.</p>
-<p>The whole workflow of data science includes:</p>
-<ul>
-<li>Loading the data</li>
-<li>Training and test data</li>
-<li>Preprocessing ehe data</li>
-<li>Create your model</li>
-<li>Model fitting</li>
-<li>Prediction</li>
-<li>Evaluate your model’a performance</li>
-<li>Tune your model</li>
-</ul>
-<p>Here I give you a basic example for reference.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> sklearn <span class="keyword">import</span> neighbors, datasets, preprocessing</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> accuracy_score</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>iris = datasets.load_iris()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>X, y = iris.data[:, :<span class="number">2</span>], iris.target</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=<span class="number">33</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>scaler = preprocessing.StandardScaler().fit(X_train)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>X_train = scaler.transform(X_train)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>X_test = scaler.transform(X_test)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>knn = neighbors.KNeighborsClassifier(n_neighbors=<span class="number">5</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>knn.fit(X_train, y_train)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>y_pred = knn.predict(X_test)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>accuracy_score(y_test, y_pred)</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h3 id="Loading-The-Data"><a href="#Loading-The-Data" class="headerlink" title="Loading The Data"></a>Loading The Data</h3><p>Your data needs to be numeric and stored as NumPy arrays or SciPy sparse matrices. Other types that are convertible to numeric arrays, such as Pandas DataFrame, are also acceptable.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>X = np.random.random((<span class="number">10</span>,<span class="number">5</span>))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>y = np.array([<span class="string">'M'</span>,<span class="string">'M'</span>,<span class="string">'F'</span>,<span class="string">'F'</span>,<span class="string">'M'</span>,<span class="string">'F'</span>,<span class="string">'M'</span>,<span class="string">'M'</span>,<span class="string">'F'</span>,<span class="string">'F'</span>,<span class="string">'F'</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>X[X &lt; <span class="number">0.7</span>] = <span class="number">0</span></span><br></pre></td></tr></table></figure>
-
-<hr>
-<h3 id="Training-And-Test-Data"><a href="#Training-And-Test-Data" class="headerlink" title="Training And Test Data"></a>Training And Test Data</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h3 id="Preprocessing-The-Data"><a href="#Preprocessing-The-Data" class="headerlink" title="Preprocessing The Data"></a>Preprocessing The Data</h3><h4 id="Imputing-Missing-Values"><a href="#Imputing-Missing-Values" class="headerlink" title="Imputing Missing Values"></a>Imputing Missing Values</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> Imputer</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>imp = Imputer(missing_values=<span class="number">0</span>, strategy=<span class="string">'mean'</span>, axis=<span class="number">0</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>imp.fit_transform(X_train)</span><br></pre></td></tr></table></figure>
-
-<h4 id="Standardization"><a href="#Standardization" class="headerlink" title="Standardization"></a>Standardization</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> StandardScaler</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>scaler = StandardScaler().fit(X_train)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>standardized_X = scaler.transform(X_train)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>standardized_X_test = scaler.transform(X_test)</span><br></pre></td></tr></table></figure>
-
-<h4 id="Normalization"><a href="#Normalization" class="headerlink" title="Normalization"></a>Normalization</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> Normalizer</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>scaler = Normalizer().fit(X_train)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>normalized_X = scaler.transform(X_train)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>normalized_X_test = scaler.transform(X_test)</span><br></pre></td></tr></table></figure>
-
-<h4 id="Binarization"><a href="#Binarization" class="headerlink" title="Binarization"></a>Binarization</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> Binarizer</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>binarizer = Binarizer(threshold=<span class="number">0.0</span>).fit(X)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>binary_X = binarizer.transform(X)</span><br></pre></td></tr></table></figure>
-
-<h4 id="Encoding-Categorical-Features"><a href="#Encoding-Categorical-Features" class="headerlink" title="Encoding Categorical Features"></a>Encoding Categorical Features</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> LabelEncoder</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>enc = LabelEncoder()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>y = enc.fit_transform(y)</span><br></pre></td></tr></table></figure>
-
-<h4 id="Generating-Polynomial-Features"><a href="#Generating-Polynomial-Features" class="headerlink" title="Generating Polynomial Features"></a>Generating Polynomial Features</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> PolynomialFeatures</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>poly = PolynomialFeatures(<span class="number">5</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>poly.fit_transform(X)</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h3 id="Create-Your-Model"><a href="#Create-Your-Model" class="headerlink" title="Create Your Model"></a>Create Your Model</h3><h4 id="Supervised-Learning-Estimators"><a href="#Supervised-Learning-Estimators" class="headerlink" title="Supervised Learning Estimators"></a>Supervised Learning Estimators</h4><p><b>Linear Regression</b></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LinearRegression</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>lr = LinearRegression(normalize=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
-
-<p><b>Support Vector Machines (SVM)</b></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> sklearn.svm <span class="keyword">import</span> SVC</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>svc = SVC(kernel=<span class="string">'linear'</span>)</span><br></pre></td></tr></table></figure>
-
-<p><b>Naive Bayes</b></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> sklearn.naive_bayes <span class="keyword">import</span> GaussianNB</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>gnb = GaussianNB()</span><br></pre></td></tr></table></figure>
-
-<p><b>KNN</b></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> sklearn <span class="keyword">import</span> neighbors</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>knn = neighbors.KNeighborsClassifier(n_neighbors=<span class="number">5</span>)</span><br></pre></td></tr></table></figure>
-
-<h4 id="Unsupervised-Learning-Estimators"><a href="#Unsupervised-Learning-Estimators" class="headerlink" title="Unsupervised Learning Estimators"></a>Unsupervised Learning Estimators</h4><p><b>Principal Component Analysis (PCA)</b></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> sklearn.decomposition <span class="keyword">import</span> PCA</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>pca = PCA(n_components=<span class="number">0.95</span>)</span><br></pre></td></tr></table></figure>
-
-<p><b>K Means</b></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> sklearn.cluster <span class="keyword">import</span> KMeans</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>k_means = KMeans(n_clusters=<span class="number">3</span>, random_state=<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h3 id="Model-Fitting"><a href="#Model-Fitting" class="headerlink" title="Model Fitting"></a>Model Fitting</h3><h4 id="Supervised-learning"><a href="#Supervised-learning" class="headerlink" title="Supervised learning"></a>Supervised learning</h4><p>Fit the model to the data.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>lr.fit(X, y)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>knn.fit(X_train, y_train)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>svc.fit(X_train, y_train)</span><br></pre></td></tr></table></figure>
-
-<h4 id="Unsupervised-Learning"><a href="#Unsupervised-Learning" class="headerlink" title="Unsupervised Learning"></a>Unsupervised Learning</h4><p>Fit the model to the data.<br>Fit to data, then transform it.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>k_means.fit(X_train)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>pca_model = pca.fit_transform(X_train)</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h3 id="Prediction"><a href="#Prediction" class="headerlink" title="Prediction"></a>Prediction</h3><h4 id="Supervised-Estimators"><a href="#Supervised-Estimators" class="headerlink" title="Supervised Estimators"></a>Supervised Estimators</h4><p>Predict labels. Predict labels. Estimate probability of a label.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>y_pred = svc.predict(np.random.random((<span class="number">2</span>,<span class="number">5</span>)))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>y_pred = lr.predict(X_test)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>y_pred = knn.predict_proba(X_test)</span><br></pre></td></tr></table></figure>
-
-<h4 id="Unsupervised-Estimators"><a href="#Unsupervised-Estimators" class="headerlink" title="Unsupervised Estimators"></a>Unsupervised Estimators</h4><p>Predict labels in clustering algos.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>y_pred = k_means.predict(X_test)</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h3 id="Evaluate-Your-Model’s-Performance"><a href="#Evaluate-Your-Model’s-Performance" class="headerlink" title="Evaluate Your Model’s Performance"></a>Evaluate Your Model’s Performance</h3><h4 id="Classification-Metrics"><a href="#Classification-Metrics" class="headerlink" title="Classification Metrics"></a>Classification Metrics</h4><p><b>Accuracy Score</b></p>
-<p>Estimator score method. Metric scoring functions.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>knn.score(X_test, y_test)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> accuracy_score</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>accuracy_score(y_test, y_pred)</span><br></pre></td></tr></table></figure>
-
-<p><b>Classification Report</b></p>
-<p>Precision, recall, f1-score and support.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> classification_report</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(classification_report(y_test, y_pred))</span><br></pre></td></tr></table></figure>
-
-<p><b>Confusion Matrix</b></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> confusion_matrix</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(confusion_matrix(y_test, y_pred))</span><br></pre></td></tr></table></figure>
-
-<h4 id="Regression-Metrics"><a href="#Regression-Metrics" class="headerlink" title="Regression Metrics"></a>Regression Metrics</h4><p><b>Mean Absolute Error</b></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> mean_absolute_error</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>y_true = [<span class="number">3</span>, <span class="number">-0.5</span>, <span class="number">2</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>mean_absolute_error(y_true, y_pred)</span><br></pre></td></tr></table></figure>
-
-<p><b>Mean Squared Error</b></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> mean_squared_error</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>mean_squared_error(y_test, y_pred)</span><br></pre></td></tr></table></figure>
-
-<p><b>R² Score</b></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> r2_score</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>r2_score(y_true, y_pred)</span><br></pre></td></tr></table></figure>
-
-<h4 id="Clustering-Metrics"><a href="#Clustering-Metrics" class="headerlink" title="Clustering Metrics"></a>Clustering Metrics</h4><p><b>Adjusted Rand Index</b></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> adjusted_rand_score</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>adjusted_rand_score(y_true, y_pred)</span><br></pre></td></tr></table></figure>
-
-<p><b>Homogeneity</b></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> homogeneity_score</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>homogeneity_score(y_true, y_pred)</span><br></pre></td></tr></table></figure>
-
-<p><b>V-measure</b></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> v_measure_score</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>metrics.v_measure_score(y_true, y_pred)</span><br></pre></td></tr></table></figure>
-
-<h4 id="Cross-Validation"><a href="#Cross-Validation" class="headerlink" title="Cross-Validation"></a>Cross-Validation</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> sklearn.cross_validation <span class="keyword">import</span> cross_val_score</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(cross_val_score(knn, X_train, y_train, cv=<span class="number">4</span>))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(cross_val_score(lr, X, y, cv=<span class="number">2</span>))</span><br></pre></td></tr></table></figure>
-
-<h3 id="Tune-Your-Model"><a href="#Tune-Your-Model" class="headerlink" title="Tune Your Model"></a>Tune Your Model</h3><h4 id="Grid-Search"><a href="#Grid-Search" class="headerlink" title="Grid Search"></a>Grid Search</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> sklearn.grid_search <span class="keyword">import</span> GridSearchCV</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>params = &#123;<span class="string">"n_neighbors"</span>: np.arange(<span class="number">1</span>,<span class="number">3</span>), <span class="string">"metric"</span>: [<span class="string">"euclidean"</span>, <span class="string">"cityblock"</span>]&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>grid = GridSearchCV(estimator=knn, param_grid=params)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>grid.fit(X_train, y_train)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(grid.best_score_)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(grid.best_estimator_.n_neighbors)</span><br></pre></td></tr></table></figure>
-
-<h4 id="Randomized-Parameter-Optimization"><a href="#Randomized-Parameter-Optimization" class="headerlink" title="Randomized Parameter Optimization"></a>Randomized Parameter Optimization</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> sklearn.grid_search <span class="keyword">import</span> RandomizedSearchCV</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>params = &#123;<span class="string">"n_neighbors"</span>: range(<span class="number">1</span>,<span class="number">5</span>), <span class="string">"weights"</span>: [<span class="string">"uniform"</span>, <span class="string">"distance"</span>]&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>rsearch = RandomizedSearchCV(estimator=knn,</span><br><span class="line">                                param_distributions=params,</span><br><span class="line">                                cv=<span class="number">4</span>, n_iter=<span class="number">8</span>,random_state=<span class="number">5</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>rsearch.fit(X_train, y_train)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(rsearch.best_score_)</span><br></pre></td></tr></table></figure>
 
       
+      <a class="ml-0 footer-link icon" href="https://linkedin.com/in/adisaktijrs" target="_blank" style="text-decoration: none" rel="noreferrer" aria-label="LinkedIn">
+        <svg class="linkedin svg-hov" width="18" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>LinkedIn</title><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      </a>
+      
+
+      
+      <a class="ml-0 footer-link icon" href="https://twitter.com/adisaktijrs" target="_blank" style="text-decoration: none" rel="noreferrer" aria-label="Twitter">
+        <svg class="twitter svg-hov" width="18" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Twitter</title><path d="M23.954 4.569c-.885.389-1.83.654-2.825.775 1.014-.611 1.794-1.574 2.163-2.723-.951.555-2.005.959-3.127 1.184-.896-.959-2.173-1.559-3.591-1.559-2.717 0-4.92 2.203-4.92 4.917 0 .39.045.765.127 1.124C7.691 8.094 4.066 6.13 1.64 3.161c-.427.722-.666 1.561-.666 2.475 0 1.71.87 3.213 2.188 4.096-.807-.026-1.566-.248-2.228-.616v.061c0 2.385 1.693 4.374 3.946 4.827-.413.111-.849.171-1.296.171-.314 0-.615-.03-.916-.086.631 1.953 2.445 3.377 4.604 3.417-1.68 1.319-3.809 2.105-6.102 2.105-.39 0-.779-.023-1.17-.067 2.189 1.394 4.768 2.209 7.557 2.209 9.054 0 13.999-7.496 13.999-13.986 0-.209 0-.42-.015-.63.961-.689 1.8-1.56 2.46-2.548l-.047-.02z"/></svg>
+      </a>
+      
+
+      
+      <a class="ml-0 footer-link icon" href="https://instagram.com/adisaktijrs" target="_blank" style="text-decoration: none" rel="noreferrer" aria-label="Instagram">
+        <svg class="instagram svg-hov" width="18" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Instagram</title><path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z"/></svg>
+      </a>
+      
+
+      
+      <a class="ml-0 footer-link icon" href="https://stackoverflow.com/story/tobiasreithmeier" target="_blank" style="text-decoration: none" rel="noreferrer" aria-label="StackOverflow">
+        <svg class="stackoverflow svg-hov" width="18" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Stack Overflow</title><path d="M15.725 0l-1.72 1.277 6.39 8.588 1.716-1.277L15.725 0zm-3.94 3.418l-1.369 1.644 8.225 6.85 1.369-1.644-8.225-6.85zm-3.15 4.465l-.905 1.94 9.702 4.517.904-1.94-9.701-4.517zm-1.85 4.86l-.44 2.093 10.473 2.201.44-2.092-10.473-2.203zM1.89 15.47V24h19.19v-8.53h-2.133v6.397H4.021v-6.396H1.89zm4.265 2.133v2.13h10.66v-2.13H6.154Z"/></svg>
+      </a>
+      
+
     </div>
-    <footer class="article-footer">
-      <a data-url="https://stephen-cheng.github.io/2019/06/18/Python-for-Data-Science-Cheat-Sheet-with-Scikit-Learn/" data-id="clpllv7vo000mt4xv8db96wvi" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Data-Science/" rel="tag">Data-Science</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Machine-Learning/" rel="tag">Machine-Learning</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/" rel="tag">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Scikit-Learn/" rel="tag">Scikit-Learn</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Sklearn/" rel="tag">Sklearn</a></li></ul>
-
-    </footer>
-  </div>
   
-</article>
+</div>
 
-
-  
-    <article id="post-Install-MongoDB-on-Mac" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/03/11/Install-MongoDB-on-Mac/" class="article-date">
-  <time datetime="2019-03-11T20:33:19.000Z" itemprop="datePublished">2019-03-11</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/System/">System</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/11/Install-MongoDB-on-Mac/">How to Install and Run MongoDB on Mac OS</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>&nbsp;</p>
-<center>Stephen Cheng</center>
-
-
-<h3 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h3><p><img src="https://raw.githubusercontent.com/steven-cheng-com/images/master/blog/2019/201903/20190316/0.png" alt=""></p>
-<p>MongoDB is a document database which belongs to a family of databases called NoSQL - not only SQL. In MongoDB, records are documents which behave a lot like JSON objects in JavaScript. Values in documents can be looked up by their field’s key. Documents can have some fields/keys and not others, which makes Mongo extremely flexible. This is much different than SQL databases like MySQL, where fields correspond to columns in a table and individual records correspond to rows.</p>
-<h3 id="Install-and-Run-MongoDB-with-Homebrew"><a href="#Install-and-Run-MongoDB-with-Homebrew" class="headerlink" title="Install and Run MongoDB with Homebrew"></a>Install and Run MongoDB with Homebrew</h3><ul>
-<li><p>Make sure Homebrew already installed on Mac (Homebrew is a package manager for the Mac – it makes installing most open source software).</p>
-</li>
-<li><p>Open the Mac terminal application and type <b>brew update</b>, then type <b>brew install mongodb</b></p>
-</li>
-<li><p>After MongoDB is downloaded, create a directory to store MongoDB data files, type <b>mkdir -p /data/db</b></p>
-</li>
-<li><p>Make sure the directory has the right permissions:</p>
-</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> sudo chown -R `id -un` /data/db</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> <span class="comment"># Enter your psd</span></span></span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>Run the Mongo daemon by typing <b>mongod</b> in your terminal window.</p>
-</li>
-<li><p>Run the Mongo shell by typing <b>mongo</b> in another terminal window.</p>
-</li>
-<li><p>To exit the Mongo shell run <b>quit()</b>, to stop the Mongo daemon hit <b>ctrl+c</b></p>
-</li>
-</ul>
-<hr>
-<h4 id="Install-and-Run-MongoDB-by-Downloading-it-Manually"><a href="#Install-and-Run-MongoDB-by-Downloading-it-Manually" class="headerlink" title="Install and Run MongoDB by Downloading it Manually"></a>Install and Run MongoDB by Downloading it Manually</h4><ul>
-<li><p>1) Go to the MongoDB <a href="https://www.mongodb.com/" target="_blank" rel="noopener">website</a> and download the correct version of MongoDB.</p>
-</li>
-<li><p>2) After downloading MongoDB, move the gzipped tar file to the folder where you want MongoDB installed by typing commands like these in your terminal:</p>
-</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> <span class="built_in">cd</span> Downloads</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> mv mongodb-macos-x86_64-4.2.2.tgz ~/</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>3) Extract MongoDB from the downloaded archive and change the name of the directory to something more concise by following commands:</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> <span class="built_in">cd</span> ~/ &gt; tar -zxvf mongodb-macos-x86_64-4.2.2.tgz</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> mv mongodb-macos-x86_64-4.2.2 mongodb</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>4) Create a directory to store MongoDB data files, type <b>mkdir -p /data/db</b></p>
-</li>
-<li><p>5) Make sure the directory has the right permissions:</p>
-</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> sudo chown -R `id -un` /data/db</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> <span class="comment"># Enter your psd</span></span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>6) If you can’t create <b>/data/db</b> directory, you can also use other directory to replace it by running command like this:</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~/mongodb/bin/mongod --dbpath ~/mongodb/data</span><br></pre></td></tr></table></figure>
-
-<p>then jump to step 8.</p>
-<ul>
-<li><p>7) Run the Mongo daemon by typing <b>~/mongodb/bin/mongod</b> in your terminal window.</p>
-</li>
-<li><p>8) Run the Mongo shell by typing <b>~/mongodb/bin/mongo</b> in another terminal window.</p>
-</li>
-<li><p>9) To exit the Mongo shell run <b>quit()</b>, to stop the Mongo daemon hit <b>ctrl+c</b></p>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://stephen-cheng.github.io/2019/03/11/Install-MongoDB-on-Mac/" data-id="clpllv7ve000bt4xv11k9g3ra" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MongoDB/" rel="tag">MongoDB</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-HowtoTransferFiles" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/01/28/HowtoTransferFiles/" class="article-date">
-  <time datetime="2019-01-28T19:02:39.000Z" itemprop="datePublished">2019-01-28</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/System/">System</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/28/HowtoTransferFiles/">How to Transfer Files &amp; Connect to Jupyter Notebook Between Azure Virtual Machines and Local Systems</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>&nbsp;</p>
-<center>Stephen Cheng</center>
-
-
-<h3 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h3><p>Recently, cloud platforms are popular among various companies and conferences. Virtual Machines are one of the main applications provided by cloud platforms. For instance, Microsoft Azure offers Data Science Virtual Machines. Even though we have cloud platforms do us a favour to process hundreds and thousands of data remotely, I do need to upload files or download results from remote server. So how to interact between remote cloud servers and local systems? We’ll take Azure Virtual Machines as a case study.</p>
-<h3 id="Transfer-Files"><a href="#Transfer-Files" class="headerlink" title="Transfer Files"></a>Transfer Files</h3><ul>
-<li>Copy a Local File to a Azure Virtual Machine with the scp Command:</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp /local/path/file.txt azure_username@azure_host_ip:/remote/directory</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>If SSH on the remote host is listening on a port other than the default 22, then you can specify a port using the -P argument:</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp -P 1234 /local/path/file.txt azure_username@azure_host_ip:/remote/directory</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>To copy a directory from a local to remote system, we can use the -r option:</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp -r /local/directory azure_username@azure_host_ip:/remote/directory</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>Copy a Remote File to a Local System using the scp command:</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp azure_username@azure_host_ip:/remote/file.txt /local/directory</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>Copy a File Between Two Azure Virtual Machines using the scp Command:</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp azure_username1@azure_host_ip1:/directory/file.txt azure_username2@azure_host_ip2:/directory</span><br></pre></td></tr></table></figure>
-
-<h3 id="Connect-to-Azure-Virtual-Machine"><a href="#Connect-to-Azure-Virtual-Machine" class="headerlink" title="Connect to Azure Virtual Machine"></a>Connect to Azure Virtual Machine</h3><p>Here, we can use SSH command to connect to the Azure Virtual Machine from local path.</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh azure_username@azure_host_ip</span><br></pre></td></tr></table></figure>
-
-<h3 id="Connect-to-Jupyter-Notebook-application"><a href="#Connect-to-Jupyter-Notebook-application" class="headerlink" title="Connect to Jupyter Notebook application"></a>Connect to Jupyter Notebook application</h3><p>Here, we use SSH command to connect to the Jupyter Notebook Application.</p>
-<ul>
-<li>First, install and start the Jupyter Notebook Application in the Azure Virtual Machines, then open the local terminal and input the following command:</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -L 8000:localhost:8888 azure_username@azure_host_ip</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>Next, entering to the Jupyter Notebook Application using local browser with the url ‘localhost:8000’, and input the Jupyter notebook token from Azure Virtual Machines.</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://stephen-cheng.github.io/2019/01/28/HowtoTransferFiles/" data-id="clpllv7v60007t4xvctni369u" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Azure/" rel="tag">Azure</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Jupyter/" rel="tag">Jupyter</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VM/" rel="tag">VM</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-AwesomeProgramminSkillsforPythonUser" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/12/24/AwesomeProgramminSkillsforPythonUser/" class="article-date">
-  <time datetime="2018-12-24T23:22:38.000Z" itemprop="datePublished">2018-12-24</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Programming/">Programming</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/24/AwesomeProgramminSkillsforPythonUser/">Awesome Programming Skills for Python User</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>&nbsp;</p>
-<center>Stephen Cheng</center>
-
-
-<h3 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h3><p>Here are some awesome programming skills shared for Python users. Hopefully it’s useful to you.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># most frequent element in  a list</span></span><br><span class="line"></span><br><span class="line">a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line">print(max(set(a), key = a.count))</span><br><span class="line"></span><br><span class="line"><span class="comment"># use Counter</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> Counter</span><br><span class="line"></span><br><span class="line">cnt = Counter(a)</span><br><span class="line">print(cnt.most_common(<span class="number">3</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># check two strings have same characters</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> Counter</span><br><span class="line"></span><br><span class="line">str1 = <span class="string">"I see him"</span></span><br><span class="line">str2 = <span class="string">"him I see"</span></span><br><span class="line"></span><br><span class="line">print(Counter(str1) == Counter(str2))</span><br><span class="line"></span><br><span class="line"><span class="comment"># reverse string</span></span><br><span class="line"></span><br><span class="line">b = <span class="string">'abcdefghijklmnopqrstuvwxyz'</span></span><br><span class="line">print(b[::<span class="number">-1</span>])</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> char  <span class="keyword">in</span> reversed(b):</span><br><span class="line">	print(char)</span><br><span class="line"></span><br><span class="line">num = <span class="number">123456789</span></span><br><span class="line">print(int(str(num)[::<span class="number">-1</span>]))</span><br><span class="line"></span><br><span class="line"><span class="comment"># transpose 2d array</span></span><br><span class="line"></span><br><span class="line">original = [[<span class="string">'a'</span>,<span class="string">'b'</span>], [<span class="string">'1'</span>,<span class="string">'2'</span>],[<span class="string">'A'</span>,<span class="string">'B'</span>]]</span><br><span class="line">transposed = zip(*original)</span><br><span class="line">print(list(transposed))</span><br><span class="line"></span><br><span class="line"><span class="comment"># call different functions with same arguments</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">product</span><span class="params">(a,b)</span>:</span></span><br><span class="line">	<span class="keyword">return</span> a*b</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span><span class="params">(a,b)</span>:</span></span><br><span class="line">	<span class="keyword">return</span> a+b</span><br><span class="line"></span><br><span class="line">x = <span class="literal">True</span></span><br><span class="line">print((product <span class="keyword">if</span> x <span class="keyword">else</span> add)(<span class="number">5</span>,<span class="number">7</span>))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># a shallow copy</span></span><br><span class="line">e = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line">d = e</span><br><span class="line">d[<span class="number">0</span>] = <span class="number">10</span></span><br><span class="line">print(d,e)</span><br><span class="line"></span><br><span class="line">d2 = e[:]</span><br><span class="line">d2[<span class="number">0</span>] = <span class="number">11</span></span><br><span class="line">print(d2,e)</span><br><span class="line"></span><br><span class="line"><span class="comment"># deep copy</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> copy <span class="keyword">import</span> deepcopy</span><br><span class="line"></span><br><span class="line">f = [[<span class="number">1</span>,<span class="number">2</span>],[<span class="number">3</span>,<span class="number">4</span>]]</span><br><span class="line">f2 = deepcopy(f)</span><br><span class="line">f[<span class="number">0</span>] = [<span class="string">'x'</span>,<span class="string">'y'</span>]</span><br><span class="line">print(f,f2)</span><br><span class="line"></span><br><span class="line"><span class="comment"># sort a dict by its value with built-in sorted func</span></span><br><span class="line"></span><br><span class="line">g = &#123;<span class="string">'apple'</span>:<span class="number">50</span>, <span class="string">'banana'</span>:<span class="number">25</span>, <span class="string">'orange'</span>: <span class="number">20</span>, <span class="string">'watermelon'</span>:<span class="number">10</span>&#125;</span><br><span class="line"></span><br><span class="line">print(sorted(g.items(), key = <span class="keyword">lambda</span> x:x[<span class="number">1</span>]))</span><br><span class="line"></span><br><span class="line"><span class="comment"># use itemgetter instead of a lambda</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> operator <span class="keyword">import</span> itemgetter</span><br><span class="line"></span><br><span class="line">print(sorted(g.items(), key=itemgetter(<span class="number">1</span>)))</span><br><span class="line"></span><br><span class="line"><span class="comment"># sort dict by value</span></span><br><span class="line"></span><br><span class="line">print(sorted(g, key = g.get))</span><br><span class="line"></span><br><span class="line"><span class="comment"># merge dict</span></span><br><span class="line"></span><br><span class="line">d1 = &#123;<span class="string">'x'</span>:<span class="number">1</span>&#125;</span><br><span class="line">d2 = &#123;<span class="string">'y'</span>:<span class="number">2</span>&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">print(&#123;**d1, **d2&#125;) <span class="comment">#python 3.5</span></span><br><span class="line"></span><br><span class="line">print(dict(d1.items() | d2.items())) <span class="comment">#python 3.5</span></span><br><span class="line"></span><br><span class="line">d1.update(d2) <span class="comment">#python 3.5    </span></span><br><span class="line">print(d1)</span><br><span class="line"></span><br><span class="line"><span class="comment"># convert list to comma separated string</span></span><br><span class="line"></span><br><span class="line">data = [<span class="number">1</span>,<span class="string">'re'</span>, <span class="number">3</span>, <span class="string">'fa'</span>, <span class="number">5</span>]</span><br><span class="line">print(<span class="string">','</span>.join(map(str, data)))</span><br><span class="line"></span><br><span class="line"><span class="comment"># find index of min/max element</span></span><br><span class="line"></span><br><span class="line">h = [<span class="number">40</span>, <span class="number">30</span>, <span class="number">20</span>, <span class="number">10</span>, <span class="number">50</span>]</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">minIndex</span><span class="params">(lst)</span>:</span></span><br><span class="line">	<span class="keyword">return</span> min(range(len(lst)), key = lst.__getitem__)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">maxIndex</span><span class="params">(lst)</span>:</span></span><br><span class="line">	<span class="keyword">return</span> max(range(len(lst)), key = lst.__getitem__)</span><br><span class="line"></span><br><span class="line">print(minIndex(h))</span><br><span class="line">print(maxIndex(h))</span><br><span class="line"></span><br><span class="line"><span class="comment"># remove duplicate items from list</span></span><br><span class="line"></span><br><span class="line">i = [<span class="number">6</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">4</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line"></span><br><span class="line">print(list(set(i)))</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> OrderedDict</span><br><span class="line"></span><br><span class="line">print(list(OrderedDict.fromkeys(i).keys()))</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://stephen-cheng.github.io/2018/12/24/AwesomeProgramminSkillsforPythonUser/" data-id="clpllv7uf0000t4xvf457abxd" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Code/" rel="tag">Code</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Programming/" rel="tag">Programming</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/" rel="tag">Python</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-WhatIsBaggingandHowDoesItWork" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/11/21/WhatIsBaggingandHowDoesItWork/" class="article-date">
-  <time datetime="2018-11-21T18:42:41.000Z" itemprop="datePublished">2018-11-21</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Machine-Learning/">Machine-Learning</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/21/WhatIsBaggingandHowDoesItWork/">What Is Bagging and How Does It Work?</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>&nbsp;</p>
-<center>Stephen Cheng</center>
-
-
-<h3 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h3><p>Bagging is a technique used to reduce the variance of our predictions by combining the result of multiple classifiers modeled on different sub-samples of the same dataset. The following figure will make it clearer.</p>
-<p><img src="https://raw.githubusercontent.com/steven-cheng-com/images/master/blog/2018/201811/20181121/0.png" alt=""></p>
-<h3 id="Steps"><a href="#Steps" class="headerlink" title="Steps"></a>Steps</h3><p>The steps followed in bagging are:</p>
-<p><b>1) Create Multiple DataSets</b></p>
-<ul>
-<li>Sampling is done with replacement on the original data and new datasets are formed.</li>
-<li>The new data sets can have a fraction of the columns as well as rows, which are generally hyper-parameters in a bagging model.</li>
-<li>Taking row and column fractions less than 1 helps in making robust models, less prone to overfitting.</li>
-</ul>
-<p><b>2) Build Multiple Classifiers</b></p>
-<ul>
-<li>Classifiers are built on each data set.</li>
-<li>Generally the same classifier is modeled on each dataset and predictions are made.</li>
-</ul>
-<p><b>3) Combine Classifiers</b></p>
-<ul>
-<li>The predictions of all the classifiers are combined using a mean, median or mode value depending on the problem at hand.</li>
-<li>The combined values are generally more robust than a single model.</li>
-</ul>
-<p>Note that, here the number of models built is not a hyper-parameters. Higher number of models are always better or may give similar performance than lower numbers. It can be theoretically shown that the variance of the combined predictions are reduced to 1/n (n: number of classifiers) of the original variance, under some assumptions.</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://stephen-cheng.github.io/2018/11/21/WhatIsBaggingandHowDoesItWork/" data-id="clpllv7wc001dt4xv1i1lbytg" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Bagging/" rel="tag">Bagging</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Classifier/" rel="tag">Classifier</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-WhatAreEnsembleMethodsinTreeBasedModelling" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/10/10/WhatAreEnsembleMethodsinTreeBasedModelling/" class="article-date">
-  <time datetime="2018-10-10T19:33:00.000Z" itemprop="datePublished">2018-10-10</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Machine-Learning/">Machine-Learning</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/10/10/WhatAreEnsembleMethodsinTreeBasedModelling/">What Are Ensemble Methods in Tree Based Modelling?</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>&nbsp;</p>
-<center>Stephen Cheng</center>
-
-
-<h3 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h3><p>The literary meaning of word ‘ensemble’ is group. Ensemble methods involve group of predictive models to achieve a better accuracy and model stability. Ensemble methods are known to impart supreme boost to tree based models.</p>
-<h3 id="Bias-amp-Variance"><a href="#Bias-amp-Variance" class="headerlink" title="Bias &amp; Variance"></a>Bias &amp; Variance</h3><p>Like every other model, a tree based model also suffers from the plague of bias and variance. Bias means, ‘how much on an average are the predicted values different from the actual value.’ Variance means, ‘how different will the predictions of the model be at the same point if different samples are taken from the same population’.</p>
-<p>You build a small tree and you will get a model with low variance and high bias. How do you manage to balance the trade off between bias and variance ?</p>
-<p>Normally, as you increase the complexity of your model, you will see a reduction in prediction error due to lower bias in the model. As you continue to make your model more complex, you end up over-fitting your model and your model will start suffering from high variance.</p>
-<p>A champion model should maintain a balance between these two types of errors. This is known as the trade-off management of bias-variance errors. Ensemble learning is one way to execute this trade off analysis.</p>
-<p><img src="https://raw.githubusercontent.com/steven-cheng-com/images/master/blog/2018/201810/20181010/0.png" alt=""></p>
-<p>Some of the commonly used ensemble methods include: Bagging, Boosting and Stacking.</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://stephen-cheng.github.io/2018/10/10/WhatAreEnsembleMethodsinTreeBasedModelling/" data-id="clpllv7w4000zt4xvhbmg3mox" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Bias/" rel="tag">Bias</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ensemble/" rel="tag">Ensemble</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Variance/" rel="tag">Variance</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-DecisionTreesImplementationinRandPython" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/08/07/DecisionTreesImplementationinRandPython/" class="article-date">
-  <time datetime="2018-08-07T06:58:03.000Z" itemprop="datePublished">2018-08-07</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Machine-Learning/">Machine-Learning</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/08/07/DecisionTreesImplementationinRandPython/">Decision Trees Implementation in R and Python</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>&nbsp;</p>
-<center>Stephen Cheng</center>
-
-
-<h3 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h3><p>For R users and Python users, decision tree is quite easy to implement. Let’s quickly look at the set of codes which can get you started with this algorithm. For ease of use, I’ve shared standard codes where you’ll need to replace your dataset name and variables to get started.</p>
-<h3 id="R"><a href="#R" class="headerlink" title="R"></a>R</h3><p>For R users, there are multiple packages available to implement decision tree such as ctree, rpart, tree etc.</p>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="keyword">library</span>(rpart)</span><br><span class="line">&gt; x &lt;- cbind(x_train,y_train)</span><br><span class="line"><span class="comment"># grow tree</span></span><br><span class="line">&gt; fit &lt;- rpart(y_train ~ ., data = x,method=<span class="string">"class"</span>)</span><br><span class="line">&gt; summary(fit)</span><br><span class="line"><span class="comment">#Predict Output</span></span><br><span class="line">&gt; predicted= predict(fit,x_test)</span><br><span class="line">&gt; <span class="keyword">library</span>(rpart)</span><br><span class="line">&gt; x &lt;- cbind(x_train,y_train)</span><br><span class="line"><span class="comment"># grow tree</span></span><br><span class="line">&gt; fit &lt;- rpart(y_train ~ ., data = x,method=<span class="string">"class"</span>)</span><br><span class="line">&gt; summary(fit)</span><br><span class="line"><span class="comment">#Predict Output</span></span><br><span class="line">&gt; predicted= predict(fit,x_test)</span><br></pre></td></tr></table></figure>
-
-<p>In the code above:</p>
-<ul>
-<li>y_train – represents dependent variable.</li>
-<li>x_train – represents independent variable</li>
-<li>x – represents training data.</li>
-</ul>
-<h3 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h3><p>For Python users, below is the code:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#Import necessary libraries like pandas, numpy...</span></span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> tree</span><br><span class="line"><span class="comment">#Assumed you have, X (predictor) and Y (target) for training data set and x_test(predictor) of test_dataset</span></span><br><span class="line"><span class="comment"># Create tree object</span></span><br><span class="line"><span class="comment"># for classification, here you can change the algorithm as gini or entropy (information gain) by default it is gini  </span></span><br><span class="line">model = tree.DecisionTreeClassifier(criterion=<span class="string">'gini'</span>)</span><br><span class="line"><span class="comment"># model = tree.DecisionTreeRegressor() for regression</span></span><br><span class="line"><span class="comment"># Train the model using the training sets and check score</span></span><br><span class="line">model.fit(X, y)</span><br><span class="line">model.score(X, y)</span><br><span class="line"><span class="comment">#Predict Output</span></span><br><span class="line">predicted= model.predict(x_test)</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://stephen-cheng.github.io/2018/08/07/DecisionTreesImplementationinRandPython/" data-id="clpllv7v10005t4xvh3fw26ns" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/" rel="tag">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/R/" rel="tag">R</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tree/" rel="tag">Tree</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-AreTreeBasedModelsBetterThanLinearModels" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/07/27/AreTreeBasedModelsBetterThanLinearModels/" class="article-date">
-  <time datetime="2018-07-27T16:44:50.000Z" itemprop="datePublished">2018-07-27</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Machine-Learning/">Machine-Learning</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/27/AreTreeBasedModelsBetterThanLinearModels/">Are Tree Based Models Better than Linear Models?</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>&nbsp;</p>
-<center>Stephen Cheng</center>
-
-
-<h3 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h3><p>“If I can use logistic regression for classification problems and linear regression for regression problems, why is there a need to use trees”? Many of us have this question. And, this is a valid one too.</p>
-<h3 id="How-to-choose-a-proper-algorithms"><a href="#How-to-choose-a-proper-algorithms" class="headerlink" title="How to choose a proper algorithms?"></a>How to choose a proper algorithms?</h3><p>Actually, you can use any algorithm. It is dependent on the type of problem you are solving. Let’s look at some key factors which will help you to decide which algorithm to use:</p>
-<p>1) If the relationship between dependent &amp; independent variable is well approximated by a linear model, linear regression will outperform tree based model.</p>
-<p>2) If there is a high non-linearity &amp; complex relationship between dependent &amp; independent variables, a tree model will outperform a classical regression method.</p>
-<p>3) If you need to build a model which is easy to explain to people, a decision tree model will always do better than a linear model. Decision tree models are even simpler to interpret than linear regression!</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://stephen-cheng.github.io/2018/07/27/AreTreeBasedModelsBetterThanLinearModels/" data-id="clpllv7vb000at4xv1oqcgtjf" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linear/" rel="tag">Linear</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Machine-Learning/" rel="tag">Machine-Learning</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tree/" rel="tag">Tree</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-
-
-  <nav id="page-nav">
-    
-    <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
-  </nav>
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Computer-Vision/">Computer-Vision</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Deep-Learning/">Deep-Learning</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Machine-Learning/">Machine-Learning</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Natural-Language-Processing/">Natural-Language-Processing</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programming/">Programming</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/System/">System</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/" rel="tag">Algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Azure/" rel="tag">Azure</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BERT/" rel="tag">BERT</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Bagging/" rel="tag">Bagging</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Bias/" rel="tag">Bias</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Classification/" rel="tag">Classification</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Classifier/" rel="tag">Classifier</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Code/" rel="tag">Code</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Computer-Vision/" rel="tag">Computer-Vision</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Science/" rel="tag">Data-Science</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Decision-Tree/" rel="tag">Decision-Tree</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Deep-Learning/" rel="tag">Deep-Learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Distance/" rel="tag">Distance</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ensemble/" rel="tag">Ensemble</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Grammatical-Error-Correction/" rel="tag">Grammatical-Error-Correction</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hierarchical-Clustering/" rel="tag">Hierarchical-Clustering</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jupyter/" rel="tag">Jupyter</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Keras/" rel="tag">Keras</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Levenshtein/" rel="tag">Levenshtein</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linear/" rel="tag">Linear</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Machine-Learning/" rel="tag">Machine-Learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Merge/" rel="tag">Merge</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MongoDB/" rel="tag">MongoDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Natural-Language-Processing/" rel="tag">Natural-Language-Processing</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OCR/" rel="tag">OCR</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Object-Detection/" rel="tag">Object-Detection</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Overfitting/" rel="tag">Overfitting</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pre-trained-Model/" rel="tag">Pre-trained-Model</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Programming/" rel="tag">Programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PyCharm/" rel="tag">PyCharm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PyTorch/" rel="tag">PyTorch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/R/" rel="tag">R</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Regression/" rel="tag">Regression</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Scikit-Learn/" rel="tag">Scikit-Learn</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Shortcuts/" rel="tag">Shortcuts</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Silhouette/" rel="tag">Silhouette</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sklearn/" rel="tag">Sklearn</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sort/" rel="tag">Sort</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spelling-Correction/" rel="tag">Spelling-Correction</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Table-Detection/" rel="tag">Table-Detection</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TenforFlow/" rel="tag">TenforFlow</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Transformers/" rel="tag">Transformers</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tree/" rel="tag">Tree</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VM/" rel="tag">VM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Variance/" rel="tag">Variance</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li></ul>
-    </div>
-  </div>
-
-
-  
-</aside>
-        
       </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2023 Stephen Cheng<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+
     </div>
-  </div>
-</footer>
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-    <a href="/categories" class="mobile-nav-link">Categories</a>
-  
-    <a href="/about" class="mobile-nav-link">About</a>
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-</nav>
-    
-
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
-
-  
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-
-  
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
-
-
-
-
-<script src="/js/script.js"></script>
-
-
-
 
   </div>
+  <script src="/js/nanobar.min.js"></script>
+
+  <script>
+    var options = {
+      classname: 'nanobar',
+      id: 'myNanobar'
+    };
+    var nanobar = new Nanobar(options);
+    nanobar.go(30);
+    nanobar.go(76);
+    nanobar.go(100);
+  </script>
+
 </body>
+
 </html>
