@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Object Detection with Luminoth Step by Step | Stephen Cheng</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="&amp;nbsp; Stephen Cheng   Intro Luminoth is an open source toolkit for computer vision. It supports object detection and it’s built in Python, using TensorFlow. The code is open source and available on G">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Object Detection with Luminoth Step by Step">
+<meta property="og:url" content="https://stephen-cheng.github.io/2020/02/14/object-detection-with-luminoth-step-by-step/index.html">
+<meta property="og:site_name" content="Stephen Cheng">
+<meta property="og:description" content="&amp;nbsp; Stephen Cheng   Intro Luminoth is an open source toolkit for computer vision. It supports object detection and it’s built in Python, using TensorFlow. The code is open source and available on G">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://raw.githubusercontent.com/steven-cheng-com/images/master/blog/2020/202002/20200214/0.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/steven-cheng-com/images/master/blog/2020/202002/20200214/1.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/steven-cheng-com/images/master/blog/2020/202002/20200214/2.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/steven-cheng-com/images/master/blog/2020/202002/20200214/3.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/steven-cheng-com/images/master/blog/2020/202002/20200214/4.jpg">
+<meta property="article:published_time" content="2020-02-14T22:19:36.000Z">
+<meta property="article:modified_time" content="2023-11-30T19:56:22.663Z">
+<meta property="article:author" content="Stephen Cheng">
+<meta property="article:tag" content="Computer-Vision">
+<meta property="article:tag" content="Object-Detection">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/steven-cheng-com/images/master/blog/2020/202002/20200214/0.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="Stephen Cheng" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Stephen Cheng</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">AI | Tech</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+          <a class="main-nav-link" href="/contact">Contact</a>
+        
+          <a class="main-nav-link" href="https://www.instagram.com" target="_blank" rel="noopener">Instagram</a>
+        
+          <a class="main-nav-link" href="https://www.linkedin.com" target="_blank" rel="noopener">LinkedIn</a>
+        
+          <a class="main-nav-link" href="https://www.facebook.com" target="_blank" rel="noopener">Facebook</a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://stephen-cheng.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-object-detection-with-luminoth-step-by-step" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/02/14/object-detection-with-luminoth-step-by-step/" class="article-date">
+  <time datetime="2020-02-14T22:19:36.000Z" itemprop="datePublished">2020-02-14</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Computer-Vision/">Computer-Vision</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Object Detection with Luminoth Step by Step
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>&nbsp;</p>
+<center>Stephen Cheng</center>
+
+
+<h3 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h3><p><img src="https://raw.githubusercontent.com/steven-cheng-com/images/master/blog/2020/202002/20200214/0.jpg" alt=""></p>
+<p>Luminoth is an open source toolkit for computer vision. It supports object detection and it’s built in Python, using TensorFlow. The code is open source and available on <a href="https://github.com/tryolabs/luminoth" target="_blank" rel="noopener">GitHub</a>.</p>
+<h3 id="Detecting-Objects-with-a-Pre-trained-Model"><a href="#Detecting-Objects-with-a-Pre-trained-Model" class="headerlink" title="Detecting Objects with a Pre-trained Model"></a>Detecting Objects with a Pre-trained Model</h3><p>The first thing is being familiarized with the Luminoth CLI tool, that is, the tool that you interact with using the lumi command. This is the main gate to Luminoth, allowing you to train new models, evaluate them, use them for predictions, manage the checkpoints and more.</p>
+<p>If we want Luminoth to predict the objects present in one of  pictures (image.jpg). The way to do that is by running the following command:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lumi predict image.jpg</span><br></pre></td></tr></table></figure>
+
+<p>The result will be like this:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Found 1 files to predict.</span><br><span class="line">Neither checkpoint not config specified, assuming `accurate`.</span><br><span class="line">Checkpoint not found. Check remote repository? [y/N]:</span><br></pre></td></tr></table></figure>
+
+<p>Since you didn’t tell Luminoth what an “object” is for you, nor have taught it how to recognize said objects. So one way to do this is to use a pre-trained model that has been trained to detect popular types of objects. E.g., it can be a model trained with COCO dataset or Pascal VOC. What’s more, each pre-trained model might be associated with a different algorithm. The checkpoints correspond to the weights of a particular model (Faster R-CNN or SSD), trained with a particular dataset. The case of “accurate” is just a label for a particular Deep Learning model underneath, here, Faster R-CNN, trained with images from the COCO dataset.</p>
+<p>After the checkpoint download, with these commands we can output everything (a resulting image and a json file) to a preds directory:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir preds</span><br><span class="line">lumi predict image.jpg -f preds/objects.json -d preds/</span><br></pre></td></tr></table></figure>
+
+<h3 id="Exploring-the-Pre-trained-Checkpoints"><a href="#Exploring-the-Pre-trained-Checkpoints" class="headerlink" title="Exploring the Pre-trained Checkpoints"></a>Exploring the Pre-trained Checkpoints</h3><p>First, run the lumi checkpoint refresh command, so Luminoth knows about the checkpoints that it has available for download. After refreshing the local index, you can list the available checkpoints running lumi checkpoint list:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">================================================================================</span><br><span class="line">|           id |                  name |       alias | source |         status |</span><br><span class="line">================================================================================</span><br><span class="line">| e1c2565b51e9 |   Faster R-CNN w/COCO |    accurate | remote |     DOWNLOADED |</span><br><span class="line">| aad6912e94d9 |      SSD w/Pascal VOC |        fast | remote | NOT_DOWNLOADED |</span><br><span class="line">================================================================================</span><br></pre></td></tr></table></figure>
+
+<p>Here, you can see the “accurate” checkpoint and another “fast” checkpoint that is the SSD model trained with Pascal VOC dataset. Let’s get some information about the “accurate” checkpoint by the following command:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lumi checkpoint info e1c2565b51e9</span><br></pre></td></tr></table></figure>
+<p>or</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lumi checkpoint info accurate</span><br></pre></td></tr></table></figure>
+
+<p>If getting predictions for an image or video using a specific checkpoint (e.g., fast) you can do so by using the –checkpoint parameter:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lumi predict img.jpg --checkpoint fast -f preds/objects.json -d preds/</span><br></pre></td></tr></table></figure>
+
+<h3 id="Playing-Around-with-the-Built-in-Interface"><a href="#Playing-Around-with-the-Built-in-Interface" class="headerlink" title="Playing Around with the Built-in Interface"></a>Playing Around with the Built-in Interface</h3><p>Luminoth includes a simple web frontend so you can play around with detected objects in images using different thresholds. To launch this, simply type lumi server web and then open your browser at <a href="http://localhost:5000" target="_blank" rel="noopener">http://localhost:5000</a>. If you are running on an external VM, you can do lumi server web –host 0.0.0.0 –port <port> to open in a custom port.</p>
+<p><img src="https://raw.githubusercontent.com/steven-cheng-com/images/master/blog/2020/202002/20200214/1.jpg" alt=""></p>
+<h3 id="Building-Custom-dataset"><a href="#Building-Custom-dataset" class="headerlink" title="Building Custom dataset"></a>Building Custom dataset</h3><p>In order to use a custom dataset, we must first transform whatever format your data is in, to TFRecords files (one for each split — train, val, test). Luminoth reads datasets natively only in TensorFlow’s TFRecords format. This is a binary format that will let Luminoth consume the data very efficiently. Fortunately, Luminoth provides several CLI tools for transforming popular dataset format (such as Pascal VOC, ImageNet, COCO, CSV, etc.) into TFRecords.</p>
+<p>We should start by downloading the <a href="https://storage.googleapis.com/openimages/web/download.html" target="_blank" rel="noopener">annotation files</a> (<a href="https://storage.googleapis.com/openimages/2018_04/train/train-annotations-bbox.csv" target="_blank" rel="noopener">this</a> and <a href="https://storage.googleapis.com/openimages/2018_04/train/train-annotations-human-imagelabels-boxable.csv" target="_blank" rel="noopener">this</a>, for train) and the <a href="https://storage.googleapis.com/openimages/2018_04/class-descriptions-boxable.csv" target="_blank" rel="noopener">class description</a> file.</p>
+<p>After we get the class-descriptions-boxable.csv file, we can go over all the classes available in the OpenImages dataset and see which ones are related to traffic dataset. The following were hand-picked after examining the full file:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">/m/015qff,Traffic light</span><br><span class="line">/m/0199g,Bicycle</span><br><span class="line">/m/01bjv,Bus</span><br><span class="line">/m/01g317,Person</span><br><span class="line">/m/04_sv,Motorcycle</span><br><span class="line">/m/07r04,Truck</span><br><span class="line">/m/0h2r6,Van</span><br><span class="line">/m/0k4j,Car</span><br></pre></td></tr></table></figure>
+
+<p>Luminoth includes a dataset reader that can take OpenImages format, the dataset reader expects a particular directory layout so it knows where the files are located. In this case, files corresponding to the examples must be in a folder named like their split (train, test, …). So, you should have the following:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── class-descriptions-boxable.csv</span><br><span class="line">└── train</span><br><span class="line">    ├── train-annotations-bbox.csv</span><br><span class="line">    └── train-annotations-human-imagelabels-boxable.csv</span><br></pre></td></tr></table></figure>
+
+<p>Then run the following command:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">lumi dataset transform \</span><br><span class="line">      --type openimages \</span><br><span class="line">      --data-dir . \</span><br><span class="line">      --output-dir ./out \</span><br><span class="line">      --split train  \</span><br><span class="line">      --class-examples 100 \</span><br><span class="line">      --only-classes=/m/015qff,/m/0199g,/m/01bjv,/m/01g317,/m/04_sv,/m/07r04,/m/0h2r6,/m/0k4j</span><br></pre></td></tr></table></figure>
+
+<p>This will generate TFRecord file for the train split:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">INFO:tensorflow:Saved 360 records to "./out/train.tfrecords"</span><br><span class="line">INFO:tensorflow:Composition per class (train):</span><br><span class="line">INFO:tensorflow:        Person (/m/01g317): 380</span><br><span class="line">INFO:tensorflow:        Car (/m/0k4j): 255</span><br><span class="line">INFO:tensorflow:        Bicycle (/m/0199g): 126</span><br><span class="line">INFO:tensorflow:        Bus (/m/01bjv): 106</span><br><span class="line">INFO:tensorflow:        Traffic light (/m/015qff): 105</span><br><span class="line">INFO:tensorflow:        Truck (/m/07r04): 101</span><br><span class="line">INFO:tensorflow:        Van (/m/0h2r6): 100</span><br><span class="line">INFO:tensorflow:        Motorcycle (/m/04_sv): 100</span><br></pre></td></tr></table></figure>
+
+<h3 id="Training-the-Model"><a href="#Training-the-Model" class="headerlink" title="Training the Model"></a>Training the Model</h3><p>Training orchestration, including the model to be used, the dataset location and training schedule, is specified in a YAML config file. This file will be consumed by Luminoth and merged to the default configuration, to start the training session.</p>
+<p>You can see a minimal config file example in <a href="https://github.com/tryolabs/luminoth/blob/master/examples/sample_config.yml" target="_blank" rel="noopener">sample_config.yml</a>. This file illustrates the entries you’ll most probably need to modify, which are:</p>
+<p>1) train.run_name: the run name for the training session, used to identify it.<br>2) train.job_dir: directory in which both model checkpoints and summaries (for TensorBoard consumption) will be saved. The actual files will be stored under <job_dir>/<run_name>.<br>3) dataset.dir: directory from which to read the TFRecord files.<br>4) model.type: model to use for object detection (fasterrcnn, or ssd).<br>5) network.num_classes: number of classes to predict (depends on your dataset).</p>
+<p>For looking at all the possible configuration options, mostly related to the model itself, you can check the <a href="https://github.com/tryolabs/luminoth/blob/master/luminoth/models/fasterrcnn/base_config.yml" target="_blank" rel="noopener">base_config.yml</a> file.</p>
+<h5 id="Building-the-config-file-for-the-dataset"><a href="#Building-the-config-file-for-the-dataset" class="headerlink" title="Building the config file for the dataset"></a>Building the config file for the dataset</h5><p>Probably the most important setting for training is the learning rate. You will most likely want to tune this depending on your dataset, and you can do it via the train.learning_rate setting in the configuration. For example, this would be a good setting for training on the full COCO dataset:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">learning_rate:</span><br><span class="line">  decay_method: piecewise_constant</span><br><span class="line">  boundaries: [250000, 450000, 600000]</span><br><span class="line">  values: [0.0003, 0.0001, 0.00003, 0.00001]</span><br></pre></td></tr></table></figure>
+
+<p>To get to this, you will need to run some experiments and see what works best.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">train:</span><br><span class="line"><span class="meta">  #</span><span class="bash"> Run name <span class="keyword">for</span> the training session.</span></span><br><span class="line">  run_name: traffic</span><br><span class="line">  job_dir: &lt;change this directory&gt;</span><br><span class="line">  learning_rate:</span><br><span class="line">    decay_method: piecewise_constant</span><br><span class="line">    # Custom dataset for Luminoth Tutorial</span><br><span class="line">    boundaries: [90000, 160000, 250000]</span><br><span class="line">    values: [0.0003, 0.0001, 0.00003, 0.00001]</span><br><span class="line">dataset:</span><br><span class="line">  type: object_detection</span><br><span class="line">  dir: &lt;directory with your dataset&gt;</span><br><span class="line">model:</span><br><span class="line">  type: fasterrcnn</span><br><span class="line">  network:</span><br><span class="line">    num_classes: 8</span><br><span class="line">  anchors:</span><br><span class="line">    # Add one more scale to be better at detecting small objects</span><br><span class="line">    scales: [0.125, 0.25, 0.5, 1, 2]</span><br></pre></td></tr></table></figure>
+
+<h5 id="Running-the-training"><a href="#Running-the-training" class="headerlink" title="Running the training"></a>Running the training</h5><p>Assuming you already have both your dataset (TFRecords) and the config file ready, you can start your training session by running the command as follows:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lumi train -c config.yml</span><br></pre></td></tr></table></figure>
+
+<p>You can use the <code>-o</code> option to override any configuration option using dot notation (e.g. -o model.rpn.proposals.nms_threshold=0.8). If you are using a CUDA-based GPU, you can select the GPU to use by setting the <code>CUDA_VISIBLE_DEVICES</code> environment variable.</p>
+<h5 id="Storing-checkpoints-partial-weights"><a href="#Storing-checkpoints-partial-weights" class="headerlink" title="Storing checkpoints (partial weights)"></a>Storing checkpoints (partial weights)</h5><p>As the training progresses, Luminoth will periodically save a checkpoint with the current weights of the model. The files will be output in your <job_dir>/<run_name> folder. By default, they will be saved every 600 seconds of training, but you can configure this with the train.save_checkpoint_secs setting in your config file. The default is to only store the latest checkpoint (that is, when a checkpoint is generated, the previous checkpoint gets deleted) in order to conserve storage.</p>
+<h3 id="Evaluating-Models"><a href="#Evaluating-Models" class="headerlink" title="Evaluating Models"></a>Evaluating Models</h3><p>Generally, datasets (like OpenImages, which we just used) provide “splits”. The “train” split is the largest, and the one from which the model actually does the learning. Then, you have the “validation” (or “val”) split, which consists of different images, in which you can draw metrics of your model’s performance, in order to better tune your hyperparameters. Finally, a “test” split is provided in order to conduct the final evaluation of how your model would perform in the real world once it is trained.</p>
+<h5 id="Building-a-validation-dataset"><a href="#Building-a-validation-dataset" class="headerlink" title="Building a validation dataset"></a>Building a validation dataset</h5><p>Let’s start by building TFRecords from the validation split of <a href="https://storage.googleapis.com/openimages/web/download.html" target="_blank" rel="noopener">OpenImages</a>. For this, we can download the files with the annotations and use the same lumi dataset transform that we used to build our training data.</p>
+<p>In your dataset folder (where the class-descriptions-boxable.csv is located), run the following commands:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir validation</span><br><span class="line">wget -P validation https://storage.googleapis.com/openimages/2018_04/validation/validation-annotations-bbox.csv</span><br><span class="line">wget -P validation https://storage.googleapis.com/openimages/2018_04/validation/validation-annotations-human-imagelabels-boxable.csv</span><br></pre></td></tr></table></figure>
+
+<p>After the downloads finish, we can build the TFRecords with the following:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">lumi dataset transform \</span><br><span class="line">      --type openimages \</span><br><span class="line">      --data-dir . \</span><br><span class="line">      --output-dir ./out \</span><br><span class="line">      --split validation  \</span><br><span class="line">      --class-examples 100 \</span><br><span class="line">      --only-classes=/m/015qff,/m/0199g,/m/01bjv,/m/01g317,/m/04_sv,/m/07r04,/m/0h2r6,/m/0k4j</span><br></pre></td></tr></table></figure>
+
+<h5 id="The-lumi-eval-command"><a href="#The-lumi-eval-command" class="headerlink" title="The lumi eval command"></a>The lumi eval command</h5><p>In Luminoth, lumi eval will make a run through your chosen dataset split (ie. validation or test), and run the model through every image, and then compute metrics like loss and mAP. If you are lucky and happen to have more than one GPU in your machine, it is advisable to run both train and eval at the same time.</p>
+<p>Start by running the evaluation:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lumi eval --split validation -c custom.yml</span><br></pre></td></tr></table></figure>
+
+<h5 id="The-mAP-metrics"><a href="#The-mAP-metrics" class="headerlink" title="The mAP metrics"></a>The mAP metrics</h5><p>Mean Average Precision (mAP) is the metric commonly used to evaluate object detection task. It computes how well your classifier works across all classes, mAP will be a number between 0 and 1, and the higher the better. Moreover, it can be calculated across different IoU (Intersection over Union) thresholds. For example, Pascal VOC challenge metric uses 0.5 as threshold (notation <a href="mailto:mAP@0.5">mAP@0.5</a>), and COCO dataset uses mAP at different thresholds and averages them all out (notation mAP@[0.5:0.95]). Luminoth will print out several of these metrics, specifying the thresholds that were used under this notation.</p>
+<h3 id="Using-TensorBoard-for-Visualizing"><a href="#Using-TensorBoard-for-Visualizing" class="headerlink" title="Using TensorBoard for Visualizing"></a>Using TensorBoard for Visualizing</h3><p><a href="https://www.tensorflow.org/guide/summaries_and_tensorboard" target="_blank" rel="noopener">TensorBoard</a> is a very good tool for this, allowing you to see plenty of plots with the training related metrics. By default, Luminoth writes TensorBoard summaries during training, so you can leverage this tool without any effort:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tensorboard --logdir &lt;job_dir&gt;/&lt;run_name&gt;</span><br></pre></td></tr></table></figure>
+
+<p>If you are running from an external VM, make sure to use <code>--host 0.0.0.0</code> and <code>--port</code> if you need other one than the default 6006.</p>
+<h5 id="What-to-look-for"><a href="#What-to-look-for" class="headerlink" title="What to look for"></a>What to look for</h5><p>First, go to the “Scalars” tab. You are going to see several tags.</p>
+<p><img src="https://raw.githubusercontent.com/steven-cheng-com/images/master/blog/2020/202002/20200214/2.png" alt=""></p>
+<h5 id="validation-losses"><a href="#validation-losses" class="headerlink" title="validation_losses"></a>validation_losses</h5><p>Here, you will get the same loss values that Luminoth computes for the train, but for the chosen dataset split (validation, in this case). As in the case of train, you should mostly look at validation_losses/no_reg_loss.</p>
+<p>These will be the mAP metrics that will help you judge how well your model perform:</p>
+<p><img src="https://raw.githubusercontent.com/steven-cheng-com/images/master/blog/2020/202002/20200214/3.png" alt=""></p>
+<p>The mAP values refer to the entire dataset split, so it will not jump around as much as other metrics.</p>
+<h5 id="Manually-inspecting-with-lumi-server-web"><a href="#Manually-inspecting-with-lumi-server-web" class="headerlink" title="Manually inspecting with lumi server web"></a>Manually inspecting with lumi server web</h5><p>You can also use lumi server web command that we have seen before and try your partially trained model in a bunch of novel images. For this, you can launch it with a config file like:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lumi server web -c config.yml</span><br></pre></td></tr></table></figure>
+
+<p>Here you can also use –host and –port options.</p>
+<p><img src="https://raw.githubusercontent.com/steven-cheng-com/images/master/blog/2020/202002/20200214/4.jpg" alt=""></p>
+<h3 id="Creating-and-Sharing-Your-Own-Checkpoints"><a href="#Creating-and-Sharing-Your-Own-Checkpoints" class="headerlink" title="Creating and Sharing Your Own Checkpoints"></a>Creating and Sharing Your Own Checkpoints</h3><h5 id="Creating-a-checkpoint"><a href="#Creating-a-checkpoint" class="headerlink" title="Creating a checkpoint"></a>Creating a checkpoint</h5><p>We can create checkpoints and set some metadata like name, alias, etc. This time, we are going to create the checkpoint for our traffic model:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">lumi checkpoint create \</span><br><span class="line">    config.yml \</span><br><span class="line">    -e name="OpenImages Traffic" \</span><br><span class="line">    -e alias=traffic</span><br></pre></td></tr></table></figure>
+
+<p>You can verify that you do indeed have the checkpoint when running lumi checkpoint list, which should get you an output similar to this:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">================================================================================</span><br><span class="line">|           id |                  name |       alias | source |         status |</span><br><span class="line">================================================================================</span><br><span class="line">| e1c2565b51e9 |   Faster R-CNN w/COCO |    accurate | remote |     DOWNLOADED |</span><br><span class="line">| aad6912e94d9 |      SSD w/Pascal VOC |        fast | remote |     DOWNLOADED |</span><br><span class="line">| cb0e5d92a854 |    OpenImages Traffic |     traffic |  local |          LOCAL |</span><br><span class="line">================================================================================</span><br></pre></td></tr></table></figure>
+
+<p>Moreover, if you inspect the <code>~/.luminoth/checkpoints/</code> folder, you will see that now you have a folder that corresponds to your newly created checkpoint. Inside this folder are the actual weights of the model, plus some metadata and the configuration file that was used during training.</p>
+<h5 id="Sharing-checkpoints"><a href="#Sharing-checkpoints" class="headerlink" title="Sharing checkpoints"></a>Sharing checkpoints</h5><p>Simply run <code>lumi checkpoint export cb0e5d92a854</code>. You will get a file named cb0e5d92a854.tar in your current directory, which you can easily share to somebody else. By running <code>lumi checkpoint import cb0e5d92a854.tar</code>, the checkpoint will be listed locally.</p>
+<h3 id="Using-Luminoth-with-Python"><a href="#Using-Luminoth-with-Python" class="headerlink" title="Using Luminoth with Python"></a>Using Luminoth with Python</h3><p>Calling Luminoth from your Python app is very straightforward.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> luminoth <span class="keyword">import</span> Detector, read_image, vis_objects</span><br><span class="line"></span><br><span class="line">image = read_image(<span class="string">'traffic-image.png'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># If no checkpoint specified, will assume `accurate` by default. In this case,</span></span><br><span class="line"><span class="comment"># we want to use our traffic checkpoint. The Detector can also take a config</span></span><br><span class="line"><span class="comment"># object.</span></span><br><span class="line">detector = Detector(checkpoint=<span class="string">'traffic'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Returns a dictionary with the detections.</span></span><br><span class="line">objects = detector.predict(image)</span><br><span class="line"></span><br><span class="line">print(objects)</span><br><span class="line"></span><br><span class="line">vis_objects(image, objects).save(<span class="string">'traffic-out.png'</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="The-End"><a href="#The-End" class="headerlink" title="The End"></a>The End</h3><p>Hope you enjoyed the simple tutorial! :)</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://stephen-cheng.github.io/2020/02/14/object-detection-with-luminoth-step-by-step/" data-id="clpllv7wl001qt4xv19fs5nj9" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Computer-Vision/" rel="tag">Computer-Vision</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Object-Detection/" rel="tag">Object-Detection</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/03/22/automatic-clustering-with-silhouette-analysis-on-agglomerative-hierarchical-clustering/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Automatic Clustering with Silhouette Analysis on Agglomerative Hierarchical Clustering
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/01/18/Usage-of-PyTessBaseAPI-in-Tesserocr/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Usage of PyTessBaseAPI in Tesserocr</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Computer-Vision/">Computer-Vision</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Deep-Learning/">Deep-Learning</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Machine-Learning/">Machine-Learning</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Natural-Language-Processing/">Natural-Language-Processing</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programming/">Programming</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/System/">System</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/" rel="tag">Algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Azure/" rel="tag">Azure</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BERT/" rel="tag">BERT</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Bagging/" rel="tag">Bagging</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Bias/" rel="tag">Bias</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Classification/" rel="tag">Classification</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Classifier/" rel="tag">Classifier</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Code/" rel="tag">Code</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Computer-Vision/" rel="tag">Computer-Vision</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Science/" rel="tag">Data-Science</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Decision-Tree/" rel="tag">Decision-Tree</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Deep-Learning/" rel="tag">Deep-Learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Distance/" rel="tag">Distance</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ensemble/" rel="tag">Ensemble</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Grammatical-Error-Correction/" rel="tag">Grammatical-Error-Correction</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hierarchical-Clustering/" rel="tag">Hierarchical-Clustering</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jupyter/" rel="tag">Jupyter</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Keras/" rel="tag">Keras</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Levenshtein/" rel="tag">Levenshtein</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linear/" rel="tag">Linear</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Machine-Learning/" rel="tag">Machine-Learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Merge/" rel="tag">Merge</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MongoDB/" rel="tag">MongoDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Natural-Language-Processing/" rel="tag">Natural-Language-Processing</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OCR/" rel="tag">OCR</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Object-Detection/" rel="tag">Object-Detection</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Overfitting/" rel="tag">Overfitting</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pre-trained-Model/" rel="tag">Pre-trained-Model</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Programming/" rel="tag">Programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PyCharm/" rel="tag">PyCharm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PyTorch/" rel="tag">PyTorch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/R/" rel="tag">R</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Regression/" rel="tag">Regression</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Scikit-Learn/" rel="tag">Scikit-Learn</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Shortcuts/" rel="tag">Shortcuts</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Silhouette/" rel="tag">Silhouette</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sklearn/" rel="tag">Sklearn</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sort/" rel="tag">Sort</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spelling-Correction/" rel="tag">Spelling-Correction</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Table-Detection/" rel="tag">Table-Detection</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TenforFlow/" rel="tag">TenforFlow</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Transformers/" rel="tag">Transformers</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tree/" rel="tag">Tree</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VM/" rel="tag">VM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Variance/" rel="tag">Variance</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Algorithm/" style="font-size: 13.33px;">Algorithm</a> <a href="/tags/Azure/" style="font-size: 10px;">Azure</a> <a href="/tags/BERT/" style="font-size: 16.67px;">BERT</a> <a href="/tags/Bagging/" style="font-size: 10px;">Bagging</a> <a href="/tags/Bias/" style="font-size: 10px;">Bias</a> <a href="/tags/Classification/" style="font-size: 10px;">Classification</a> <a href="/tags/Classifier/" style="font-size: 10px;">Classifier</a> <a href="/tags/Code/" style="font-size: 10px;">Code</a> <a href="/tags/Computer-Vision/" style="font-size: 13.33px;">Computer-Vision</a> <a href="/tags/Data-Science/" style="font-size: 13.33px;">Data-Science</a> <a href="/tags/Decision-Tree/" style="font-size: 10px;">Decision-Tree</a> <a href="/tags/Deep-Learning/" style="font-size: 10px;">Deep-Learning</a> <a href="/tags/Distance/" style="font-size: 10px;">Distance</a> <a href="/tags/Ensemble/" style="font-size: 10px;">Ensemble</a> <a href="/tags/Grammatical-Error-Correction/" style="font-size: 10px;">Grammatical-Error-Correction</a> <a href="/tags/Hierarchical-Clustering/" style="font-size: 10px;">Hierarchical-Clustering</a> <a href="/tags/Jupyter/" style="font-size: 10px;">Jupyter</a> <a href="/tags/Keras/" style="font-size: 10px;">Keras</a> <a href="/tags/Levenshtein/" style="font-size: 10px;">Levenshtein</a> <a href="/tags/Linear/" style="font-size: 10px;">Linear</a> <a href="/tags/Machine-Learning/" style="font-size: 16.67px;">Machine-Learning</a> <a href="/tags/Merge/" style="font-size: 10px;">Merge</a> <a href="/tags/MongoDB/" style="font-size: 10px;">MongoDB</a> <a href="/tags/Natural-Language-Processing/" style="font-size: 13.33px;">Natural-Language-Processing</a> <a href="/tags/OCR/" style="font-size: 10px;">OCR</a> <a href="/tags/Object-Detection/" style="font-size: 13.33px;">Object-Detection</a> <a href="/tags/Overfitting/" style="font-size: 10px;">Overfitting</a> <a href="/tags/Pre-trained-Model/" style="font-size: 10px;">Pre-trained-Model</a> <a href="/tags/Programming/" style="font-size: 10px;">Programming</a> <a href="/tags/PyCharm/" style="font-size: 10px;">PyCharm</a> <a href="/tags/PyTorch/" style="font-size: 10px;">PyTorch</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/R/" style="font-size: 10px;">R</a> <a href="/tags/Regression/" style="font-size: 10px;">Regression</a> <a href="/tags/Scikit-Learn/" style="font-size: 10px;">Scikit-Learn</a> <a href="/tags/Shortcuts/" style="font-size: 10px;">Shortcuts</a> <a href="/tags/Silhouette/" style="font-size: 10px;">Silhouette</a> <a href="/tags/Sklearn/" style="font-size: 10px;">Sklearn</a> <a href="/tags/Sort/" style="font-size: 10px;">Sort</a> <a href="/tags/Spelling-Correction/" style="font-size: 20px;">Spelling-Correction</a> <a href="/tags/Table-Detection/" style="font-size: 10px;">Table-Detection</a> <a href="/tags/TenforFlow/" style="font-size: 10px;">TenforFlow</a> <a href="/tags/Transformers/" style="font-size: 10px;">Transformers</a> <a href="/tags/Tree/" style="font-size: 20px;">Tree</a> <a href="/tags/VM/" style="font-size: 10px;">VM</a> <a href="/tags/Variance/" style="font-size: 10px;">Variance</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/11/22/table-detection-with-detectron2-n-maskrcnn/">Table Detection with Detectron2 &amp; Mask R-CNN</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/19/Grammatical-Error-Correction-with-The-Pretrained-BERT-Transformer-Encoder/">Grammatical-Error-Correction Sequence Tagging System with an Pretrained BERT-like Transformer Encoder</a>
+          </li>
+        
+          <li>
+            <a href="/2020/09/06/spelling-correction-with-soft-masked-bert/">Spelling Correction with Soft-Masked BERT</a>
+          </li>
+        
+          <li>
+            <a href="/2020/08/16/spelling-correction-with-python-spellchecker/">Spelling Correction with Python Spellchecker</a>
+          </li>
+        
+          <li>
+            <a href="/2020/07/18/spelling-correction-with-pretrained-bert/">Spelling Correction with The Pretrained BERT Model</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2023 Stephen Cheng<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+    <a href="/contact" class="mobile-nav-link">Contact</a>
+  
+    <a href="https://www.instagram.com" target="_blank" rel="noopener" class="mobile-nav-link">Instagram</a>
+  
+    <a href="https://www.linkedin.com" target="_blank" rel="noopener" class="mobile-nav-link">LinkedIn</a>
+  
+    <a href="https://www.facebook.com" target="_blank" rel="noopener" class="mobile-nav-link">Facebook</a>
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
