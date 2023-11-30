@@ -1,245 +1,493 @@
-<!doctype html>
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
 <head>
-  <meta charset="utf-8">
-  <meta name="description" content="Personal sharings about Tech &amp; Work.">
-  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=yes">
-  <title>Stephen Cheng</title>
+    <meta charset="utf-8">
+<title>Category: Natural-Language-Processing - Stephen Cheng</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <link rel="stylesheet" id="chosen-theme" href="https://rawgit.com/fiatjaf/classless/master/themes/plain/theme.css">
-  <script>
-let link = document.getElementById('chosen-theme')
-let widget = document.createElement('div')
-widget.style.position = 'absolute'
-widget.style.right = '5px'
-widget.style.top = '2px'
-widget.style.background = 'beige'
-widget.style.color = '#444'
-widget.style.zIndex = 99
-widget.style.padding = '4px 8px'
-widget.innerHTML = `
-<label>
-  <p>No theme was set on <code>theme_config</code>.<br>
-     Choose a theme from the list to experiment with it:</p>
-  <select></select>
-</label>
-`
-fetch('https://api.github.com/repos/fiatjaf/classless/contents/themes')
-  .then(r => r.json())
-  .then(files => {
-    document.body.appendChild(widget)
-    let select = document.querySelector('select')
-    files
-      .filter(f => f.type === 'dir')
-      .forEach(f => {
-        let option = document.createElement('option')
-        option.value = f.name
-        option.innerHTML = f.name
-        select.appendChild(option)
-      })
-    let options = Array.from(select.querySelectorAll('option'))
-    let chosen = options[parseInt(Math.random() * options.length)]
-    chosen.selected = true
-    link.href = link.href.replace(/themes\/[^\/]+/, `themes/${chosen.value}`)
-    select.addEventListener('change', e => {
-      let chosen = e.target.value
-      link.href = link.href.replace(/themes\/[^\/]+/, `themes/${chosen}`)
-    })
-  })
-  .catch(console.log)
-  </script>
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
+
+
+
+
+<meta name="description" content="Personal sharings about Tech & Work.">
+
+
+
+<meta name="keywords" content="AI, Tech, CS">
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+
 
 <meta name="generator" content="Hexo 4.2.1"></head>
-
 <body>
-  <header role="banner">
-      <a href="/">
+    
+<nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                
+                <img src="/images/logo.png" alt="" height="28">
+                
+            </a>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
         
-          <img src="https://picsum.photos/640/480">
+        <div class="navbar-menu navbar-start">
+            
+            <a class="navbar-item "
+               href="/about">About</a>
+            
+            <a class="navbar-item "
+               href="/contact">Contact</a>
+            
+            <a class="navbar-item "
+               href="https://www.instagram.com">Instagram</a>
+            
+            <a class="navbar-item "
+               href="https://www.linkedin.com">LinkedIn</a>
+            
+            <a class="navbar-item "
+               href="https://www.facebook.com">Facebook</a>
+            
+        </div>
         
-      </a>  
-    <h1>
-      <a href="/">Stephen Cheng</a>
-    </h1>
-    <aside>
-      <p>Personal sharings about Tech &amp; Work.</p>
-    </aside>
-  </header>
-  
-    <nav>
-      <ul>
-        
-        <li>
-          <a href="/">Home</a>
-        </li>
-        
-        <li>
-          <a href="/archives/">Archives</a>
-        </li>
-        
-      </ul>
-    </nav>
-  
-  <main>
-    
+        <div class="navbar-menu navbar-end">
+            
+            
+            
+        </div>
+    </div>
+</nav>
 
-<section>
-  <ul>
-    
-      <li>
-        <article>
-          <header>
-  
-  <h1><a href="https://stephen-cheng.github.io/2020/10/19/Grammatical-Error-Correction-with-The-Pretrained-BERT-Transformer-Encoder/">Grammatical-Error-Correction Sequence Tagging System with an Pretrained BERT-like Transformer Encoder</a></h1>
-  <aside>
-    
-    <time datetime="202020-10-19">
-      October 19th 2020
-    </time>
-    
-    <ul>
-    
-      <li><a href="/tags/Grammatical-Error-Correction/">Grammatical-Error-Correction</a></li>
-    
-      <li><a href="/tags/BERT/">BERT</a></li>
-    
-      <li><a href="/tags/Transformers/">Transformers</a></li>
-    
-    </ul>
-  </aside>
-</header>
-
-          
-        </article>
-      </li>
-    
-      <li>
-        <article>
-          <header>
-  
-  <h1><a href="https://stephen-cheng.github.io/2020/09/06/spelling-correction-with-soft-masked-bert/">Spelling Correction with Soft-Masked BERT</a></h1>
-  <aside>
-    
-    <time datetime="202020-09-06">
-      September 6th 2020
-    </time>
-    
-    <ul>
-    
-      <li><a href="/tags/BERT/">BERT</a></li>
-    
-      <li><a href="/tags/Spelling-Correction/">Spelling-Correction</a></li>
-    
-    </ul>
-  </aside>
-</header>
-
-          
-        </article>
-      </li>
-    
-      <li>
-        <article>
-          <header>
-  
-  <h1><a href="https://stephen-cheng.github.io/2020/08/16/spelling-correction-with-python-spellchecker/">Spelling Correction with Python Spellchecker</a></h1>
-  <aside>
-    
-    <time datetime="202020-08-16">
-      August 16th 2020
-    </time>
-    
-    <ul>
-    
-      <li><a href="/tags/Spelling-Correction/">Spelling-Correction</a></li>
-    
-      <li><a href="/tags/Natural-Language-Processing/">Natural-Language-Processing</a></li>
-    
-    </ul>
-  </aside>
-</header>
-
-          
-        </article>
-      </li>
-    
-      <li>
-        <article>
-          <header>
-  
-  <h1><a href="https://stephen-cheng.github.io/2020/07/18/spelling-correction-with-pretrained-bert/">Spelling Correction with The Pretrained BERT Model</a></h1>
-  <aside>
-    
-    <time datetime="202020-07-18">
-      July 18th 2020
-    </time>
-    
-    <ul>
-    
-      <li><a href="/tags/BERT/">BERT</a></li>
-    
-      <li><a href="/tags/Spelling-Correction/">Spelling-Correction</a></li>
-    
-    </ul>
-  </aside>
-</header>
-
-          
-        </article>
-      </li>
-    
-      <li>
-        <article>
-          <header>
-  
-  <h1><a href="https://stephen-cheng.github.io/2020/06/19/Spelling-Corrector-from-Scratch/">Spelling Corrector from Scratch</a></h1>
-  <aside>
-    
-    <time datetime="202020-06-19">
-      June 19th 2020
-    </time>
-    
-    <ul>
-    
-      <li><a href="/tags/Spelling-Correction/">Spelling-Correction</a></li>
-    
-      <li><a href="/tags/Natural-Language-Processing/">Natural-Language-Processing</a></li>
-    
-    </ul>
-  </aside>
-</header>
-
-          
-        </article>
-      </li>
-    
-  </ul>
+    <section class="section section-heading">
+    <div class="container">
+        <div class="content">
+            <h5><i class="far fa-folder"></i>Natural-Language-Processing</h5>
+        </div>
+    </div>
 </section>
-<footer>
-  <nav>
-    <ul>
-      <li>
-        <a >
-          prev
-        </a>
-      </li>
-      <li>
-        <a >
-          next
-        </a>
-      </li>
-    </ul>
-  </nav>
+<section class="section">
+    <div class="container">
+    
+        <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            <a href="/2020/10/19/Grammatical-Error-Correction-with-The-Pretrained-BERT-Transformer-Encoder/" itemprop="url">Grammatical-Error-Correction Sequence Tagging System with an Pretrained BERT-like Transformer Encoder</a>
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            
+                <time datetime="2020-10-19T06:19:41.000Z" itemprop="datePublished">Oct 19 2020</time>
+            
+        </span>
+        
+        <span class="column is-narrow article-category">
+            <i class="far fa-folder"></i>
+            <a class="article-category-link" href="/categories/Natural-Language-Processing/">Natural-Language-Processing</a>
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            a minute read (About 186 words)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <p>&nbsp;</p>
+<center>Stephen Cheng</center>
+
+
+<h3 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h3><p><img src="https://raw.githubusercontent.com/steven-cheng-com/images/master/blog/2020/202010/20201019/0.png" alt=""></p>
+<p>Here a simple and efficient GEC (Grammatical Error Correction) sequence tagger using a Transformer encoder is introduced. It is pre-trained on synthetic data and then fine-tuned in two stages: first on errorful corpora, and second on a combination of errorful and error-free parallel corpora. In addition, a custom token-level transformation to map input tokens to target corrections is designed. The original paper can be found <a href="https://arxiv.org/pdf/2005.12592.pdf" target="_blank" rel="noopener">here</a>.</p>
+<p>Thus the GEC sequence tagging system here consists of three training stages: pretraining on synthetic data, fine-tuning on an errorful parallel corpus, and finally, fine-tuning on a combination of errorful and error-free parallel corpora.</p>
+<p>The GEC sequence tagging system incorporates a pre-trained Transformer encoder, those encoders from XLNet and RoBERTa<br>outperform three other cutting-edge Transformer encoders (ALBERT, BERT, and GPT-2).</p>
+<h3 id="Use-Case"><a href="#Use-Case" class="headerlink" title="Use Case"></a>Use Case</h3><p>The original code of the GEC sequence tagging model is <a href="https://github.com/steven-cheng-com/grammar_correction_with_bert" target="_blank" rel="noopener">here</a>, more details of running code are also included.</p>
+
+    
+    </div>
+    
+    
+</article>
+
+
+
+
+    
+        <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            <a href="/2020/09/06/spelling-correction-with-soft-masked-bert/" itemprop="url">Spelling Correction with Soft-Masked BERT</a>
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            
+                <time datetime="2020-09-06T16:47:42.000Z" itemprop="datePublished">Sep 6 2020</time>
+            
+        </span>
+        
+        <span class="column is-narrow article-category">
+            <i class="far fa-folder"></i>
+            <a class="article-category-link" href="/categories/Natural-Language-Processing/">Natural-Language-Processing</a>
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            3 minutes read (About 429 words)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <p>&nbsp;</p>
+<center>Stephen Cheng</center>
+
+
+<h3 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h3><p><img src="https://raw.githubusercontent.com/steven-cheng-com/images/master/blog/2020/202009/20200906/0.jpg" alt=""></p>
+<p>Sotf-Masked BERT is a novel neural architecture to address the aforementioned issue, which consists of a network for error detection and a network for error correction based on BERT, with the former being connected to the latter with what we call soft-masking technique. The method uses ‘Soft-Masked BERT’ is general, and it may be employed in other language detection-correction problems not just focusing on CSC (Chinese Spelling error Correction) domain as it’s proposed in the original <a href="https://arxiv.org/pdf/2005.07421.pdf" target="_blank" rel="noopener">paper</a>.</p>
+<h3 id="The-Architecture-of-Soft-Masked-BERT"><a href="#The-Architecture-of-Soft-Masked-BERT" class="headerlink" title="The Architecture of Soft-Masked BERT"></a>The Architecture of Soft-Masked BERT</h3><p>Soft-Masked BERT is composed of a detection network based on Bi-GRU and a correction network based on BERT. The detection network predicts the probabilities of errors and the correction network predicts the probabilities of error corrections, while the former passes its prediction results to the latter using soft masking.</p>
+<p><img src="https://raw.githubusercontent.com/steven-cheng-com/images/master/blog/2020/202009/20200906/1.png" alt=""></p>
+<p> The Model first creates an embedding for each character in the input sentence, referred to as input embedding. Next, it takes the sequence of embeddings as input and outputs the probabilities of errors for the sequence of characters (embeddings) using the detection network. After that it calculates the weighted sum of the input embeddings and [MASK] embeddings weighted by the error probabilities. The calculated embeddings mask the likely errors in the sequence in a soft way. Then it takes the sequence of soft-masked embeddings as input and outputs the probabilities of error corrections using the correction network, which is a BERT model whose final layer consists of a softmax function for all characters. There is also a residual connection between the input embeddings and the embeddings at the final layer.</p>
+<h3 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h3><p>Different with the original Sort-Masked BERT paper running models on Chinese dataset, here we modify a bit of code and use it in the English dataset.</p>
+<ul>
+<li>Dataset</li>
+</ul>
+<p>The data that we will use for this project will be 20 popular books from <a href="http://www.gutenberg.org/ebooks/search/?sort_order=downloads" target="_blank" rel="noopener">Project Gutenberg</a>.</p>
+<ul>
+<li>Prerequired packages</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install -r requirements.txt</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Parameters</li>
+</ul>
+<p>The length of each sentence is between 4 and 200. So,</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">max_len = 32</span><br><span class="line">min_len = 2</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>code</li>
+</ul>
+<p>You can find the code on <a href="https://github.com/steven-cheng-com/Spelling_Correction_with_Soft-Masked_BERT" target="_blank" rel="noopener">Github</a></p>
+<h3 id="How-to-run"><a href="#How-to-run" class="headerlink" title="How to run?"></a>How to run?</h3><ul>
+<li>Prepare Data:</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python data_prepare.py</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Process Data:</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python data_process.py</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Train Models:</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python train.py</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Test Models:</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python test.py</span><br></pre></td></tr></table></figure>
+
+    
+    </div>
+    
+    
+</article>
+
+
+
+
+    
+        <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            <a href="/2020/08/16/spelling-correction-with-python-spellchecker/" itemprop="url">Spelling Correction with Python Spellchecker</a>
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            
+                <time datetime="2020-08-16T18:52:42.000Z" itemprop="datePublished">Aug 16 2020</time>
+            
+        </span>
+        
+        <span class="column is-narrow article-category">
+            <i class="far fa-folder"></i>
+            <a class="article-category-link" href="/categories/Natural-Language-Processing/">Natural-Language-Processing</a>
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            3 minutes read (About 376 words)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <p>&nbsp;</p>
+<center>Stephen Cheng</center>
+
+
+<h3 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h3><p><img src="https://raw.githubusercontent.com/steven-cheng-com/images/master/blog/2020/202008/20200816/0.jpg" alt=""></p>
+<p>Spelling checking or spelling correction is a basic requirement in any text processing or analysis. The python package <code>pyspellchecker</code> provides us this feature to find the words that may have been mis-spelled and also suggest the possible corrections. <code>pyspellchecker</code> supports multiple languages including English, Spanish, German, French, and Portuguese. And it supports Python 3 and Python 2.7. <code>pyspellchecker</code> allows for the setting of the Levenshtein Distance to check. For longer words, it is highly recommended to use a distance of 1 and not the default 2.</p>
+<h3 id="How-to-install"><a href="#How-to-install" class="headerlink" title="How to install?"></a>How to install?</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install pyspellchecker</span><br></pre></td></tr></table></figure>
+
+<h3 id="How-to-use"><a href="#How-to-use" class="headerlink" title="How to use?"></a>How to use?</h3><ul>
+<li>With the default Word Frequency list</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> spellchecker <span class="keyword">import</span> SpellChecker</span><br><span class="line"></span><br><span class="line">spell = SpellChecker()</span><br><span class="line"></span><br><span class="line"><span class="comment"># find those words that may be misspelled</span></span><br><span class="line">misspelled = spell.unknown([<span class="string">'let'</span>, <span class="string">'us'</span>, <span class="string">'wlak'</span>,<span class="string">'on'</span>,<span class="string">'the'</span>,<span class="string">'groun'</span>])</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> word <span class="keyword">in</span> misspelled:</span><br><span class="line">    <span class="comment"># Get the one `most likely` answer</span></span><br><span class="line">    print(spell.correction(word))</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Get a list of `likely` options</span></span><br><span class="line">    print(spell.candidates(word))</span><br></pre></td></tr></table></figure>
+
+<p>Output:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">group</span><br><span class="line">&#123;'group', 'ground', 'groan', 'grout', 'grown', 'groin'&#125;</span><br><span class="line">walk</span><br><span class="line">&#123;'flak', 'weak', 'walk'&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>With the customized Word Frequency list</li>
+</ul>
+<p>You can add additional text to generate a more appropriate list for your use case.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> spellchecker <span class="keyword">import</span> SpellChecker</span><br><span class="line"></span><br><span class="line">spell = SpellChecker()  <span class="comment"># loads default word frequency list</span></span><br><span class="line">spell.word_frequency.load_text_file(<span class="string">'./word_frequency.txt'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># if you just want to make sure some words are not flagged as misspelled</span></span><br><span class="line">spell.word_frequency.load_words([<span class="string">'microsoft'</span>, <span class="string">'apple'</span>, <span class="string">'google'</span>])</span><br><span class="line">spell.known([<span class="string">'microsoft'</span>, <span class="string">'google'</span>])  <span class="comment"># will return both now!</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Set the distance parameter</li>
+</ul>
+<p>If the words that you wish to check are long, it is recommended to reduce the distance to 1. This can be accomplished either when initializing the spell check class or after the fact.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> spellchecker <span class="keyword">import</span> SpellChecker</span><br><span class="line"></span><br><span class="line">spell = SpellChecker(distance=<span class="number">1</span>)  <span class="comment"># set at initialization</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># do some work on longer words</span></span><br><span class="line"></span><br><span class="line">spell.distance = <span class="number">2</span>  <span class="comment"># set the distance parameter back to the default</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Additional-Methods"><a href="#Additional-Methods" class="headerlink" title="Additional Methods"></a>Additional Methods</h3><p><code>candidates(word)</code>: Returns a set of possible candidates for the misspelled word</p>
+<p><code>word_probability(word)</code>: The frequency of the given word out of all words in the frequency list</p>
+<p><code>correction(word)</code>: Returns the most probable result for the misspelled word</p>
+<p><code>known([words])</code>: Returns those words that are in the word frequency list</p>
+<p><code>unknown([words])</code>: Returns those words that are not in the frequency list</p>
+
+    
+    </div>
+    
+    
+</article>
+
+
+
+
+    
+        <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            <a href="/2020/07/18/spelling-correction-with-pretrained-bert/" itemprop="url">Spelling Correction with The Pretrained BERT Model</a>
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            
+                <time datetime="2020-07-18T14:47:52.000Z" itemprop="datePublished">Jul 18 2020</time>
+            
+        </span>
+        
+        <span class="column is-narrow article-category">
+            <i class="far fa-folder"></i>
+            <a class="article-category-link" href="/categories/Natural-Language-Processing/">Natural-Language-Processing</a>
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            5 minutes read (About 809 words)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <p>&nbsp;</p>
+<center>Stephen Cheng</center>
+
+
+<h3 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h3><p><img src="https://raw.githubusercontent.com/steven-cheng-com/images/master/blog/2020/202007/20200718/0.png" alt=""></p>
+<p>BERT (Bidirectional Encoder Representations from Transformers) is published by researchers at Google AI Language. It has caused a stir in the Machine Learning community by presenting state-of-the-art results in a wide variety of NLP tasks, including Question Answering, Natural Language Inference, and others. BERT’s key technical innovation is applying the bidirectional training of Transformer, a popular attention model, to language modelling. This is in contrast to previous efforts which looked at a text sequence either from left to right or combined left-to-right and right-to-left training. The results show that a language model which is bidirectionally trained can have a deeper sense of language context and flow than single-direction language models.</p>
+<p>BERT makes use of Transformer, an attention mechanism that learns contextual relations between words (or sub-words) in a text. Transformer includes two separate mechanisms — an encoder that reads the text input and a decoder that produces a prediction for the task. As opposed to directional models, which read the text input sequentially (left-to-right or right-to-left), the Transformer encoder reads the entire sequence of words at once. Therefore it is considered bidirectional, though it would be more accurate to say that it’s non-directional. This characteristic allows the model to learn the context of a word based on all of its surroundings (left and right of the word).</p>
+<h3 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h3><ul>
+<li>Import necessary libraris</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">import</span> nltk</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">from</span> pytesseract <span class="keyword">import</span> image_to_string</span><br><span class="line"><span class="keyword">from</span> enchant.checker <span class="keyword">import</span> SpellChecker</span><br><span class="line"><span class="keyword">from</span> difflib <span class="keyword">import</span> SequenceMatcher</span><br><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">from</span> pytorch_pretrained_bert <span class="keyword">import</span> BertTokenizer, BertForMaskedLM</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Process images by using OCR</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">imagename = <span class="string">'1.png'</span></span><br><span class="line">pil_img = Image.open(imagename)</span><br><span class="line">text = image_to_string(pil_img)</span><br><span class="line">text_original = str(text)</span><br><span class="line"></span><br><span class="line">print(text)</span><br><span class="line">plt.figure(figsize = (<span class="number">12</span>,<span class="number">4</span>))</span><br><span class="line">plt.imshow(np.asarray(pil_img))</span><br></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/steven-cheng-com/images/master/blog/2020/202007/20200718/1.png" alt=""></p>
+<p>Output:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">national economy gained momentum in recent weeks as con@gmer spending</span><br><span class="line">Strengthened, manufacturing activity cont@™ed to rise, and producers</span><br><span class="line">scheduled more investment in plant and equipment.</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Process text and mask incorrect words</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># text cleanup</span></span><br><span class="line">rep = &#123;<span class="string">'\n'</span>: <span class="string">' '</span>,</span><br><span class="line">       <span class="string">'\\'</span>: <span class="string">' '</span>,</span><br><span class="line">       <span class="string">'\"'</span>: <span class="string">'"'</span>,</span><br><span class="line">       <span class="string">'-'</span>: <span class="string">' '</span>,</span><br><span class="line">       <span class="string">'"'</span>: <span class="string">' " '</span>,</span><br><span class="line">       <span class="string">','</span>:<span class="string">' , '</span>,</span><br><span class="line">       <span class="string">'.'</span>:<span class="string">' . '</span>,</span><br><span class="line">       <span class="string">'!'</span>:<span class="string">' ! '</span>,</span><br><span class="line">       <span class="string">'?'</span>:<span class="string">' ? '</span>,</span><br><span class="line">       <span class="string">"n't"</span>: <span class="string">" not"</span>,</span><br><span class="line">       <span class="string">"'ll"</span>: <span class="string">" will"</span>,</span><br><span class="line">       <span class="string">'*'</span>:<span class="string">' * '</span>,</span><br><span class="line">       <span class="string">'('</span>: <span class="string">' ( '</span>,</span><br><span class="line">       <span class="string">')'</span>: <span class="string">' ) '</span>,</span><br><span class="line">       <span class="string">"s'"</span>: <span class="string">"s '"</span>&#125;</span><br><span class="line"></span><br><span class="line">rep = dict((re.escape(k), v) <span class="keyword">for</span> k, v <span class="keyword">in</span> rep.items())</span><br><span class="line">pattern = re.compile(<span class="string">"|"</span>.join(rep.keys()))</span><br><span class="line">text = pattern.sub(<span class="keyword">lambda</span> m: rep[re.escape(m.group(<span class="number">0</span>))], text)</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_personslist</span><span class="params">(text)</span>:</span></span><br><span class="line">    personslist = []</span><br><span class="line">    <span class="keyword">for</span> sent <span class="keyword">in</span> nltk.sent_tokenize(text):</span><br><span class="line">        <span class="keyword">for</span> chunk <span class="keyword">in</span> nltk.ne_chunk(nltk.pos_tag(nltk.word_tokenize(sent))):</span><br><span class="line">            <span class="keyword">if</span> isinstance(chunk, nltk.tree.Tree) <span class="keyword">and</span> chunk.label() == <span class="string">'PERSON'</span>:</span><br><span class="line">                personslist.insert(<span class="number">0</span>, (chunk.leaves()[<span class="number">0</span>][<span class="number">0</span>]))</span><br><span class="line">    <span class="keyword">return</span> list(set(personslist))</span><br><span class="line">personslist = get_personslist(text)</span><br><span class="line">ignorewords = personslist + [<span class="string">"!"</span>, <span class="string">","</span>, <span class="string">"."</span>, <span class="string">"\""</span>, <span class="string">"?"</span>, <span class="string">'('</span>, <span class="string">')'</span>, <span class="string">'*'</span>, <span class="string">"''"</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># use SpellChecker to find incorrect words</span></span><br><span class="line">d = SpellChecker(<span class="string">"en_US"</span>)</span><br><span class="line">words = text.split()</span><br><span class="line">incorrectwords = [w <span class="keyword">for</span> w <span class="keyword">in</span> words <span class="keyword">if</span> <span class="keyword">not</span> d.check(w) <span class="keyword">and</span> w <span class="keyword">not</span> <span class="keyword">in</span> ignorewords]</span><br><span class="line"></span><br><span class="line"><span class="comment"># use SpellChecker to get suggested replacements</span></span><br><span class="line">suggestedwords = [d.suggest(w) <span class="keyword">for</span> w <span class="keyword">in</span> incorrectwords]</span><br><span class="line"></span><br><span class="line"><span class="comment"># replace incorrect words with [MASK]</span></span><br><span class="line"><span class="keyword">for</span> w <span class="keyword">in</span> incorrectwords:</span><br><span class="line">    text = text.replace(w, <span class="string">'[MASK]'</span>)</span><br><span class="line"></span><br><span class="line">print(text)</span><br></pre></td></tr></table></figure>
+
+<p>Output:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">national economy gained momentum in recent weeks as [MASK] spending Strengthened ,  manufacturing activity [MASK] to rise ,  and producers  scheduled more investment in plant and equipment .</span><br></pre></td></tr></table></figure>
+
+<h3 id="Use-the-pretrained-BERT-model-to-predict-words"><a href="#Use-the-pretrained-BERT-model-to-predict-words" class="headerlink" title="Use the pretrained BERT model to predict words"></a>Use the pretrained BERT model to predict words</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Tokenize text</span></span><br><span class="line">tokenizer = BertTokenizer.from_pretrained(<span class="string">'bert-base-uncased'</span>)</span><br><span class="line">tokenized_text = tokenizer.tokenize(text)</span><br><span class="line">indexed_tokens = tokenizer.convert_tokens_to_ids(tokenized_text)</span><br><span class="line">MASKIDS = [i <span class="keyword">for</span> i, e <span class="keyword">in</span> enumerate(tokenized_text) <span class="keyword">if</span> e == <span class="string">'[MASK]'</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># Create the segments tensors</span></span><br><span class="line">segs = [i <span class="keyword">for</span> i, e <span class="keyword">in</span> enumerate(tokenized_text) <span class="keyword">if</span> e == <span class="string">"."</span>]</span><br><span class="line">segments_ids = []</span><br><span class="line">prev = <span class="number">-1</span></span><br><span class="line"><span class="keyword">for</span> k, s <span class="keyword">in</span> enumerate(segs):</span><br><span class="line">    segments_ids = segments_ids + [k] * (s-prev)</span><br><span class="line">    prev = s</span><br><span class="line">segments_ids = segments_ids + [len(segs)] * (len(tokenized_text) - len(segments_ids))</span><br><span class="line">segments_tensors = torch.tensor([segments_ids])</span><br><span class="line"></span><br><span class="line"><span class="comment"># prepare Torch inputs</span></span><br><span class="line">tokens_tensors = torch.tensor([indexed_tokens])</span><br><span class="line"></span><br><span class="line"><span class="comment"># Load pre-trained model</span></span><br><span class="line">model = BertForMaskedLM.from_pretrained(<span class="string">'bert-base-uncased'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Predict all tokens</span></span><br><span class="line"><span class="keyword">with</span> torch.no_grad():</span><br><span class="line">    predictions = model(tokens_tensors, segments_tensors)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Match with proposals from SpellChecker</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">predict_word</span><span class="params">(text_original, predictions, MASKIDS)</span>:</span></span><br><span class="line">    pred_words = []</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(MASKIDS)):</span><br><span class="line">        preds = torch.topk(predictions[<span class="number">0</span>, MASKIDS[i]], k=<span class="number">50</span>)</span><br><span class="line">        indices = preds.indices.tolist()</span><br><span class="line">        pred_list = tokenizer.convert_ids_to_tokens(indices)</span><br><span class="line">        sugg_list = suggestedwords[i]</span><br><span class="line">        sim_max = <span class="number">0</span></span><br><span class="line">        predicted_token = <span class="string">''</span></span><br><span class="line">        <span class="keyword">for</span> word1 <span class="keyword">in</span> pred_list:</span><br><span class="line">            <span class="keyword">for</span> word2 <span class="keyword">in</span> sugg_list:</span><br><span class="line">                s = SequenceMatcher(<span class="literal">None</span>, word1, word2).ratio()</span><br><span class="line">                <span class="keyword">if</span> s <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span> <span class="keyword">and</span> s &gt; sim_max:</span><br><span class="line">                    sim_max = s</span><br><span class="line">                    predicted_token = word1</span><br><span class="line">        text_original = text_original.replace(<span class="string">'[MASK]'</span>, predicted_token, <span class="number">1</span>)</span><br><span class="line">    <span class="keyword">return</span> text_original</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">text_refined = predict_word(text, predictions, MASKIDS)</span><br><span class="line">print(text_refined)</span><br></pre></td></tr></table></figure>
+
+<p>Output:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">national economy gained momentum in recent weeks as consumer spending Strengthened ,  manufacturing activity continued to rise ,  and producers  scheduled more investment in plant and equipment .</span><br></pre></td></tr></table></figure>
+
+    
+    </div>
+    
+    
+</article>
+
+
+
+
+    
+        <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            <a href="/2020/06/19/Spelling-Corrector-from-Scratch/" itemprop="url">Spelling Corrector from Scratch</a>
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            
+                <time datetime="2020-06-19T17:25:39.000Z" itemprop="datePublished">Jun 19 2020</time>
+            
+        </span>
+        
+        <span class="column is-narrow article-category">
+            <i class="far fa-folder"></i>
+            <a class="article-category-link" href="/categories/Natural-Language-Processing/">Natural-Language-Processing</a>
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            3 minutes read (About 444 words)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <p>&nbsp;</p>
+<center>Stephen Cheng</center>
+
+
+<h3 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h3><p><img src="https://raw.githubusercontent.com/steven-cheng-com/images/master/blog/2020/202006/20200619/0.jpg" alt=""></p>
+<p>To a entry-level NLP learner, an industrial-strength spell corrector are quite complex, but writing a toy spelling corrector from scratch that achieves 80% or 90% accuracy at a processing speed of tens of words per second in a few dozens of lines of code is possible.</p>
+<p>Here is the code:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> Counter</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">words</span><span class="params">(text)</span>:</span> <span class="keyword">return</span> re.findall(<span class="string">r'\w+'</span>, text.lower())</span><br><span class="line"></span><br><span class="line">WORDS = Counter(words(open(<span class="string">'book.txt'</span>).read()))</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">P</span><span class="params">(word, N=sum<span class="params">(WORDS.values<span class="params">()</span>)</span>)</span>:</span></span><br><span class="line">    <span class="string">"Probability of `word`."</span></span><br><span class="line">    <span class="keyword">return</span> WORDS[word] / N</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">correction</span><span class="params">(word)</span>:</span></span><br><span class="line">    <span class="string">"Most probable spelling correction for word."</span></span><br><span class="line">    <span class="keyword">return</span> max(candidates(word), key=P)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">candidates</span><span class="params">(word)</span>:</span></span><br><span class="line">    <span class="string">"Generate possible spelling corrections for word."</span></span><br><span class="line">    <span class="keyword">return</span> (known([word]) <span class="keyword">or</span> known(edits1(word)) <span class="keyword">or</span> known(edits2(word)) <span class="keyword">or</span> [word])</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">known</span><span class="params">(words)</span>:</span></span><br><span class="line">    <span class="string">"The subset of `words` that appear in the dictionary of WORDS."</span></span><br><span class="line">    <span class="keyword">return</span> set(w <span class="keyword">for</span> w <span class="keyword">in</span> words <span class="keyword">if</span> w <span class="keyword">in</span> WORDS)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">edits1</span><span class="params">(word)</span>:</span></span><br><span class="line">    <span class="string">"All edits that are one edit away from `word`."</span></span><br><span class="line">    letters    = <span class="string">'abcdefghijklmnopqrstuvwxyz'</span></span><br><span class="line">    splits     = [(word[:i], word[i:])    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(word) + <span class="number">1</span>)]</span><br><span class="line">    deletes    = [L + R[<span class="number">1</span>:]               <span class="keyword">for</span> L, R <span class="keyword">in</span> splits <span class="keyword">if</span> R]</span><br><span class="line">    transposes = [L + R[<span class="number">1</span>] + R[<span class="number">0</span>] + R[<span class="number">2</span>:] <span class="keyword">for</span> L, R <span class="keyword">in</span> splits <span class="keyword">if</span> len(R)&gt;<span class="number">1</span>]</span><br><span class="line">    replaces   = [L + c + R[<span class="number">1</span>:]           <span class="keyword">for</span> L, R <span class="keyword">in</span> splits <span class="keyword">if</span> R <span class="keyword">for</span> c <span class="keyword">in</span> letters]</span><br><span class="line">    inserts    = [L + c + R               <span class="keyword">for</span> L, R <span class="keyword">in</span> splits <span class="keyword">for</span> c <span class="keyword">in</span> letters]</span><br><span class="line">    <span class="keyword">return</span> set(deletes + transposes + replaces + inserts)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">edits2</span><span class="params">(word)</span>:</span></span><br><span class="line">    <span class="string">"All edits that are two edits away from `word`."</span></span><br><span class="line">    <span class="keyword">return</span> (e2 <span class="keyword">for</span> e1 <span class="keyword">in</span> edits1(word) <span class="keyword">for</span> e2 <span class="keyword">in</span> edits1(e1))</span><br></pre></td></tr></table></figure>
+
+<p>The <code>book.txt</code> dataset could be any English e-book.</p>
+<p>The function correction(word) returns a likely spelling correction:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; correction(<span class="string">'speling'</span>)</span></span><br><span class="line">'spelling'</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; correction(<span class="string">'korrectud'</span>)</span></span><br><span class="line">'corrected'</span><br></pre></td></tr></table></figure>
+
+<h3 id="How-does-it-work"><a href="#How-does-it-work" class="headerlink" title="How does it work?"></a>How does it work?</h3><p>The above function uses a <a href="https://en.wikipedia.org/wiki/Levenshtein_distance" target="_blank" rel="noopener">Levenshtein Distance</a> algorithm to find permutations within an edit distance of 2 from the original word. It then compares all permutations (insertions, deletions, replacements, and transpositions) to known words in a word frequency list. Those words that are found more often in the frequency list are more likely the correct results.</p>
+<p>The <code>correction(A)</code> function tries to choose the most likely spelling correction for A. There is no way to know for sure (for example, should “lates” be corrected to “late” or “latest” or “lattes” or …?), which suggests we use probabilities. We are trying to find the correction B, out of all possible candidate corrections, that maximizes the probability that B is the intended correction, given the original word A.</p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://norvig.com/spell-correct.html" target="_blank" rel="noopener">Peter Norvig’s blog</a></p>
+
+    
+    </div>
+    
+    
+</article>
+
+
+
+
+    
+    
+    </div>
+</section>
+    <footer class="footer">
+    <div class="container">
+        <div class="columns content">
+            <div class="column is-narrow has-text-centered">
+                &copy; 2023 Stephen Cheng&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
+            </div>
+            <div class="column is-hidden-mobile"></div>
+
+            
+            
+        </div>
+    </div>
 </footer>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
 
-  </main>
-  <aside>
-    <p>This is an `aside`, a useful place to put information of any kind: metadata about the site author (with or without pictures), brief information about the purposes of the site, a static collection of external links or anything else.</p>
-<p>For some Classless themes pictures and data about the author may suit better in the `cover` and `description` site attributes (see `config.toml`), but most of the times that kind of information will fit here better.</p>
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/" target="_blank" rel="noopener">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
 
-  </aside>
-  <footer role="contentinfo">
-    <p>A default site footer. If you don't know what to place here maybe you should just write your name plus the current year?</p>
-<p>If you want to have a sitemap, a contact form or other complex stuff, most Classless themes will also handle it nicely. Or you can take a look at the <code>aside.html</code> partial.</p>
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("en-AU");
+</script>
 
-  </footer>
+
+
+
+<script src="/js/script.js"></script>
+
+
+    
 </body>
+</html>

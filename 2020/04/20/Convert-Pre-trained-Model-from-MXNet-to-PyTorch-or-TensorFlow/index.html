@@ -1,112 +1,122 @@
-<!doctype html>
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
 <head>
-  <meta charset="utf-8">
-  <meta name="description" content="&lt;p&gt;&amp;nbsp;&lt;/p&gt;
-&lt;center&gt;Stephen Cheng&lt;/center&gt;
+    <meta charset="utf-8">
+<title>Convert Pre-trained Model from MXNet to PyTorch or TensorFlow - Stephen Cheng</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
 
 
-&lt;h3 id=&#34;Intro&#34;&gt;&lt;a href=&#34;#Intro&#34; class=&#34;headerlink&#34; title=&#34;Intro&#34;&gt;&lt;/a&gt;Intro&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/steven-cheng-com/images/mas">
-  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=yes">
-  <title>Convert Pre-trained Model from MXNet to PyTorch or TensorFlow | Stephen Cheng</title>
 
-  <link rel="stylesheet" id="chosen-theme" href="https://rawgit.com/fiatjaf/classless/master/themes/plain/theme.css">
-  <script>
-let link = document.getElementById('chosen-theme')
-let widget = document.createElement('div')
-widget.style.position = 'absolute'
-widget.style.right = '5px'
-widget.style.top = '2px'
-widget.style.background = 'beige'
-widget.style.color = '#444'
-widget.style.zIndex = 99
-widget.style.padding = '4px 8px'
-widget.innerHTML = `
-<label>
-  <p>No theme was set on <code>theme_config</code>.<br>
-     Choose a theme from the list to experiment with it:</p>
-  <select></select>
-</label>
-`
-fetch('https://api.github.com/repos/fiatjaf/classless/contents/themes')
-  .then(r => r.json())
-  .then(files => {
-    document.body.appendChild(widget)
-    let select = document.querySelector('select')
-    files
-      .filter(f => f.type === 'dir')
-      .forEach(f => {
-        let option = document.createElement('option')
-        option.value = f.name
-        option.innerHTML = f.name
-        select.appendChild(option)
-      })
-    let options = Array.from(select.querySelectorAll('option'))
-    let chosen = options[parseInt(Math.random() * options.length)]
-    chosen.selected = true
-    link.href = link.href.replace(/themes\/[^\/]+/, `themes/${chosen.value}`)
-    select.addEventListener('change', e => {
-      let chosen = e.target.value
-      link.href = link.href.replace(/themes\/[^\/]+/, `themes/${chosen}`)
-    })
-  })
-  .catch(console.log)
-  </script>
+
+<meta name="description" content="Personal sharings about Tech & Work.">
+
+
+
+<meta name="keywords" content="AI, Tech, CS">
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+
 
 <meta name="generator" content="Hexo 4.2.1"></head>
-
 <body>
-  <header role="banner">
-      <a href="/">
+    
+<nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                
+                <img src="/images/logo.png" alt="" height="28">
+                
+            </a>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
         
-          <img src="https://picsum.photos/640/480">
+        <div class="navbar-menu navbar-start">
+            
+            <a class="navbar-item "
+               href="/about">About</a>
+            
+            <a class="navbar-item "
+               href="/contact">Contact</a>
+            
+            <a class="navbar-item "
+               href="https://www.instagram.com">Instagram</a>
+            
+            <a class="navbar-item "
+               href="https://www.linkedin.com">LinkedIn</a>
+            
+            <a class="navbar-item "
+               href="https://www.facebook.com">Facebook</a>
+            
+        </div>
         
-      </a>  
-    <h1>
-      <a href="/">Stephen Cheng</a>
-    </h1>
-    <aside>
-      <p>Personal sharings about Tech &amp; Work.</p>
-    </aside>
-  </header>
-  
-    <nav>
-      <ul>
-        
-        <li>
-          <a href="/">Home</a>
-        </li>
-        
-        <li>
-          <a href="/archives/">Archives</a>
-        </li>
-        
-      </ul>
-    </nav>
-  
-  <main>
-    <article>
-  <header>
-  
-  <h1><a href="https://stephen-cheng.github.io/2020/04/20/Convert-Pre-trained-Model-from-MXNet-to-PyTorch-or-TensorFlow/">Convert Pre-trained Model from MXNet to PyTorch or TensorFlow</a></h1>
-  <aside>
-    
-    <time datetime="202020-04-20">
-      April 20th 2020
-    </time>
-    
-    <ul>
-    
-      <li><a href="/tags/PyTorch/">PyTorch</a></li>
-    
-      <li><a href="/tags/TenforFlow/">TenforFlow</a></li>
-    
-      <li><a href="/tags/Pre-trained-Model/">Pre-trained-Model</a></li>
-    
-    </ul>
-  </aside>
-</header>
+        <div class="navbar-menu navbar-end">
+            
+            
+            
+        </div>
+    </div>
+</nav>
 
-  <div><p>&nbsp;</p>
+    <section class="section">
+    <div class="container">
+    <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            Convert Pre-trained Model from MXNet to PyTorch or TensorFlow
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            
+                <time datetime="2020-04-20T17:20:22.000Z" itemprop="datePublished">Apr 20 2020</time>
+            
+        </span>
+        
+        <span class="column is-narrow article-category">
+            <i class="far fa-folder"></i>
+            <a class="article-category-link" href="/categories/Deep-Learning/">Deep-Learning</a>
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            8 minutes read (About 1266 words)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <p>&nbsp;</p>
 <center>Stephen Cheng</center>
 
 
@@ -204,18 +214,90 @@ fetch('https://api.github.com/repos/fiatjaf/classless/contents/themes')
 <li>Testing the Converted Model:</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> tensorflow.contrib.keras.api.keras.preprocessing <span class="keyword">import</span> image</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># ************** Parameters:</span></span><br><span class="line">num_predictions = <span class="number">5</span>  <span class="comment"># Top-k Results</span></span><br><span class="line">model_address = <span class="string">'resnet152Full.pth'</span>  <span class="comment"># for loading models</span></span><br><span class="line">lexicon_address = <span class="string">'synset.txt'</span></span><br><span class="line">test_image_address = <span class="string">'seagull.jpg'</span></span><br><span class="line">device = torch.device(<span class="string">"cuda:0"</span> <span class="keyword">if</span> torch.cuda.is_available() <span class="keyword">else</span> <span class="string">"cpu"</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># Load Converted Model:</span></span><br><span class="line">model = torch.load(model_address).to(device)</span><br><span class="line">model.eval()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># Read Input Image and Apply Pre-process:</span></span><br><span class="line">img = image.load_img(test_image_address, target_size=(<span class="number">224</span>, <span class="number">224</span>))</span><br><span class="line">x = image.img_to_array(img)</span><br><span class="line">x = x[..., ::<span class="number">-1</span>]  <span class="comment"># transform image from RGB to BGR</span></span><br><span class="line">x = np.transpose(x, (<span class="number">2</span>, <span class="number">0</span>, <span class="number">1</span>))</span><br><span class="line">x = np.expand_dims(x, <span class="number">0</span>).copy()</span><br><span class="line">x = torch.from_numpy(x)</span><br><span class="line">x = x.to(device)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># Load Full-ImageNet Dictionary (i.e., lexicon):</span></span><br><span class="line"><span class="keyword">with</span> open(lexicon_address, <span class="string">'r'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    labels = [l.rstrip() <span class="keyword">for</span> l <span class="keyword">in</span> f]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># Make prediction (forward pass):</span></span><br><span class="line"><span class="keyword">with</span> torch.no_grad():</span><br><span class="line">    output = model(x)</span><br><span class="line">max, argmax = output.data.squeeze().max(<span class="number">0</span>)</span><br><span class="line">class_id = argmax.item()</span><br><span class="line">class_name = labels[class_id]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># Print the top-5 Results:</span></span><br><span class="line">h_x = output.data.squeeze()</span><br><span class="line">probs, idx = h_x.sort(<span class="number">0</span>, <span class="literal">True</span>)</span><br><span class="line">print(<span class="string">'Top-5 Results: '</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, num_predictions):</span><br><span class="line">    print(<span class="string">'&#123;:.2f&#125;% -&gt; &#123;&#125;'</span>.format(probs[i] * <span class="number">100.0</span>, labels[idx[i]]))</span><br><span class="line">str_final_label = <span class="string">'The Image is a '</span> + class_name[<span class="number">10</span>:] + <span class="string">'.'</span></span><br><span class="line">print(str_final_label)</span><br></pre></td></tr></table></figure>
-</div>
+
+    
+    </div>
+    
+    <div class="columns is-variable is-1 is-multiline is-mobile">
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/PyTorch/">#PyTorch</a></span>
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/TenforFlow/">#TenforFlow</a></span>
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/Pre-trained-Model/">#Pre-trained-Model</a></span>
+    
+    </div>
+    
+    
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop  article-nav-prev">
+            
+            <a href="/2020/06/19/Spelling-Corrector-from-Scratch/">Spelling Corrector from Scratch</a>
+            
+        </span>
+        <span class="column is-12-mobile is-half-desktop  article-nav-next">
+            
+            <a href="/2020/03/22/automatic-clustering-with-silhouette-analysis-on-agglomerative-hierarchical-clustering/">Automatic Clustering with Silhouette Analysis on Agglomerative Hierarchical Clustering</a>
+            
+        </span>
+    </div>
+    
 </article>
 
-  </main>
-  <aside>
-    <p>This is an `aside`, a useful place to put information of any kind: metadata about the site author (with or without pictures), brief information about the purposes of the site, a static collection of external links or anything else.</p>
-<p>For some Classless themes pictures and data about the author may suit better in the `cover` and `description` site attributes (see `config.toml`), but most of the times that kind of information will fit here better.</p>
 
-  </aside>
-  <footer role="contentinfo">
-    <p>A default site footer. If you don't know what to place here maybe you should just write your name plus the current year?</p>
-<p>If you want to have a sitemap, a contact form or other complex stuff, most Classless themes will also handle it nicely. Or you can take a look at the <code>aside.html</code> partial.</p>
 
-  </footer>
+
+    </div>
+</section>
+    <footer class="footer">
+    <div class="container">
+        <div class="columns content">
+            <div class="column is-narrow has-text-centered">
+                &copy; 2023 Stephen Cheng&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
+            </div>
+            <div class="column is-hidden-mobile"></div>
+
+            
+            
+        </div>
+    </div>
+</footer>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/" target="_blank" rel="noopener">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("en-AU");
+</script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+    
 </body>
+</html>

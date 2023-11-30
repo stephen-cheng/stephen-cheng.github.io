@@ -1,143 +1,234 @@
-<!doctype html>
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
 <head>
-  <meta charset="utf-8">
-  <meta name="description" content="Personal sharings about Tech &amp; Work.">
-  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=yes">
-  <title>Stephen Cheng</title>
+    <meta charset="utf-8">
+<title>Tag: OCR - Stephen Cheng</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <link rel="stylesheet" id="chosen-theme" href="https://rawgit.com/fiatjaf/classless/master/themes/plain/theme.css">
-  <script>
-let link = document.getElementById('chosen-theme')
-let widget = document.createElement('div')
-widget.style.position = 'absolute'
-widget.style.right = '5px'
-widget.style.top = '2px'
-widget.style.background = 'beige'
-widget.style.color = '#444'
-widget.style.zIndex = 99
-widget.style.padding = '4px 8px'
-widget.innerHTML = `
-<label>
-  <p>No theme was set on <code>theme_config</code>.<br>
-     Choose a theme from the list to experiment with it:</p>
-  <select></select>
-</label>
-`
-fetch('https://api.github.com/repos/fiatjaf/classless/contents/themes')
-  .then(r => r.json())
-  .then(files => {
-    document.body.appendChild(widget)
-    let select = document.querySelector('select')
-    files
-      .filter(f => f.type === 'dir')
-      .forEach(f => {
-        let option = document.createElement('option')
-        option.value = f.name
-        option.innerHTML = f.name
-        select.appendChild(option)
-      })
-    let options = Array.from(select.querySelectorAll('option'))
-    let chosen = options[parseInt(Math.random() * options.length)]
-    chosen.selected = true
-    link.href = link.href.replace(/themes\/[^\/]+/, `themes/${chosen.value}`)
-    select.addEventListener('change', e => {
-      let chosen = e.target.value
-      link.href = link.href.replace(/themes\/[^\/]+/, `themes/${chosen}`)
-    })
-  })
-  .catch(console.log)
-  </script>
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
+
+
+
+
+<meta name="description" content="Personal sharings about Tech & Work.">
+
+
+
+<meta name="keywords" content="AI, Tech, CS">
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+
 
 <meta name="generator" content="Hexo 4.2.1"></head>
-
 <body>
-  <header role="banner">
-      <a href="/">
-        
-          <img src="https://picsum.photos/640/480">
-        
-      </a>  
-    <h1>
-      <a href="/">Stephen Cheng</a>
-    </h1>
-    <aside>
-      <p>Personal sharings about Tech &amp; Work.</p>
-    </aside>
-  </header>
-  
-    <nav>
-      <ul>
-        
-        <li>
-          <a href="/">Home</a>
-        </li>
-        
-        <li>
-          <a href="/archives/">Archives</a>
-        </li>
-        
-      </ul>
-    </nav>
-  
-  <main>
     
+<nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                
+                <img src="/images/logo.png" alt="" height="28">
+                
+            </a>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="navbar-menu navbar-start">
+            
+            <a class="navbar-item "
+               href="/about">About</a>
+            
+            <a class="navbar-item "
+               href="/contact">Contact</a>
+            
+            <a class="navbar-item "
+               href="https://www.instagram.com">Instagram</a>
+            
+            <a class="navbar-item "
+               href="https://www.linkedin.com">LinkedIn</a>
+            
+            <a class="navbar-item "
+               href="https://www.facebook.com">Facebook</a>
+            
+        </div>
+        
+        <div class="navbar-menu navbar-end">
+            
+            
+            
+        </div>
+    </div>
+</nav>
 
-<section>
-  <ul>
-    
-      <li>
-        <article>
-          <header>
-  
-  <h1><a href="https://stephen-cheng.github.io/2020/01/18/Usage-of-PyTessBaseAPI-in-Tesserocr/">Usage of PyTessBaseAPI in Tesserocr</a></h1>
-  <aside>
-    
-    <time datetime="202020-01-18">
-      January 18th 2020
-    </time>
-    
-    <ul>
-    
-      <li><a href="/tags/OCR/">OCR</a></li>
-    
-      <li><a href="/tags/Computer-Vision/">Computer-Vision</a></li>
-    
-    </ul>
-  </aside>
-</header>
-
-          
-        </article>
-      </li>
-    
-  </ul>
+    <section class="section section-heading">
+    <div class="container">
+        <div class="content">
+            <h5>#OCR</h5>
+        </div>
+    </div>
 </section>
-<footer>
-  <nav>
-    <ul>
-      <li>
-        <a >
-          prev
-        </a>
-      </li>
-      <li>
-        <a >
-          next
-        </a>
-      </li>
-    </ul>
-  </nav>
+<section class="section">
+    <div class="container">
+    
+        <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            <a href="/2020/01/18/Usage-of-PyTessBaseAPI-in-Tesserocr/" itemprop="url">Usage of PyTessBaseAPI in Tesserocr</a>
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            
+                <time datetime="2020-01-18T20:16:21.000Z" itemprop="datePublished">Jan 18 2020</time>
+            
+        </span>
+        
+        <span class="column is-narrow article-category">
+            <i class="far fa-folder"></i>
+            <a class="article-category-link" href="/categories/Computer-Vision/">Computer-Vision</a>
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            4 minutes read (About 612 words)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <p>&nbsp;</p>
+<center>Stephen Cheng</center>
+
+
+<h3 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h3><p><img src="https://raw.githubusercontent.com/steven-cheng-com/images/master/blog/2020/202001/20200118/0.jpg" alt=""></p>
+<p>Tesseroct is a simple, Pillow-friendly, wrapper around the tesseract-ocr API for Optical Character Recognition (OCR), it integrates directly with Tesseract’s C++ API using Cython which allows for a simple Pythonic and easy-to-read source code. It enables real concurrent execution when used with Python’s threading module by releasing the GIL while processing an image in tesseract.</p>
+<h3 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h3><ul>
+<li>Linux and BSD/MacOS</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> pip install tesserocr</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Windows</li>
+</ul>
+<p>The proposed downloads consist of stand-alone packages containing all the Windows libraries needed for execution. The recommended method of installation is via Conda as described below.</p>
+<p>1) Conda</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> conda install -c conda-forge tesserocr</span></span><br></pre></td></tr></table></figure>
+
+<p>2) pip<br>Download the wheel file corresponding to your Windows platform and Python installation from <a href="https://github.com/simonflueckiger/tesserocr-windows_build/releases" target="_blank" rel="noopener">tesserocr-windows_build</a> and install them via:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> pip install &lt;package_name&gt;.whl</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h3><ul>
+<li>Initialize and re-use the tesseract API instance to score multiple images:</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> tesserocr <span class="keyword">import</span> PyTessBaseAPI</span><br><span class="line"></span><br><span class="line">images = [<span class="string">'sample.jpg'</span>, <span class="string">'sample2.jpg'</span>, <span class="string">'sample3.jpg'</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> PyTessBaseAPI() <span class="keyword">as</span> api:</span><br><span class="line">    <span class="keyword">for</span> img <span class="keyword">in</span> images:</span><br><span class="line">        api.SetImageFile(img)</span><br><span class="line">        print(api.GetUTF8Text())</span><br><span class="line">        print(api.AllWordConfidences())</span><br><span class="line"><span class="comment"># api is automatically finalized when used in a with-statement (context manager).</span></span><br><span class="line"><span class="comment"># otherwise api.End() should be explicitly called when it's no longer needed.</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Advanced API Examples</li>
+</ul>
+<p>1) GetComponentImages example:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"><span class="keyword">from</span> tesserocr <span class="keyword">import</span> PyTessBaseAPI, RIL</span><br><span class="line"></span><br><span class="line">image = Image.open(<span class="string">'/usr/src/tesseract/testing/phototest.tif'</span>)</span><br><span class="line"><span class="keyword">with</span> PyTessBaseAPI() <span class="keyword">as</span> api:</span><br><span class="line">    api.SetImage(image)</span><br><span class="line">    boxes = api.GetComponentImages(RIL.TEXTLINE, <span class="literal">True</span>)</span><br><span class="line">    print(<span class="string">'Found &#123;&#125; textline image components.'</span>.format(len(boxes)))</span><br><span class="line">    <span class="keyword">for</span> i, (im, box, _, _) <span class="keyword">in</span> enumerate(boxes):</span><br><span class="line">        <span class="comment"># im is a PIL image object</span></span><br><span class="line">        <span class="comment"># box is a dict with x, y, w and h keys</span></span><br><span class="line">        api.SetRectangle(box[<span class="string">'x'</span>], box[<span class="string">'y'</span>], box[<span class="string">'w'</span>], box[<span class="string">'h'</span>])</span><br><span class="line">        ocrResult = api.GetUTF8Text()</span><br><span class="line">        conf = api.MeanTextConf()</span><br><span class="line">        print(<span class="string">u"Box[&#123;0&#125;]: x=&#123;x&#125;, y=&#123;y&#125;, w=&#123;w&#125;, h=&#123;h&#125;, "</span></span><br><span class="line">              <span class="string">"confidence: &#123;1&#125;, text: &#123;2&#125;"</span>.format(i, conf, ocrResult, **box))</span><br></pre></td></tr></table></figure>
+
+<p>2) Orientation and script detection (OSD):</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"><span class="keyword">from</span> tesserocr <span class="keyword">import</span> PyTessBaseAPI, PSM</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> PyTessBaseAPI(psm=PSM.AUTO_OSD) <span class="keyword">as</span> api:</span><br><span class="line">    image = Image.open(<span class="string">"/usr/src/tesseract/testing/eurotext.tif"</span>)</span><br><span class="line">    api.SetImage(image)</span><br><span class="line">    api.Recognize()</span><br><span class="line"></span><br><span class="line">    it = api.AnalyseLayout()</span><br><span class="line">    orientation, direction, order, deskew_angle = it.Orientation()</span><br><span class="line">    print(<span class="string">"Orientation: &#123;:d&#125;"</span>.format(orientation))</span><br><span class="line">    print(<span class="string">"WritingDirection: &#123;:d&#125;"</span>.format(direction))</span><br><span class="line">    print(<span class="string">"TextlineOrder: &#123;:d&#125;"</span>.format(order))</span><br><span class="line">    print(<span class="string">"Deskew angle: &#123;:.4f&#125;"</span>.format(deskew_angle))</span><br></pre></td></tr></table></figure>
+
+<p><strong>or simply with OSD_ONLY page segmentation mode:</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> tesserocr <span class="keyword">import</span> PyTessBaseAPI, PSM</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> PyTessBaseAPI(psm=PSM.OSD_ONLY) <span class="keyword">as</span> api:</span><br><span class="line">    api.SetImageFile(<span class="string">"/usr/src/tesseract/testing/eurotext.tif"</span>)</span><br><span class="line"></span><br><span class="line">    os = api.DetectOS()</span><br><span class="line">    print(<span class="string">"Orientation: &#123;orientation&#125;\nOrientation confidence: &#123;oconfidence&#125;\n"</span></span><br><span class="line">          <span class="string">"Script: &#123;script&#125;\nScript confidence: &#123;sconfidence&#125;"</span>.format(**os))</span><br></pre></td></tr></table></figure>
+<p><strong>more human-readable info with tesseract 4+ (with LSTM engine):</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> tesserocr <span class="keyword">import</span> PyTessBaseAPI, PSM, OEM</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> PyTessBaseAPI(psm=PSM.OSD_ONLY, oem=OEM.LSTM_ONLY) <span class="keyword">as</span> api:</span><br><span class="line">    api.SetImageFile(<span class="string">"/usr/src/tesseract/testing/eurotext.tif"</span>)</span><br><span class="line"></span><br><span class="line">    os = api.DetectOrientationScript()</span><br><span class="line">    print(<span class="string">"Orientation: &#123;orient_deg&#125;\nOrientation confidence: &#123;orient_conf&#125;\n"</span></span><br><span class="line">          <span class="string">"Script: &#123;script_name&#125;\nScript confidence: &#123;script_conf&#125;"</span>.format(**os))</span><br></pre></td></tr></table></figure>
+
+<p>3） Iterator over the classifier choices for a single symbol:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> __future__ <span class="keyword">import</span> print_function</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> tesserocr <span class="keyword">import</span> PyTessBaseAPI, RIL, iterate_level</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> PyTessBaseAPI() <span class="keyword">as</span> api:</span><br><span class="line">    api.SetImageFile(<span class="string">'/usr/src/tesseract/testing/phototest.tif'</span>)</span><br><span class="line">    api.SetVariable(<span class="string">"save_blob_choices"</span>, <span class="string">"T"</span>)</span><br><span class="line">    api.SetRectangle(<span class="number">37</span>, <span class="number">228</span>, <span class="number">548</span>, <span class="number">31</span>)</span><br><span class="line">    api.Recognize()</span><br><span class="line"></span><br><span class="line">    ri = api.GetIterator()</span><br><span class="line">    level = RIL.SYMBOL</span><br><span class="line">    <span class="keyword">for</span> r <span class="keyword">in</span> iterate_level(ri, level):</span><br><span class="line">        symbol = r.GetUTF8Text(level)  <span class="comment"># r == ri</span></span><br><span class="line">        conf = r.Confidence(level)</span><br><span class="line">        <span class="keyword">if</span> symbol:</span><br><span class="line">            print(<span class="string">u'symbol &#123;&#125;, conf: &#123;&#125;'</span>.format(symbol, conf), end=<span class="string">''</span>)</span><br><span class="line">        indent = <span class="literal">False</span></span><br><span class="line">        ci = r.GetChoiceIterator()</span><br><span class="line">        <span class="keyword">for</span> c <span class="keyword">in</span> ci:</span><br><span class="line">            <span class="keyword">if</span> indent:</span><br><span class="line">                print(<span class="string">'\t\t '</span>, end=<span class="string">''</span>)</span><br><span class="line">            print(<span class="string">'\t- '</span>, end=<span class="string">''</span>)</span><br><span class="line">            choice = c.GetUTF8Text()  <span class="comment"># c == ci</span></span><br><span class="line">            print(<span class="string">u'&#123;&#125; conf: &#123;&#125;'</span>.format(choice, c.Confidence()))</span><br><span class="line">            indent = <span class="literal">True</span></span><br><span class="line">        print(<span class="string">'----------'</span>)</span><br></pre></td></tr></table></figure>
+
+    
+    </div>
+    
+    
+</article>
+
+
+
+
+    
+    
+    </div>
+</section>
+    <footer class="footer">
+    <div class="container">
+        <div class="columns content">
+            <div class="column is-narrow has-text-centered">
+                &copy; 2023 Stephen Cheng&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
+            </div>
+            <div class="column is-hidden-mobile"></div>
+
+            
+            
+        </div>
+    </div>
 </footer>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
 
-  </main>
-  <aside>
-    <p>This is an `aside`, a useful place to put information of any kind: metadata about the site author (with or without pictures), brief information about the purposes of the site, a static collection of external links or anything else.</p>
-<p>For some Classless themes pictures and data about the author may suit better in the `cover` and `description` site attributes (see `config.toml`), but most of the times that kind of information will fit here better.</p>
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/" target="_blank" rel="noopener">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
 
-  </aside>
-  <footer role="contentinfo">
-    <p>A default site footer. If you don't know what to place here maybe you should just write your name plus the current year?</p>
-<p>If you want to have a sitemap, a contact form or other complex stuff, most Classless themes will also handle it nicely. Or you can take a look at the <code>aside.html</code> partial.</p>
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("en-AU");
+</script>
 
-  </footer>
+
+
+
+<script src="/js/script.js"></script>
+
+
+    
 </body>
+</html>

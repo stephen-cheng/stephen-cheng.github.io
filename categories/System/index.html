@@ -1,168 +1,334 @@
-<!doctype html>
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
 <head>
-  <meta charset="utf-8">
-  <meta name="description" content="Personal sharings about Tech &amp; Work.">
-  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=yes">
-  <title>Stephen Cheng</title>
+    <meta charset="utf-8">
+<title>Category: System - Stephen Cheng</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <link rel="stylesheet" id="chosen-theme" href="https://rawgit.com/fiatjaf/classless/master/themes/plain/theme.css">
-  <script>
-let link = document.getElementById('chosen-theme')
-let widget = document.createElement('div')
-widget.style.position = 'absolute'
-widget.style.right = '5px'
-widget.style.top = '2px'
-widget.style.background = 'beige'
-widget.style.color = '#444'
-widget.style.zIndex = 99
-widget.style.padding = '4px 8px'
-widget.innerHTML = `
-<label>
-  <p>No theme was set on <code>theme_config</code>.<br>
-     Choose a theme from the list to experiment with it:</p>
-  <select></select>
-</label>
-`
-fetch('https://api.github.com/repos/fiatjaf/classless/contents/themes')
-  .then(r => r.json())
-  .then(files => {
-    document.body.appendChild(widget)
-    let select = document.querySelector('select')
-    files
-      .filter(f => f.type === 'dir')
-      .forEach(f => {
-        let option = document.createElement('option')
-        option.value = f.name
-        option.innerHTML = f.name
-        select.appendChild(option)
-      })
-    let options = Array.from(select.querySelectorAll('option'))
-    let chosen = options[parseInt(Math.random() * options.length)]
-    chosen.selected = true
-    link.href = link.href.replace(/themes\/[^\/]+/, `themes/${chosen.value}`)
-    select.addEventListener('change', e => {
-      let chosen = e.target.value
-      link.href = link.href.replace(/themes\/[^\/]+/, `themes/${chosen}`)
-    })
-  })
-  .catch(console.log)
-  </script>
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
+
+
+
+
+<meta name="description" content="Personal sharings about Tech & Work.">
+
+
+
+<meta name="keywords" content="AI, Tech, CS">
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+
 
 <meta name="generator" content="Hexo 4.2.1"></head>
-
 <body>
-  <header role="banner">
-      <a href="/">
-        
-          <img src="https://picsum.photos/640/480">
-        
-      </a>  
-    <h1>
-      <a href="/">Stephen Cheng</a>
-    </h1>
-    <aside>
-      <p>Personal sharings about Tech &amp; Work.</p>
-    </aside>
-  </header>
-  
-    <nav>
-      <ul>
-        
-        <li>
-          <a href="/">Home</a>
-        </li>
-        
-        <li>
-          <a href="/archives/">Archives</a>
-        </li>
-        
-      </ul>
-    </nav>
-  
-  <main>
     
+<nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                
+                <img src="/images/logo.png" alt="" height="28">
+                
+            </a>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="navbar-menu navbar-start">
+            
+            <a class="navbar-item "
+               href="/about">About</a>
+            
+            <a class="navbar-item "
+               href="/contact">Contact</a>
+            
+            <a class="navbar-item "
+               href="https://www.instagram.com">Instagram</a>
+            
+            <a class="navbar-item "
+               href="https://www.linkedin.com">LinkedIn</a>
+            
+            <a class="navbar-item "
+               href="https://www.facebook.com">Facebook</a>
+            
+        </div>
+        
+        <div class="navbar-menu navbar-end">
+            
+            
+            
+        </div>
+    </div>
+</nav>
 
-<section>
-  <ul>
-    
-      <li>
-        <article>
-          <header>
-  
-  <h1><a href="https://stephen-cheng.github.io/2019/03/11/Install-MongoDB-on-Mac/">How to Install and Run MongoDB on Mac OS</a></h1>
-  <aside>
-    
-    <time datetime="192019-03-11">
-      March 11th 2019
-    </time>
-    
-    <ul>
-    
-      <li><a href="/tags/MongoDB/">MongoDB</a></li>
-    
-    </ul>
-  </aside>
-</header>
-
-          
-        </article>
-      </li>
-    
-      <li>
-        <article>
-          <header>
-  
-  <h1><a href="https://stephen-cheng.github.io/2019/01/28/HowtoTransferFiles/">How to Transfer Files &amp; Connect to Jupyter Notebook Between Azure Virtual Machines and Local Systems</a></h1>
-  <aside>
-    
-    <time datetime="192019-01-28">
-      January 28th 2019
-    </time>
-    
-    <ul>
-    
-      <li><a href="/tags/VM/">VM</a></li>
-    
-      <li><a href="/tags/Jupyter/">Jupyter</a></li>
-    
-      <li><a href="/tags/Azure/">Azure</a></li>
-    
-    </ul>
-  </aside>
-</header>
-
-          
-        </article>
-      </li>
-    
-  </ul>
+    <section class="section section-heading">
+    <div class="container">
+        <div class="content">
+            <h5><i class="far fa-folder"></i>System</h5>
+        </div>
+    </div>
 </section>
-<footer>
-  <nav>
-    <ul>
-      <li>
-        <a >
-          prev
-        </a>
-      </li>
-      <li>
-        <a >
-          next
-        </a>
-      </li>
-    </ul>
-  </nav>
+<section class="section">
+    <div class="container">
+    
+        <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            <a href="/2019/03/11/Install-MongoDB-on-Mac/" itemprop="url">How to Install and Run MongoDB on Mac OS</a>
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            
+                <time datetime="2019-03-11T20:33:19.000Z" itemprop="datePublished">Mar 11 2019</time>
+            
+        </span>
+        
+        <span class="column is-narrow article-category">
+            <i class="far fa-folder"></i>
+            <a class="article-category-link" href="/categories/System/">System</a>
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            3 minutes read (About 407 words)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <p>&nbsp;</p>
+<center>Stephen Cheng</center>
+
+
+<h3 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h3><p><img src="https://raw.githubusercontent.com/steven-cheng-com/images/master/blog/2019/201903/20190316/0.png" alt=""></p>
+<p>MongoDB is a document database which belongs to a family of databases called NoSQL - not only SQL. In MongoDB, records are documents which behave a lot like JSON objects in JavaScript. Values in documents can be looked up by their field’s key. Documents can have some fields/keys and not others, which makes Mongo extremely flexible. This is much different than SQL databases like MySQL, where fields correspond to columns in a table and individual records correspond to rows.</p>
+<h3 id="Install-and-Run-MongoDB-with-Homebrew"><a href="#Install-and-Run-MongoDB-with-Homebrew" class="headerlink" title="Install and Run MongoDB with Homebrew"></a>Install and Run MongoDB with Homebrew</h3><ul>
+<li><p>Make sure Homebrew already installed on Mac (Homebrew is a package manager for the Mac – it makes installing most open source software).</p>
+</li>
+<li><p>Open the Mac terminal application and type <b>brew update</b>, then type <b>brew install mongodb</b></p>
+</li>
+<li><p>After MongoDB is downloaded, create a directory to store MongoDB data files, type <b>mkdir -p /data/db</b></p>
+</li>
+<li><p>Make sure the directory has the right permissions:</p>
+</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> sudo chown -R `id -un` /data/db</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> <span class="comment"># Enter your psd</span></span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>Run the Mongo daemon by typing <b>mongod</b> in your terminal window.</p>
+</li>
+<li><p>Run the Mongo shell by typing <b>mongo</b> in another terminal window.</p>
+</li>
+<li><p>To exit the Mongo shell run <b>quit()</b>, to stop the Mongo daemon hit <b>ctrl+c</b></p>
+</li>
+</ul>
+<hr>
+<h4 id="Install-and-Run-MongoDB-by-Downloading-it-Manually"><a href="#Install-and-Run-MongoDB-by-Downloading-it-Manually" class="headerlink" title="Install and Run MongoDB by Downloading it Manually"></a>Install and Run MongoDB by Downloading it Manually</h4><ul>
+<li><p>1) Go to the MongoDB <a href="https://www.mongodb.com/" target="_blank" rel="noopener">website</a> and download the correct version of MongoDB.</p>
+</li>
+<li><p>2) After downloading MongoDB, move the gzipped tar file to the folder where you want MongoDB installed by typing commands like these in your terminal:</p>
+</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> <span class="built_in">cd</span> Downloads</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> mv mongodb-macos-x86_64-4.2.2.tgz ~/</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>3) Extract MongoDB from the downloaded archive and change the name of the directory to something more concise by following commands:</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> <span class="built_in">cd</span> ~/ &gt; tar -zxvf mongodb-macos-x86_64-4.2.2.tgz</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> mv mongodb-macos-x86_64-4.2.2 mongodb</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>4) Create a directory to store MongoDB data files, type <b>mkdir -p /data/db</b></p>
+</li>
+<li><p>5) Make sure the directory has the right permissions:</p>
+</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> sudo chown -R `id -un` /data/db</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> <span class="comment"># Enter your psd</span></span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>6) If you can’t create <b>/data/db</b> directory, you can also use other directory to replace it by running command like this:</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~/mongodb/bin/mongod --dbpath ~/mongodb/data</span><br></pre></td></tr></table></figure>
+
+<p>then jump to step 8.</p>
+<ul>
+<li><p>7) Run the Mongo daemon by typing <b>~/mongodb/bin/mongod</b> in your terminal window.</p>
+</li>
+<li><p>8) Run the Mongo shell by typing <b>~/mongodb/bin/mongo</b> in another terminal window.</p>
+</li>
+<li><p>9) To exit the Mongo shell run <b>quit()</b>, to stop the Mongo daemon hit <b>ctrl+c</b></p>
+</li>
+</ul>
+
+    
+    </div>
+    
+    
+</article>
+
+
+
+
+    
+        <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            <a href="/2019/01/28/HowtoTransferFiles/" itemprop="url">How to Transfer Files &amp; Connect to Jupyter Notebook Between Azure Virtual Machines and Local Systems</a>
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            
+                <time datetime="2019-01-28T19:02:39.000Z" itemprop="datePublished">Jan 28 2019</time>
+            
+        </span>
+        
+        <span class="column is-narrow article-category">
+            <i class="far fa-folder"></i>
+            <a class="article-category-link" href="/categories/System/">System</a>
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            2 minutes read (About 334 words)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <p>&nbsp;</p>
+<center>Stephen Cheng</center>
+
+
+<h3 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h3><p>Recently, cloud platforms are popular among various companies and conferences. Virtual Machines are one of the main applications provided by cloud platforms. For instance, Microsoft Azure offers Data Science Virtual Machines. Even though we have cloud platforms do us a favour to process hundreds and thousands of data remotely, I do need to upload files or download results from remote server. So how to interact between remote cloud servers and local systems? We’ll take Azure Virtual Machines as a case study.</p>
+<h3 id="Transfer-Files"><a href="#Transfer-Files" class="headerlink" title="Transfer Files"></a>Transfer Files</h3><ul>
+<li>Copy a Local File to a Azure Virtual Machine with the scp Command:</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp /local/path/file.txt azure_username@azure_host_ip:/remote/directory</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>If SSH on the remote host is listening on a port other than the default 22, then you can specify a port using the -P argument:</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp -P 1234 /local/path/file.txt azure_username@azure_host_ip:/remote/directory</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>To copy a directory from a local to remote system, we can use the -r option:</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp -r /local/directory azure_username@azure_host_ip:/remote/directory</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Copy a Remote File to a Local System using the scp command:</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp azure_username@azure_host_ip:/remote/file.txt /local/directory</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Copy a File Between Two Azure Virtual Machines using the scp Command:</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp azure_username1@azure_host_ip1:/directory/file.txt azure_username2@azure_host_ip2:/directory</span><br></pre></td></tr></table></figure>
+
+<h3 id="Connect-to-Azure-Virtual-Machine"><a href="#Connect-to-Azure-Virtual-Machine" class="headerlink" title="Connect to Azure Virtual Machine"></a>Connect to Azure Virtual Machine</h3><p>Here, we can use SSH command to connect to the Azure Virtual Machine from local path.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh azure_username@azure_host_ip</span><br></pre></td></tr></table></figure>
+
+<h3 id="Connect-to-Jupyter-Notebook-application"><a href="#Connect-to-Jupyter-Notebook-application" class="headerlink" title="Connect to Jupyter Notebook application"></a>Connect to Jupyter Notebook application</h3><p>Here, we use SSH command to connect to the Jupyter Notebook Application.</p>
+<ul>
+<li>First, install and start the Jupyter Notebook Application in the Azure Virtual Machines, then open the local terminal and input the following command:</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -L 8000:localhost:8888 azure_username@azure_host_ip</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Next, entering to the Jupyter Notebook Application using local browser with the url ‘localhost:8000’, and input the Jupyter notebook token from Azure Virtual Machines.</li>
+</ul>
+
+    
+    </div>
+    
+    
+</article>
+
+
+
+
+    
+    
+    </div>
+</section>
+    <footer class="footer">
+    <div class="container">
+        <div class="columns content">
+            <div class="column is-narrow has-text-centered">
+                &copy; 2023 Stephen Cheng&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
+            </div>
+            <div class="column is-hidden-mobile"></div>
+
+            
+            
+        </div>
+    </div>
 </footer>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
 
-  </main>
-  <aside>
-    <p>This is an `aside`, a useful place to put information of any kind: metadata about the site author (with or without pictures), brief information about the purposes of the site, a static collection of external links or anything else.</p>
-<p>For some Classless themes pictures and data about the author may suit better in the `cover` and `description` site attributes (see `config.toml`), but most of the times that kind of information will fit here better.</p>
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/" target="_blank" rel="noopener">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
 
-  </aside>
-  <footer role="contentinfo">
-    <p>A default site footer. If you don't know what to place here maybe you should just write your name plus the current year?</p>
-<p>If you want to have a sitemap, a contact form or other complex stuff, most Classless themes will also handle it nicely. Or you can take a look at the <code>aside.html</code> partial.</p>
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("en-AU");
+</script>
 
-  </footer>
+
+
+
+<script src="/js/script.js"></script>
+
+
+    
 </body>
+</html>
