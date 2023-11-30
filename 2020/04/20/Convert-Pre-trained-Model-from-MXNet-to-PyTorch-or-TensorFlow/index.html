@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Convert Pre-trained Model from MXNet to PyTorch or TensorFlow | Stephen Cheng</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="&amp;nbsp; Steven Cheng   Intro Currently there are many available deep learning frameworks for researchers and engineers to implement their desired deep models. Sometimes, when you find a fantastic GitHu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Convert Pre-trained Model from MXNet to PyTorch or TensorFlow">
+<meta property="og:url" content="https://stephen-cheng.github.io/2020/04/20/Convert-Pre-trained-Model-from-MXNet-to-PyTorch-or-TensorFlow/index.html">
+<meta property="og:site_name" content="Stephen Cheng">
+<meta property="og:description" content="&amp;nbsp; Steven Cheng   Intro Currently there are many available deep learning frameworks for researchers and engineers to implement their desired deep models. Sometimes, when you find a fantastic GitHu">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://raw.githubusercontent.com/steven-cheng-com/images/master/blog/2020/202004/20200420/0.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/steven-cheng-com/images/master/blog/2020/202004/20200420/1.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/steven-cheng-com/images/master/blog/2020/202004/20200420/2.png">
+<meta property="article:published_time" content="2020-04-20T17:20:22.000Z">
+<meta property="article:modified_time" content="2021-12-12T07:52:33.000Z">
+<meta property="article:author" content="Stephen Cheng">
+<meta property="article:tag" content="PyTorch">
+<meta property="article:tag" content="TenforFlow">
+<meta property="article:tag" content="Pre-trained-Model">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/steven-cheng-com/images/master/blog/2020/202004/20200420/0.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Stephen Cheng" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Stephen Cheng</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">AI | Tech</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+          <a class="main-nav-link" href="/contact">Contact</a>
+        
+          <a class="main-nav-link" href="https://www.instagram.com" target="_blank" rel="noopener">Instagram</a>
+        
+          <a class="main-nav-link" href="https://www.linkedin.com" target="_blank" rel="noopener">LinkedIn</a>
+        
+          <a class="main-nav-link" href="https://www.facebook.com" target="_blank" rel="noopener">Facebook</a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://stephen-cheng.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Convert-Pre-trained-Model-from-MXNet-to-PyTorch-or-TensorFlow" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/04/20/Convert-Pre-trained-Model-from-MXNet-to-PyTorch-or-TensorFlow/" class="article-date">
+  <time datetime="2020-04-20T17:20:22.000Z" itemprop="datePublished">2020-04-20</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Deep-Learning/">Deep-Learning</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Convert Pre-trained Model from MXNet to PyTorch or TensorFlow
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>&nbsp;</p>
+<center>Steven Cheng</center>
+
+
+<h3 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h3><p><img src="https://raw.githubusercontent.com/steven-cheng-com/images/master/blog/2020/202004/20200420/0.png" alt=""></p>
+<p>Currently there are many available deep learning frameworks for researchers and engineers to implement their desired deep models. Sometimes, when you find a fantastic GitHub repository which share a pre-trained model on a framework which you are not familiar with. For example, you are an expert PyTorch deep learning code developer, meanwhile you find a great code with its pre-trained model on MXNet; and you want to modify this model according to your needs. Thus, deep learning model conversion tools are extremely needed. As each framework has its own structure, converting a model between two different frameworks requires a great knowledge of both of them. However, There are many fantastic model conversion tools such as <a href="https://onnx.ai/" target="_blank" rel="noopener">ONNX</a>, <a href="https://github.com/Microsoft/MMdnn" target="_blank" rel="noopener">MMdnn</a>, and etc. for converting and visualizing deep models between a wide collection of frameworks.  </p>
+<h3 id="Model-Convertors"><a href="#Model-Convertors" class="headerlink" title="Model Convertors"></a>Model Convertors</h3><p><img src="https://raw.githubusercontent.com/steven-cheng-com/images/master/blog/2020/202004/20200420/1.jpg" alt=""></p>
+<ul>
+<li>ONNX</li>
+</ul>
+<p><a href="http://onnx.ai/" target="_blank" rel="noopener">ONNX</a> is an effort to unify converters for neural networks in order to bring some sanity to the NN world. Released by Facebook and Microsoft.</p>
+<ul>
+<li>MMdnn</li>
+</ul>
+<p><a href="https://github.com/Microsoft/MMdnn" target="_blank" rel="noopener">MMdnn</a> (Model Management Deep Neural Network) is supported by Microsoft, By using MMdnn, one can convert each model from the origin framework to a standard Intermediate Representation (IR), and then convert the IR format to the target framework structure. It can convert models between CaffeEmit, CNTK, CoreML, Keras, MXNet, ONNX, PyTorch and TensorFlow.</p>
+<ul>
+<li>PyTorch convertor  </li>
+</ul>
+<p><a href="https://github.com/ruotianluo/pytorch-resnet" target="_blank" rel="noopener">PyTorch convertor</a> can convert models to PyTorch model.</p>
+<ul>
+<li>TensorFlow convertor  </li>
+</ul>
+<p><a href="https://github.com/goranrauker/convert-to-tensorflow" target="_blank" rel="noopener">TensorFlow convertor</a> can convert models to TensorFlow model.</p>
+<ul>
+<li>Keras convertor  </li>
+</ul>
+<p><a href="https://github.com/qxcv/caffe2keras" target="_blank" rel="noopener">Keras convertor</a> can convert models to Keras model.</p>
+<ul>
+<li>MXNet convertor</li>
+</ul>
+<p><a href="https://github.com/nicklhy/ResNet_caffe2mxnet" target="_blank" rel="noopener">MXNet convertor</a> can convert models to MXNet model.</p>
+<ul>
+<li>Caffe convertor</li>
+</ul>
+<p><a href="https://github.com/longcw/pytorch2caffe" target="_blank" rel="noopener">Caffe convertor</a> can convert models to Caffe model.</p>
+<ul>
+<li>Caffe2 convertor</li>
+</ul>
+<p><a href="https://caffe2.ai/docs/caffe-migration.html#caffe-to-caffe2" target="_blank" rel="noopener">Caffe2 convertor</a> can convert models to Caffe2 model.</p>
+<ul>
+<li>CNTK convertor</li>
+</ul>
+<p><a href="https://github.com/Microsoft/CNTK/tree/master/bindings/python/cntk/contrib/crosstalkcaffe" target="_blank" rel="noopener">CNTK convertor</a> can convert models to CNTK model.</p>
+<ul>
+<li>Theano/Lasagne convertor</li>
+</ul>
+<p><a href="https://github.com/an-kumar/caffe-theano-conversion" target="_blank" rel="noopener">Theano/Lasagne convertor</a> can convert models to Theano/Lasagne model.</p>
+<ul>
+<li>Darknet convertor  </li>
+</ul>
+<p><a href="https://github.com/marvis/pytorch-caffe-darknet-convert" target="_blank" rel="noopener">Darknet convertor</a> can convert models to Darknet model.</p>
+<ul>
+<li>Torch convertor  </li>
+</ul>
+<p><a href="https://github.com/kmatzen/googlenet-caffe2torch" target="_blank" rel="noopener">Torch convertor</a> can convert models to Torch model.</p>
+<ul>
+<li>Neon convertor  </li>
+</ul>
+<p><a href="https://github.com/NervanaSystems/caffe2neon" target="_blank" rel="noopener">Neon convertor</a> can convert models to Neon model.</p>
+<ul>
+<li>CoreML convertor</li>
+</ul>
+<p><a href="https://developer.apple.com/documentation/coreml" target="_blank" rel="noopener">CoreML convertor</a> can convert models to coreML model.</p>
+<ul>
+<li>Paddle convertor  </li>
+</ul>
+<p><a href="https://github.com/PaddlePaddle/X2Paddle" target="_blank" rel="noopener">Paddle convertor</a> can convert models to Paddle model.</p>
+<ul>
+<li>Chainer convertor  </li>
+</ul>
+<p>Chainer convertor can convert models to Chainer model.</p>
+<h3 id="A-Demo-of-Model-Convertion-from-MXNet-to-PyTorch"><a href="#A-Demo-of-Model-Convertion-from-MXNet-to-PyTorch" class="headerlink" title="A Demo of Model Convertion from MXNet to PyTorch"></a>A Demo of Model Convertion from MXNet to PyTorch</h3><p><img src="https://raw.githubusercontent.com/steven-cheng-com/images/master/blog/2020/202004/20200420/2.png" alt=""></p>
+<p>Here is an appropriate example to convert the Full ImageNet pre-trained model from MXNet to PyTorch via MMdnn convertor. ImageNet is an image database organized according to the WordNet hierarchy, in which each node of the hierarchy is depicted by hundreds and thousands of images. Since 2010, the annual ImageNet Large Scale Visual Recognition Challenge (ILSVRC) is a competition where research teams evaluate their algorithms on the given data set, and compete to achieve higher accuracy on several visual recognition tasks. A common reason to train a network on ImageNet data is to use it for transfer learning (including feature extraction or fine-tuning other models). Having a pre-trained model which is trained on such a huge training data set (i.e., full ImageNet), would be a really valuable network. It can speed up the convergence early in the training phase, and also improves the target task accuracy in some scenarios.</p>
+<ul>
+<li>Prerequisites:</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pip3 install --upgrade mmdnn</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pip3 install --upgrade torch torchvision</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Download pre-trained models:</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> errno</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">_base_model_url = <span class="string">'http://data.mxnet.io/models/'</span></span><br><span class="line">_default_model_info = &#123;</span><br><span class="line">    <span class="string">'imagenet11k-resnet-152'</span>: &#123;<span class="string">'symbol'</span>:_base_model_url+<span class="string">'imagenet-11k/resnet-152/resnet-152-symbol.json'</span>,</span><br><span class="line">                             <span class="string">'params'</span>:_base_model_url+<span class="string">'imagenet-11k/resnet-152/resnet-152-0000.params'</span>&#125;,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">download_file</span><span class="params">(url, local_fname=None, force_write=False)</span>:</span></span><br><span class="line">    <span class="comment"># requests is not default installed</span></span><br><span class="line">    <span class="keyword">import</span> requests</span><br><span class="line">    <span class="keyword">if</span> local_fname <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">        local_fname = url.split(<span class="string">'/'</span>)[<span class="number">-1</span>]</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> force_write <span class="keyword">and</span> os.path.exists(local_fname):</span><br><span class="line">        <span class="keyword">return</span> local_fname</span><br><span class="line"></span><br><span class="line">    dir_name = os.path.dirname(local_fname)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> dir_name != <span class="string">""</span>:</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(dir_name):</span><br><span class="line">            <span class="keyword">try</span>:  <span class="comment"># try to create the directory if it doesn't exists</span></span><br><span class="line">                os.makedirs(dir_name)</span><br><span class="line">            <span class="keyword">except</span> OSError <span class="keyword">as</span> exc:</span><br><span class="line">                <span class="keyword">if</span> exc.errno != errno.EEXIST:</span><br><span class="line">                    <span class="keyword">raise</span></span><br><span class="line"></span><br><span class="line">    r = requests.get(url, stream=<span class="literal">True</span>)</span><br><span class="line">    <span class="keyword">assert</span> r.status_code == <span class="number">200</span>, <span class="string">"failed to open %s"</span> % url</span><br><span class="line">    <span class="keyword">with</span> open(local_fname, <span class="string">'wb'</span>) <span class="keyword">as</span> f:</span><br><span class="line">        <span class="keyword">for</span> chunk <span class="keyword">in</span> r.iter_content(chunk_size=<span class="number">1024</span>):</span><br><span class="line">            <span class="keyword">if</span> chunk:  <span class="comment"># filter out keep-alive new chunks</span></span><br><span class="line">                f.write(chunk)</span><br><span class="line">    <span class="keyword">return</span> local_fname</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">download_model</span><span class="params">(model_name, dst_dir=<span class="string">'./'</span>, meta_info=None)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> meta_info <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">        meta_info = _default_model_info</span><br><span class="line">    meta_info = dict(meta_info)</span><br><span class="line">    <span class="keyword">if</span> model_name <span class="keyword">not</span> <span class="keyword">in</span> meta_info:</span><br><span class="line">        <span class="keyword">return</span> (<span class="literal">None</span>, <span class="number">0</span>)</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> os.path.isdir(dst_dir):</span><br><span class="line">        os.mkdir(dst_dir)</span><br><span class="line">    meta = dict(meta_info[model_name])</span><br><span class="line">    <span class="keyword">assert</span> <span class="string">'symbol'</span> <span class="keyword">in</span> meta, <span class="string">"missing symbol url"</span></span><br><span class="line">    model_name = os.path.join(dst_dir, model_name)</span><br><span class="line">    download_file(meta[<span class="string">'symbol'</span>], model_name+<span class="string">'-symbol.json'</span>)</span><br><span class="line">    <span class="keyword">assert</span> <span class="string">'params'</span> <span class="keyword">in</span> meta, <span class="string">"mssing parameter file url"</span></span><br><span class="line">    download_file(meta[<span class="string">'params'</span>], model_name+<span class="string">'-0000.params'</span>)</span><br><span class="line">    <span class="keyword">return</span> (model_name, <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    <span class="comment"># ***** Download synset (i.e., Synonym Set):</span></span><br><span class="line">    synset_url = <span class="string">'http://data.mxnet.io.s3-website-us-west-1.amazonaws.com/models/imagenet-11k/synset.txt'</span></span><br><span class="line">    download_file(synset_url, <span class="string">'synset.txt'</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># ***** Download Model:</span></span><br><span class="line">    download_model(<span class="string">'imagenet11k-resnet-152'</span>, dst_dir=<span class="string">'./'</span>)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Converting Full ImageNet Pre-trained Model from MXNet to PyTorch:</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 -m mmdnn.conversion._script.convertToIR -f mxnet -n imagenet11k-resnet-152-symbol.json -w imagenet11k-resnet-152-0000.params -d resnet152 --inputShape 3,224,224</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 -m mmdnn.conversion._script.IRToCode -f pytorch --IRModelPath resnet152.pb --dstModelPath kit_imagenet.py --IRWeightPath resnet152.npy -dw kit_pytorch.npy</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 -m mmdnn.conversion.examples.pytorch.imagenet_test --dump resnet152Full.pth -n kit_imagenet.py -w kit_pytorch.npy</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Testing the Converted Model:</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> tensorflow.contrib.keras.api.keras.preprocessing <span class="keyword">import</span> image</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># ************** Parameters:</span></span><br><span class="line">num_predictions = <span class="number">5</span>  <span class="comment"># Top-k Results</span></span><br><span class="line">model_address = <span class="string">'resnet152Full.pth'</span>  <span class="comment"># for loading models</span></span><br><span class="line">lexicon_address = <span class="string">'synset.txt'</span></span><br><span class="line">test_image_address = <span class="string">'seagull.jpg'</span></span><br><span class="line">device = torch.device(<span class="string">"cuda:0"</span> <span class="keyword">if</span> torch.cuda.is_available() <span class="keyword">else</span> <span class="string">"cpu"</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># Load Converted Model:</span></span><br><span class="line">model = torch.load(model_address).to(device)</span><br><span class="line">model.eval()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># Read Input Image and Apply Pre-process:</span></span><br><span class="line">img = image.load_img(test_image_address, target_size=(<span class="number">224</span>, <span class="number">224</span>))</span><br><span class="line">x = image.img_to_array(img)</span><br><span class="line">x = x[..., ::<span class="number">-1</span>]  <span class="comment"># transform image from RGB to BGR</span></span><br><span class="line">x = np.transpose(x, (<span class="number">2</span>, <span class="number">0</span>, <span class="number">1</span>))</span><br><span class="line">x = np.expand_dims(x, <span class="number">0</span>).copy()</span><br><span class="line">x = torch.from_numpy(x)</span><br><span class="line">x = x.to(device)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># Load Full-ImageNet Dictionary (i.e., lexicon):</span></span><br><span class="line"><span class="keyword">with</span> open(lexicon_address, <span class="string">'r'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    labels = [l.rstrip() <span class="keyword">for</span> l <span class="keyword">in</span> f]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># Make prediction (forward pass):</span></span><br><span class="line"><span class="keyword">with</span> torch.no_grad():</span><br><span class="line">    output = model(x)</span><br><span class="line">max, argmax = output.data.squeeze().max(<span class="number">0</span>)</span><br><span class="line">class_id = argmax.item()</span><br><span class="line">class_name = labels[class_id]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># Print the top-5 Results:</span></span><br><span class="line">h_x = output.data.squeeze()</span><br><span class="line">probs, idx = h_x.sort(<span class="number">0</span>, <span class="literal">True</span>)</span><br><span class="line">print(<span class="string">'Top-5 Results: '</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, num_predictions):</span><br><span class="line">    print(<span class="string">'&#123;:.2f&#125;% -&gt; &#123;&#125;'</span>.format(probs[i] * <span class="number">100.0</span>, labels[idx[i]]))</span><br><span class="line">str_final_label = <span class="string">'The Image is a '</span> + class_name[<span class="number">10</span>:] + <span class="string">'.'</span></span><br><span class="line">print(str_final_label)</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://stephen-cheng.github.io/2020/04/20/Convert-Pre-trained-Model-from-MXNet-to-PyTorch-or-TensorFlow/" data-id="clpllv7ut0002t4xvbl9y6f9w" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Pre-trained-Model/" rel="tag">Pre-trained-Model</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PyTorch/" rel="tag">PyTorch</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/TenforFlow/" rel="tag">TenforFlow</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/06/19/Spelling-Corrector-from-Scratch/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Spelling Corrector from Scratch
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/03/22/automatic-clustering-with-silhouette-analysis-on-agglomerative-hierarchical-clustering/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Automatic Clustering with Silhouette Analysis on Agglomerative Hierarchical Clustering</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Computer-Vision/">Computer-Vision</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Deep-Learning/">Deep-Learning</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Machine-Learning/">Machine-Learning</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Natural-Language-Processing/">Natural-Language-Processing</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programming/">Programming</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/System/">System</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/" rel="tag">Algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Azure/" rel="tag">Azure</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BERT/" rel="tag">BERT</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Bagging/" rel="tag">Bagging</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Bias/" rel="tag">Bias</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Classification/" rel="tag">Classification</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Classifier/" rel="tag">Classifier</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Code/" rel="tag">Code</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Computer-Vision/" rel="tag">Computer-Vision</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Science/" rel="tag">Data-Science</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Decision-Tree/" rel="tag">Decision-Tree</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Deep-Learning/" rel="tag">Deep-Learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Distance/" rel="tag">Distance</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ensemble/" rel="tag">Ensemble</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Grammatical-Error-Correction/" rel="tag">Grammatical-Error-Correction</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hierarchical-Clustering/" rel="tag">Hierarchical-Clustering</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jupyter/" rel="tag">Jupyter</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Keras/" rel="tag">Keras</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Levenshtein/" rel="tag">Levenshtein</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linear/" rel="tag">Linear</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Machine-Learning/" rel="tag">Machine-Learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Merge/" rel="tag">Merge</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MongoDB/" rel="tag">MongoDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Natural-Language-Processing/" rel="tag">Natural-Language-Processing</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OCR/" rel="tag">OCR</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Object-Detection/" rel="tag">Object-Detection</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Overfitting/" rel="tag">Overfitting</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pre-trained-Model/" rel="tag">Pre-trained-Model</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Programming/" rel="tag">Programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PyCharm/" rel="tag">PyCharm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PyTorch/" rel="tag">PyTorch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/R/" rel="tag">R</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Regression/" rel="tag">Regression</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Scikit-Learn/" rel="tag">Scikit-Learn</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Shortcuts/" rel="tag">Shortcuts</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Silhouette/" rel="tag">Silhouette</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sklearn/" rel="tag">Sklearn</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sort/" rel="tag">Sort</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spelling-Correction/" rel="tag">Spelling-Correction</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Table-Detection/" rel="tag">Table-Detection</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TenforFlow/" rel="tag">TenforFlow</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Transformers/" rel="tag">Transformers</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tree/" rel="tag">Tree</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VM/" rel="tag">VM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Variance/" rel="tag">Variance</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Algorithm/" style="font-size: 13.33px;">Algorithm</a> <a href="/tags/Azure/" style="font-size: 10px;">Azure</a> <a href="/tags/BERT/" style="font-size: 16.67px;">BERT</a> <a href="/tags/Bagging/" style="font-size: 10px;">Bagging</a> <a href="/tags/Bias/" style="font-size: 10px;">Bias</a> <a href="/tags/Classification/" style="font-size: 10px;">Classification</a> <a href="/tags/Classifier/" style="font-size: 10px;">Classifier</a> <a href="/tags/Code/" style="font-size: 10px;">Code</a> <a href="/tags/Computer-Vision/" style="font-size: 13.33px;">Computer-Vision</a> <a href="/tags/Data-Science/" style="font-size: 13.33px;">Data-Science</a> <a href="/tags/Decision-Tree/" style="font-size: 10px;">Decision-Tree</a> <a href="/tags/Deep-Learning/" style="font-size: 10px;">Deep-Learning</a> <a href="/tags/Distance/" style="font-size: 10px;">Distance</a> <a href="/tags/Ensemble/" style="font-size: 10px;">Ensemble</a> <a href="/tags/Grammatical-Error-Correction/" style="font-size: 10px;">Grammatical-Error-Correction</a> <a href="/tags/Hierarchical-Clustering/" style="font-size: 10px;">Hierarchical-Clustering</a> <a href="/tags/Jupyter/" style="font-size: 10px;">Jupyter</a> <a href="/tags/Keras/" style="font-size: 10px;">Keras</a> <a href="/tags/Levenshtein/" style="font-size: 10px;">Levenshtein</a> <a href="/tags/Linear/" style="font-size: 10px;">Linear</a> <a href="/tags/Machine-Learning/" style="font-size: 16.67px;">Machine-Learning</a> <a href="/tags/Merge/" style="font-size: 10px;">Merge</a> <a href="/tags/MongoDB/" style="font-size: 10px;">MongoDB</a> <a href="/tags/Natural-Language-Processing/" style="font-size: 13.33px;">Natural-Language-Processing</a> <a href="/tags/OCR/" style="font-size: 10px;">OCR</a> <a href="/tags/Object-Detection/" style="font-size: 13.33px;">Object-Detection</a> <a href="/tags/Overfitting/" style="font-size: 10px;">Overfitting</a> <a href="/tags/Pre-trained-Model/" style="font-size: 10px;">Pre-trained-Model</a> <a href="/tags/Programming/" style="font-size: 10px;">Programming</a> <a href="/tags/PyCharm/" style="font-size: 10px;">PyCharm</a> <a href="/tags/PyTorch/" style="font-size: 10px;">PyTorch</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/R/" style="font-size: 10px;">R</a> <a href="/tags/Regression/" style="font-size: 10px;">Regression</a> <a href="/tags/Scikit-Learn/" style="font-size: 10px;">Scikit-Learn</a> <a href="/tags/Shortcuts/" style="font-size: 10px;">Shortcuts</a> <a href="/tags/Silhouette/" style="font-size: 10px;">Silhouette</a> <a href="/tags/Sklearn/" style="font-size: 10px;">Sklearn</a> <a href="/tags/Sort/" style="font-size: 10px;">Sort</a> <a href="/tags/Spelling-Correction/" style="font-size: 20px;">Spelling-Correction</a> <a href="/tags/Table-Detection/" style="font-size: 10px;">Table-Detection</a> <a href="/tags/TenforFlow/" style="font-size: 10px;">TenforFlow</a> <a href="/tags/Transformers/" style="font-size: 10px;">Transformers</a> <a href="/tags/Tree/" style="font-size: 20px;">Tree</a> <a href="/tags/VM/" style="font-size: 10px;">VM</a> <a href="/tags/Variance/" style="font-size: 10px;">Variance</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/11/22/table-detection-with-detectron2-n-maskrcnn/">Table Detection with Detectron2 &amp; Mask R-CNN</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/19/Grammatical-Error-Correction-with-The-Pretrained-BERT-Transformer-Encoder/">Grammatical-Error-Correction Sequence Tagging System with an Pretrained BERT-like Transformer Encoder</a>
+          </li>
+        
+          <li>
+            <a href="/2020/09/06/spelling-correction-with-soft-masked-bert/">Spelling Correction with Soft-Masked BERT</a>
+          </li>
+        
+          <li>
+            <a href="/2020/08/16/spelling-correction-with-python-spellchecker/">Spelling Correction with Python Spellchecker</a>
+          </li>
+        
+          <li>
+            <a href="/2020/07/18/spelling-correction-with-pretrained-bert/">Spelling Correction with The Pretrained BERT Model</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2023 Stephen Cheng<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+    <a href="/contact" class="mobile-nav-link">Contact</a>
+  
+    <a href="https://www.instagram.com" target="_blank" rel="noopener" class="mobile-nav-link">Instagram</a>
+  
+    <a href="https://www.linkedin.com" target="_blank" rel="noopener" class="mobile-nav-link">LinkedIn</a>
+  
+    <a href="https://www.facebook.com" target="_blank" rel="noopener" class="mobile-nav-link">Facebook</a>
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
