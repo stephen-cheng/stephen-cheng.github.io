@@ -1,239 +1,129 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
 <head>
   <meta charset="utf-8">
-  
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=yes">
+  <title>Stephen Cheng</title>
 
-  
-  <title>Archives: 2018/11 | Stephen Cheng</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Stephen Cheng">
-<meta property="og:url" content="https://stephen-cheng.github.io/archives/2018/11/index.html">
-<meta property="og:site_name" content="Stephen Cheng">
-<meta property="og:locale" content="en_US">
-<meta property="article:author" content="Stephen Cheng">
-<meta name="twitter:card" content="summary">
-  
-    <link rel="alternate" href="/atom.xml" title="Stephen Cheng" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  
-<link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" id="chosen-theme" href="https://rawgit.com/fiatjaf/classless/master/themes/plain/theme.css">
+  <script>
+let link = document.getElementById('chosen-theme')
+let widget = document.createElement('div')
+widget.style.position = 'absolute'
+widget.style.right = '5px'
+widget.style.top = '2px'
+widget.style.background = 'beige'
+widget.style.color = '#444'
+widget.style.zIndex = 99
+widget.style.padding = '4px 8px'
+widget.innerHTML = `
+<label>
+  <p>No theme was set on <code>theme_config</code>.<br>
+     Choose a theme from the list to experiment with it:</p>
+  <select></select>
+</label>
+`
+fetch('https://api.github.com/repos/fiatjaf/classless/contents/themes')
+  .then(r => r.json())
+  .then(files => {
+    document.body.appendChild(widget)
+    let select = document.querySelector('select')
+    files
+      .filter(f => f.type === 'dir')
+      .forEach(f => {
+        let option = document.createElement('option')
+        option.value = f.name
+        option.innerHTML = f.name
+        select.appendChild(option)
+      })
+    let options = Array.from(select.querySelectorAll('option'))
+    let chosen = options[parseInt(Math.random() * options.length)]
+    chosen.selected = true
+    link.href = link.href.replace(/themes\/[^\/]+/, `themes/${chosen.value}`)
+    select.addEventListener('change', e => {
+      let chosen = e.target.value
+      link.href = link.href.replace(/themes\/[^\/]+/, `themes/${chosen}`)
+    })
+  })
+  .catch(console.log)
+  </script>
 
 <meta name="generator" content="Hexo 4.2.1"></head>
 
 <body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Stephen Cheng</a>
-      </h1>
-      
-        <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">AI | Tech</a>
-        </h2>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
+  <header role="banner">
+      <a href="/">
         
-          <a class="main-nav-link" href="/about">About</a>
+          <img src="https://picsum.photos/640/480">
         
-          <a class="main-nav-link" href="/contact">Contact</a>
-        
-          <a class="main-nav-link" href="https://www.instagram.com" target="_blank" rel="noopener">Instagram</a>
-        
-          <a class="main-nav-link" href="https://www.linkedin.com" target="_blank" rel="noopener">LinkedIn</a>
-        
-          <a class="main-nav-link" href="https://www.facebook.com" target="_blank" rel="noopener">Facebook</a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://stephen-cheng.github.io"></form>
-      </div>
-    </div>
-  </div>
-</header>
-      <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/11/21/WhatIsBaggingandHowDoesItWork/" class="archive-article-date">
-  <time datetime="2018-11-21T18:42:41.000Z" itemprop="datePublished">Nov 21</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/11/21/WhatIsBaggingandHowDoesItWork/">What Is Bagging and How Does It Work?</a>
+      </a>  
+    <h1>
+      <a href="/">Stephen Cheng</a>
     </h1>
+    <aside>
+      <p></p>
+    </aside>
+  </header>
   
+  <main>
+    
 
-    </header>
-  </div>
-</article>
+<section>
+  <ul>
+    
+      <li>
+        <article>
+          <header>
   
-  
-    </div></section>
-  
+  <h1><a href="https://stephen-cheng.github.io/2018/11/21/WhatIsBaggingandHowDoesItWork/">What Is Bagging and How Does It Work?</a></h1>
+  <aside>
+    
+    <time datetime="182018-11-21">
+      November 21st 2018
+    </time>
+    
+    <ul>
+    
+      <li><a href="/tags/Bagging/">Bagging</a></li>
+    
+      <li><a href="/tags/Classifier/">Classifier</a></li>
+    
+    </ul>
+  </aside>
+</header>
 
-
+          
+        </article>
+      </li>
+    
+  </ul>
 </section>
-        
-          <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Computer-Vision/">Computer-Vision</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Deep-Learning/">Deep-Learning</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Machine-Learning/">Machine-Learning</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Natural-Language-Processing/">Natural-Language-Processing</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programming/">Programming</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/System/">System</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/" rel="tag">Algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Azure/" rel="tag">Azure</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BERT/" rel="tag">BERT</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Bagging/" rel="tag">Bagging</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Bias/" rel="tag">Bias</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Classification/" rel="tag">Classification</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Classifier/" rel="tag">Classifier</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Code/" rel="tag">Code</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Computer-Vision/" rel="tag">Computer-Vision</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Science/" rel="tag">Data-Science</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Decision-Tree/" rel="tag">Decision-Tree</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Deep-Learning/" rel="tag">Deep-Learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Distance/" rel="tag">Distance</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ensemble/" rel="tag">Ensemble</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Grammatical-Error-Correction/" rel="tag">Grammatical-Error-Correction</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hierarchical-Clustering/" rel="tag">Hierarchical-Clustering</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jupyter/" rel="tag">Jupyter</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Keras/" rel="tag">Keras</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Levenshtein/" rel="tag">Levenshtein</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linear/" rel="tag">Linear</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Machine-Learning/" rel="tag">Machine-Learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Merge/" rel="tag">Merge</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MongoDB/" rel="tag">MongoDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Natural-Language-Processing/" rel="tag">Natural-Language-Processing</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OCR/" rel="tag">OCR</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Object-Detection/" rel="tag">Object-Detection</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Overfitting/" rel="tag">Overfitting</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pre-trained-Model/" rel="tag">Pre-trained-Model</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Programming/" rel="tag">Programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PyCharm/" rel="tag">PyCharm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PyTorch/" rel="tag">PyTorch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/R/" rel="tag">R</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Regression/" rel="tag">Regression</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Scikit-Learn/" rel="tag">Scikit-Learn</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Shortcuts/" rel="tag">Shortcuts</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Silhouette/" rel="tag">Silhouette</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sklearn/" rel="tag">Sklearn</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sort/" rel="tag">Sort</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spelling-Correction/" rel="tag">Spelling-Correction</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Table-Detection/" rel="tag">Table-Detection</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TenforFlow/" rel="tag">TenforFlow</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Transformers/" rel="tag">Transformers</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tree/" rel="tag">Tree</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VM/" rel="tag">VM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Variance/" rel="tag">Variance</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/Algorithm/" style="font-size: 13.33px;">Algorithm</a> <a href="/tags/Azure/" style="font-size: 10px;">Azure</a> <a href="/tags/BERT/" style="font-size: 16.67px;">BERT</a> <a href="/tags/Bagging/" style="font-size: 10px;">Bagging</a> <a href="/tags/Bias/" style="font-size: 10px;">Bias</a> <a href="/tags/Classification/" style="font-size: 10px;">Classification</a> <a href="/tags/Classifier/" style="font-size: 10px;">Classifier</a> <a href="/tags/Code/" style="font-size: 10px;">Code</a> <a href="/tags/Computer-Vision/" style="font-size: 13.33px;">Computer-Vision</a> <a href="/tags/Data-Science/" style="font-size: 13.33px;">Data-Science</a> <a href="/tags/Decision-Tree/" style="font-size: 10px;">Decision-Tree</a> <a href="/tags/Deep-Learning/" style="font-size: 10px;">Deep-Learning</a> <a href="/tags/Distance/" style="font-size: 10px;">Distance</a> <a href="/tags/Ensemble/" style="font-size: 10px;">Ensemble</a> <a href="/tags/Grammatical-Error-Correction/" style="font-size: 10px;">Grammatical-Error-Correction</a> <a href="/tags/Hierarchical-Clustering/" style="font-size: 10px;">Hierarchical-Clustering</a> <a href="/tags/Jupyter/" style="font-size: 10px;">Jupyter</a> <a href="/tags/Keras/" style="font-size: 10px;">Keras</a> <a href="/tags/Levenshtein/" style="font-size: 10px;">Levenshtein</a> <a href="/tags/Linear/" style="font-size: 10px;">Linear</a> <a href="/tags/Machine-Learning/" style="font-size: 16.67px;">Machine-Learning</a> <a href="/tags/Merge/" style="font-size: 10px;">Merge</a> <a href="/tags/MongoDB/" style="font-size: 10px;">MongoDB</a> <a href="/tags/Natural-Language-Processing/" style="font-size: 13.33px;">Natural-Language-Processing</a> <a href="/tags/OCR/" style="font-size: 10px;">OCR</a> <a href="/tags/Object-Detection/" style="font-size: 13.33px;">Object-Detection</a> <a href="/tags/Overfitting/" style="font-size: 10px;">Overfitting</a> <a href="/tags/Pre-trained-Model/" style="font-size: 10px;">Pre-trained-Model</a> <a href="/tags/Programming/" style="font-size: 10px;">Programming</a> <a href="/tags/PyCharm/" style="font-size: 10px;">PyCharm</a> <a href="/tags/PyTorch/" style="font-size: 10px;">PyTorch</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/R/" style="font-size: 10px;">R</a> <a href="/tags/Regression/" style="font-size: 10px;">Regression</a> <a href="/tags/Scikit-Learn/" style="font-size: 10px;">Scikit-Learn</a> <a href="/tags/Shortcuts/" style="font-size: 10px;">Shortcuts</a> <a href="/tags/Silhouette/" style="font-size: 10px;">Silhouette</a> <a href="/tags/Sklearn/" style="font-size: 10px;">Sklearn</a> <a href="/tags/Sort/" style="font-size: 10px;">Sort</a> <a href="/tags/Spelling-Correction/" style="font-size: 20px;">Spelling-Correction</a> <a href="/tags/Table-Detection/" style="font-size: 10px;">Table-Detection</a> <a href="/tags/TenforFlow/" style="font-size: 10px;">TenforFlow</a> <a href="/tags/Transformers/" style="font-size: 10px;">Transformers</a> <a href="/tags/Tree/" style="font-size: 20px;">Tree</a> <a href="/tags/VM/" style="font-size: 10px;">VM</a> <a href="/tags/Variance/" style="font-size: 10px;">Variance</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2020/11/22/table-detection-with-detectron2-n-maskrcnn/">Table Detection with Detectron2 &amp; Mask R-CNN</a>
-          </li>
-        
-          <li>
-            <a href="/2020/10/19/Grammatical-Error-Correction-with-The-Pretrained-BERT-Transformer-Encoder/">Grammatical-Error-Correction Sequence Tagging System with an Pretrained BERT-like Transformer Encoder</a>
-          </li>
-        
-          <li>
-            <a href="/2020/09/06/spelling-correction-with-soft-masked-bert/">Spelling Correction with Soft-Masked BERT</a>
-          </li>
-        
-          <li>
-            <a href="/2020/08/16/spelling-correction-with-python-spellchecker/">Spelling Correction with Python Spellchecker</a>
-          </li>
-        
-          <li>
-            <a href="/2020/07/18/spelling-correction-with-pretrained-bert/">Spelling Correction with The Pretrained BERT Model</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2023 Stephen Cheng<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
+<footer>
+  <nav>
+    <ul>
+      <li>
+        <a >
+          prev
+        </a>
+      </li>
+      <li>
+        <a >
+          next
+        </a>
+      </li>
+    </ul>
+  </nav>
 </footer>
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/about" class="mobile-nav-link">About</a>
-  
-    <a href="/contact" class="mobile-nav-link">Contact</a>
-  
-    <a href="https://www.instagram.com" target="_blank" rel="noopener" class="mobile-nav-link">Instagram</a>
-  
-    <a href="https://www.linkedin.com" target="_blank" rel="noopener" class="mobile-nav-link">LinkedIn</a>
-  
-    <a href="https://www.facebook.com" target="_blank" rel="noopener" class="mobile-nav-link">Facebook</a>
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+  </main>
+  <aside>
+    <p>This is an `aside`, a useful place to put information of any kind: metadata about the site author (with or without pictures), brief information about the purposes of the site, a static collection of external links or anything else.</p>
+<p>For some Classless themes pictures and data about the author may suit better in the `cover` and `description` site attributes (see `config.toml`), but most of the times that kind of information will fit here better.</p>
 
+  </aside>
+  <footer role="contentinfo">
+    <p>A default site footer. If you don't know what to place here maybe you should just write your name plus the current year?</p>
+<p>If you want to have a sitemap, a contact form or other complex stuff, most Classless themes will also handle it nicely. Or you can take a look at the <code>aside.html</code> partial.</p>
 
-  
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-
-  
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
-
-
-
-
-<script src="/js/script.js"></script>
-
-
-
-
-  </div>
+  </footer>
 </body>
-</html>
