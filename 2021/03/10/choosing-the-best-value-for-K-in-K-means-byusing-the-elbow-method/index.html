@@ -11,11 +11,11 @@
   <meta charset="utf-8">
 
   
-  <title>All Posts - Stephen Cheng</title>
+  <title>Choosing the Best Value for K in K-means by Using the Elbow Method</title>
   
-  <link rel="canonical" href="https://stephen-cheng.github.io/archives/">
+  <link rel="canonical" href="https://stephen-cheng.github.io/2021/03/10/choosing-the-best-value-for-K-in-K-means-byusing-the-elbow-method/">
   
-  <meta name="description" content="">
+  <meta name="description" content="&amp;nbsp; Stephen Cheng  IntroK-means is an unsupervised learning method for clustering data points. The algorithm iteratively divides data points into K">
   
   
   <meta name="keywords" content="AI, Tech, CS">
@@ -23,28 +23,24 @@
   <meta name="author" content="Stephen Cheng">
   
   
-  <meta property="og:image" content="https://stephen-cheng.github.io/images/epic-smiley.jpg">
-  
   
   <meta property="og:site_name" content="Stephen Cheng" />
   <meta property="og:type" content="article" />
-  <meta property="og:title" content="All Posts - Stephen Cheng" />
+  <meta property="og:title" content="Choosing the Best Value for K in K-means by Using the Elbow Method" />
   
-  <meta property="og:description" content="">
+  <meta property="og:description" content="&amp;nbsp; Stephen Cheng  IntroK-means is an unsupervised learning method for clustering data points. The algorithm iteratively divides data points into K">
   
-  <meta property="og:url" content="https://stephen-cheng.github.io/archives/" />
+  <meta property="og:url" content="https://stephen-cheng.github.io/2021/03/10/choosing-the-best-value-for-K-in-K-means-byusing-the-elbow-method/" />
 
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="All Posts - Stephen Cheng">
+  <meta name="twitter:title" content="Choosing the Best Value for K in K-means by Using the Elbow Method">
   
-  <meta name="twitter:description" content="">
-  
-  
-  
-  <meta name="twitter:image" content="https://stephen-cheng.github.io/images/epic-smiley.jpg">
+  <meta name="twitter:description" content="&amp;nbsp; Stephen Cheng  IntroK-means is an unsupervised learning method for clustering data points. The algorithm iteratively divides data points into K">
   
   
-  <meta name="twitter:url" content="https://stephen-cheng.github.io/archives/" />
+  
+  
+  <meta name="twitter:url" content="https://stephen-cheng.github.io/2021/03/10/choosing-the-best-value-for-K-in-K-means-byusing-the-elbow-method/" />
 
   <!-- Mobile Specific Metas
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -197,346 +193,23 @@
 </div>
 
         <div class="trans">
-          
-<h2>All Posts</h2>
+            <h2>Choosing the Best Value for K in K-means by Using the Elbow Method</h2>
 
+  <p>&nbsp;</p>
+<center>Stephen Cheng</center>
 
-    <article>
-      <div class="row">
+<h4 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h4><p>K-means is an unsupervised learning method for clustering data points. The algorithm iteratively divides data points into K clusters by minimizing the variance in each cluster. Here, we will show you how to estimate the best value for K using the elbow method, then use K-means clustering to group the data points into clusters.</p>
+<h4 id="K-means"><a href="#K-means" class="headerlink" title="K-means"></a>K-means</h4><p>First, each data point is randomly assigned to one of the K clusters. Then, we compute the centroid (functionally the center) of each cluster, and reassign each data point to the cluster with the closest centroid. We repeat this process until the cluster assignments for each data point are no longer changing. K-means clustering requires us to select K, the number of clusters we want to group the data into. The elbow method lets us graph the inertia (a distance-based metric) and visualize the point at which it starts decreasing linearly. This point is referred to as the “eblow” and is a good estimate for the best value for K based on our data.</p>
+<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><p>In order to find the best value for K, we need to run K-means across our data for a range of possible values. We only have 10 data points, so the maximum number of clusters is 10. So for each value K in range(1,11), we train a K-means model and plot the intertia at that number of clusters:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">from</span> sklearn.cluster <span class="keyword">import</span> KMeans</span><br><span class="line"></span><br><span class="line">x = [<span class="number">4</span>, <span class="number">5</span>, <span class="number">10</span>, <span class="number">4</span>, <span class="number">3</span>, <span class="number">11</span>, <span class="number">14</span> , <span class="number">6</span>, <span class="number">10</span>, <span class="number">12</span>]</span><br><span class="line">y = [<span class="number">21</span>, <span class="number">19</span>, <span class="number">24</span>, <span class="number">17</span>, <span class="number">16</span>, <span class="number">25</span>, <span class="number">24</span>, <span class="number">22</span>, <span class="number">21</span>, <span class="number">21</span>]</span><br><span class="line"></span><br><span class="line">data = list(zip(x, y))</span><br><span class="line">inertias = []</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">11</span>):</span><br><span class="line">    kmeans = KMeans(n_clusters=i)</span><br><span class="line">    kmeans.fit(data)</span><br><span class="line">    inertias.append(kmeans.inertia_)</span><br><span class="line"></span><br><span class="line">plt.plot(range(<span class="number">1</span>,<span class="number">11</span>), inertias, marker=<span class="string">'o'</span>)</span><br><span class="line">plt.title(<span class="string">'Elbow method'</span>)</span><br><span class="line">plt.xlabel(<span class="string">'Number of clusters'</span>)</span><br><span class="line">plt.ylabel(<span class="string">'Inertia'</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
 
-        <div class="three columns left lit">
-          <p class="bottom">Mar 10, 2021</p>
-        </div>
-        <div class="nine columns left mb-3">
-          <a href="/2021/03/10/choosing-the-best-value-for-K-in-K-means-byusing-the-elbow-method/" class="">
-            
-              Choosing the Best Value for K in K-means by Using the Elbow Method
-            
-          </a>
-        </div>
-      </div>
-    </article>
+<p><img src="https://raw.githubusercontent.com/stephen-cheng/blog_images/main/202103/fig1.png" alt=""></p>
+<p>We can see that the “elbow” on the graph above (where the interia becomes more linear) is at K=2. We can then fit our K-means algorithm one more time and plot the different clusters assigned to the data:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">kmeans = KMeans(n_clusters=<span class="number">2</span>)</span><br><span class="line">kmeans.fit(data)</span><br><span class="line"></span><br><span class="line">plt.scatter(x, y, c=kmeans.labels_)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/stephen-cheng/blog_images/main/202103/fig2.png" alt=""></p>
 
-    <article>
-      <div class="row">
-
-        <div class="three columns left lit">
-          <p class="bottom">Nov 22, 2020</p>
-        </div>
-        <div class="nine columns left mb-3">
-          <a href="/2020/11/22/table-detection-with-detectron2-n-maskrcnn/" class="">
-            
-              Table Detection with Detectron2 & Mask R-CNN
-            
-          </a>
-        </div>
-      </div>
-    </article>
-
-    <article>
-      <div class="row">
-
-        <div class="three columns left lit">
-          <p class="bottom">Oct 19, 2020</p>
-        </div>
-        <div class="nine columns left mb-3">
-          <a href="/2020/10/19/Grammatical-Error-Correction-with-The-Pretrained-BERT-Transformer-Encoder/" class="">
-            
-              Grammatical-Error-Correction Sequence Tagging System with an Pretrained BERT-like Transformer Encoder
-            
-          </a>
-        </div>
-      </div>
-    </article>
-
-    <article>
-      <div class="row">
-
-        <div class="three columns left lit">
-          <p class="bottom">Sep 6, 2020</p>
-        </div>
-        <div class="nine columns left mb-3">
-          <a href="/2020/09/06/spelling-correction-with-soft-masked-bert/" class="">
-            
-              Spelling Correction with Soft-Masked BERT
-            
-          </a>
-        </div>
-      </div>
-    </article>
-
-    <article>
-      <div class="row">
-
-        <div class="three columns left lit">
-          <p class="bottom">Aug 16, 2020</p>
-        </div>
-        <div class="nine columns left mb-3">
-          <a href="/2020/08/16/spelling-correction-with-python-spellchecker/" class="">
-            
-              Spelling Correction with Python Spellchecker
-            
-          </a>
-        </div>
-      </div>
-    </article>
-
-    <article>
-      <div class="row">
-
-        <div class="three columns left lit">
-          <p class="bottom">Jul 18, 2020</p>
-        </div>
-        <div class="nine columns left mb-3">
-          <a href="/2020/07/18/spelling-correction-with-pretrained-bert/" class="">
-            
-              Spelling Correction with The Pretrained BERT Model
-            
-          </a>
-        </div>
-      </div>
-    </article>
-
-    <article>
-      <div class="row">
-
-        <div class="three columns left lit">
-          <p class="bottom">Jun 19, 2020</p>
-        </div>
-        <div class="nine columns left mb-3">
-          <a href="/2020/06/19/Spelling-Corrector-from-Scratch/" class="">
-            
-              Spelling Corrector from Scratch
-            
-          </a>
-        </div>
-      </div>
-    </article>
-
-    <article>
-      <div class="row">
-
-        <div class="three columns left lit">
-          <p class="bottom">Apr 20, 2020</p>
-        </div>
-        <div class="nine columns left mb-3">
-          <a href="/2020/04/20/Convert-Pre-trained-Model-from-MXNet-to-PyTorch-or-TensorFlow/" class="">
-            
-              Convert Pre-trained Model from MXNet to PyTorch or TensorFlow
-            
-          </a>
-        </div>
-      </div>
-    </article>
-
-    <article>
-      <div class="row">
-
-        <div class="three columns left lit">
-          <p class="bottom">Mar 22, 2020</p>
-        </div>
-        <div class="nine columns left mb-3">
-          <a href="/2020/03/22/automatic-clustering-with-silhouette-analysis-on-agglomerative-hierarchical-clustering/" class="">
-            
-              Automatic Clustering with Silhouette Analysis on Agglomerative Hierarchical Clustering
-            
-          </a>
-        </div>
-      </div>
-    </article>
-
-    <article>
-      <div class="row">
-
-        <div class="three columns left lit">
-          <p class="bottom">Feb 14, 2020</p>
-        </div>
-        <div class="nine columns left mb-3">
-          <a href="/2020/02/14/object-detection-with-luminoth-step-by-step/" class="">
-            
-              Object Detection with Luminoth Step by Step
-            
-          </a>
-        </div>
-      </div>
-    </article>
-
-    <article>
-      <div class="row">
-
-        <div class="three columns left lit">
-          <p class="bottom">Jan 18, 2020</p>
-        </div>
-        <div class="nine columns left mb-3">
-          <a href="/2020/01/18/Usage-of-PyTessBaseAPI-in-Tesserocr/" class="">
-            
-              Usage of PyTessBaseAPI in Tesserocr
-            
-          </a>
-        </div>
-      </div>
-    </article>
-
-    <article>
-      <div class="row">
-
-        <div class="three columns left lit">
-          <p class="bottom">Dec 19, 2019</p>
-        </div>
-        <div class="nine columns left mb-3">
-          <a href="/2019/12/19/PyCharm-keyboard-shortcuts/" class="">
-            
-              PyCharm Keyboard Shortcuts
-            
-          </a>
-        </div>
-      </div>
-    </article>
-
-    <article>
-      <div class="row">
-
-        <div class="three columns left lit">
-          <p class="bottom">Sep 21, 2019</p>
-        </div>
-        <div class="nine columns left mb-3">
-          <a href="/2019/09/21/Keras-for-Data-Science/" class="">
-            
-              Keras for Data Science
-            
-          </a>
-        </div>
-      </div>
-    </article>
-
-    <article>
-      <div class="row">
-
-        <div class="three columns left lit">
-          <p class="bottom">Jun 18, 2019</p>
-        </div>
-        <div class="nine columns left mb-3">
-          <a href="/2019/06/18/Python-for-Data-Science-Cheat-Sheet-with-Scikit-Learn/" class="">
-            
-              Python for Data Science Cheat Sheet with Scikit-Learn
-            
-          </a>
-        </div>
-      </div>
-    </article>
-
-    <article>
-      <div class="row">
-
-        <div class="three columns left lit">
-          <p class="bottom">Mar 11, 2019</p>
-        </div>
-        <div class="nine columns left mb-3">
-          <a href="/2019/03/11/Install-MongoDB-on-Mac/" class="">
-            
-              How to Install and Run MongoDB on Mac OS
-            
-          </a>
-        </div>
-      </div>
-    </article>
-
-    <article>
-      <div class="row">
-
-        <div class="three columns left lit">
-          <p class="bottom">Jan 28, 2019</p>
-        </div>
-        <div class="nine columns left mb-3">
-          <a href="/2019/01/28/HowtoTransferFiles/" class="">
-            
-              How to Transfer Files & Connect to Jupyter Notebook Between Azure Virtual Machines and Local Systems
-            
-          </a>
-        </div>
-      </div>
-    </article>
-
-    <article>
-      <div class="row">
-
-        <div class="three columns left lit">
-          <p class="bottom">Dec 24, 2018</p>
-        </div>
-        <div class="nine columns left mb-3">
-          <a href="/2018/12/24/AwesomeProgramminSkillsforPythonUser/" class="">
-            
-              Awesome Programming Skills for Python User
-            
-          </a>
-        </div>
-      </div>
-    </article>
-
-    <article>
-      <div class="row">
-
-        <div class="three columns left lit">
-          <p class="bottom">Nov 21, 2018</p>
-        </div>
-        <div class="nine columns left mb-3">
-          <a href="/2018/11/21/WhatIsBaggingandHowDoesItWork/" class="">
-            
-              What Is Bagging and How Does It Work?
-            
-          </a>
-        </div>
-      </div>
-    </article>
-
-    <article>
-      <div class="row">
-
-        <div class="three columns left lit">
-          <p class="bottom">Oct 10, 2018</p>
-        </div>
-        <div class="nine columns left mb-3">
-          <a href="/2018/10/10/WhatAreEnsembleMethodsinTreeBasedModelling/" class="">
-            
-              What Are Ensemble Methods in Tree Based Modelling?
-            
-          </a>
-        </div>
-      </div>
-    </article>
-
-    <article>
-      <div class="row">
-
-        <div class="three columns left lit">
-          <p class="bottom">Aug 7, 2018</p>
-        </div>
-        <div class="nine columns left mb-3">
-          <a href="/2018/08/07/DecisionTreesImplementationinRandPython/" class="">
-            
-              Decision Trees Implementation in R and Python
-            
-          </a>
-        </div>
-      </div>
-    </article>
-
-<div class="pagination-bar">
-  <ul class="pagination">
-    
-    
-
-    <a class="" href="/archives/page/2/">
-      <span>Older</span>
-      <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-        <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-        <path fill-rule="evenodd" d="M4 8a.5.5 0 0 0 .5.5h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5A.5.5 0 0 0 4 8z" />
-      </svg>
-    </a>
-
-    
-  </ul>
-</div>
+  <p><a class="classtest-link" href="/tags/K-means/" rel="tag">K-means</a>, <a class="classtest-link" href="/tags/Machine-Learning/" rel="tag">Machine Learning</a> — Mar 10, 2021</p>
+  
 
 
         </div>
