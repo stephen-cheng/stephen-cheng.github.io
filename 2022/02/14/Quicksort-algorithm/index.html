@@ -11,11 +11,11 @@
   <meta charset="utf-8">
 
   
-  <title>All Posts - Stephen Cheng</title>
+  <title>Quicksort Algorithm</title>
   
-  <link rel="canonical" href="https://stephen-cheng.github.io/archives/">
+  <link rel="canonical" href="https://stephen-cheng.github.io/2022/02/14/Quicksort-algorithm/">
   
-  <meta name="description" content="">
+  <meta name="description" content="&amp;nbsp; Stephen Cheng  IntroThe Quicksort algorithm is one of the fastest sorting algorithms. It takes an array of values, chooses one of the values as">
   
   
   <meta name="keywords" content="AI, Tech, CS">
@@ -23,28 +23,24 @@
   <meta name="author" content="Stephen Cheng">
   
   
-  <meta property="og:image" content="https://stephen-cheng.github.io/images/epic-smiley.jpg">
-  
   
   <meta property="og:site_name" content="Stephen Cheng" />
   <meta property="og:type" content="article" />
-  <meta property="og:title" content="All Posts - Stephen Cheng" />
+  <meta property="og:title" content="Quicksort Algorithm" />
   
-  <meta property="og:description" content="">
+  <meta property="og:description" content="&amp;nbsp; Stephen Cheng  IntroThe Quicksort algorithm is one of the fastest sorting algorithms. It takes an array of values, chooses one of the values as">
   
-  <meta property="og:url" content="https://stephen-cheng.github.io/archives/" />
+  <meta property="og:url" content="https://stephen-cheng.github.io/2022/02/14/Quicksort-algorithm/" />
 
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="All Posts - Stephen Cheng">
+  <meta name="twitter:title" content="Quicksort Algorithm">
   
-  <meta name="twitter:description" content="">
-  
-  
-  
-  <meta name="twitter:image" content="https://stephen-cheng.github.io/images/epic-smiley.jpg">
+  <meta name="twitter:description" content="&amp;nbsp; Stephen Cheng  IntroThe Quicksort algorithm is one of the fastest sorting algorithms. It takes an array of values, chooses one of the values as">
   
   
-  <meta name="twitter:url" content="https://stephen-cheng.github.io/archives/" />
+  
+  
+  <meta name="twitter:url" content="https://stephen-cheng.github.io/2022/02/14/Quicksort-algorithm/" />
 
   <!-- Mobile Specific Metas
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -197,346 +193,56 @@
 </div>
 
         <div class="trans">
-          
-<h2>All Posts</h2>
+            <h2>Quicksort Algorithm</h2>
 
+  <p>&nbsp;</p>
+<center>Stephen Cheng</center>
 
-    <article>
-      <div class="row">
+<h3 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h3><p>The Quicksort algorithm is one of the fastest sorting algorithms. It takes an array of values, chooses one of the values as the ‘pivot’ element, and moves the other values so that lower values are on the left of the pivot element, and higher values are on the right of it. </p>
+<p>In this tutorial the last element of the array is chosen to be the pivot element, but we could also have chosen the first element of the array, or any element in the array really. Then, the Quicksort algorithm does the same operation recursively on the sub-arrays to the left and right side of the pivot element. This continues until the array is sorted.</p>
+<h3 id="How-it-works"><a href="#How-it-works" class="headerlink" title="How it works?"></a>How it works?</h3><ul>
+<li>Choose a value in the array to be the pivot element.</li>
+<li>Order the rest of the array so that lower values than the pivot element are on the left, and higher values are on the right.</li>
+<li>Swap the pivot element with the first element of the higher values so that the pivot element lands in between the lower and higher values.</li>
+<li>Do the same operations (recursively) for the sub-arrays on the left and right side of the pivot element.</li>
+</ul>
+<h3 id="Manual-Run-Through"><a href="#Manual-Run-Through" class="headerlink" title="Manual Run Through"></a>Manual Run Through</h3><p>Step 1: We start with an unsorted array.</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[ 11, 9, 12, 7, 3]</span><br></pre></td></tr></table></figure>
 
-        <div class="three columns left lit">
-          <p class="bottom">Feb 14, 2022</p>
-        </div>
-        <div class="nine columns left mb-3">
-          <a href="/2022/02/14/Quicksort-algorithm/" class="">
-            
-              Quicksort Algorithm
-            
-          </a>
-        </div>
-      </div>
-    </article>
+<p>Step 2: We choose the last value 3 as the pivot element.</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[ 11, 9, 12, 7, 3]</span><br></pre></td></tr></table></figure>
 
-    <article>
-      <div class="row">
+<p>Step 3: The rest of the values in the array are all lower than 3, an must be on the right side of 3. Swap 3 with 11.</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[ 3, 9, 12, 7, 11]</span><br></pre></td></tr></table></figure>
 
-        <div class="three columns left lit">
-          <p class="bottom">Nov 22, 2021</p>
-        </div>
-        <div class="nine columns left mb-3">
-          <a href="/2021/11/22/How-to-Choose-the-Right-Machine-Learning-Model-for-Different-Data-and-Different-Problems/" class="">
-            
-              How to Choose the Right Machine Learning Model for Different Data and Different Problems
-            
-          </a>
-        </div>
-      </div>
-    </article>
+<p>Step 4: Value 3 is now in the correct position. We need to sort the values to the right of 3. We choose the last value 11 as the new pivot element.</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[ 3, 9, 12, 7, 11]</span><br></pre></td></tr></table></figure>
 
-    <article>
-      <div class="row">
+<p>Step 5: The value 7 must be to the left of pivot value 11, and 12 must be to the right of it. Move 7 and 12.</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[ 3, 9, 7, 12, 11]</span><br></pre></td></tr></table></figure>
 
-        <div class="three columns left lit">
-          <p class="bottom">Aug 6, 2021</p>
-        </div>
-        <div class="nine columns left mb-3">
-          <a href="/2021/08/06/Increasing-Overall-Model-Performance-on-Unseen-Data-with-Cross-Validation/" class="">
-            
-              Increasing Overall Model Performance on Unseen Data with Cross Validation
-            
-          </a>
-        </div>
-      </div>
-    </article>
+<p>Step 6: Swap 11 with 12 so that lower values 9 anf 7 are on the left side of 11, and 12 is on the right side.</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[ 3, 9, 7, 11, 12]</span><br></pre></td></tr></table></figure>
 
-    <article>
-      <div class="row">
+<p>Step 7: 11 and 12 are in the correct positions. We choose 7 as the pivot element in sub-array [ 9, 7], to the left of 11.</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[ 3, 9, 7, 11, 12]</span><br></pre></td></tr></table></figure>
 
-        <div class="three columns left lit">
-          <p class="bottom">Jun 18, 2021</p>
-        </div>
-        <div class="nine columns left mb-3">
-          <a href="/2021/06/18/Improving-the-Accuracy-and-Performance-of-ML-Algorithms-with-a-Bagging-Bootstrap-Aggregation-Classifier/" class="">
-            
-              Improving the Accuracy and Performance of ML Algorithms with a Bagging (Bootstrap Aggregation) Classifier
-            
-          </a>
-        </div>
-      </div>
-    </article>
+<p>Step 8: We must swap 9 with 7.</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[ 3, 7, 9, 11, 12]</span><br></pre></td></tr></table></figure>
 
-    <article>
-      <div class="row">
+<p>Finally, the array is sorted.</p>
+<h3 id="Implementation"><a href="#Implementation" class="headerlink" title="Implementation"></a>Implementation</h3><p>To implement the Quicksort algorithm in a programming language, we need:</p>
+<ol>
+<li>An array with values to sort.</li>
+<li>A \textcolor{red}{<em>quickSort</em>} method that calls itself (recursion) if the sub-array has a size larger than 1.</li>
+<li>A \textcolor{red}{<em>partition</em>} method that receives a sub-array, moves values around, swaps the pivot element into the sub-array and returns the index where the next split in sub-arrays happens.</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">partition</span><span class="params">(array, low, high)</span>:</span></span><br><span class="line">    pivot = array[high]</span><br><span class="line">    i = low - <span class="number">1</span></span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> range(low, high):</span><br><span class="line">        <span class="keyword">if</span> array[j] &lt;= pivot:</span><br><span class="line">            i += <span class="number">1</span></span><br><span class="line">            array[i], array[j] = array[j], array[i]</span><br><span class="line"></span><br><span class="line">    array[i+<span class="number">1</span>], array[high] = array[high], array[i+<span class="number">1</span>]</span><br><span class="line">    <span class="keyword">return</span> i+<span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">quicksort</span><span class="params">(array, low=<span class="number">0</span>, high=None)</span>:</span></span><br><span class="line">    step = <span class="number">0</span></span><br><span class="line">    <span class="keyword">if</span> high <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">        high = len(array) - <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> low &lt; high:</span><br><span class="line">        pivot_index = partition(array, low, high)</span><br><span class="line">        print(<span class="string">"The sorted array after &#123;0&#125; step: "</span>.format(low+<span class="number">1</span>), array)</span><br><span class="line">        quicksort(array, low, pivot_index<span class="number">-1</span>)</span><br><span class="line">        quicksort(array, pivot_index+<span class="number">1</span>, high)</span><br><span class="line"></span><br><span class="line">my_array = [<span class="number">64</span>, <span class="number">34</span>, <span class="number">25</span>, <span class="number">12</span>, <span class="number">22</span>, <span class="number">11</span>, <span class="number">90</span>, <span class="number">5</span>]</span><br><span class="line">quicksort(my_array)</span><br><span class="line">print(<span class="string">"Sorted array:"</span>, my_array)</span><br></pre></td></tr></table></figure>
+<h3 id="Time-Complexity"><a href="#Time-Complexity" class="headerlink" title="Time Complexity"></a>Time Complexity</h3><p>The worst case scenario for Quicksort is O(n*<em>2). This is when the pivot element is either the highest or lowest value in every sub-array, which leads to a lot of recursive calls. With our implementation above, this happens when the array is already sorted But on average, the time complexity for Quicksort is actually just O(n</em>logn).</p>
+<p>The recursion part of the Quicksort algorithm is actually a reason why the average sorting scenario is so fast, because for good picks of the pivot element, the array will be split in half somewhat evenly each time the algorithm calls itself. So the number of recursive calls do not double, even if the number of values <strong>n</strong> double.</p>
 
-        <div class="three columns left lit">
-          <p class="bottom">Mar 10, 2021</p>
-        </div>
-        <div class="nine columns left mb-3">
-          <a href="/2021/03/10/choosing-the-best-value-for-K-in-K-means-byusing-the-elbow-method/" class="">
-            
-              Choosing the Best Value for K in K-means by Using the Elbow Method
-            
-          </a>
-        </div>
-      </div>
-    </article>
-
-    <article>
-      <div class="row">
-
-        <div class="three columns left lit">
-          <p class="bottom">Nov 22, 2020</p>
-        </div>
-        <div class="nine columns left mb-3">
-          <a href="/2020/11/22/table-detection-with-detectron2-n-maskrcnn/" class="">
-            
-              Table Detection with Detectron2 & Mask R-CNN
-            
-          </a>
-        </div>
-      </div>
-    </article>
-
-    <article>
-      <div class="row">
-
-        <div class="three columns left lit">
-          <p class="bottom">Oct 19, 2020</p>
-        </div>
-        <div class="nine columns left mb-3">
-          <a href="/2020/10/19/Grammatical-Error-Correction-with-The-Pretrained-BERT-Transformer-Encoder/" class="">
-            
-              Grammatical-Error-Correction Sequence Tagging System with an Pretrained BERT-like Transformer Encoder
-            
-          </a>
-        </div>
-      </div>
-    </article>
-
-    <article>
-      <div class="row">
-
-        <div class="three columns left lit">
-          <p class="bottom">Sep 6, 2020</p>
-        </div>
-        <div class="nine columns left mb-3">
-          <a href="/2020/09/06/spelling-correction-with-soft-masked-bert/" class="">
-            
-              Spelling Correction with Soft-Masked BERT
-            
-          </a>
-        </div>
-      </div>
-    </article>
-
-    <article>
-      <div class="row">
-
-        <div class="three columns left lit">
-          <p class="bottom">Aug 16, 2020</p>
-        </div>
-        <div class="nine columns left mb-3">
-          <a href="/2020/08/16/spelling-correction-with-python-spellchecker/" class="">
-            
-              Spelling Correction with Python Spellchecker
-            
-          </a>
-        </div>
-      </div>
-    </article>
-
-    <article>
-      <div class="row">
-
-        <div class="three columns left lit">
-          <p class="bottom">Jul 18, 2020</p>
-        </div>
-        <div class="nine columns left mb-3">
-          <a href="/2020/07/18/spelling-correction-with-pretrained-bert/" class="">
-            
-              Spelling Correction with The Pretrained BERT Model
-            
-          </a>
-        </div>
-      </div>
-    </article>
-
-    <article>
-      <div class="row">
-
-        <div class="three columns left lit">
-          <p class="bottom">Jun 19, 2020</p>
-        </div>
-        <div class="nine columns left mb-3">
-          <a href="/2020/06/19/Spelling-Corrector-from-Scratch/" class="">
-            
-              Spelling Corrector from Scratch
-            
-          </a>
-        </div>
-      </div>
-    </article>
-
-    <article>
-      <div class="row">
-
-        <div class="three columns left lit">
-          <p class="bottom">Apr 20, 2020</p>
-        </div>
-        <div class="nine columns left mb-3">
-          <a href="/2020/04/20/Convert-Pre-trained-Model-from-MXNet-to-PyTorch-or-TensorFlow/" class="">
-            
-              Convert Pre-trained Model from MXNet to PyTorch or TensorFlow
-            
-          </a>
-        </div>
-      </div>
-    </article>
-
-    <article>
-      <div class="row">
-
-        <div class="three columns left lit">
-          <p class="bottom">Mar 22, 2020</p>
-        </div>
-        <div class="nine columns left mb-3">
-          <a href="/2020/03/22/automatic-clustering-with-silhouette-analysis-on-agglomerative-hierarchical-clustering/" class="">
-            
-              Automatic Clustering with Silhouette Analysis on Agglomerative Hierarchical Clustering
-            
-          </a>
-        </div>
-      </div>
-    </article>
-
-    <article>
-      <div class="row">
-
-        <div class="three columns left lit">
-          <p class="bottom">Feb 14, 2020</p>
-        </div>
-        <div class="nine columns left mb-3">
-          <a href="/2020/02/14/object-detection-with-luminoth-step-by-step/" class="">
-            
-              Object Detection with Luminoth Step by Step
-            
-          </a>
-        </div>
-      </div>
-    </article>
-
-    <article>
-      <div class="row">
-
-        <div class="three columns left lit">
-          <p class="bottom">Jan 18, 2020</p>
-        </div>
-        <div class="nine columns left mb-3">
-          <a href="/2020/01/18/Usage-of-PyTessBaseAPI-in-Tesserocr/" class="">
-            
-              Usage of PyTessBaseAPI in Tesserocr
-            
-          </a>
-        </div>
-      </div>
-    </article>
-
-    <article>
-      <div class="row">
-
-        <div class="three columns left lit">
-          <p class="bottom">Dec 19, 2019</p>
-        </div>
-        <div class="nine columns left mb-3">
-          <a href="/2019/12/19/PyCharm-keyboard-shortcuts/" class="">
-            
-              PyCharm Keyboard Shortcuts
-            
-          </a>
-        </div>
-      </div>
-    </article>
-
-    <article>
-      <div class="row">
-
-        <div class="three columns left lit">
-          <p class="bottom">Sep 21, 2019</p>
-        </div>
-        <div class="nine columns left mb-3">
-          <a href="/2019/09/21/Keras-for-Data-Science/" class="">
-            
-              Keras for Data Science
-            
-          </a>
-        </div>
-      </div>
-    </article>
-
-    <article>
-      <div class="row">
-
-        <div class="three columns left lit">
-          <p class="bottom">Jun 18, 2019</p>
-        </div>
-        <div class="nine columns left mb-3">
-          <a href="/2019/06/18/Python-for-Data-Science-Cheat-Sheet-with-Scikit-Learn/" class="">
-            
-              Python for Data Science Cheat Sheet with Scikit-Learn
-            
-          </a>
-        </div>
-      </div>
-    </article>
-
-    <article>
-      <div class="row">
-
-        <div class="three columns left lit">
-          <p class="bottom">Mar 11, 2019</p>
-        </div>
-        <div class="nine columns left mb-3">
-          <a href="/2019/03/11/Install-MongoDB-on-Mac/" class="">
-            
-              How to Install and Run MongoDB on Mac OS
-            
-          </a>
-        </div>
-      </div>
-    </article>
-
-    <article>
-      <div class="row">
-
-        <div class="three columns left lit">
-          <p class="bottom">Jan 28, 2019</p>
-        </div>
-        <div class="nine columns left mb-3">
-          <a href="/2019/01/28/HowtoTransferFiles/" class="">
-            
-              How to Transfer Files & Connect to Jupyter Notebook Between Azure Virtual Machines and Local Systems
-            
-          </a>
-        </div>
-      </div>
-    </article>
-
-<div class="pagination-bar">
-  <ul class="pagination">
-    
-    
-
-    <a class="" href="/archives/page/2/">
-      <span>Older</span>
-      <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-        <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-        <path fill-rule="evenodd" d="M4 8a.5.5 0 0 0 .5.5h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5A.5.5 0 0 0 4 8z" />
-      </svg>
-    </a>
-
-    
-  </ul>
-</div>
+  <p> — Feb 14, 2022</p>
+  
 
 
         </div>
