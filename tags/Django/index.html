@@ -11,11 +11,11 @@
   <meta charset="utf-8">
 
   
-  <title>Decision Trees Implementation in R and Python</title>
+  <title>Posts Related to Django</title>
   
-  <link rel="canonical" href="https://stephen-cheng.github.io/2018/08/06/DecisionTreesImplementationinRandPython/">
+  <link rel="canonical" href="https://stephen-cheng.github.io/tags/Django/">
   
-  <meta name="description" content="&amp;nbsp; Stephen Cheng   IntroFor R users and Python users, decision tree is quite easy to implement. Let’s quickly look at the set of codes which can g">
+  <meta name="description" content="">
   
   
   <meta name="keywords" content="AI, Tech, CS">
@@ -23,24 +23,28 @@
   <meta name="author" content="Stephen Cheng">
   
   
+  <meta property="og:image" content="https://stephen-cheng.github.io/images/epic-smiley.jpg">
+  
   
   <meta property="og:site_name" content="Stephen Cheng" />
   <meta property="og:type" content="article" />
-  <meta property="og:title" content="Decision Trees Implementation in R and Python" />
+  <meta property="og:title" content="Posts Related to Django" />
   
-  <meta property="og:description" content="&amp;nbsp; Stephen Cheng   IntroFor R users and Python users, decision tree is quite easy to implement. Let’s quickly look at the set of codes which can g">
+  <meta property="og:description" content="">
   
-  <meta property="og:url" content="https://stephen-cheng.github.io/2018/08/06/DecisionTreesImplementationinRandPython/" />
+  <meta property="og:url" content="https://stephen-cheng.github.io/tags/Django/" />
 
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Decision Trees Implementation in R and Python">
+  <meta name="twitter:title" content="Posts Related to Django">
   
-  <meta name="twitter:description" content="&amp;nbsp; Stephen Cheng   IntroFor R users and Python users, decision tree is quite easy to implement. Let’s quickly look at the set of codes which can g">
-  
-  
+  <meta name="twitter:description" content="">
   
   
-  <meta name="twitter:url" content="https://stephen-cheng.github.io/2018/08/06/DecisionTreesImplementationinRandPython/" />
+  
+  <meta name="twitter:image" content="https://stephen-cheng.github.io/images/epic-smiley.jpg">
+  
+  
+  <meta name="twitter:url" content="https://stephen-cheng.github.io/tags/Django/" />
 
   <!-- Mobile Specific Metas
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -193,27 +197,36 @@
 </div>
 
         <div class="trans">
-            <h2>Decision Trees Implementation in R and Python</h2>
-
-  <p>&nbsp;</p>
-<center>Stephen Cheng</center>
+          
 
 
-<h3 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h3><p>For R users and Python users, decision tree is quite easy to implement. Let’s quickly look at the set of codes which can get you started with this algorithm. For ease of use, I’ve shared standard codes where you’ll need to replace your dataset name and variables to get started.</p>
-<h3 id="R"><a href="#R" class="headerlink" title="R"></a>R</h3><p>For R users, there are multiple packages available to implement decision tree such as ctree, rpart, tree etc.</p>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="keyword">library</span>(rpart)</span><br><span class="line">&gt; x &lt;- cbind(x_train,y_train)</span><br><span class="line"><span class="comment"># grow tree</span></span><br><span class="line">&gt; fit &lt;- rpart(y_train ~ ., data = x,method=<span class="string">"class"</span>)</span><br><span class="line">&gt; summary(fit)</span><br><span class="line"><span class="comment">#Predict Output</span></span><br><span class="line">&gt; predicted= predict(fit,x_test)</span><br><span class="line">&gt; <span class="keyword">library</span>(rpart)</span><br><span class="line">&gt; x &lt;- cbind(x_train,y_train)</span><br><span class="line"><span class="comment"># grow tree</span></span><br><span class="line">&gt; fit &lt;- rpart(y_train ~ ., data = x,method=<span class="string">"class"</span>)</span><br><span class="line">&gt; summary(fit)</span><br><span class="line"><span class="comment">#Predict Output</span></span><br><span class="line">&gt; predicted= predict(fit,x_test)</span><br></pre></td></tr></table></figure>
+   <h3>Posts Related to — Django</h3>
 
-<p>In the code above:</p>
-<ul>
-<li>y_train – represents dependent variable.</li>
-<li>x_train – represents independent variable</li>
-<li>x – represents training data.</li>
-</ul>
-<h3 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h3><p>For Python users, below is the code:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#Import necessary libraries like pandas, numpy...</span></span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> tree</span><br><span class="line"><span class="comment">#Assumed you have, X (predictor) and Y (target) for training data set and x_test(predictor) of test_dataset</span></span><br><span class="line"><span class="comment"># Create tree object</span></span><br><span class="line"><span class="comment"># for classification, here you can change the algorithm as gini or entropy (information gain) by default it is gini  </span></span><br><span class="line">model = tree.DecisionTreeClassifier(criterion=<span class="string">'gini'</span>)</span><br><span class="line"><span class="comment"># model = tree.DecisionTreeRegressor() for regression</span></span><br><span class="line"><span class="comment"># Train the model using the training sets and check score</span></span><br><span class="line">model.fit(X, y)</span><br><span class="line">model.score(X, y)</span><br><span class="line"><span class="comment">#Predict Output</span></span><br><span class="line">predicted= model.predict(x_test)</span><br></pre></td></tr></table></figure>
 
-  <p><a class="classtest-link" href="/tags/Python/" rel="tag">Python</a>, <a class="classtest-link" href="/tags/R/" rel="tag">R</a>, <a class="classtest-link" href="/tags/Tree/" rel="tag">Tree</a> — Aug 6, 2018</p>
-  
+
+  <article>
+    <div class="row">
+
+      <div class="three columns left lit">
+        <p class="bottom">Mar 12, 2023</p>
+      </div>
+      <div class="nine columns left mb-3">
+        <a href="/2023/03/12/Create-Virtual-Environment-for-Python-Project/">
+          
+            Create Virtual Environment for Python Project
+          
+        </a>
+      </div>
+    </div>
+  </article>
+
+
+<div class="pagination-bar">
+  <ul class="pagination">
+    
+    
+  </ul>
+</div>
 
 
         </div>

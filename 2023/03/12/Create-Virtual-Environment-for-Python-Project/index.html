@@ -11,11 +11,11 @@
   <meta charset="utf-8">
 
   
-  <title>All Posts - Stephen Cheng</title>
+  <title>Create Virtual Environment for Python Project</title>
   
-  <link rel="canonical" href="https://stephen-cheng.github.io/archives/2020/">
+  <link rel="canonical" href="https://stephen-cheng.github.io/2023/03/12/Create-Virtual-Environment-for-Python-Project/">
   
-  <meta name="description" content="">
+  <meta name="description" content="&amp;nbsp; Stephen Cheng  IntroIt is suggested to have a dedicated virtual environment for each Python/Django project, and one way to manage a virtual env">
   
   
   <meta name="keywords" content="AI, Tech, CS">
@@ -23,28 +23,24 @@
   <meta name="author" content="Stephen Cheng">
   
   
-  <meta property="og:image" content="https://stephen-cheng.github.io/images/epic-smiley.jpg">
-  
   
   <meta property="og:site_name" content="Stephen Cheng" />
   <meta property="og:type" content="article" />
-  <meta property="og:title" content="All Posts - Stephen Cheng" />
+  <meta property="og:title" content="Create Virtual Environment for Python Project" />
   
-  <meta property="og:description" content="">
+  <meta property="og:description" content="&amp;nbsp; Stephen Cheng  IntroIt is suggested to have a dedicated virtual environment for each Python/Django project, and one way to manage a virtual env">
   
-  <meta property="og:url" content="https://stephen-cheng.github.io/archives/2020/" />
+  <meta property="og:url" content="https://stephen-cheng.github.io/2023/03/12/Create-Virtual-Environment-for-Python-Project/" />
 
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="All Posts - Stephen Cheng">
+  <meta name="twitter:title" content="Create Virtual Environment for Python Project">
   
-  <meta name="twitter:description" content="">
-  
-  
-  
-  <meta name="twitter:image" content="https://stephen-cheng.github.io/images/epic-smiley.jpg">
+  <meta name="twitter:description" content="&amp;nbsp; Stephen Cheng  IntroIt is suggested to have a dedicated virtual environment for each Python/Django project, and one way to manage a virtual env">
   
   
-  <meta name="twitter:url" content="https://stephen-cheng.github.io/archives/2020/" />
+  
+  
+  <meta name="twitter:url" content="https://stephen-cheng.github.io/2023/03/12/Create-Virtual-Environment-for-Python-Project/" />
 
   <!-- Mobile Specific Metas
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -197,176 +193,37 @@
 </div>
 
         <div class="trans">
-          
-<h2>All Posts</h2>
+            <h2>Create Virtual Environment for Python Project</h2>
 
+  <p>&nbsp;</p>
+<center>Stephen Cheng</center>
 
-    <article>
-      <div class="row">
+<h3 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h3><p>It is suggested to have a dedicated virtual environment for each Python/Django project, and one way to manage a virtual environment is venv, which is included in Python. The name of the virtual environment is your choice, in this tutorial we will call it myenv. Type the following in the command prompt:</p>
+<p>Windows:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">py -m venv myenv</span><br></pre></td></tr></table></figure>
 
-        <div class="three columns left lit">
-          <p class="bottom">Nov 22, 2020</p>
-        </div>
-        <div class="nine columns left mb-3">
-          <a href="/2020/11/22/table-detection-with-detectron2-n-maskrcnn/" class="">
-            
-              Table Detection with Detectron2 & Mask R-CNN
-            
-          </a>
-        </div>
-      </div>
-    </article>
+<p>Unix/MacOS:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -m venv myenv</span><br></pre></td></tr></table></figure>
 
-    <article>
-      <div class="row">
+<p>This will set up a virtual environment, and create a folder named “myenv” with subfolders and files. </p>
+<h3 id="Activate-the-Virtual-Environment"><a href="#Activate-the-Virtual-Environment" class="headerlink" title="Activate the Virtual Environment"></a>Activate the Virtual Environment</h3><p>You must activate the virtual environment every time you open the command prompt to work on your project. You can activate the environment by typing this command:</p>
+<p>Windows:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">myenv\Scripts\activate.bat</span><br></pre></td></tr></table></figure>
 
-        <div class="three columns left lit">
-          <p class="bottom">Oct 19, 2020</p>
-        </div>
-        <div class="nine columns left mb-3">
-          <a href="/2020/10/19/Grammatical-Error-Correction-with-The-Pretrained-BERT-Transformer-Encoder/" class="">
-            
-              Grammatical-Error-Correction Sequence Tagging System with an Pretrained BERT-like Transformer Encoder
-            
-          </a>
-        </div>
-      </div>
-    </article>
+<p>Unix/MacOS:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source myworld/bin/activate</span><br></pre></td></tr></table></figure>
 
-    <article>
-      <div class="row">
+<p>Once the environment is activated, you will see this result in the command prompt:</p>
+<p>Windows:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(myenv) C:\Users\Your Name&gt;</span><br></pre></td></tr></table></figure>
 
-        <div class="three columns left lit">
-          <p class="bottom">Sep 6, 2020</p>
-        </div>
-        <div class="nine columns left mb-3">
-          <a href="/2020/09/06/spelling-correction-with-soft-masked-bert/" class="">
-            
-              Spelling Correction with Soft-Masked BERT
-            
-          </a>
-        </div>
-      </div>
-    </article>
+<p>Unix/MacOS:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(myenv) ... $</span><br></pre></td></tr></table></figure>
 
-    <article>
-      <div class="row">
-
-        <div class="three columns left lit">
-          <p class="bottom">Aug 16, 2020</p>
-        </div>
-        <div class="nine columns left mb-3">
-          <a href="/2020/08/16/spelling-correction-with-python-spellchecker/" class="">
-            
-              Spelling Correction with Python Spellchecker
-            
-          </a>
-        </div>
-      </div>
-    </article>
-
-    <article>
-      <div class="row">
-
-        <div class="three columns left lit">
-          <p class="bottom">Jul 18, 2020</p>
-        </div>
-        <div class="nine columns left mb-3">
-          <a href="/2020/07/18/spelling-correction-with-pretrained-bert/" class="">
-            
-              Spelling Correction with The Pretrained BERT Model
-            
-          </a>
-        </div>
-      </div>
-    </article>
-
-    <article>
-      <div class="row">
-
-        <div class="three columns left lit">
-          <p class="bottom">Jun 19, 2020</p>
-        </div>
-        <div class="nine columns left mb-3">
-          <a href="/2020/06/19/Spelling-Corrector-from-Scratch/" class="">
-            
-              Spelling Corrector from Scratch
-            
-          </a>
-        </div>
-      </div>
-    </article>
-
-    <article>
-      <div class="row">
-
-        <div class="three columns left lit">
-          <p class="bottom">Apr 20, 2020</p>
-        </div>
-        <div class="nine columns left mb-3">
-          <a href="/2020/04/20/Convert-Pre-trained-Model-from-MXNet-to-PyTorch-or-TensorFlow/" class="">
-            
-              Convert Pre-trained Model from MXNet to PyTorch or TensorFlow
-            
-          </a>
-        </div>
-      </div>
-    </article>
-
-    <article>
-      <div class="row">
-
-        <div class="three columns left lit">
-          <p class="bottom">Mar 22, 2020</p>
-        </div>
-        <div class="nine columns left mb-3">
-          <a href="/2020/03/22/automatic-clustering-with-silhouette-analysis-on-agglomerative-hierarchical-clustering/" class="">
-            
-              Automatic Clustering with Silhouette Analysis on Agglomerative Hierarchical Clustering
-            
-          </a>
-        </div>
-      </div>
-    </article>
-
-    <article>
-      <div class="row">
-
-        <div class="three columns left lit">
-          <p class="bottom">Feb 14, 2020</p>
-        </div>
-        <div class="nine columns left mb-3">
-          <a href="/2020/02/14/object-detection-with-luminoth-step-by-step/" class="">
-            
-              Object Detection with Luminoth Step by Step
-            
-          </a>
-        </div>
-      </div>
-    </article>
-
-    <article>
-      <div class="row">
-
-        <div class="three columns left lit">
-          <p class="bottom">Jan 18, 2020</p>
-        </div>
-        <div class="nine columns left mb-3">
-          <a href="/2020/01/18/Usage-of-PyTessBaseAPI-in-Tesserocr/" class="">
-            
-              Usage of PyTessBaseAPI in Tesserocr
-            
-          </a>
-        </div>
-      </div>
-    </article>
-
-<div class="pagination-bar">
-  <ul class="pagination">
-    
-    
-  </ul>
-</div>
+<h3 id="Deactivate-the-Virtual-Environment"><a href="#Deactivate-the-Virtual-Environment" class="headerlink" title="Deactivate the Virtual Environment"></a>Deactivate the Virtual Environment</h3><p>You can deactivate the virtual environment by typing this command:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">deactivate</span><br></pre></td></tr></table></figure>
+  <p><a class="classtest-link" href="/tags/Django/" rel="tag">Django</a>, <a class="classtest-link" href="/tags/Python/" rel="tag">Python</a>, <a class="classtest-link" href="/tags/Virtual-Environment/" rel="tag">Virtual Environment</a> — Mar 12, 2023</p>
+  
 
 
         </div>
