@@ -11,11 +11,11 @@
   <meta charset="utf-8">
 
   
-  <title>All Posts - Stephen Cheng</title>
+  <title>Data Visualization with ggplot2 in R</title>
   
-  <link rel="canonical" href="https://stephen-cheng.github.io/archives/2023/">
+  <link rel="canonical" href="https://stephen-cheng.github.io/2023/08/27/Data-Visualization-with-ggplot2-in-R/">
   
-  <meta name="description" content="">
+  <meta name="description" content="&amp;nbsp; Stephen Cheng  IntroData visualization is a powerful tool for uncovering insights and communicating findings effectively. In R, ggplot2, part o">
   
   
   <meta name="keywords" content="AI, Tech, CS">
@@ -23,28 +23,24 @@
   <meta name="author" content="Stephen Cheng">
   
   
-  <meta property="og:image" content="https://stephen-cheng.github.io/images/epic-smiley.jpg">
-  
   
   <meta property="og:site_name" content="Stephen Cheng" />
   <meta property="og:type" content="article" />
-  <meta property="og:title" content="All Posts - Stephen Cheng" />
+  <meta property="og:title" content="Data Visualization with ggplot2 in R" />
   
-  <meta property="og:description" content="">
+  <meta property="og:description" content="&amp;nbsp; Stephen Cheng  IntroData visualization is a powerful tool for uncovering insights and communicating findings effectively. In R, ggplot2, part o">
   
-  <meta property="og:url" content="https://stephen-cheng.github.io/archives/2023/" />
+  <meta property="og:url" content="https://stephen-cheng.github.io/2023/08/27/Data-Visualization-with-ggplot2-in-R/" />
 
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="All Posts - Stephen Cheng">
+  <meta name="twitter:title" content="Data Visualization with ggplot2 in R">
   
-  <meta name="twitter:description" content="">
-  
-  
-  
-  <meta name="twitter:image" content="https://stephen-cheng.github.io/images/epic-smiley.jpg">
+  <meta name="twitter:description" content="&amp;nbsp; Stephen Cheng  IntroData visualization is a powerful tool for uncovering insights and communicating findings effectively. In R, ggplot2, part o">
   
   
-  <meta name="twitter:url" content="https://stephen-cheng.github.io/archives/2023/" />
+  
+  
+  <meta name="twitter:url" content="https://stephen-cheng.github.io/2023/08/27/Data-Visualization-with-ggplot2-in-R/" />
 
   <!-- Mobile Specific Metas
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -197,80 +193,32 @@
 </div>
 
         <div class="trans">
-          
-<h2>All Posts</h2>
+            <h2>Data Visualization with ggplot2 in R</h2>
 
+  <p>&nbsp;</p>
+<center>Stephen Cheng</center>
 
-    <article>
-      <div class="row">
+<h3 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h3><p>Data visualization is a powerful tool for uncovering insights and communicating findings effectively. In R, <strong>ggplot2</strong>, part of the tidyverse, is one of the most popular and versatile packages for creating elegant and customizable visualizations. Built on the <strong>Grammar of Graphics</strong>, ggplot2 enables users to build complex plots layer by layer, providing flexibility to create everything from simple charts to intricate, publication-quality graphics. This introduction will guide you through the basics of ggplot2, helping you transform raw data into meaningful visual representations.</p>
+<h3 id="Basics"><a href="#Basics" class="headerlink" title="Basics"></a>Basics</h3><p><img src="https://raw.githubusercontent.com/stephen-cheng/images/refs/heads/master/blog/2023/0827_1_1.jpg" alt=""></p>
+<h3 id="Aes"><a href="#Aes" class="headerlink" title="Aes"></a>Aes</h3><p>Common aesthetic values.</p>
+<p><img src="https://raw.githubusercontent.com/stephen-cheng/images/refs/heads/master/blog/2023/0827_2_1.jpg" alt=""></p>
+<h3 id="Geoms"><a href="#Geoms" class="headerlink" title="Geoms"></a>Geoms</h3><p>Use a geom function to represent data points, use the geom’s aesthetic properties to represent variables. Each function returns a layer.</p>
+<p><img src="https://raw.githubusercontent.com/stephen-cheng/images/refs/heads/master/blog/2023/0827_3_1.jpg" alt=""><br><img src="https://raw.githubusercontent.com/stephen-cheng/images/refs/heads/master/blog/2023/0827_3_2.jpg" alt=""><br><img src="https://raw.githubusercontent.com/stephen-cheng/images/refs/heads/master/blog/2023/0827_3_3.jpg" alt=""><br><img src="https://raw.githubusercontent.com/stephen-cheng/images/refs/heads/master/blog/2023/0827_3_4.jpg" alt=""><br><img src="https://raw.githubusercontent.com/stephen-cheng/images/refs/heads/master/blog/2023/0827_3_5.jpg" alt=""></p>
+<h3 id="Stats"><a href="#Stats" class="headerlink" title="Stats"></a>Stats</h3><p>An alternative way to build a layer.</p>
+<p><img src="https://raw.githubusercontent.com/stephen-cheng/images/refs/heads/master/blog/2023/0827_4_1.jpg" alt=""></p>
+<h3 id="Scales"><a href="#Scales" class="headerlink" title="Scales"></a>Scales</h3><p>Override defaults with scales package.</p>
+<p><img src="https://raw.githubusercontent.com/stephen-cheng/images/refs/heads/master/blog/2023/0827_5_1.jpg" alt=""></p>
+<h3 id="Coordinate-Systems"><a href="#Coordinate-Systems" class="headerlink" title="Coordinate Systems"></a>Coordinate Systems</h3><p><img src="https://raw.githubusercontent.com/stephen-cheng/images/refs/heads/master/blog/2023/0827_6_1.jpg" alt=""></p>
+<h3 id="Position-Adjustments"><a href="#Position-Adjustments" class="headerlink" title="Position Adjustments"></a>Position Adjustments</h3><p>Position adjustments determine how to arrange geoms that would otherwise occupy the same space.</p>
+<p><img src="https://raw.githubusercontent.com/stephen-cheng/images/refs/heads/master/blog/2023/0827_7_1.jpg" alt=""></p>
+<h3 id="Themes"><a href="#Themes" class="headerlink" title="Themes"></a>Themes</h3><p><img src="https://raw.githubusercontent.com/stephen-cheng/images/refs/heads/master/blog/2023/0827_8_1.jpg" alt=""></p>
+<h3 id="Faceting"><a href="#Faceting" class="headerlink" title="Faceting"></a>Faceting</h3><p>Facets divide a plot into subplots based on the values of one or more discrete variables.</p>
+<p><img src="https://raw.githubusercontent.com/stephen-cheng/images/refs/heads/master/blog/2023/0827_9_1.jpg" alt=""></p>
+<h3 id="Labels-and-Legends"><a href="#Labels-and-Legends" class="headerlink" title="Labels and Legends"></a>Labels and Legends</h3><p><img src="https://raw.githubusercontent.com/stephen-cheng/images/refs/heads/master/blog/2023/0827_10_1.jpg" alt=""></p>
+<h3 id="Zooming"><a href="#Zooming" class="headerlink" title="Zooming"></a>Zooming</h3><p><img src="https://raw.githubusercontent.com/stephen-cheng/images/refs/heads/master/blog/2023/0827_11_1.jpg" alt=""></p>
 
-        <div class="three columns left lit">
-          <p class="bottom">Aug 27, 2023</p>
-        </div>
-        <div class="nine columns left mb-3">
-          <a href="/2023/08/27/Data-Visualization-with-ggplot2-in-R/" class="">
-            
-              Data Visualization with ggplot2 in R
-            
-          </a>
-        </div>
-      </div>
-    </article>
-
-    <article>
-      <div class="row">
-
-        <div class="three columns left lit">
-          <p class="bottom">Jun 5, 2023</p>
-        </div>
-        <div class="nine columns left mb-3">
-          <a href="/2023/06/05/Linux-Commands-and-Paths-in-Linux/" class="">
-            
-              Linux Commands and Paths in Linux
-            
-          </a>
-        </div>
-      </div>
-    </article>
-
-    <article>
-      <div class="row">
-
-        <div class="three columns left lit">
-          <p class="bottom">Mar 12, 2023</p>
-        </div>
-        <div class="nine columns left mb-3">
-          <a href="/2023/03/12/Create-Virtual-Environment-for-Python-Project/" class="">
-            
-              Create Virtual Environment for Python Project
-            
-          </a>
-        </div>
-      </div>
-    </article>
-
-    <article>
-      <div class="row">
-
-        <div class="three columns left lit">
-          <p class="bottom">Jan 8, 2023</p>
-        </div>
-        <div class="nine columns left mb-3">
-          <a href="/2023/01/08/Pre-order-In-order-and-Post-order-Traversal-of-Binary-Trees-in-Python/" class="">
-            
-              Pre-order, In-order and Post-order Traversal of Binary Trees in Python
-            
-          </a>
-        </div>
-      </div>
-    </article>
-
-<div class="pagination-bar">
-  <ul class="pagination">
-    
-    
-  </ul>
-</div>
+  <p><a class="classtest-link" href="/tags/Data-Visualization/" rel="tag">Data Visualization</a>, <a class="classtest-link" href="/tags/R/" rel="tag">R</a>, <a class="classtest-link" href="/tags/ggplot2/" rel="tag">ggplot2</a> — Aug 27, 2023</p>
+  
 
 
         </div>
