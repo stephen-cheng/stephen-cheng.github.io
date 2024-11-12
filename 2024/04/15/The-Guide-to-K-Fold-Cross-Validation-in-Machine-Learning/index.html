@@ -11,11 +11,11 @@
   <meta charset="utf-8">
 
   
-  <title>Stephen Cheng</title>
+  <title>The Guide to K-Fold Cross Validation in Machine Learning</title>
   
-  <link rel="canonical" href="https://stephen-cheng.github.io/page/2/">
+  <link rel="canonical" href="https://stephen-cheng.github.io/2024/04/15/The-Guide-to-K-Fold-Cross-Validation-in-Machine-Learning/">
   
-  <meta name="description" content="">
+  <meta name="description" content="&amp;nbsp; Stephen Cheng  IntroIn machine learning, if a model simply memorizes the labels of the training samples, it may achieve a perfect score on the ">
   
   
   <meta name="keywords" content="AI, Tech, CS">
@@ -23,28 +23,24 @@
   <meta name="author" content="Stephen Cheng">
   
   
-  <meta property="og:image" content="https://stephen-cheng.github.io/images/epic-smiley.jpg">
-  
   
   <meta property="og:site_name" content="Stephen Cheng" />
   <meta property="og:type" content="article" />
-  <meta property="og:title" content="Stephen Cheng" />
+  <meta property="og:title" content="The Guide to K-Fold Cross Validation in Machine Learning" />
   
-  <meta property="og:description" content="">
+  <meta property="og:description" content="&amp;nbsp; Stephen Cheng  IntroIn machine learning, if a model simply memorizes the labels of the training samples, it may achieve a perfect score on the ">
   
-  <meta property="og:url" content="https://stephen-cheng.github.io/page/2/" />
+  <meta property="og:url" content="https://stephen-cheng.github.io/2024/04/15/The-Guide-to-K-Fold-Cross-Validation-in-Machine-Learning/" />
 
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Stephen Cheng">
+  <meta name="twitter:title" content="The Guide to K-Fold Cross Validation in Machine Learning">
   
-  <meta name="twitter:description" content="">
-  
-  
-  
-  <meta name="twitter:image" content="https://stephen-cheng.github.io/images/epic-smiley.jpg">
+  <meta name="twitter:description" content="&amp;nbsp; Stephen Cheng  IntroIn machine learning, if a model simply memorizes the labels of the training samples, it may achieve a perfect score on the ">
   
   
-  <meta name="twitter:url" content="https://stephen-cheng.github.io/page/2/" />
+  
+  
+  <meta name="twitter:url" content="https://stephen-cheng.github.io/2024/04/15/The-Guide-to-K-Fold-Cross-Validation-in-Machine-Learning/" />
 
   <!-- Mobile Specific Metas
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -197,301 +193,45 @@
 </div>
 
         <div class="trans">
-          <div class="row">
-  <div class="column">
-    <!-- Main information, edit it on theme/_config.yml -->
-    <h2 class="mb-2"></h2>
-    <p>Welcome to my personal website where I share ideas about AI &amp; Edu.</p>
-    <p></p>
-  </div>
-</div>
+            <h2>The Guide to K-Fold Cross Validation in Machine Learning</h2>
 
-<h3>Recent Posts</h3>
+  <p>&nbsp;</p>
+<center>Stephen Cheng</center>
 
+<h3 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h3><p>In machine learning, if a model simply memorizes the labels of the training samples, it may achieve a perfect score on the training data but fail to make meaningful predictions on new-unseen data. This problem is known as overfitting. To avoid it, it is standard practice in supervised learning to set aside a portion of the data, called the <strong>test set</strong> (<em>X_test</em>, <em>y_test</em>), for evaluating the model’s performance. That is where K-Fold Cross-Validation comes in. It offers a sneak peek at how your model might fare in the real world. In this guide, we will unpack the basics of K-Fold Cross-Validation and compare it to simpler methods like the Train-Test Split. </p>
+<h3 id="Cross-Validation-Workflow"><a href="#Cross-Validation-Workflow" class="headerlink" title="Cross Validation Workflow"></a>Cross Validation Workflow</h3><p>K-Fold Cross-Validation is a robust technique used to evaluate the performance of machine learning models. It helps ensure that the model generalizes well to unseen data by using different portions of the dataset for training and testing in multiple iterations. Here is a flowchart of typical cross validation workflow in model training. The best parameters can be determined by grid search techniques.</p>
+<p><img src="https://raw.githubusercontent.com/stephen-cheng/images/refs/heads/master/blog/2024/0415_1.png" alt=""></p>
+<h3 id="K-Fold-Cross-Validation-vs-Train-Test-Split"><a href="#K-Fold-Cross-Validation-vs-Train-Test-Split" class="headerlink" title="K-Fold Cross-Validation vs Train-Test Split"></a>K-Fold Cross-Validation vs Train-Test Split</h3><p>While K-Fold Cross-Validation partitions the dataset into multiple subsets to iteratively train and test the model, the Train-Test Split method divides the dataset into just two parts: one for training and the other for testing. The Train-Test Split method is simple and quick to implement, but the performance estimate can be highly dependent on the specific split, leading to high variance in the results. </p>
+<p>The images below illustrate the structural differences between these two methods. The first image shows the Train-Test Split method, where the dataset is divided into 80% training and 20% testing segments.</p>
+<p><img src="https://raw.githubusercontent.com/stephen-cheng/images/refs/heads/master/blog/2024/0415_2.jpg" alt=""></p>
+<p>The second image depicts a 5-Fold Cross-Validation, where the dataset is split into five parts, with each part serving as a test set in one of the five iterations, ensuring each segment is used for both training and testing.</p>
+<p><img src="https://raw.githubusercontent.com/stephen-cheng/images/refs/heads/master/blog/2024/0415_3.jpg" alt=""></p>
+<p>We can see that K-Fold Cross-Validation provides a more robust and reliable performance estimate because it reduces the impact of data variability. By using multiple training and testing cycles, it minimizes the risk of overfitting to a particular data split. This method also ensures that every data point is used for both training and validation, which results in a more comprehensive evaluation of the model’s performance. </p>
+<h3 id="What-Does-‘K’-Represent-in-K-Fold-Cross-Validation"><a href="#What-Does-‘K’-Represent-in-K-Fold-Cross-Validation" class="headerlink" title="What Does ‘K’ Represent in K-Fold Cross-Validation?"></a>What Does ‘K’ Represent in K-Fold Cross-Validation?</h3><p>In K-Fold Cross-Validation, <strong>K</strong> represents the number of groups into which the dataset is divided. This number determines how many rounds of testing the model undergoes, ensuring each segment is used as a testing set once. </p>
+<p>Here is a heuristic: </p>
+<ul>
+<li><strong>K = 2 or 3:</strong> These choices can be beneficial when computational resources are limited or when a quicker evaluation is needed. They reduce the number of training cycles, thus saving time and computational power while still providing a reasonable estimate of model performance. </li>
+<li><strong>K = 5 or 10:</strong> Choosing K = 5 or K = 10 are popular choices because they provide a good balance between computational efficiency and model performance estimation. </li>
+<li><strong>K = 20:</strong> Using a larger value of K can provide a more detailed performance evaluation. However, it increases the computational burden and might result in higher variance if the subsets are too small.</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/stephen-cheng/images/refs/heads/master/blog/2024/0415_4.jpg" alt=""></p>
+<h3 id="Implementing-K-Fold-Cross-Validation-in-Python"><a href="#Implementing-K-Fold-Cross-Validation-in-Python" class="headerlink" title="Implementing K-Fold Cross-Validation in Python"></a>Implementing K-Fold Cross-Validation in Python</h3><p>The following example demonstrates how to estimate the accuracy of a linear kernel support vector machine on the iris dataset by splitting the data, fitting a model and computing the score 5 consecutive times (with different splits each time).</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> cross_val_score</span><br><span class="line">clf = svm.SVC(kernel=<span class="string">'linear'</span>, C=<span class="number">1</span>, random_state=<span class="number">42</span>)</span><br><span class="line">scores = cross_val_score(clf, X, y, cv=<span class="number">5</span>)</span><br><span class="line">scores</span><br></pre></td></tr></table></figure>
+<p>array([0.96…, 1. , 0.96…, 0.96…, 1. ])</p>
+<p>The mean score and the standard deviation are hence given by:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="string">"%0.2f accuracy with a standard deviation of %0.2f"</span> % (scores.mean(), scores.std()))</span><br></pre></td></tr></table></figure>
+<p>0.98 accuracy with a standard deviation of 0.02</p>
+<p>By default, the score computed at each CV (Cross Validation) iteration is the score method of the estimator. It is possible to change this by using the scoring parameter:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> metrics</span><br><span class="line">scores = cross_val_score(</span><br><span class="line">    clf, X, y, cv=<span class="number">5</span>, scoring=<span class="string">'f1_macro'</span>)</span><br><span class="line">scores</span><br></pre></td></tr></table></figure>
+<p>array([0.96…, 1.  …, 0.96…, 0.96…, 1.        ])</p>
+<p>When the <strong>cv</strong> argument is an integer, cross_val_score uses the KFold or StratifiedKFold strategies by default, the latter being used if the estimator derives from ClassifierMixin. It is also possible to use other cross validation strategies by passing a cross validation iterator instead, for instance:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> ShuffleSplit</span><br><span class="line">n_samples = X.shape[<span class="number">0</span>]</span><br><span class="line">cv = ShuffleSplit(n_splits=<span class="number">5</span>, test_size=<span class="number">0.3</span>, random_state=<span class="number">0</span>)</span><br><span class="line">cross_val_score(clf, X, y, cv=cv)</span><br></pre></td></tr></table></figure>
+<p>array([0.977…, 0.977…, 1.  …, 0.955…, 1.        ])</p>
+<h3 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h3><p>This guide has shown you how K-Fold Cross-Validation is a powerful tool for evaluating machine learning models. It’s better than the simple Train-Test Split because it tests the model on various parts of your data, helping you trust that it will work well on unseen data too.</p>
 
-<div class="row">
+  <p><a class="classtest-link" href="/tags/Cross-Validation/" rel="tag">Cross Validation</a>, <a class="classtest-link" href="/tags/Data-Science/" rel="tag">Data Science</a>, <a class="classtest-link" href="/tags/Machine-Learning/" rel="tag">Machine Learning</a> — Apr 15, 2024</p>
+  
 
-  <div class="three columns left lit">
-    <p class="bottom">Apr 15, 2024</p>
-  </div>
-  <div class="nine columns left mb-3">
-    <a href="/2024/04/15/The-Guide-to-K-Fold-Cross-Validation-in-Machine-Learning/" >
-      
-        The Guide to K-Fold Cross Validation in Machine Learning
-      
-    </a>
-  </div>
-</div>
-
-<div class="row">
-
-  <div class="three columns left lit">
-    <p class="bottom">Feb 6, 2024</p>
-  </div>
-  <div class="nine columns left mb-3">
-    <a href="/2024/02/06/The-stages-of-a-machine-learning-pipeline/" >
-      
-        The Stages of a Machine Learning Pipeline
-
-      
-    </a>
-  </div>
-</div>
-
-<div class="row">
-
-  <div class="three columns left lit">
-    <p class="bottom">Dec 21, 2023</p>
-  </div>
-  <div class="nine columns left mb-3">
-    <a href="/2023/12/21/Data-Collection-and-File-Handling-in-Python/" >
-      
-        Data Collection and File Handling in Python
-      
-    </a>
-  </div>
-</div>
-
-<div class="row">
-
-  <div class="three columns left lit">
-    <p class="bottom">Oct 19, 2023</p>
-  </div>
-  <div class="nine columns left mb-3">
-    <a href="/2023/10/19/Working-with-Text-in-R/" >
-      
-        Working with Text in R
-      
-    </a>
-  </div>
-</div>
-
-<div class="row">
-
-  <div class="three columns left lit">
-    <p class="bottom">Aug 27, 2023</p>
-  </div>
-  <div class="nine columns left mb-3">
-    <a href="/2023/08/27/Data-Visualization-with-ggplot2-in-R/" >
-      
-        Data Visualization with ggplot2 in R
-      
-    </a>
-  </div>
-</div>
-
-<div class="row">
-
-  <div class="three columns left lit">
-    <p class="bottom">Jun 5, 2023</p>
-  </div>
-  <div class="nine columns left mb-3">
-    <a href="/2023/06/05/Linux-Commands-and-Paths-in-Linux/" >
-      
-        Linux Commands and Paths in Linux
-      
-    </a>
-  </div>
-</div>
-
-<div class="row">
-
-  <div class="three columns left lit">
-    <p class="bottom">Mar 12, 2023</p>
-  </div>
-  <div class="nine columns left mb-3">
-    <a href="/2023/03/12/Create-Virtual-Environment-for-Python-Project/" >
-      
-        Create Virtual Environment for Python Project
-      
-    </a>
-  </div>
-</div>
-
-<div class="row">
-
-  <div class="three columns left lit">
-    <p class="bottom">Jan 8, 2023</p>
-  </div>
-  <div class="nine columns left mb-3">
-    <a href="/2023/01/08/Pre-order-In-order-and-Post-order-Traversal-of-Binary-Trees-in-Python/" >
-      
-        Pre-order, In-order and Post-order Traversal of Binary Trees in Python
-      
-    </a>
-  </div>
-</div>
-
-<div class="row">
-
-  <div class="three columns left lit">
-    <p class="bottom">Nov 20, 2022</p>
-  </div>
-  <div class="nine columns left mb-3">
-    <a href="/2022/11/20/Building-A-Hash-Set-in-Python/" >
-      
-        Building A Hash Set in Python
-      
-    </a>
-  </div>
-</div>
-
-<div class="row">
-
-  <div class="three columns left lit">
-    <p class="bottom">Sep 12, 2022</p>
-  </div>
-  <div class="nine columns left mb-3">
-    <a href="/2022/09/12/Building-A-Hash-Table-from-Scratch-in-Python/" >
-      
-        Building A Hash Table from Scratch in Python
-      
-    </a>
-  </div>
-</div>
-
-<div class="row">
-
-  <div class="three columns left lit">
-    <p class="bottom">Jul 22, 2022</p>
-  </div>
-  <div class="nine columns left mb-3">
-    <a href="/2022/07/22/Delete-and-Insert-a-Node-in-a-Linked-List/" >
-      
-        Delete and Insert a Node in a Linked List in Python
-      
-    </a>
-  </div>
-</div>
-
-<div class="row">
-
-  <div class="three columns left lit">
-    <p class="bottom">May 5, 2022</p>
-  </div>
-  <div class="nine columns left mb-3">
-    <a href="/2022/05/05/Doubly-Linked-List-in-Python/" >
-      
-        Doubly Linked List in Python
-      
-    </a>
-  </div>
-</div>
-
-<div class="row">
-
-  <div class="three columns left lit">
-    <p class="bottom">Feb 16, 2022</p>
-  </div>
-  <div class="nine columns left mb-3">
-    <a href="/2022/02/16/Quicksort-algorithm/" >
-      
-        Quicksort Algorithm
-      
-    </a>
-  </div>
-</div>
-
-<div class="row">
-
-  <div class="three columns left lit">
-    <p class="bottom">Nov 22, 2021</p>
-  </div>
-  <div class="nine columns left mb-3">
-    <a href="/2021/11/22/How-to-Choose-the-Right-Machine-Learning-Model-for-Different-Data-and-Different-Problems/" >
-      
-        How to Choose the Right Machine Learning Model for Different Data and Different Problems
-      
-    </a>
-  </div>
-</div>
-
-<div class="row">
-
-  <div class="three columns left lit">
-    <p class="bottom">Aug 6, 2021</p>
-  </div>
-  <div class="nine columns left mb-3">
-    <a href="/2021/08/06/Increasing-Overall-Model-Performance-on-Unseen-Data-with-Cross-Validation/" >
-      
-        Increasing Overall Model Performance on Unseen Data with Cross Validation
-      
-    </a>
-  </div>
-</div>
-
-<div class="row">
-
-  <div class="three columns left lit">
-    <p class="bottom">Jun 18, 2021</p>
-  </div>
-  <div class="nine columns left mb-3">
-    <a href="/2021/06/18/Improving-the-Accuracy-and-Performance-of-ML-Algorithms-with-a-Bagging-Bootstrap-Aggregation-Classifier/" >
-      
-        Improving the Accuracy and Performance of ML Algorithms with a Bagging (Bootstrap Aggregation) Classifier
-      
-    </a>
-  </div>
-</div>
-
-<div class="row">
-
-  <div class="three columns left lit">
-    <p class="bottom">Mar 10, 2021</p>
-  </div>
-  <div class="nine columns left mb-3">
-    <a href="/2021/03/10/choosing-the-best-value-for-K-in-K-means-byusing-the-elbow-method/" >
-      
-        Choosing the Best Value for K in K-means by Using the Elbow Method
-      
-    </a>
-  </div>
-</div>
-
-<div class="row">
-
-  <div class="three columns left lit">
-    <p class="bottom">Nov 22, 2020</p>
-  </div>
-  <div class="nine columns left mb-3">
-    <a href="/2020/11/22/table-detection-with-detectron2-n-maskrcnn/" >
-      
-        Table Detection with Detectron2 & Mask R-CNN
-      
-    </a>
-  </div>
-</div>
-
-<div class="row">
-
-  <div class="three columns left lit">
-    <p class="bottom">Oct 19, 2020</p>
-  </div>
-  <div class="nine columns left mb-3">
-    <a href="/2020/10/19/Grammatical-Error-Correction-with-The-Pretrained-BERT-Transformer-Encoder/" >
-      
-        Grammatical-Error-Correction Sequence Tagging System with an Pretrained BERT-like Transformer Encoder
-      
-    </a>
-  </div>
-</div>
-
-<div class="row">
-
-  <div class="three columns left lit">
-    <p class="bottom">Sep 6, 2020</p>
-  </div>
-  <div class="nine columns left mb-3">
-    <a href="/2020/09/06/spelling-correction-with-soft-masked-bert/" >
-      
-        Spelling Correction with Soft-Masked BERT
-      
-    </a>
-  </div>
-</div>
-
-
-<h4> <a href="/archives">All Posts</a></h4>
 
         </div>
         <div class="row mt-2">
