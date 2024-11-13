@@ -11,11 +11,11 @@
   <meta charset="utf-8">
 
   
-  <title>Posts Related to Classification</title>
+  <title>Evaluation Metrics for Classification Models</title>
   
-  <link rel="canonical" href="https://stephen-cheng.github.io/tags/Classification/">
+  <link rel="canonical" href="https://stephen-cheng.github.io/2024/06/24/Evaluation-Metrics-for-Classification-Models/">
   
-  <meta name="description" content="">
+  <meta name="description" content="&amp;nbsp; Stephen Cheng  IntroFor supervised learning models, evaluation typically involves comparing the predictions made by the model with the ground t">
   
   
   <meta name="keywords" content="AI, Tech, CS">
@@ -23,28 +23,24 @@
   <meta name="author" content="Stephen Cheng">
   
   
-  <meta property="og:image" content="https://stephen-cheng.github.io/images/epic-smiley.jpg">
-  
   
   <meta property="og:site_name" content="Stephen Cheng" />
   <meta property="og:type" content="article" />
-  <meta property="og:title" content="Posts Related to Classification" />
+  <meta property="og:title" content="Evaluation Metrics for Classification Models" />
   
-  <meta property="og:description" content="">
+  <meta property="og:description" content="&amp;nbsp; Stephen Cheng  IntroFor supervised learning models, evaluation typically involves comparing the predictions made by the model with the ground t">
   
-  <meta property="og:url" content="https://stephen-cheng.github.io/tags/Classification/" />
+  <meta property="og:url" content="https://stephen-cheng.github.io/2024/06/24/Evaluation-Metrics-for-Classification-Models/" />
 
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Posts Related to Classification">
+  <meta name="twitter:title" content="Evaluation Metrics for Classification Models">
   
-  <meta name="twitter:description" content="">
-  
-  
-  
-  <meta name="twitter:image" content="https://stephen-cheng.github.io/images/epic-smiley.jpg">
+  <meta name="twitter:description" content="&amp;nbsp; Stephen Cheng  IntroFor supervised learning models, evaluation typically involves comparing the predictions made by the model with the ground t">
   
   
-  <meta name="twitter:url" content="https://stephen-cheng.github.io/tags/Classification/" />
+  
+  
+  <meta name="twitter:url" content="https://stephen-cheng.github.io/2024/06/24/Evaluation-Metrics-for-Classification-Models/" />
 
   <!-- Mobile Specific Metas
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -197,54 +193,42 @@
 </div>
 
         <div class="trans">
-          
+            <h2>Evaluation Metrics for Classification Models</h2>
 
+  <p>&nbsp;</p>
+<center>Stephen Cheng</center>
 
-   <h3>Posts Related to — Classification</h3>
-
-
-
-  <article>
-    <div class="row">
-
-      <div class="three columns left lit">
-        <p class="bottom">Jun 24, 2024</p>
-      </div>
-      <div class="nine columns left mb-3">
-        <a href="/2024/06/24/Evaluation-Metrics-for-Classification-Models/">
-          
-            Evaluation Metrics for Classification Models
-          
-        </a>
-      </div>
-    </div>
-  </article>
-
-
-
-  <article>
-    <div class="row">
-
-      <div class="three columns left lit">
-        <p class="bottom">May 6, 2018</p>
-      </div>
-      <div class="nine columns left mb-3">
-        <a href="/2018/05/06/RegressionTreesvs-ClassificationTrees/">
-          
-            Regression Trees vs. Classification Trees
-          
-        </a>
-      </div>
-    </div>
-  </article>
-
-
-<div class="pagination-bar">
-  <ul class="pagination">
-    
-    
-  </ul>
-</div>
+<h3 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h3><p>For supervised learning models, evaluation typically involves comparing the predictions made by the model with the ground truth labels that are provided in the dataset. Here are some common evaluation metrics used for assessing the performance of classification models. </p>
+<h3 id="Confusion-Matrix"><a href="#Confusion-Matrix" class="headerlink" title="Confusion Matrix"></a>Confusion Matrix</h3><p>A confusion matrix (or, error matrix) is a visualization method for classifier algorithm results. More specifically, it is a table that breaks down the number of ground truth instances of a specific class against the number of predicted class instances.</p>
+<p><img src="https://raw.githubusercontent.com/stephen-cheng/images/refs/heads/master/blog/2024/0624_1.jpg" alt=""></p>
+<ul>
+<li>Accuracy: [(TP + TN) / (TP + TN + FP + FN)]</li>
+</ul>
+<p>Measures the proportion of correctly classified instances out of the total instances. It’s suitable for balanced datasets but can be misleading for imbalanced datasets. Higher accuracy values indicate a higher proportion of correct predictions.</p>
+<ul>
+<li>Precision: TP / (TP + FP) or predicted positives</li>
+</ul>
+<p>Measures the proportion of true positive predictions out of all positive predictions. Higher precision values indicate fewer false positive predictions. Precision is useful when the cost of false positives is high.</p>
+<ul>
+<li>Recall (Sensitivity)/TPR: TP / (TP + FN) or actual positives</li>
+</ul>
+<p>Measures the proportion of true positive predictions out of all actual positives. It focuses on the ability of the model to capture positive instances. Higher recall values indicate fewer false negative predictions.</p>
+<p><img src="https://raw.githubusercontent.com/stephen-cheng/images/refs/heads/master/blog/2024/0624_2.jpg" alt=""></p>
+<ul>
+<li>Specificity/TNR : TN / (TN + FP) or actual negatives</li>
+</ul>
+<p>Specificity, also known as the true negative rate, is a metric used in binary classification tasks to evaluate the performance of a model in correctly identifying negative instances (actual negatives). Higher specificity values indicate fewer false positive predictions.</p>
+<ul>
+<li>False Positive Rate (FPR): FP / (FP + TN) or actual negatives</li>
+</ul>
+<p>Also known as the false alarm rate, it is a metric used in binary classification tasks to evaluate the performance of a model in correctly identifying negative instances. It is the complement of specificity. Lower FPR values indicate fewer false positive predictions.</p>
+<ul>
+<li>F1-score: 2 * (Precision * Recall) / (Precision + Recall)</li>
+</ul>
+<p>The harmonic mean of precision and recall provides a balance between the two metrics. It’s useful when there’s an uneven class distribution.</p>
+<h3 id="Implementation-with-Python"><a href="#Implementation-with-Python" class="headerlink" title="Implementation with Python"></a>Implementation with Python</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> accuracy_score, precision_score, recall_score, </span><br><span class="line">f1_score, confusion_matrix</span><br><span class="line"></span><br><span class="line"><span class="comment"># Example ground truth and predicted labels</span></span><br><span class="line">y_true = [<span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>]</span><br><span class="line">y_pred = [<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># Calculate accuracy</span></span><br><span class="line">accuracy = accuracy_score(y_true, y_pred)</span><br><span class="line">print(<span class="string">"Accuracy:"</span>, accuracy)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Calculate precision</span></span><br><span class="line">precision = precision_score(y_true, y_pred)</span><br><span class="line">print(<span class="string">"Precision:"</span>, precision)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Calculate recall</span></span><br><span class="line">recall = recall_score(y_true, y_pred)</span><br><span class="line">print(<span class="string">"Recall:"</span>, recall)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Calculate F1-score</span></span><br><span class="line">f1 = f1_score(y_true, y_pred)</span><br><span class="line">print(<span class="string">"F1-score:"</span>, f1)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Calculate confusion matrix</span></span><br><span class="line">conf_matrix = confusion_matrix(y_true, y_pred)</span><br><span class="line">print(<span class="string">"Confusion Matrix:"</span>)</span><br><span class="line">print(conf_matrix)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Calculate False Positive Rate (FPR)</span></span><br><span class="line">TN = conf_matrix[<span class="number">0</span>, <span class="number">0</span>]</span><br><span class="line">FP = conf_matrix[<span class="number">0</span>, <span class="number">1</span>]</span><br><span class="line">FPR = FP / (FP + TN)</span><br><span class="line">print(<span class="string">"False Positive Rate (FPR):"</span>, FPR)</span><br></pre></td></tr></table></figure>
+  <p><a class="classtest-link" href="/tags/Classification/" rel="tag">Classification</a>, <a class="classtest-link" href="/tags/Evaluation-Metrics/" rel="tag">Evaluation Metrics</a>, <a class="classtest-link" href="/tags/Machine-Learning/" rel="tag">Machine Learning</a> — Jun 24, 2024</p>
+  
 
 
         </div>
