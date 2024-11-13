@@ -199,12 +199,11 @@
 <center>Stephen Cheng</center>
 
 <h3 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h3><p>Clustering is a popular unsupervised machine learning technique used to identify groups of similar objects in a dataset. It has numerous applications in various fields, such as image recognition, customer segmentation, and anomaly detection. Two popular clustering algorithms are DBSCAN and K-Means. Each of these algorithms excels in different scenarios and has distinct advantages and limitations. In this guide, we will explore the key differences between DBSCAN and K-Means and how to implement them in Python using scikit-learn, a popular machine learning library. We will also discuss when to use each algorithm based on the characteristics of the dataset and the problem at hand. So let’s dive in!</p>
-<p><img src="https://raw.githubusercontent.com/stephen-cheng/images/refs/heads/master/blog/2024/0903_1.jpg" alt=""></p>
 <h3 id="K-Means-Clustering-Algorithm"><a href="#K-Means-Clustering-Algorithm" class="headerlink" title="K-Means Clustering Algorithm"></a>K-Means Clustering Algorithm</h3><p>K-Means is a centroid-based algorithm that partitions data into k clusters based on the mean distance between points and their assigned centroid. The algorithm aims to minimize the sum of squared distances between each point and its assigned centroid. K-Means is widely used due to its simplicity and efficiency.</p>
 <ul>
 <li><p><strong>How K-Means Works</strong></p>
 <ol>
-<li>Choose K: Start by selecting the number of clusters ‘K’.</li>
+<li>Choose K: Start by selecting the number of clusters <em>K</em>.</li>
 <li>Initialize Centroids: Randomly place K centroids (one for each cluster) in the data space.</li>
 <li>Assign Points to Clusters: Assign each data point to the nearest centroid based on Euclidean distance.</li>
 <li>Update Centroids: Recalculate the centroids by taking the mean of all data points assigned to each cluster.</li>
@@ -253,7 +252,7 @@
 </li>
 </ul>
 <p>A point <em>p</em> is core point if there are at least <em>MinPts</em> points within <em>ε-radius</em> neighborhood of <em>p</em>. Formally, the neighborhood <em>N(p)</em> of point <em>p</em> is defined as:</p>
-<p><img src="https://raw.githubusercontent.com/stephen-cheng/images/refs/heads/master/blog/2024/0903_1.jpg" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/stephen-cheng/images/refs/heads/master/blog/2024/0903_3.jpg" alt=""></p>
 <p>where:</p>
 <p>  <em>D</em> is the dataset,<br>  <em>dist(p,q)</em> is the distance between points <em>p</em> and <em>q</em>,<br>  <em>ε</em> is the maximum distance threshold.</p>
 <ul>
@@ -298,6 +297,7 @@
 <p>Example: In a geographical mapping application, where data points (e.g., earthquake epicenters) are scattered irregularly and outliers need to be identified, DBSCAN is an ideal choice.</p>
 </li>
 </ul>
+<p><img src="https://raw.githubusercontent.com/stephen-cheng/images/refs/heads/master/blog/2024/0903_1.jpg" alt=""></p>
 <h3 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h3><p>K-Means is a simple and fast algorithm that works well when the data is well-separated into clusters. However, it requires the number of clusters to be specified beforehand, which can be a challenge in real-world applications where the number of clusters is not known. On the other hand, DBSCAN is a more flexible algorithm that does not require the number of clusters to be specified beforehand. It can also handle noise and outliers well. However, it may not work well when the density of the data points varies greatly across different parts of the dataset. Both algorithms have their strengths and weaknesses, so it’s important to experiment with both and compare their results before making a final decision. By leveraging existing libraries such as scikit-learn in Python, you can easily apply these algorithms to your own datasets and gain valuable insights into your data.</p>
 
   <p><a class="classtest-link" href="/tags/Clustering/" rel="tag">Clustering</a>, <a class="classtest-link" href="/tags/DBSCAN/" rel="tag">DBSCAN</a>, <a class="classtest-link" href="/tags/K-Means/" rel="tag">K-Means</a> — Sep 3, 2024</p>
