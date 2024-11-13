@@ -264,15 +264,14 @@
 </ul>
 </li>
 <li><p><strong>Limitations of DBSCAN</strong></p>
-</li>
-</ul>
 <ul>
 <li>Sensitive to Parameter Choice: The performance of DBSCAN heavily depends on the correct choice of <em>ε</em> and <em>MinPts</em>. Inappropriate parameter selection can lead to poor results.</li>
 <li>Not Ideal for Varying Densities: DBSCAN struggles when clusters have varying densities, as it may merge dense and sparse regions into the same cluster.</li>
 <li>High-Dimensional Data: DBSCAN’s performance degrades in high-dimensional data because the concept of distance becomes less meaningful in higher dimensions (the curse of dimensionality).</li>
 </ul>
-<ul>
-<li><strong>Implementation in Python</strong></li>
+</li>
+<li><p><strong>Implementation in Python</strong></p>
+</li>
 </ul>
 <p>Let’s take a look at some Python code examples for implementing these algorithms. We first initialize a DBSCAN object with eps (the radius of neighborhood) set to 0.5 and min_samples (the minimum number of points required to form a dense region) set to 5. We then fit the model on our dataset X.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Example of using DBSCAN</span></span><br><span class="line"><span class="keyword">from</span> sklearn.cluster <span class="keyword">import</span> DBSCAN</span><br><span class="line">dbscan = DBSCAN(eps=<span class="number">0.5</span>, min_samples=<span class="number">5</span>)</span><br><span class="line">dbscan.fit(X)</span><br></pre></td></tr></table></figure>
