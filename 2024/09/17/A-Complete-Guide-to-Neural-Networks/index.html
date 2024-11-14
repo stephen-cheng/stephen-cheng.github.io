@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <!-- Minima -->
+  <!-- Hexo theme created by @adisaktijrs -->
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+
+  
+  <title>A Complete Guide to Neural Networks</title>
+  
+  <link rel="canonical" href="https://stephen-cheng.github.io/2024/09/17/A-Complete-Guide-to-Neural-Networks/">
+  
+  <meta name="description" content="&amp;nbsp; Stephen Cheng  IntroArtificial Intelligence is a term used for machines that can interpret the data, learn from it, and use it to do such tasks">
+  
+  
+  <meta name="keywords" content="AI, Tech, CS">
+  
+  <meta name="author" content="Stephen Cheng">
+  
+  
+  
+  <meta property="og:site_name" content="Stephen Cheng" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="A Complete Guide to Neural Networks" />
+  
+  <meta property="og:description" content="&amp;nbsp; Stephen Cheng  IntroArtificial Intelligence is a term used for machines that can interpret the data, learn from it, and use it to do such tasks">
+  
+  <meta property="og:url" content="https://stephen-cheng.github.io/2024/09/17/A-Complete-Guide-to-Neural-Networks/" />
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="A Complete Guide to Neural Networks">
+  
+  <meta name="twitter:description" content="&amp;nbsp; Stephen Cheng  IntroArtificial Intelligence is a term used for machines that can interpret the data, learn from it, and use it to do such tasks">
+  
+  
+  
+  
+  <meta name="twitter:url" content="https://stephen-cheng.github.io/2024/09/17/A-Complete-Guide-to-Neural-Networks/" />
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Preload fonts
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="preload" href="/fonts/dm-serif-display-v4-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/inter-v2-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  
+<link rel="stylesheet" href="/css/normalize.css">
+
+  
+<link rel="stylesheet" href="/css/skeleton.css">
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+  
+<link rel="stylesheet" href="/css/prism-dark.css">
+
+  
+<link rel="stylesheet" href="/css/prism-line-numbers.css">
+
+  <!-- User css -->
+  
+  
+<link rel="stylesheet" href="/css/user.css">
+
+  
+
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="icon" type="image/png" href="/images/favicon.png">
+
+  <!-- Custom Theme Color Style
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <style>
+  a:not(.icon) {
+    text-decoration-color: #0FA0CE;
+    background-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 50%,
+      #0FA0CE 50%
+    );
+  }
+  blockquote {
+    border-left: 8px solid #0FA0CE;
+  }
+  .nanobar .bar {
+    background: #0FA0CE;
+  }
+  .button.button-primary:hover,
+  button.button-primary:hover,
+  input[type="submit"].button-primary:hover,
+  input[type="reset"].button-primary:hover,
+  input[type="button"].button-primary:hover,
+  .button.button-primary:focus,
+  button.button-primary:focus,
+  input[type="submit"].button-primary:focus,
+  input[type="reset"].button-primary:focus,
+  input[type="button"].button-primary:focus {
+    background-color: #0FA0CE;
+    border-color: #0FA0CE;
+  }
+  input[type="email"]:focus,
+  input[type="number"]:focus,
+  input[type="search"]:focus,
+  input[type="text"]:focus,
+  input[type="tel"]:focus,
+  input[type="url"]:focus,
+  input[type="password"]:focus,
+  textarea:focus,
+  select:focus {
+    border: 1px solid #0FA0CE;
+  }
+</style>
+
+  <!-- Google Analytics (With Privacy Settings On)
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  
+
+  
+  <script src="/js/pic.min.js" defer></script>
+  
+
+  
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div>
+
+        <div class="row">
+  <div class="two columns" style="max-width: 50px">
+    <h1 class="mt-2 mode">
+      <div onclick=setDarkMode(true) id="darkBtn">🌑</div>
+      <div onclick=setDarkMode(false) id="lightBtn" class=hidden>☀️</div>
+      <script >
+        if (localStorage.getItem('preferredTheme') == 'dark') {
+          setDarkMode(true)
+        }
+        function setDarkMode(isDark) {
+          var darkBtn = document.getElementById('darkBtn')
+          var lightBtn = document.getElementById('lightBtn')
+          if (isDark) {
+            lightBtn.style.display = "block"
+            darkBtn.style.display = "none"
+            localStorage.setItem('preferredTheme', 'dark');
+          } else {
+            lightBtn.style.display = "none"
+            darkBtn.style.display = "block"
+            localStorage.removeItem('preferredTheme');
+          }
+          document.body.classList.toggle("darkmode");
+        }
+      </script>
+    </h1>
+  </div>
+
+  <div class="six columns ml-1">
+    <h1 class="mt-2">
+      Stephen Cheng
+    </h1>
+  </div>
+
+  <div class="twelve columns">
+    <div class="row">
+      <div class="nine columns left">
+        <a href="/">Home</a>
+        
+          
+          <a href="/archives" class="ml">Archives</a>
+          
+        
+          
+          <a href="/about" class="ml">About</a>
+          
+        
+        
+      </div>
+    </div>
+    <hr style="margin-bottom: 2.6rem">
+  </div>
+</div>
+
+        <div class="trans">
+            <h2>A Complete Guide to Neural Networks</h2>
+
+  <p>&nbsp;</p>
+<center>Stephen Cheng</center>
+
+<h2 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h2><p>Artificial Intelligence is a term used for machines that can interpret the data, learn from it, and use it to do such tasks that would otherwise be performed by humans. Deep Learning is a branch of Artificial Intelligence that focuses more on training the machines to learn on their own without much supervision. Deep Learning has witnessed tremendous growth in the last decade. With applications in image classification, speech recognition, text to speech conversion, self driving cars etc., the list of problems that Deep Learning has addressed is very significant. It is therefore necessary to understand the basic structure and working of Neural Networks to appreciate these advancements.</p>
+<h2 id="What-is-a-Neural-Network"><a href="#What-is-a-Neural-Network" class="headerlink" title="What is a Neural Network?"></a>What is a Neural Network?</h2><p>A neural network is a system or hardware that is designed to operate like a human brain. It can perform the following tasks:</p>
+<ul>
+<li>Translate text</li>
+<li>Identify faces</li>
+<li>Recognize speech</li>
+<li>Read handwritten text</li>
+<li>Control robots</li>
+<li>And a lot more</li>
+</ul>
+<p>A neural network is usually described as having different layers. The first layer is the input layer, it picks up the input signals and passes them to the next layer. The next layer does all kinds of calculations and feature extractions—it’s called the hidden layer. Often, there will be more than one hidden layer. And finally, there’s an output layer, which delivers the final result.</p>
+<p><img src="https://raw.githubusercontent.com/stephen-cheng/images/refs/heads/master/blog/2024/0917_1.jpg" alt=""></p>
+<h2 id="How-Does-a-Neural-Network-Work"><a href="#How-Does-a-Neural-Network-Work" class="headerlink" title="How Does a Neural Network Work?"></a>How Does a Neural Network Work?</h2><p>Let’s take the real-life example of how traffic cameras identify license plates and speeding vehicles on the road. The image is 28 by 28 pixels, and the image is fed as an input to identify the license plate. Each neuron has a number, called activation, which represents the grayscale value of the corresponding pixel, ranging from 0 to 1 (It’s 1 for a white pixel and 0 for a black pixel). Each neuron is lit up when its activation is close to 1. Pixels in the form of arrays are fed into the input layer (If your image is bigger than 28 by 28 pixels, you must shrink it down, because you can’t change the size of the input layer). In our example, we’ll name the inputs as X1, X2, and X3. Each of those represents one of the pixels coming in. The input layer then passes the input to the hidden layer. The interconnections are assigned weights at random. The weights are multiplied with the input signal, and a bias is added to all of them.</p>
+<p><img src="https://raw.githubusercontent.com/stephen-cheng/images/refs/heads/master/blog/2024/0917_2.jpg" alt=""></p>
+<p>The weighted sum of the inputs is fed as input to the activation function, to decide which nodes to fire for feature extraction. As the signal flows within the hidden layers, the weighted sum of inputs is calculated and is fed to the activation function in each layer to decide which nodes to fire.</p>
+<p><img src="https://raw.githubusercontent.com/stephen-cheng/images/refs/heads/master/blog/2024/0917_3.jpg" alt=""></p>
+<p>Finally, the model will predict the outcome, applying a suitable application function to the output layer. In our example with the car image, optical character recognition (OCR) is used to convert it into text to identify what’s written on the license plate. In the neural network example, we show only three dots coming in, eight hidden layer nodes, and one output, but there’s really a huge amount of input and output. Error in the output is back-propagated through the network and weights are adjusted to minimize the error rate. This is calculated by a cost function. We keep adjusting the weights until they fit all the different training models we put in.</p>
+<p><img src="https://raw.githubusercontent.com/stephen-cheng/images/refs/heads/master/blog/2024/0917_4.jpg" alt=""></p>
+<p>The output is then compared with the original result, and multiple iterations are done for maximum accuracy. With every iteration, the weight at every interconnection is adjusted based on the error. </p>
+<h2 id="Essential-Components-of-Neural-Networks"><a href="#Essential-Components-of-Neural-Networks" class="headerlink" title="Essential Components of Neural Networks"></a>Essential Components of Neural Networks</h2><p>A neural network is a computational learning system that maps input variables to the output variable using an underlying mapping function that is non linear in nature. The architecture of a neural network comprises five essential components:</p>
+<ol>
+<li>Layers</li>
+<li>Nodes</li>
+<li>Activation Function</li>
+<li>Loss Function</li>
+<li>Optimizer</li>
+</ol>
+<p>We will learn about each of these components in detail.</p>
+<h4 id="Layers"><a href="#Layers" class="headerlink" title="Layers"></a>Layers</h4><p>Simply put, a Neural Network is a stack of layers, interconnected to each other. There are three types of layers in a Neural Network: Input Layer takes the input data, Hidden Layer transforms the input data, Output Layer generates prediction for the given inputs after applying transformations. The layers close to the Input Layer are called the Lower layers, the layers close to the Output Layer are called the Upper Layers.</p>
+<h4 id="Nodes"><a href="#Nodes" class="headerlink" title="Nodes"></a>Nodes</h4><p>Each layer consists of multiple neurons, also called Nodes. Each node in a given layer is connected to each node in the next layer. The nodes take the weighted sum of the inputs from the previous layer, applies a non linear activation function to it and generates an output which then becomes an input to the nodes in the next layer. </p>
+<p>The number of nodes in the input layer correspond to the number of independent variables in the data . The number of hidden layers and the nodes in these layers is a hyperparameter and usually is a function of the complexity of the problem and the data available. For a regression problem, the number of nodes in the output layer is one; for a multiclassification problem, the number of nodes in the output layer is equal to the number of labels / categories, for a binary classification problem, the number of nodes in the output layer is equal to 1.</p>
+<p>Each connection between neurons carries a weight that determines the strength of their influence on the data’s transformation. For any arbitrary function <em>f</em> there exist a neuronal network. The goal is to find the best parameters <em>𝜃</em> (weights) which result in the best decision boundary. Thus, a neuron can be defined as an operation that has two parts — linear component and an activation component i.e. Neuron = Linear + Activation.</p>
+<h4 id="How-Nodes-Work-in-Layers"><a href="#How-Nodes-Work-in-Layers" class="headerlink" title="How Nodes Work in Layers"></a>How Nodes Work in Layers</h4><p>Let’s consider the illustration below. There is a dataset on the left. Typically, the dataset consists of some features denoted as <em>X</em>. In this case, we have two features, <em>X1</em> and <em>X2</em>, for each sample. Additionally, there is a label <em>Y</em>, also referred to as the target or class, associated with each sample.</p>
+<p><img src="https://raw.githubusercontent.com/stephen-cheng/images/refs/heads/master/blog/2024/0917_5.jpg" alt=""></p>
+<p>To learn the relationship between features <em>X1</em> and <em>X2</em> and their corresponding label, we utilize a neural network consisting of 2 input nodes (owing to the two features), one hidden layer with 3 neurons (the number of hidden layers and neurons can be adjusted as hyperparameters), and one output neuron. A weight matrix is associated with each layer. In this instance, there exists a hidden layer and an output layer, resulting in two weight matrices. These weights are initialized randomly, and throughout the training process, they are iteratively updated until the loss converges. </p>
+<p>A weight matrix always has the dimension <strong>n x m</strong>:</p>
+<ul>
+<li><em>n</em> neurons in the previous layer (input layer or a previous hidden layer).</li>
+<li><em>m</em> neurons in the current hidden layer.</li>
+</ul>
+<p>The illustration below shows how a neural network results in a specific function. </p>
+<p><img src="https://raw.githubusercontent.com/stephen-cheng/images/refs/heads/master/blog/2024/0917_6.jpg" alt=""></p>
+<p>Each node in a hidden layer has the following function: a = ReLU(weights * input + bias), where a refers to an activation function, such as ReLu. The last node a7 is a combination of all previous functions, resulting in one single non-linear function. To understand the combination of functions, we can take node a4 as an example. We can see that node a4 depends on the functions of nodes a1 to a3, which in turn depend on the input x. In particular, the value of node a4 is calculated by ReLU(weights * input + bias). In this case the bias is -1, the weights are 0.3, 0.2 and 0.1. And the input is the output of the previous three nodes a1, a2 and a3.</p>
+<p>In this illustration we use ReLU as activation function, which simply is max(0, z).</p>
+<h4 id="Activation-Function"><a href="#Activation-Function" class="headerlink" title="Activation Function"></a>Activation Function</h4><p>An activation function is used to transform the input from a node to an output value that is fed to the node in the next hidden layer. In technical terms, an activation function, also known as a transfer function, defines how the weighted sum of the inputs and the bias is transformed into an output from the node in a given layer. It maps the output value in a given range i.e. 0 to 1 or -1 to +1 depending on the type of function used. Generally one activation function is used across all layers, exception being the output layer. There are different types of activation functions used in Neural Networks, and they have two types — linear and non-linear.</p>
+<p><img src="https://raw.githubusercontent.com/stephen-cheng/images/refs/heads/master/blog/2024/0917_14.jpg" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/stephen-cheng/images/refs/heads/master/blog/2024/0917_7.jpg" alt=""></p>
+<ul>
+<li><strong>Linear Activation Function:</strong> The range of this function is: —infinity to +infinity. A linear activation function is used in outer layer of the neural network when solving regression problems. It is not a good idea to use it in the input or hidden layers cause the network will not be able to capture the complex relationships in the underlying data.</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/stephen-cheng/images/refs/heads/master/blog/2024/0917_8.jpg" alt=""></p>
+<ul>
+<li><strong>Non-Linear Activation Function:</strong> Non-Linear activation functions are by default, the most used activation function in Deep Learning. These include Sigmoid or Logistic function, Rectified Linear Activation (ReLU), and Hyperbolic Tangent (Tanh). Next, let’s understand each of them in more detail.</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/stephen-cheng/images/refs/heads/master/blog/2024/0917_9.jpg" alt=""></p>
+<ul>
+<li><strong>Sigmoid Function:</strong> The Sigmoid activation function compresses values between 0 and 1, which can be interpreted as a probability that the input belongs to a specific class. It is also called the Logistic function, it takes in any real value as input and gives an output in the range of 0 and 1. Given as y = 1/(1+ e^-z), it has a S shaped curve. Here z = b + sigma(xi * wi), indexed over i input variables. For a very large positive number z, e^-z will be 0 and the output of the function will be 1. For a very large negative number z, e^-z will be a large number and thus the output of the function will be 0. Sigmoid function is frequently employed as an activation function for the output in binary classification problems. However, it yields very small gradients that can lead to neural network stagnation. Additionally, it causes gradients to vanish beyond 1 and 0, respectively.</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/stephen-cheng/images/refs/heads/master/blog/2024/0917_10.jpg" alt=""></p>
+<ul>
+<li><strong>ReLU (Rectified Linear Unit) Function:</strong> ReLu is today, the most used activation function. ReLU has a property of being linear for all input values greater than 0 and non-linear otherwise. It is computationally efficient, because it uses only a simple thresholding operation. It is given as f(x) = max(0, x) It is less susceptible to vanishing gradient problem because the gradients are 1 if x &gt; 0. However, every negative value results in a gradient of zero, which means the weights will never be updated, resulting in a dead neuron.</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/stephen-cheng/images/refs/heads/master/blog/2024/0917_11.jpg" alt=""></p>
+<ul>
+<li><strong>Hyperbolic Tangent Function:</strong> The hyperbolic tangent function is similar to the sigmoid function but has a range of -1 to 1. It is given as : f(x) = (e^z — e^-z) / (e^z+e^-z). Here z = b + sigma(xi * wi), indexed over i input variables. The shape of Tanh function is also S shaped but the range is different. </li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/stephen-cheng/images/refs/heads/master/blog/2024/0917_12.jpg" alt=""></p>
+<ul>
+<li><strong>Threshold Function:</strong> The threshold function is used when you don’t want to worry about the uncertainty in the middle.</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/stephen-cheng/images/refs/heads/master/blog/2024/0917_13.jpg" alt=""></p>
+<h4 id="Loss-Function"><a href="#Loss-Function" class="headerlink" title="Loss Function"></a>Loss Function</h4><p>The predicted value is compared with actual value and the error is computed. The magnitude of the error is given by the loss function. The loss function will estimate how close the distribution of the predicted value is to distribution of the actual target variable in the training data. The Maximum Likelihood Estimation (MLE) framework is used to compute the error over the entire training data. It does this by estimating how closely the distribution of the predictions matches with the distribution of the target variable in the training data. The loss function under the MLE framework for classification problem is <strong>Cross Entropy</strong>, and for regression problem is <strong>Mean Squared Error</strong>.</p>
+<h4 id="Optimizer"><a href="#Optimizer" class="headerlink" title="Optimizer"></a>Optimizer</h4>
+  <p><a class="classtest-link" href="/tags/Deep-Learning/" rel="tag">Deep Learning</a>, <a class="classtest-link" href="/tags/Machine-Learning/" rel="tag">Machine Learning</a>, <a class="classtest-link" href="/tags/Neural-Networks/" rel="tag">Neural Networks</a> — Sep 17, 2024</p>
+  
+
+
+        </div>
+        <div class="row mt-2">
+  <h3>Search</h3>
+  <div><input id="search-text" title="search" class="search-text" type="text" placeholder="search......"></div>
+  <div style="margin-top: 1.5rem;">
+    <ul id="result"></ul>
+  </div>
+</div>
+        <div class="row mt-2">
+  
+    <div class="eight columns">
+      <p id="madewith">Made with ❤️ and ☀️
+        <!-- <a class="footer-link icon" href="https://hexo.io" target="_blank" style="text-decoration: none;" rel="noreferrer" aria-label="Hexo.io"> -->
+        <!-- <svg class="hexo svg-hov" width="14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Hexo.js</title><path d="M12 .007L1.57 6.056V18.05L12 23.995l10.43-6.049V5.952L12 .007zm4.798 17.105l-.939.521-.939-.521V12.94H9.08v4.172l-.94.521-.938-.521V6.89l.939-.521.939.521v4.172h5.84V6.89l.94-.521.938.521v10.222z"/></svg> -->
+        <!-- </a> -->
+        
+        on <a href="https://en.wikipedia.org/wiki/Earth" target="_blank" rel="noreferrer">Earth</a>.</p>
+        
+    </div>
+
+    <!-- Sepcial thanks to https://simpleicons.org/ for the icons -->
+    <div class="four columns mb-3 posisi" >
+      
+      <a class="ml-0 footer-link icon" href="https://github.com/stephen-cheng" target="_blank" style="text-decoration: none" rel="noreferrer" aria-label="GitHub">
+        <svg class="github svg-hov" width="18" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+      </a>
+      
+
+      
+      <a class="ml-0 footer-link icon" href="https://linkedin.com/in/stephen-cheng" target="_blank" style="text-decoration: none" rel="noreferrer" aria-label="LinkedIn">
+        <svg class="linkedin svg-hov" width="18" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>LinkedIn</title><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      </a>
+      
+
+      
+
+      
+        <a class="ml-0 footer-link icon" href="https://facebook.com/stephen.cheeng" target="_blank" style="text-decoration: none" rel="noreferrer" aria-label="Facebook">
+          <svg class="facebook svg-hov" width="18" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Facebook</title><path d="M8.258 4.458c0-0.144 0.02-0.455 0.06-0.931c0.043-0.477 0.223-0.976 0.546-1.5c0.32-0.522 0.839-0.991 1.561-1.406 C11.144 0.208 12.183 0 13.539 0h3.82v4.163h-2.797c-0.277 0-0.535 0.104-0.768 0.309c-0.231 0.205-0.35 0.4-0.35 0.581v2.59h3.914 c-0.041 0.507-0.086 1-0.138 1.476l-0.155 1.258c-0.062 0.425-0.125 0.819-0.187 1.182h-3.462v11.542H8.258V11.558H5.742V7.643 h2.516V4.458z"/></svg>
+        </a>
+      
+
+      
+      <a class="ml-0 footer-link icon" href="https://instagram.com/stephen.cheeng" target="_blank" style="text-decoration: none" rel="noreferrer" aria-label="Instagram">
+        <svg class="instagram svg-hov" width="18" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Instagram</title><path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z"/></svg>
+      </a>
+      
+
+      
+
+    </div>
+  
+</div>
+
+      </div>
+
+    </div>
+
+  </div>
+  <script src="/js/nanobar.min.js"></script>
+
+  <script>
+    var options = {
+      classname: 'nanobar',
+      id: 'myNanobar'
+    };
+    var nanobar = new Nanobar(options);
+    nanobar.go(30);
+    nanobar.go(76);
+    nanobar.go(100);
+  </script>
+
+</body>
+
+</html>
