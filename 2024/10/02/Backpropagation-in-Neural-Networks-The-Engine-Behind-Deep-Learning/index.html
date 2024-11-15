@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <!-- Minima -->
+  <!-- Hexo theme created by @adisaktijrs -->
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+
+  
+  <title>Backpropagation in Neural Networks - The Engine Behind Deep Learning</title>
+  
+  <link rel="canonical" href="https://stephen-cheng.github.io/2024/10/02/Backpropagation-in-Neural-Networks-The-Engine-Behind-Deep-Learning/">
+  
+  <meta name="description" content="Stephen Cheng &amp;nbsp;  IntroBackpropagation (short for “Backward Propagation of Errors”) is a method used to train artificial neural networks. Its goal">
+  
+  
+  <meta name="keywords" content="AI, Tech, CS">
+  
+  <meta name="author" content="Stephen">
+  
+  
+  
+  <meta property="og:site_name" content="Stephen&#39;s Blog" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Backpropagation in Neural Networks - The Engine Behind Deep Learning" />
+  
+  <meta property="og:description" content="Stephen Cheng &amp;nbsp;  IntroBackpropagation (short for “Backward Propagation of Errors”) is a method used to train artificial neural networks. Its goal">
+  
+  <meta property="og:url" content="https://stephen-cheng.github.io/2024/10/02/Backpropagation-in-Neural-Networks-The-Engine-Behind-Deep-Learning/" />
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Backpropagation in Neural Networks - The Engine Behind Deep Learning">
+  
+  <meta name="twitter:description" content="Stephen Cheng &amp;nbsp;  IntroBackpropagation (short for “Backward Propagation of Errors”) is a method used to train artificial neural networks. Its goal">
+  
+  
+  
+  
+  <meta name="twitter:url" content="https://stephen-cheng.github.io/2024/10/02/Backpropagation-in-Neural-Networks-The-Engine-Behind-Deep-Learning/" />
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Preload fonts
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="preload" href="/fonts/dm-serif-display-v4-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/inter-v2-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  
+<link rel="stylesheet" href="/css/normalize.css">
+
+  
+<link rel="stylesheet" href="/css/skeleton.css">
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+  
+<link rel="stylesheet" href="/css/prism-dark.css">
+
+  
+<link rel="stylesheet" href="/css/prism-line-numbers.css">
+
+  <!-- User css -->
+  
+  
+<link rel="stylesheet" href="/css/user.css">
+
+  
+
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="icon" type="image/png" href="/images/favicon.png">
+
+  <!-- Custom Theme Color Style
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <style>
+  a:not(.icon) {
+    text-decoration-color: #0FA0CE;
+    background-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 50%,
+      #0FA0CE 50%
+    );
+  }
+  blockquote {
+    border-left: 8px solid #0FA0CE;
+  }
+  .nanobar .bar {
+    background: #0FA0CE;
+  }
+  .button.button-primary:hover,
+  button.button-primary:hover,
+  input[type="submit"].button-primary:hover,
+  input[type="reset"].button-primary:hover,
+  input[type="button"].button-primary:hover,
+  .button.button-primary:focus,
+  button.button-primary:focus,
+  input[type="submit"].button-primary:focus,
+  input[type="reset"].button-primary:focus,
+  input[type="button"].button-primary:focus {
+    background-color: #0FA0CE;
+    border-color: #0FA0CE;
+  }
+  input[type="email"]:focus,
+  input[type="number"]:focus,
+  input[type="search"]:focus,
+  input[type="text"]:focus,
+  input[type="tel"]:focus,
+  input[type="url"]:focus,
+  input[type="password"]:focus,
+  textarea:focus,
+  select:focus {
+    border: 1px solid #0FA0CE;
+  }
+</style>
+
+  <!-- Google Analytics (With Privacy Settings On)
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  
+
+  
+  <script src="/js/pic.min.js" defer></script>
+  
+
+  
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div>
+
+        <div class="row">
+  <div class="two columns" style="max-width: 50px">
+    <h1 class="mt-2 mode">
+      <div onclick=setDarkMode(true) id="darkBtn">🌑</div>
+      <div onclick=setDarkMode(false) id="lightBtn" class=hidden>☀️</div>
+      <script >
+        if (localStorage.getItem('preferredTheme') == 'dark') {
+          setDarkMode(true)
+        }
+        function setDarkMode(isDark) {
+          var darkBtn = document.getElementById('darkBtn')
+          var lightBtn = document.getElementById('lightBtn')
+          if (isDark) {
+            lightBtn.style.display = "block"
+            darkBtn.style.display = "none"
+            localStorage.setItem('preferredTheme', 'dark');
+          } else {
+            lightBtn.style.display = "none"
+            darkBtn.style.display = "block"
+            localStorage.removeItem('preferredTheme');
+          }
+          document.body.classList.toggle("darkmode");
+        }
+      </script>
+    </h1>
+  </div>
+
+  <div class="six columns ml-1">
+    <h1 class="mt-2">
+      Stephen&#39;s Blog
+    </h1>
+  </div>
+
+  <div class="twelve columns">
+    <div class="row">
+      <div class="nine columns left">
+        <a href="/">Home</a>
+        
+          
+          <a href="/archives" class="ml">Archives</a>
+          
+        
+          
+          <a href="/about" class="ml">About</a>
+          
+        
+        
+      </div>
+    </div>
+    <hr style="margin-bottom: 2.6rem">
+  </div>
+</div>
+
+        <div class="trans">
+            <h2>Backpropagation in Neural Networks - The Engine Behind Deep Learning</h2>
+
+  <center>Stephen Cheng</center>
+<p>&nbsp;</p>
+
+<h2 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h2><p>Backpropagation (short for “Backward Propagation of Errors”) is a method used to train artificial neural networks. Its goal is to reduce the difference between the model’s predicted output and the actual output by adjusting the weights and biases in the network. In this article, we will explore what backpropagation is, why it is crucial in machine learning, and how it works.</p>
+<h2 id="What-is-Backpropagation"><a href="#What-is-Backpropagation" class="headerlink" title="What is Backpropagation?"></a>What is Backpropagation?</h2><p>Introduced in the 1970s, the backpropagation algorithm is the method for fine-tuning the weights of a neural network with respect to the error rate obtained in the previous iteration or epoch, and this is a standard method of training artificial neural networks, particularly feed-forward networks. You can think of it as a feedback system where, after each round of training or ‘epoch,’ the network reviews its performance on tasks. It calculates the difference between its output and the correct answer, known as the error. </p>
+<p>Backpropagation works iteratively, minimizing the cost function by adjusting weights and biases. In each epoch, the model adapts these parameters, reducing loss by following the error gradient. Backpropagation often utilizes optimization algorithms like gradient descent or stochastic gradient descent. The algorithm computes the gradient using the chain rule from calculus, allowing it to effectively navigate complex layers in the neural network to minimize the cost function.</p>
+<p><img src="https://raw.githubusercontent.com/stephen-cheng/images/refs/heads/master/blog/2024/1002_1.jpg" alt=""></p>
+<h2 id="Why-is-Backpropagation-Important"><a href="#Why-is-Backpropagation-Important" class="headerlink" title="Why is Backpropagation Important?"></a>Why is Backpropagation Important?</h2><p>Backpropagation plays a critical role in how neural networks improve over time. Here’s why:</p>
+<ol>
+<li>Efficient Weight Update: It computes the gradient of the loss function with respect to each weight using the chain rule, making it possible to update weights efficiently.</li>
+<li>Scalability: The backpropagation algorithm scales well to networks with multiple layers and complex architectures, making deep learning feasible.</li>
+<li>Automated Learning: With backpropagation, the learning process becomes automated, and the model can adjust itself to optimize its performance.</li>
+</ol>
+<h2 id="How-Does-Backpropagation-Work"><a href="#How-Does-Backpropagation-Work" class="headerlink" title="How Does Backpropagation Work?"></a>How Does Backpropagation Work?</h2><p>There are overall four main steps in the backpropagation algorithm:</p>
+<ul>
+<li>The Forward Pass</li>
+<li>Errors Calculation (The Loss Function)</li>
+<li>The Backward Pass</li>
+<li>Weights Update (Optimizer/Optimization Algorithm)</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/stephen-cheng/images/refs/heads/master/blog/2024/1002_2.jpg" alt=""></p>
+<p>Next, let’s understand each of these steps from the above animation.</p>
+<h4 id="The-Forward-Pass"><a href="#The-Forward-Pass" class="headerlink" title="The Forward Pass"></a>The Forward Pass</h4><p>In the forward pass, the input data is fed into the input layer. These inputs, combined with their respective weights, are passed to hidden layers. For example, in a network with two hidden layers (h1 and h2 as shown in Fig.), the output from h1 serves as the input to h2. Before applying an activation function, a bias is added to the weighted inputs. Each hidden layer applies an activation function like <em>ReLU (Rectified Linear Unit)</em>, which returns the input if it’s positive and zero otherwise. This adds non-linearity, allowing the model to learn complex relationships in the data. Finally, the outputs from the last hidden layer are passed to the output layer, where an activation function, such as <em>softmax</em>, converts the weighted outputs into probabilities for classification.</p>
+<p><img src="https://raw.githubusercontent.com/stephen-cheng/images/refs/heads/master/blog/2024/1002_3.jpg" alt=""></p>
+<p>The forward pass is the first step of the backpropagation process, and it’s illustrated below:</p>
+<ul>
+<li>The data (inputs X1 and X2) is fed to the input layer.</li>
+<li>Then, each input is multiplied by its corresponding weight, and the results are passed to the neurons N1X and N2X of the hidden layers, where X takes the values of 1, 2 and 3.</li>
+<li>Those neurons apply an activation function to the weighted inputs they receive, and the result passes to the output layer.</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/stephen-cheng/images/refs/heads/master/blog/2024/1002_4.gif" alt=""></p>
+<h4 id="Errors-Calculation-The-Loss-Function"><a href="#Errors-Calculation-The-Loss-Function" class="headerlink" title="Errors Calculation (The Loss Function)"></a>Errors Calculation (The Loss Function)</h4><p>The process continues until the output layer generates the final output (o/p). The output of the network is then compared to the ground truth (desired output), and the difference is calculated, resulting in an error value.</p>
+<h4 id="The-Backward-Pass"><a href="#The-Backward-Pass" class="headerlink" title="The Backward Pass"></a>The Backward Pass</h4><p>This is an actual backpropagation step, and can not be performed without the above forward and the loss function steps. Here is how it works:</p>
+<ul>
+<li>The error value obtained previously is used to calculate the gradient of the loss function.</li>
+<li>The gradient of the error is propagated back through the network, starting from the output layer to the hidden layers.</li>
+<li>As the error gradient propagates back, the weights (represented by the lines connecting the nodes) are updated according to their contribution to the error. This involves taking the derivative of the error with respect to each weight, which indicates how much a change in the weight would change the error.</li>
+<li>The learning rate determines the size of the weight updates. A smaller learning rate means than the weights are updated by a smaller amount, and vice-versa.</li>
+</ul>
+<p>One common method for error calculation is the <em>Mean Squared Error (MSE)</em>, given by:</p>
+<ul>
+<li>MSE = (Predicted Output − Actual Output)^2</li>
+</ul>
+<h4 id="Weights-Update-Optimizer-Optimization-Algorithm"><a href="#Weights-Update-Optimizer-Optimization-Algorithm" class="headerlink" title="Weights Update (Optimizer/Optimization Algorithm)"></a>Weights Update (Optimizer/Optimization Algorithm)</h4><p>The weights are updated in the opposite direction of the gradient, leading to the name <em>gradient descent</em>. It aims to reduce the error in the next forward pass. This process of forward pass, error calculation, backward pass, and weights update continues for multiple epochs until the network performance reaches a satisfactory level or stops improving significantly. The activation function, through its derivative, plays a crucial role in computing these gradients during backpropagation.</p>
+<p>Optimizers are algorithms or methods used to minimize an error function(loss function)or to maximize the efficiency of production. Optimizers help to know how to change weights and learning rate of neural network to reduce the losses. There are different types of optimizers, such as Gradient Descent algorithm, Stochastic Gradient Descent (SGD), Mini-Batch Gradient Descent, SGD with Momentum, Adaptive Gradient Descent (AdaGrad), Root Mean Square Propagation (RMS-Prop), AdaDelta, Adaptive Moment Estimation (Adam).</p>
+<h2 id="Advantages-of-Backpropagation"><a href="#Advantages-of-Backpropagation" class="headerlink" title="Advantages of Backpropagation"></a>Advantages of Backpropagation</h2><p>The key benefits of using the backpropagation algorithm are:</p>
+<ul>
+<li>Ease of Implementation: Backpropagation is beginner-friendly, requiring no prior neural network knowledge, and simplifies programming by adjusting weights via error derivatives.</li>
+<li>Simplicity and Flexibility: Its straightforward design suits a range of tasks, from basic feedforward to complex convolutional or recurrent networks.</li>
+<li>Efficiency: Backpropagation accelerates learning by directly updating weights based on error, especially in deep networks.</li>
+<li>Generalization: It helps models generalize well to new data, improving prediction accuracy on unseen examples.</li>
+<li>Scalability: The algorithm scales efficiently with larger datasets and more complex networks, making it ideal for large-scale tasks.</li>
+</ul>
+<h2 id="Limitations-and-Challenges"><a href="#Limitations-and-Challenges" class="headerlink" title="Limitations and Challenges"></a>Limitations and Challenges</h2><p>While backpropagation is powerful, it does face some challenges:</p>
+<ul>
+<li>Vanishing Gradient Problem: In deep networks, the gradients can become very small during backpropagation, making it difficult for the network to learn. This is common when using activation functions like sigmoid or tanh.</li>
+<li>Exploding Gradients: The gradients can also become excessively large, causing the network to diverge during training.</li>
+<li>Overfitting: If the network is too complex, it might memorize the training data instead of learning general patterns.</li>
+</ul>
+<h2 id="An-Example-of-Backpropagation"><a href="#An-Example-of-Backpropagation" class="headerlink" title="An Example of Backpropagation"></a>An Example of Backpropagation</h2><p>Let’s walk through an example of backpropagation in machine learning. Assume the neurons use the sigmoid activation function for the forward and backward pass. The target output is 0.5, and the learning rate is 1.</p>
+<p><img src="https://raw.githubusercontent.com/stephen-cheng/images/refs/heads/master/blog/2024/1002_5.jpg" alt=""></p>
+<p>Here’s how backpropagation is implemented:</p>
+<h4 id="The-Forward-Pass-1"><a href="#The-Forward-Pass-1" class="headerlink" title="The Forward Pass"></a>The Forward Pass</h4><ol>
+<li>Initial Calculation</li>
+</ol>
+<p>The weighted sum at each node is calculated using:</p>
+<p><img src="https://raw.githubusercontent.com/stephen-cheng/images/refs/heads/master/blog/2024/1002_6.jpg" alt=""></p>
+<ol start="2">
+<li>Sigmoid Function</li>
+</ol>
+<p>The sigmoid function returns a value between 0 and 1, introducing non-linearity into the model.</p>
+<p><img src="https://raw.githubusercontent.com/stephen-cheng/images/refs/heads/master/blog/2024/1002_7.jpg" alt=""></p>
+<ol start="3">
+<li>Computing Outputs</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/stephen-cheng/images/refs/heads/master/blog/2024/1002_8.jpg" alt=""></p>
+<p>At h1 node,</p>
+<p><img src="https://raw.githubusercontent.com/stephen-cheng/images/refs/heads/master/blog/2024/1002_9.jpg" alt=""></p>
+<p>Once, we calculated the a1 value, we can now proceed to find the y3 value:</p>
+<p><img src="https://raw.githubusercontent.com/stephen-cheng/images/refs/heads/master/blog/2024/1002_10.jpg" alt=""></p>
+<p>Similarly find the values of y4 at h2 and y5 at O3,</p>
+<p><img src="https://raw.githubusercontent.com/stephen-cheng/images/refs/heads/master/blog/2024/1002_11.jpg" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/stephen-cheng/images/refs/heads/master/blog/2024/1002_12.jpg" alt=""></p>
+<ol start="4">
+<li>Errors Calculation (The Loss Function)</li>
+</ol>
+<p>Note that, our actual output is 0.5 but we obtained 0.67. To calculate the error, we can use the below formula:</p>
+<p><img src="https://raw.githubusercontent.com/stephen-cheng/images/refs/heads/master/blog/2024/1002_13.jpg" alt=""></p>
+<p>Using this error value, we will be backpropagating.</p>
+<h4 id="The-Backward-Pass-1"><a href="#The-Backward-Pass-1" class="headerlink" title="The Backward Pass"></a>The Backward Pass</h4><ol>
+<li>Calculating Gradients</li>
+</ol>
+<p>The change in each weight is calculated as:</p>
+<p><img src="https://raw.githubusercontent.com/stephen-cheng/images/refs/heads/master/blog/2024/1002_14.jpg" alt=""></p>
+<ol start="2">
+<li>Output Unit Error</li>
+</ol>
+<p>For O3:</p>
+<p><img src="https://raw.githubusercontent.com/stephen-cheng/images/refs/heads/master/blog/2024/1002_15.jpg" alt=""></p>
+<ol start="3">
+<li>Hidden Unit Error</li>
+</ol>
+<p>For h1:</p>
+<p><img src="https://raw.githubusercontent.com/stephen-cheng/images/refs/heads/master/blog/2024/1002_16.jpg" alt=""></p>
+<p>For h2:</p>
+<p><img src="https://raw.githubusercontent.com/stephen-cheng/images/refs/heads/master/blog/2024/1002_17.jpg" alt=""></p>
+<ol start="4">
+<li>Weight Updates</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/stephen-cheng/images/refs/heads/master/blog/2024/1002_18.jpg" alt=""></p>
+<p>The updated weights are illustrated below.</p>
+<p><img src="https://raw.githubusercontent.com/stephen-cheng/images/refs/heads/master/blog/2024/1002_19.jpg" alt=""></p>
+<p>Final Forward Pass:</p>
+<p>After updating the weights, the forward pass is repeated.</p>
+<ul>
+<li><em>y3</em> = 0.57</li>
+<li><em>y4</em> = 0.56</li>
+<li><em>y5</em> = 0.61</li>
+</ul>
+<p>Since <em>y5</em> = 0.61 is still not the target output, the process of calculating the error and backpropagating continues until the desired output is reached. This process demonstrates how backpropagation iteratively updates weights by minimizing errors until the network accurately predicts the output. This process is said to be continued until the actual output is gained by the neural network.</p>
+<p><img src="https://raw.githubusercontent.com/stephen-cheng/images/refs/heads/master/blog/2024/1002_20.jpg" alt=""></p>
+<h2 id="Implementation-in-Python"><a href="#Implementation-in-Python" class="headerlink" title="Implementation in Python"></a>Implementation in Python</h2><p>This code demonstrates how backpropagation is used in a neural network to solve the XOR problem. The neural network consists of:</p>
+<ul>
+<li>Input layer with 2 inputs,</li>
+<li>Hidden layer with 4 neurons,</li>
+<li>Output layer with 1 output neuron.</li>
+</ul>
+<p>Key steps:</p>
+<ul>
+<li>The Forward Pass: The inputs are passed through the network, activating the hidden and output layers using the sigmoid function.</li>
+<li>The Backward Pass (Backpropagation): The errors between the predicted and actual outputs are computed. The gradients are calculated using the derivative of the sigmoid function, and weights and biases are updated accordingly.</li>
+<li>Training: The network is trained over 10,000 epochs using the backpropagation algorithm with a learning rate of 0.1, progressively reducing the error.</li>
+</ul>
+<p>This implementation highlights how backpropagation adjusts weights and biases to minimize the loss and improve predictions over time.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">NeuralNetwork</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, input_size, hidden_size, output_size)</span>:</span></span><br><span class="line">        self.input_size = input_size</span><br><span class="line">        self.hidden_size = hidden_size</span><br><span class="line">        self.output_size = output_size</span><br><span class="line"></span><br><span class="line">        <span class="comment"># Initialize weights</span></span><br><span class="line">        self.weights_input_hidden = np.random.randn(self.input_size, self.hidden_size)</span><br><span class="line">        self.weights_hidden_output = np.random.randn(self.hidden_size, self.output_size)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># Initialize the biases</span></span><br><span class="line">        self.bias_hidden = np.zeros((<span class="number">1</span>, self.hidden_size))</span><br><span class="line">        self.bias_output = np.zeros((<span class="number">1</span>, self.output_size))</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">sigmoid</span><span class="params">(self, x)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span> / (<span class="number">1</span> + np.exp(-x))</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">sigmoid_derivative</span><span class="params">(self, x)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> x * (<span class="number">1</span> - x)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">feedforward</span><span class="params">(self, X)</span>:</span></span><br><span class="line">        <span class="comment"># Input to hidden</span></span><br><span class="line">        self.hidden_activation = np.dot(X, self.weights_input_hidden) + self.bias_hidden</span><br><span class="line">        self.hidden_output = self.sigmoid(self.hidden_activation)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># Hidden to output</span></span><br><span class="line">        self.output_activation = np.dot(self.hidden_output, self.weights_hidden_output) + self.bias_output</span><br><span class="line">        self.predicted_output = self.sigmoid(self.output_activation)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> self.predicted_output</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">backward</span><span class="params">(self, X, y, learning_rate)</span>:</span></span><br><span class="line">        <span class="comment"># Compute the output layer error</span></span><br><span class="line">        output_error = y - self.predicted_output</span><br><span class="line">        output_delta = output_error * self.sigmoid_derivative(self.predicted_output)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># Compute the hidden layer error</span></span><br><span class="line">        hidden_error = np.dot(output_delta, self.weights_hidden_output.T)</span><br><span class="line">        hidden_delta = hidden_error * self.sigmoid_derivative(self.hidden_output)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># Update weights and biases</span></span><br><span class="line">        self.weights_hidden_output += np.dot(self.hidden_output.T, output_delta) * learning_rate</span><br><span class="line">        self.bias_output += np.sum(output_delta, axis=<span class="number">0</span>, keepdims=<span class="literal">True</span>) * learning_rate</span><br><span class="line">        self.weights_input_hidden += np.dot(X.T, hidden_delta) * learning_rate</span><br><span class="line">        self.bias_hidden += np.sum(hidden_delta, axis=<span class="number">0</span>, keepdims=<span class="literal">True</span>) * learning_rate</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">train</span><span class="params">(self, X, y, epochs, learning_rate)</span>:</span></span><br><span class="line">        <span class="keyword">for</span> epoch <span class="keyword">in</span> range(epochs):</span><br><span class="line">            output = self.feedforward(X)</span><br><span class="line">            self.backward(X, y, learning_rate)</span><br><span class="line">            <span class="keyword">if</span> epoch % <span class="number">4000</span> == <span class="number">0</span>:</span><br><span class="line">                loss = np.mean(np.square(y - output))</span><br><span class="line">                print(<span class="string">f"Epoch <span class="subst">&#123;epoch&#125;</span>, Loss:<span class="subst">&#123;loss&#125;</span>"</span>)</span><br><span class="line"></span><br><span class="line">X = np.array([[<span class="number">0</span>, <span class="number">0</span>], [<span class="number">0</span>, <span class="number">1</span>], [<span class="number">1</span>, <span class="number">0</span>], [<span class="number">1</span>, <span class="number">1</span>]])</span><br><span class="line">y = np.array([[<span class="number">0</span>], [<span class="number">1</span>], [<span class="number">1</span>], [<span class="number">0</span>]])</span><br><span class="line"></span><br><span class="line">nn = NeuralNetwork(input_size=<span class="number">2</span>, hidden_size=<span class="number">4</span>, output_size=<span class="number">1</span>)</span><br><span class="line">nn.train(X, y, epochs=<span class="number">10000</span>, learning_rate=<span class="number">0.1</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Test the trained model</span></span><br><span class="line">output = nn.feedforward(X)</span><br><span class="line">print(<span class="string">"Predictions after training:"</span>)</span><br><span class="line">print(output)</span><br></pre></td></tr></table></figure>
+
+<p>Output:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Epoch 0, Loss:0.26804276270586413</span><br><span class="line">Epoch 4000, Loss:0.012477301332301533</span><br><span class="line">Epoch 8000, Loss:0.0029801470220045504</span><br><span class="line"></span><br><span class="line">Predictions after training:</span><br><span class="line">[[0.02330965]</span><br><span class="line"> [0.95658721]</span><br><span class="line"> [0.95049451]</span><br><span class="line"> [0.05896647]]</span><br></pre></td></tr></table></figure>
+
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>Backpropagation is the engine that drives neural network learning. By propagating errors backward and adjusting the weights and biases, neural networks can gradually improve their predictions. Though it has some limitations like vanishing gradients, many techniques, such as using ReLU activation or optimizing learning rates, have been developed to address these issues.</p>
+
+  <p><a class="classtest-link" href="/tags/Backpropagation/" rel="tag">Backpropagation</a>, <a class="classtest-link" href="/tags/Deep-Learning/" rel="tag">Deep Learning</a>, <a class="classtest-link" href="/tags/Neural-Networks/" rel="tag">Neural Networks</a> — Oct 2, 2024</p>
+  
+
+
+        </div>
+        <div class="row mt-2">
+  <h3>Search</h3>
+  <div><input id="search-text" title="search" class="search-text" type="text" placeholder="search......"></div>
+  <div style="margin-top: 1.5rem;">
+    <ul id="result"></ul>
+  </div>
+</div>
+        <div class="row mt-2">
+  
+    <div class="eight columns">
+      <p id="madewith">Made with ❤️ and ☀️
+        <!-- <a class="footer-link icon" href="https://hexo.io" target="_blank" style="text-decoration: none;" rel="noreferrer" aria-label="Hexo.io"> -->
+        <!-- <svg class="hexo svg-hov" width="14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Hexo.js</title><path d="M12 .007L1.57 6.056V18.05L12 23.995l10.43-6.049V5.952L12 .007zm4.798 17.105l-.939.521-.939-.521V12.94H9.08v4.172l-.94.521-.938-.521V6.89l.939-.521.939.521v4.172h5.84V6.89l.94-.521.938.521v10.222z"/></svg> -->
+        <!-- </a> -->
+        
+        on <a href="https://en.wikipedia.org/wiki/Earth" target="_blank" rel="noreferrer">Earth</a>.</p>
+        
+    </div>
+
+    <!-- Sepcial thanks to https://simpleicons.org/ for the icons -->
+    <div class="four columns mb-3 posisi" >
+      
+      <a class="ml-0 footer-link icon" href="https://github.com/stephen-cheng" target="_blank" style="text-decoration: none" rel="noreferrer" aria-label="GitHub">
+        <svg class="github svg-hov" width="18" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+      </a>
+      
+
+      
+      <a class="ml-0 footer-link icon" href="https://linkedin.com/in/stephen-cheng" target="_blank" style="text-decoration: none" rel="noreferrer" aria-label="LinkedIn">
+        <svg class="linkedin svg-hov" width="18" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>LinkedIn</title><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      </a>
+      
+
+      
+
+      
+        <a class="ml-0 footer-link icon" href="https://facebook.com/stephen.cheeng" target="_blank" style="text-decoration: none" rel="noreferrer" aria-label="Facebook">
+          <svg class="facebook svg-hov" width="18" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Facebook</title><path d="M8.258 4.458c0-0.144 0.02-0.455 0.06-0.931c0.043-0.477 0.223-0.976 0.546-1.5c0.32-0.522 0.839-0.991 1.561-1.406 C11.144 0.208 12.183 0 13.539 0h3.82v4.163h-2.797c-0.277 0-0.535 0.104-0.768 0.309c-0.231 0.205-0.35 0.4-0.35 0.581v2.59h3.914 c-0.041 0.507-0.086 1-0.138 1.476l-0.155 1.258c-0.062 0.425-0.125 0.819-0.187 1.182h-3.462v11.542H8.258V11.558H5.742V7.643 h2.516V4.458z"/></svg>
+        </a>
+      
+
+      
+      <a class="ml-0 footer-link icon" href="https://instagram.com/stephen.cheeng" target="_blank" style="text-decoration: none" rel="noreferrer" aria-label="Instagram">
+        <svg class="instagram svg-hov" width="18" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Instagram</title><path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z"/></svg>
+      </a>
+      
+
+      
+
+    </div>
+  
+</div>
+
+      </div>
+
+    </div>
+
+  </div>
+  <script src="/js/nanobar.min.js"></script>
+
+  <script>
+    var options = {
+      classname: 'nanobar',
+      id: 'myNanobar'
+    };
+    var nanobar = new Nanobar(options);
+    nanobar.go(30);
+    nanobar.go(76);
+    nanobar.go(100);
+  </script>
+
+</body>
+
+</html>
