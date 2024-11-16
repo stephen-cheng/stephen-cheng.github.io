@@ -15,7 +15,7 @@
   
   <link rel="canonical" href="https://stephen-cheng.github.io/2024/04/15/The-Guide-to-K-Fold-Cross-Validation-in-Machine-Learning/">
   
-  <meta name="description" content="&amp;nbsp; Stephen Cheng  IntroIn machine learning, if a model simply memorizes the labels of the training samples, it may achieve a perfect score on the ">
+  <meta name="description" content="Stephen Cheng &amp;nbsp;  IntroIn machine learning, if a model simply memorizes the labels of the training samples, it may achieve a perfect score on the ">
   
   
   <meta name="keywords" content="AI, Tech, CS">
@@ -28,14 +28,14 @@
   <meta property="og:type" content="article" />
   <meta property="og:title" content="The Guide to K-Fold Cross Validation in Machine Learning" />
   
-  <meta property="og:description" content="&amp;nbsp; Stephen Cheng  IntroIn machine learning, if a model simply memorizes the labels of the training samples, it may achieve a perfect score on the ">
+  <meta property="og:description" content="Stephen Cheng &amp;nbsp;  IntroIn machine learning, if a model simply memorizes the labels of the training samples, it may achieve a perfect score on the ">
   
   <meta property="og:url" content="https://stephen-cheng.github.io/2024/04/15/The-Guide-to-K-Fold-Cross-Validation-in-Machine-Learning/" />
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="The Guide to K-Fold Cross Validation in Machine Learning">
   
-  <meta name="twitter:description" content="&amp;nbsp; Stephen Cheng  IntroIn machine learning, if a model simply memorizes the labels of the training samples, it may achieve a perfect score on the ">
+  <meta name="twitter:description" content="Stephen Cheng &amp;nbsp;  IntroIn machine learning, if a model simply memorizes the labels of the training samples, it may achieve a perfect score on the ">
   
   
   
@@ -195,8 +195,8 @@
         <div class="trans">
             <h2>The Guide to K-Fold Cross Validation in Machine Learning</h2>
 
-  <p>&nbsp;</p>
-<center>Stephen Cheng</center>
+  <center>Stephen Cheng</center>
+<p>&nbsp;</p>
 
 <h3 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h3><p>In machine learning, if a model simply memorizes the labels of the training samples, it may achieve a perfect score on the training data but fail to make meaningful predictions on new-unseen data. This problem is known as overfitting. To avoid it, it is standard practice in supervised learning to set aside a portion of the data, called the <strong>test set</strong> (<em>X_test</em>, <em>y_test</em>), for evaluating the model’s performance. That is where K-Fold Cross-Validation comes in. It offers a sneak peek at how your model might fare in the real world. In this guide, we will unpack the basics of K-Fold Cross-Validation and compare it to simpler methods like the Train-Test Split. </p>
 <h3 id="Cross-Validation-Workflow"><a href="#Cross-Validation-Workflow" class="headerlink" title="Cross Validation Workflow"></a>Cross Validation Workflow</h3><p>K-Fold Cross-Validation is a robust technique used to evaluate the performance of machine learning models. It helps ensure that the model generalizes well to unseen data by using different portions of the dataset for training and testing in multiple iterations. Here is a flowchart of typical cross validation workflow in model training. The best parameters can be determined by grid search techniques.</p>
