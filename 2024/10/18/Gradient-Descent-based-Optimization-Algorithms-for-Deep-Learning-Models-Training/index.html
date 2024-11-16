@@ -275,7 +275,58 @@
 <p><img src="https://raw.githubusercontent.com/stephen-cheng/images/refs/heads/master/blog/2024/1018_10.jpg" alt=""></p>
 <p>Where <em>𝘸</em> represents the parameters, <em>α</em> is the learning rate, and <em>𝘮ₜ</em> and <em>𝘷ₜ</em> are bias-corrected estimates of first and second moments of the gradients, respectively.</p>
 <h2 id="Cheat-Sheet-of-Mathematical-Representation-of-Optimizers"><a href="#Cheat-Sheet-of-Mathematical-Representation-of-Optimizers" class="headerlink" title="Cheat Sheet of Mathematical Representation of Optimizers"></a>Cheat Sheet of Mathematical Representation of Optimizers</h2><p><img src="https://raw.githubusercontent.com/stephen-cheng/images/refs/heads/master/blog/2024/1018_11.jpg" alt=""></p>
-<h2 id="Comparisons-between-Different-Optimization-Algorithms"><a href="#Comparisons-between-Different-Optimization-Algorithms" class="headerlink" title="Comparisons between Different Optimization Algorithms"></a>Comparisons between Different Optimization Algorithms</h2><p>| ——— | —- | —- | ———– |<br>| <strong>Algorithm</strong> | <strong>Pros</strong> | <strong>Cons</strong> | <strong>When to use</strong> |<br>| ——— | —- | —- | ———– |<br>| Gradient Descent | Simple and easy to implement | Computationally expensive on large datasets; May get stuck in local minima | Small datasets; When simplicity and clarity are preferred |<br>| SGD | Fast; Handles large datasets well | High variance in updates can lead to instability | Large datasets; Online or incremental learning scenarios |<br>| Mini-batch Gradient Descent | Balances between efficiency and stability; More generalizable updates | Requires tuning of batch size | Most deep learning tasks, especially when working with moderate to large datasets |<br>| AdaGrad | Adapts learning rate for each parameter; Good for sparse data | Learning rate can diminish to zero, stopping learning | Sparse datasets like text and images where learning rate needs to adapt to feature frequency |<br>| RMSprop | Addresses diminishing learning rate of AdaGrad; Adapts learning rate based on recent gradients | Can still get stuck in local minima on non-convex problems | Non-convex optimization problems; Situations where AdaGrad’s learning rate diminishes too fast |<br>| AdaDelta | Eliminates the need to set a default learning rate; Addresses diminishing learning rate issue | More complex than RMSprop and AdaGrad | Similar to RMSprop, but when you want to avoid manual learning rate setting |<br>| Adam | Combines advantages of AdaGrad and RMSprop; Adaptive learning rates; Includes bias correction | Requires tuning of hyperparameters (though it often works well with defaults) | Most deep learning applications, due to its efficiency and effectiveness |<br>| ——— | —- | —- | ———– |</p>
+<h2 id="Comparisons-between-Different-Optimization-Algorithms"><a href="#Comparisons-between-Different-Optimization-Algorithms" class="headerlink" title="Comparisons between Different Optimization Algorithms"></a>Comparisons between Different Optimization Algorithms</h2><table>
+<thead>
+<tr>
+<th><strong>Algorithm</strong></th>
+<th><strong>Pros</strong></th>
+<th><strong>Cons</strong></th>
+<th><strong>When to use</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Gradient Descent</td>
+<td>Simple and easy to implement</td>
+<td>Computationally expensive on large datasets; May get stuck in local minima</td>
+<td>Small datasets; When simplicity and clarity are preferred</td>
+</tr>
+<tr>
+<td>SGD</td>
+<td>Fast; Handles large datasets well</td>
+<td>High variance in updates can lead to instability</td>
+<td>Large datasets; Online or incremental learning scenarios</td>
+</tr>
+<tr>
+<td>Mini-batch Gradient Descent</td>
+<td>Balances between efficiency and stability; More generalizable updates</td>
+<td>Requires tuning of batch size</td>
+<td>Most deep learning tasks, especially when working with moderate to large datasets</td>
+</tr>
+<tr>
+<td>AdaGrad</td>
+<td>Adapts learning rate for each parameter; Good for sparse data</td>
+<td>Learning rate can diminish to zero, stopping learning</td>
+<td>Sparse datasets like text and images where learning rate needs to adapt to feature frequency</td>
+</tr>
+<tr>
+<td>RMSprop</td>
+<td>Addresses diminishing learning rate of AdaGrad; Adapts learning rate based on recent gradients</td>
+<td>Can still get stuck in local minima on non-convex problems</td>
+<td>Non-convex optimization problems; Situations where AdaGrad’s learning rate diminishes too fast</td>
+</tr>
+<tr>
+<td>AdaDelta</td>
+<td>Eliminates the need to set a default learning rate; Addresses diminishing learning rate issue</td>
+<td>More complex than RMSprop and AdaGrad</td>
+<td>Similar to RMSprop, but when you want to avoid manual learning rate setting</td>
+</tr>
+<tr>
+<td>Adam</td>
+<td>Combines advantages of AdaGrad and RMSprop; Adaptive learning rates; Includes bias correction</td>
+<td>Requires tuning of hyperparameters (though it often works well with defaults)</td>
+<td>Most deep learning applications, due to its efficiency and effectiveness</td>
+</tr>
+</tbody></table>
 
   <p><a class="classtest-link" href="/tags/Deep-Learning/" rel="tag">Deep Learning</a>, <a class="classtest-link" href="/tags/Gradient-Descent/" rel="tag">Gradient Descent</a>, <a class="classtest-link" href="/tags/Optimization-Algorithms/" rel="tag">Optimization Algorithms</a> — Oct 18, 2024</p>
   
