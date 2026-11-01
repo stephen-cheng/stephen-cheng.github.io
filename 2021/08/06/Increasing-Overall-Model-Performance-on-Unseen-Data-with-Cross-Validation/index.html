@@ -15,7 +15,7 @@
   
   <link rel="canonical" href="https://stephen-cheng.github.io/2021/08/06/Increasing-Overall-Model-Performance-on-Unseen-Data-with-Cross-Validation/">
   
-  <meta name="description" content="&amp;nbsp; Stephen Cheng  IntroWhen adjusting models we are aiming to increase overall model performance on unseen data. Hyperparameter tuning can lead to">
+  <meta name="description" content="Stephen Cheng &amp;nbsp;  IntroWhen adjusting models we are aiming to increase overall model performance on unseen data. Hyperparameter tuning can lead to">
   
   
   <meta name="keywords" content="AI, Tech, CS">
@@ -28,14 +28,14 @@
   <meta property="og:type" content="article" />
   <meta property="og:title" content="Increasing Overall Model Performance on Unseen Data with Cross Validation" />
   
-  <meta property="og:description" content="&amp;nbsp; Stephen Cheng  IntroWhen adjusting models we are aiming to increase overall model performance on unseen data. Hyperparameter tuning can lead to">
+  <meta property="og:description" content="Stephen Cheng &amp;nbsp;  IntroWhen adjusting models we are aiming to increase overall model performance on unseen data. Hyperparameter tuning can lead to">
   
   <meta property="og:url" content="https://stephen-cheng.github.io/2021/08/06/Increasing-Overall-Model-Performance-on-Unseen-Data-with-Cross-Validation/" />
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Increasing Overall Model Performance on Unseen Data with Cross Validation">
   
-  <meta name="twitter:description" content="&amp;nbsp; Stephen Cheng  IntroWhen adjusting models we are aiming to increase overall model performance on unseen data. Hyperparameter tuning can lead to">
+  <meta name="twitter:description" content="Stephen Cheng &amp;nbsp;  IntroWhen adjusting models we are aiming to increase overall model performance on unseen data. Hyperparameter tuning can lead to">
   
   
   
@@ -195,8 +195,8 @@
         <div class="trans">
             <h2>Increasing Overall Model Performance on Unseen Data with Cross Validation</h2>
 
-  <p>&nbsp;</p>
-<center>Stephen Cheng</center>
+  <p>Stephen Cheng</p>
+<p>&nbsp;</p>
 
 <h3 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h3><p>When adjusting models we are aiming to increase overall model performance on unseen data. Hyperparameter tuning can lead to much better performance on test sets. However, optimizing parameters to the test set can lead information leakage causing the model to preform worse on unseen data. To correct for this we can perform cross validation. To better understand CV, we will be performing different methods on the iris dataset.</p>
 <h3 id="K-Fold"><a href="#K-Fold" class="headerlink" title="K-Fold"></a>K-Fold</h3><p>The training data used in the model is split, into k number of smaller sets, to be used to validate the model. The model is then trained on k-1 folds of training set. The remaining fold is then used as a validation set to evaluate the model. As we will be trying to classify different species of iris flowers we will need to import a classifier model, for this exercise we will be using a DecisionTreeClassifier.</p>

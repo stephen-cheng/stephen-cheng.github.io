@@ -208,8 +208,18 @@
 <li>A inference means running a trained model on new inputs.</li>
 <li>A repo is a Git-backed Hub unit storing models/datasets/Spaces.</li>
 </ul>
+<h2 id="Inference"><a href="#Inference" class="headerlink" title="Inference"></a>Inference</h2><ul>
+<li>Sentiment analysis</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> transformers <span class="keyword">import</span> pipeline</span><br><span class="line"></span><br><span class="line"><span class="comment"># Create a pipeline by specifying a task and model ID</span></span><br><span class="line">analyze_sentiment = pipeline(</span><br><span class="line">   <span class="string">"sentiment-analysis"</span>,</span><br><span class="line">   model=<span class="string">"distilbert-base-uncased-finetuned-sst-2-english"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Run inference on input text</span></span><br><span class="line">result = analyze_sentiment(<span class="string">"Hugging Face makes NLP workflows not easy!"</span>)</span><br><span class="line"></span><br><span class="line">print(result)</span><br></pre></td></tr></table></figure>
 
-  <p><a class="classtest-link" href="/tags/AI/" rel="tag">AI</a>, <a class="classtest-link" href="/tags/Computer-Science/" rel="tag">Computer Science</a>, <a class="classtest-link" href="/tags/Machine-Learning/" rel="tag">Machine Learning</a> — Oct 11, 2025</p>
+<ul>
+<li>Text summarization</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> transformers <span class="keyword">import</span> pipeline</span><br><span class="line"></span><br><span class="line"><span class="comment"># Create a summarization pipeline</span></span><br><span class="line">summarize_text = pipeline(</span><br><span class="line">   <span class="string">"summarization"</span>,</span><br><span class="line">   model=<span class="string">"facebook/bart-large-cnn"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Summarize input text</span></span><br><span class="line">summarize_text(<span class="string">"Long document text goes here..."</span>)</span><br></pre></td></tr></table></figure>
+
+
+  <p><a class="classtest-link" href="/tags/AI/" rel="tag">AI</a>, <a class="classtest-link" href="/tags/Machine-Learning/" rel="tag">Machine Learning</a>, <a class="classtest-link" href="/tags/Natural-Language-Processing/" rel="tag">Natural Language Processing</a> — Oct 11, 2025</p>
   
 
 

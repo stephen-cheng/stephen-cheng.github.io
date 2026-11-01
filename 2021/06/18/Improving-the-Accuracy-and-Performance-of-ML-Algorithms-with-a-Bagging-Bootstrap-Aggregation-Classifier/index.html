@@ -15,7 +15,7 @@
   
   <link rel="canonical" href="https://stephen-cheng.github.io/2021/06/18/Improving-the-Accuracy-and-Performance-of-ML-Algorithms-with-a-Bagging-Bootstrap-Aggregation-Classifier/">
   
-  <meta name="description" content="&amp;nbsp; Stephen Cheng  IntroMachine Learning models such as Decision Trees, can be prone to overfitting on the training set which can lead to wrong pre">
+  <meta name="description" content="Stephen Cheng &amp;nbsp;  IntroMachine Learning models such as Decision Trees, can be prone to overfitting on the training set which can lead to wrong pre">
   
   
   <meta name="keywords" content="AI, Tech, CS">
@@ -28,14 +28,14 @@
   <meta property="og:type" content="article" />
   <meta property="og:title" content="Improving the Accuracy and Performance of ML Algorithms with a Bagging (Bootstrap Aggregation) Classifier" />
   
-  <meta property="og:description" content="&amp;nbsp; Stephen Cheng  IntroMachine Learning models such as Decision Trees, can be prone to overfitting on the training set which can lead to wrong pre">
+  <meta property="og:description" content="Stephen Cheng &amp;nbsp;  IntroMachine Learning models such as Decision Trees, can be prone to overfitting on the training set which can lead to wrong pre">
   
   <meta property="og:url" content="https://stephen-cheng.github.io/2021/06/18/Improving-the-Accuracy-and-Performance-of-ML-Algorithms-with-a-Bagging-Bootstrap-Aggregation-Classifier/" />
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Improving the Accuracy and Performance of ML Algorithms with a Bagging (Bootstrap Aggregation) Classifier">
   
-  <meta name="twitter:description" content="&amp;nbsp; Stephen Cheng  IntroMachine Learning models such as Decision Trees, can be prone to overfitting on the training set which can lead to wrong pre">
+  <meta name="twitter:description" content="Stephen Cheng &amp;nbsp;  IntroMachine Learning models such as Decision Trees, can be prone to overfitting on the training set which can lead to wrong pre">
   
   
   
@@ -195,8 +195,8 @@
         <div class="trans">
             <h2>Improving the Accuracy and Performance of ML Algorithms with a Bagging (Bootstrap Aggregation) Classifier</h2>
 
-  <p>&nbsp;</p>
-<center>Stephen Cheng</center>
+  <p>Stephen Cheng</p>
+<p>&nbsp;</p>
 
 <h4 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h4><p>Machine Learning models such as Decision Trees, can be prone to overfitting on the training set which can lead to wrong predictions on new data. Bootstrap Aggregation (bagging) is a ensembling method that attempts to resolve overfitting for classification or regression problems. Bagging aims to improve the accuracy and performance of machine learning algorithms. It does this by taking random subsets of an original dataset, with replacement, and fits either a classifier (for classification) or regressor (for regression) to each subset. The predictions for each subset are then aggregated through majority vote for classification or averaging for regression, increasing prediction accuracy.</p>
 <h4 id="Evaluating-the-Base-Classifier"><a href="#Evaluating-the-Base-Classifier" class="headerlink" title="Evaluating the Base Classifier"></a>Evaluating the Base Classifier</h4><p>To see how bagging can improve model performance, we must start by evaluating how the base classifier performs on the dataset. We will be looking to identify different classes of wines found in Sklearn’s wine dataset. The parameter as_frame is set equal to True so we do not lose the feature names when loading the data. We can predict the class of wine the unseen test set and evaluate the model performance. </p>
