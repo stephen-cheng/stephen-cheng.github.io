@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <!-- Minima -->
+  <!-- Hexo theme created by @adisaktijrs -->
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+
+  
+  <title>Deep Learning with PyTorch</title>
+  
+  <link rel="canonical" href="https://stephen-cheng.github.io/2025/12/05/Deep-Learning-with-PyTorch/">
+  
+  <meta name="description" content="Stephen Cheng &amp;nbsp;  IntroPyTorch is an open-source machine learning library primarily developed by Facebook’s AI Research Lab (FAIR). It is widely u">
+  
+  
+  <meta name="keywords" content="AI, Tech, CS">
+  
+  <meta name="author" content="Stephen">
+  
+  
+  
+  <meta property="og:site_name" content="Stephen&#39;s Blog" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Deep Learning with PyTorch" />
+  
+  <meta property="og:description" content="Stephen Cheng &amp;nbsp;  IntroPyTorch is an open-source machine learning library primarily developed by Facebook’s AI Research Lab (FAIR). It is widely u">
+  
+  <meta property="og:url" content="https://stephen-cheng.github.io/2025/12/05/Deep-Learning-with-PyTorch/" />
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Deep Learning with PyTorch">
+  
+  <meta name="twitter:description" content="Stephen Cheng &amp;nbsp;  IntroPyTorch is an open-source machine learning library primarily developed by Facebook’s AI Research Lab (FAIR). It is widely u">
+  
+  
+  
+  
+  <meta name="twitter:url" content="https://stephen-cheng.github.io/2025/12/05/Deep-Learning-with-PyTorch/" />
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Preload fonts
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="preload" href="/fonts/dm-serif-display-v4-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/inter-v2-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  
+<link rel="stylesheet" href="/css/normalize.css">
+
+  
+<link rel="stylesheet" href="/css/skeleton.css">
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+  
+<link rel="stylesheet" href="/css/prism-dark.css">
+
+  
+<link rel="stylesheet" href="/css/prism-line-numbers.css">
+
+  <!-- User css -->
+  
+  
+<link rel="stylesheet" href="/css/user.css">
+
+  
+
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="icon" type="image/png" href="/images/favicon.png">
+
+  <!-- Custom Theme Color Style
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <style>
+  a:not(.icon) {
+    text-decoration-color: #0FA0CE;
+    background-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 50%,
+      #0FA0CE 50%
+    );
+  }
+  blockquote {
+    border-left: 8px solid #0FA0CE;
+  }
+  .nanobar .bar {
+    background: #0FA0CE;
+  }
+  .button.button-primary:hover,
+  button.button-primary:hover,
+  input[type="submit"].button-primary:hover,
+  input[type="reset"].button-primary:hover,
+  input[type="button"].button-primary:hover,
+  .button.button-primary:focus,
+  button.button-primary:focus,
+  input[type="submit"].button-primary:focus,
+  input[type="reset"].button-primary:focus,
+  input[type="button"].button-primary:focus {
+    background-color: #0FA0CE;
+    border-color: #0FA0CE;
+  }
+  input[type="email"]:focus,
+  input[type="number"]:focus,
+  input[type="search"]:focus,
+  input[type="text"]:focus,
+  input[type="tel"]:focus,
+  input[type="url"]:focus,
+  input[type="password"]:focus,
+  textarea:focus,
+  select:focus {
+    border: 1px solid #0FA0CE;
+  }
+</style>
+
+  <!-- Google Analytics (With Privacy Settings On)
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  
+
+  
+  <script src="/js/pic.min.js" defer></script>
+  
+
+  
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div>
+
+        <div class="row">
+  <div class="two columns" style="max-width: 50px">
+    <h1 class="mt-2 mode">
+      <div onclick=setDarkMode(true) id="darkBtn">🌑</div>
+      <div onclick=setDarkMode(false) id="lightBtn" class=hidden>☀️</div>
+      <script >
+        if (localStorage.getItem('preferredTheme') == 'dark') {
+          setDarkMode(true)
+        }
+        function setDarkMode(isDark) {
+          var darkBtn = document.getElementById('darkBtn')
+          var lightBtn = document.getElementById('lightBtn')
+          if (isDark) {
+            lightBtn.style.display = "block"
+            darkBtn.style.display = "none"
+            localStorage.setItem('preferredTheme', 'dark');
+          } else {
+            lightBtn.style.display = "none"
+            darkBtn.style.display = "block"
+            localStorage.removeItem('preferredTheme');
+          }
+          document.body.classList.toggle("darkmode");
+        }
+      </script>
+    </h1>
+  </div>
+
+  <div class="six columns ml-1">
+    <h1 class="mt-2">
+      Stephen&#39;s Blog
+    </h1>
+  </div>
+
+  <div class="twelve columns">
+    <div class="row">
+      <div class="nine columns left">
+        <a href="/">Home</a>
+        
+          
+          <a href="/archives" class="ml">Archives</a>
+          
+        
+          
+          <a href="/about" class="ml">About</a>
+          
+        
+        
+      </div>
+    </div>
+    <hr style="margin-bottom: 2.6rem">
+  </div>
+</div>
+
+        <div class="trans">
+            <h2>Deep Learning with PyTorch</h2>
+
+  <center>Stephen Cheng</center>
+<p>&nbsp;</p>
+
+<h2 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h2><p>PyTorch is an open-source machine learning library primarily developed by Facebook’s AI Research Lab (FAIR). It is widely used for machine learning and deep learning tasks, including neural network development, natural language processing (NLP), computer vision, and reinforcement learning. It is one of the most popular deep learning frameworks, with a syntax similar to NumPy. TorchText, TorchVision, and TorchAudio are Python packages that provide PyTorch with functionality for text, image, and audio data respectively.</p>
+<h2 id="Importing-PyTorch"><a href="#Importing-PyTorch" class="headerlink" title="Importing PyTorch"></a>Importing PyTorch</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Import the top-level package for core functionality</span></span><br><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"></span><br><span class="line"><span class="comment"># Import neural network functionality</span></span><br><span class="line"><span class="keyword">from</span> torch <span class="keyword">import</span> nn</span><br><span class="line"></span><br><span class="line"><span class="comment"># Import functional programming tools</span></span><br><span class="line"><span class="keyword">import</span> torch.nn.functional <span class="keyword">as</span> F</span><br><span class="line"></span><br><span class="line"><span class="comment"># Import optimization functionality</span></span><br><span class="line"><span class="keyword">import</span> torch.optim <span class="keyword">as</span> optim</span><br><span class="line"></span><br><span class="line"><span class="comment"># Import dataset functions</span></span><br><span class="line"><span class="keyword">from</span> torch.utils.data <span class="keyword">import</span> TensorDataset, DataLoader</span><br><span class="line"></span><br><span class="line"><span class="comment"># Import evaluation metrics</span></span><br><span class="line"><span class="keyword">import</span> torchmetrics</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br></pre></td></tr></table></figure>
+
+<h2 id="Creating-Tensors"><a href="#Creating-Tensors" class="headerlink" title="Creating Tensors"></a>Creating Tensors</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Create tensor from list with tensor()</span></span><br><span class="line">tnsr = torch.tensor([<span class="number">1</span>, <span class="number">3</span>, <span class="number">6</span>, <span class="number">10</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment"># Get data type of tensor elements with .dtype</span></span><br><span class="line">print(tnsr.dtype) <span class="comment"># Returns torch.int64</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Get dimensions of tensor with .Size()</span></span><br><span class="line">print(tnsr.shape) <span class="comment"># Returns torch.Size([4])</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Get memory location of tensor with .device</span></span><br><span class="line">print(tnsr.device) <span class="comment"># Returns cpu or gpu</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Create a tensor of zeros with zeros()</span></span><br><span class="line">tnsr_zrs = torch.zeros(<span class="number">2</span>, <span class="number">3</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Create a random tensor with rand()</span></span><br><span class="line">tnsr_rndm = torch.rand(size=(<span class="number">3</span>, <span class="number">4</span>)) <span class="comment"># Tensor has 3 rows, 4 columns</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Loading-Datasets"><a href="#Loading-Datasets" class="headerlink" title="Loading Datasets"></a>Loading Datasets</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1. Create a sample DataFrame (replace this with your actual data, e.g., pd.read_csv())</span></span><br><span class="line">data = &#123;</span><br><span class="line">    <span class="string">'feature_1'</span>: [<span class="number">1.5</span>, <span class="number">2.0</span>, <span class="number">3.1</span>, <span class="number">4.2</span>, <span class="number">5.0</span>],</span><br><span class="line">    <span class="string">'feature_2'</span>: [<span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>, <span class="number">40</span>, <span class="number">50</span>],</span><br><span class="line">    <span class="string">'target'</span>: [<span class="number">100</span>, <span class="number">150</span>, <span class="number">200</span>, <span class="number">250</span>, <span class="number">300</span>]</span><br><span class="line">&#125;</span><br><span class="line">df = pd.DataFrame(data)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. Define the columns and batch size (n)</span></span><br><span class="line">feature_columns = [<span class="string">'feature_1'</span>, <span class="string">'feature_2'</span>]</span><br><span class="line">target_column = <span class="string">'target'</span></span><br><span class="line">n = <span class="number">2</span>  <span class="comment"># Batch size</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. Extract values and convert to PyTorch tensors</span></span><br><span class="line">X = df[feature_columns].values</span><br><span class="line">y = df[target_column].values</span><br><span class="line"></span><br><span class="line"><span class="comment"># 4. Create the dataset and dataloader</span></span><br><span class="line">dataset = TensorDataset(torch.tensor(X).float(), torch.tensor(y).float())</span><br><span class="line">dataloader = DataLoader(dataset, batch_size=n, shuffle=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 5. Test the DataLoader to verify it works</span></span><br><span class="line"><span class="keyword">for</span> batch_X, batch_y <span class="keyword">in</span> dataloader:</span><br><span class="line">    print(<span class="string">"Batch Features (X):\n"</span>, batch_X)</span><br><span class="line">    print(<span class="string">"Batch Target (y):\n"</span>, batch_y)</span><br><span class="line">    <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## Data Preprocessing</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># One-hot encode categorical variables with one_hot()</span></span><br><span class="line">F.one_hot(torch.tensor([<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>]), num_classes=<span class="number">3</span>) <span class="comment"># Returns tensor of 0s and 1s</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Creating-Sequential-Model"><a href="#Creating-Sequential-Model" class="headerlink" title="Creating Sequential Model"></a>Creating Sequential Model</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Create a sequential model from layers</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Define dummy dimensions and parameters for demonstration</span></span><br><span class="line">m, n = <span class="number">10</span>, <span class="number">5</span></span><br><span class="line">n_features, i, j, n_classes = <span class="number">10</span>, <span class="number">32</span>, <span class="number">16</span>, <span class="number">3</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Create a linear layer with m inputs, n outputs with Linear()</span></span><br><span class="line">lnr = nn.Linear(m, n)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Get weight of layer with .weight</span></span><br><span class="line">print(<span class="string">"Layer weights:"</span>, lnr.weight)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Get bias of layer with .bias</span></span><br><span class="line">print(<span class="string">"Layer bias:"</span>, lnr.bias)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Create activation and regularization layers</span></span><br><span class="line"><span class="comment"># Create a sigmoid activation layer for binary classification with Sigmoid()</span></span><br><span class="line">sigmoid_layer = nn.Sigmoid()</span><br><span class="line"></span><br><span class="line"><span class="comment"># Create a softmax activation layer for multi-class classification with Softmax()</span></span><br><span class="line">softmax_layer = nn.Softmax(dim=<span class="number">-1</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Create a rectified linear unit activation layer to avoid saturation with ReLU()</span></span><br><span class="line">relu_layer = nn.ReLU()</span><br><span class="line"></span><br><span class="line"><span class="comment"># Create a leaky rectified linear unit activation layer to avoid saturation with LeakyReLU()</span></span><br><span class="line">leaky_relu_layer = nn.LeakyReLU(negative_slope=<span class="number">0.05</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Create a dropout layer to regularize and prevent overfitting with Dropout()</span></span><br><span class="line">dropout_layer = nn.Dropout(p=<span class="number">0.5</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Create a sequential model from layers (fixed the missing closing parenthesis)</span></span><br><span class="line">model = nn.Sequential(</span><br><span class="line">    nn.Linear(n_features, i),</span><br><span class="line">    nn.Linear(i, j),       <span class="comment"># Input size must match output from previous layer</span></span><br><span class="line">    nn.Linear(j, n_classes),</span><br><span class="line">    nn.Softmax(dim=<span class="number">-1</span>)     <span class="comment"># Activation layer comes last</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">print(<span class="string">"\nModel Architecture:\n"</span>, model)</span><br></pre></td></tr></table></figure>
+
+<h2 id="Fitting-the-Model"><a href="#Fitting-the-Model" class="headerlink" title="Fitting the Model"></a>Fitting the Model</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Define dimensions</span></span><br><span class="line">n_features, i, j, n_classes = <span class="number">10</span>, <span class="number">32</span>, <span class="number">16</span>, <span class="number">3</span></span><br><span class="line">batch_size = <span class="number">5</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Create sample input data</span></span><br><span class="line">input_data = torch.randn(batch_size, n_features)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Fit a model to input data with model</span></span><br><span class="line">prediction = model(input_data).double()</span><br><span class="line"></span><br><span class="line"><span class="comment"># Get target values</span></span><br><span class="line">actual = torch.randn(batch_size, n_classes).double()</span><br><span class="line"></span><br><span class="line"><span class="comment"># Calculate the mean-squared error loss for regression with MSELoss()</span></span><br><span class="line">mse_loss = nn.MSELoss()(prediction, actual) <span class="comment"># Returns tensor(x) </span></span><br><span class="line">print(<span class="string">"MSE Loss:"</span>, mse_loss.item())</span><br><span class="line"></span><br><span class="line"><span class="comment"># Calculate the L1 loss for robust regression with SmoothL1Loss()</span></span><br><span class="line">l1_loss = nn.SmoothL1Loss()(prediction, actual) <span class="comment"># Returns tensor(x) </span></span><br><span class="line">print(<span class="string">"Smooth L1 Loss:"</span>, l1_loss.item())</span><br><span class="line"></span><br><span class="line"><span class="comment"># Calculate binary cross-entropy loss for binary classification with BCELoss()</span></span><br><span class="line">actual_bce = torch.tensor([</span><br><span class="line">    [<span class="number">0.0</span>, <span class="number">1.0</span>, <span class="number">0.0</span>],</span><br><span class="line">    [<span class="number">1.0</span>, <span class="number">1.0</span>, <span class="number">1.0</span>],</span><br><span class="line">    [<span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">1.0</span>],</span><br><span class="line">    [<span class="number">1.0</span>, <span class="number">0.0</span>, <span class="number">0.0</span>],</span><br><span class="line">    [<span class="number">0.0</span>, <span class="number">1.0</span>, <span class="number">1.0</span>]</span><br><span class="line">]).double()</span><br><span class="line">bce_loss = nn.BCELoss()(prediction, actual_bce) <span class="comment"># Returns tensor(x) </span></span><br><span class="line">print(<span class="string">"BCE Loss:"</span>, bce_loss.item())</span><br><span class="line"></span><br><span class="line"><span class="comment"># Calculate cross-entropy loss for multi-class classification with CrossEntropyLoss()</span></span><br><span class="line">ce_loss = nn.CrossEntropyLoss()(prediction, actual) <span class="comment"># Returns tensor(x) </span></span><br><span class="line">print(<span class="string">"Cross-Entropy Loss:"</span>, ce_loss.item())</span><br><span class="line"></span><br><span class="line"><span class="comment"># Calculate the gradients via backprogagation with .backward()</span></span><br><span class="line">loss = ce_loss</span><br><span class="line">loss.backward()</span><br><span class="line">print(<span class="string">"Backpropagation completed successfully!"</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="Optimizing-the-Model"><a href="#Optimizing-the-Model" class="headerlink" title="Optimizing the Model"></a>Optimizing the Model</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Create a stochastic gradient descent optimizer with SGD(), setting learning rate and momentum</span></span><br><span class="line">optimizer = optim.SGD(model.parameters(), lr=<span class="number">0.01</span>, momentum=<span class="number">0.95</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Update neuron parameters with .step()</span></span><br><span class="line">optimizer.step()</span><br></pre></td></tr></table></figure>
+
+<h2 id="Setting-the-Training-Loop"><a href="#Setting-the-Training-Loop" class="headerlink" title="Setting the Training Loop"></a>Setting the Training Loop</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Set up dummy data and dataloader</span></span><br><span class="line">n_features, n_classes = <span class="number">10</span>, <span class="number">3</span></span><br><span class="line">batch_size = <span class="number">5</span></span><br><span class="line">X_data = torch.randn(batch_size, n_features)</span><br><span class="line">y_data = torch.randn(batch_size, n_classes)</span><br><span class="line">dataset = TensorDataset(X_data, y_data)</span><br><span class="line">dataloader = DataLoader(dataset, shuffle=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Set model to training mode</span></span><br><span class="line">model.train()</span><br><span class="line"><span class="comment"># Set a loss criterion and an optimizer</span></span><br><span class="line">loss_criterion = nn.MSELoss()</span><br><span class="line">optimizer = optim.SGD(model.parameters(), lr=<span class="number">0.01</span>, momentum=<span class="number">0.95</span>)</span><br><span class="line"><span class="comment"># Loop over chunks of data in the training set</span></span><br><span class="line"><span class="keyword">for</span> data <span class="keyword">in</span> dataloader:</span><br><span class="line">    <span class="comment"># Set the gradients to zero with .zero_grad()</span></span><br><span class="line">    optimizer.zero_grad()</span><br><span class="line">    <span class="comment"># Get features and targets for current chunk of data</span></span><br><span class="line">    features, targets = data</span><br><span class="line">    <span class="comment"># Run a "forward pass" to fit the model to the data</span></span><br><span class="line">    predictions = model(features)</span><br><span class="line">    <span class="comment"># Calculate loss</span></span><br><span class="line">    loss = loss_criterion(predictions, targets)</span><br><span class="line">    <span class="comment"># Calculate gradients using backprogagation</span></span><br><span class="line">    loss.backward()</span><br><span class="line">    <span class="comment"># Update the model parameters</span></span><br><span class="line">    optimizer.step()</span><br><span class="line">print(<span class="string">"Training loop completed successfully!"</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="Evaluating-the-Model"><a href="#Evaluating-the-Model" class="headerlink" title="Evaluating the Model"></a>Evaluating the Model</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Set model to evaluation mode</span></span><br><span class="line">model.eval()</span><br><span class="line"></span><br><span class="line"><span class="comment"># Create accuracy metric with Accuracy()</span></span><br><span class="line">metric = torchmetrics.Accuracy(task=<span class="string">"multiclass"</span>, num_classes=<span class="number">3</span>)</span><br><span class="line"><span class="comment"># Loop of chunks of data in the validation set</span></span><br><span class="line"><span class="keyword">for</span> i, data <span class="keyword">in</span> enumerate(dataloader, <span class="number">0</span>):</span><br><span class="line">    <span class="comment"># Get features and targets for current chunk of data</span></span><br><span class="line">    features, targets = data</span><br><span class="line">    <span class="comment"># Run a "forward pass" to fit the model to the data</span></span><br><span class="line">    predictions = model(features)</span><br><span class="line">    <span class="comment"># Calculate accuracy over the batch</span></span><br><span class="line">    accuracy = metric(targets, predictions.argmax(dim=<span class="number">-1</span>))</span><br><span class="line"><span class="comment"># Calculate accuracy over all the validation data</span></span><br><span class="line">accuracy = metric.compute()</span><br><span class="line">print(<span class="string">f"Accuracy on all data: <span class="subst">&#123;accuracy&#125;</span>"</span>)</span><br><span class="line"><span class="comment"># Reset the metric for the next dataset (training or validation)</span></span><br><span class="line">metric.reset()</span><br></pre></td></tr></table></figure>
+
+<h2 id="Transfer-Learning-and-Fine-Tuning"><a href="#Transfer-Learning-and-Fine-Tuning" class="headerlink" title="Transfer Learning and Fine-Tuning"></a>Transfer Learning and Fine-Tuning</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Extract layer 0 (the first Linear layer)</span></span><br><span class="line">layer = model[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># Save a layer of a model to a file with save()</span></span><br><span class="line">torch.save(layer, <span class="string">'layer.pth'</span>)</span><br><span class="line">print(<span class="string">"Layer saved to 'layer.pth'"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Load a layer of a model from a file with load()</span></span><br><span class="line">new_layer = torch.load(<span class="string">'layer.pth'</span>, weights_only=<span class="literal">False</span>)</span><br><span class="line">print(<span class="string">"Loaded layer architecture:\n"</span>, new_layer)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Freeze the weight for layer 0 with .requires_grad</span></span><br><span class="line"><span class="keyword">for</span> name, param <span class="keyword">in</span> model.named_parameters():</span><br><span class="line">    <span class="keyword">if</span> name == <span class="string">"0.weight"</span>:</span><br><span class="line">        param.requires_grad = <span class="literal">False</span></span><br><span class="line">        print(<span class="string">f"Parameter '<span class="subst">&#123;name&#125;</span>' successfully frozen (requires_grad = <span class="subst">&#123;param.requires_grad&#125;</span>)"</span>)</span><br></pre></td></tr></table></figure>
+
+  <p><a class="classtest-link" href="/tags/AI/" rel="tag">AI</a>, <a class="classtest-link" href="/tags/Deep-Learning/" rel="tag">Deep Learning</a>, <a class="classtest-link" href="/tags/PyTorch/" rel="tag">PyTorch</a> — Dec 5, 2025</p>
+  
+
+
+        </div>
+        <div class="row mt-2">
+  <h3>Search</h3>
+  <div><input id="search-text" title="search" class="search-text" type="text" placeholder="search......"></div>
+  <div style="margin-top: 1.5rem;">
+    <ul id="result"></ul>
+  </div>
+</div>
+        <div class="row mt-2">
+  
+    <div class="eight columns">
+      <p id="madewith">Made with ❤️ and ☀️
+        <!-- <a class="footer-link icon" href="https://hexo.io" target="_blank" style="text-decoration: none;" rel="noreferrer" aria-label="Hexo.io"> -->
+        <!-- <svg class="hexo svg-hov" width="14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Hexo.js</title><path d="M12 .007L1.57 6.056V18.05L12 23.995l10.43-6.049V5.952L12 .007zm4.798 17.105l-.939.521-.939-.521V12.94H9.08v4.172l-.94.521-.938-.521V6.89l.939-.521.939.521v4.172h5.84V6.89l.94-.521.938.521v10.222z"/></svg> -->
+        <!-- </a> -->
+        
+        on <a href="https://en.wikipedia.org/wiki/Earth" target="_blank" rel="noreferrer">Earth</a>.</p>
+        
+    </div>
+
+    <!-- Sepcial thanks to https://simpleicons.org/ for the icons -->
+    <div class="four columns mb-3 posisi" >
+      
+      <a class="ml-0 footer-link icon" href="https://github.com/stephen-cheng" target="_blank" style="text-decoration: none" rel="noreferrer" aria-label="GitHub">
+        <svg class="github svg-hov" width="18" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+      </a>
+      
+
+      
+      <a class="ml-0 footer-link icon" href="https://linkedin.com/in/stephen-cheng" target="_blank" style="text-decoration: none" rel="noreferrer" aria-label="LinkedIn">
+        <svg class="linkedin svg-hov" width="18" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>LinkedIn</title><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      </a>
+      
+
+      
+
+      
+        <a class="ml-0 footer-link icon" href="https://facebook.com/stephen.cheeng" target="_blank" style="text-decoration: none" rel="noreferrer" aria-label="Facebook">
+          <svg class="facebook svg-hov" width="18" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Facebook</title><path d="M8.258 4.458c0-0.144 0.02-0.455 0.06-0.931c0.043-0.477 0.223-0.976 0.546-1.5c0.32-0.522 0.839-0.991 1.561-1.406 C11.144 0.208 12.183 0 13.539 0h3.82v4.163h-2.797c-0.277 0-0.535 0.104-0.768 0.309c-0.231 0.205-0.35 0.4-0.35 0.581v2.59h3.914 c-0.041 0.507-0.086 1-0.138 1.476l-0.155 1.258c-0.062 0.425-0.125 0.819-0.187 1.182h-3.462v11.542H8.258V11.558H5.742V7.643 h2.516V4.458z"/></svg>
+        </a>
+      
+
+      
+      <a class="ml-0 footer-link icon" href="https://instagram.com/stephen.cheeng" target="_blank" style="text-decoration: none" rel="noreferrer" aria-label="Instagram">
+        <svg class="instagram svg-hov" width="18" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Instagram</title><path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z"/></svg>
+      </a>
+      
+
+      
+
+    </div>
+  
+</div>
+
+      </div>
+
+    </div>
+
+  </div>
+  <script src="/js/nanobar.min.js"></script>
+
+  <script>
+    var options = {
+      classname: 'nanobar',
+      id: 'myNanobar'
+    };
+    var nanobar = new Nanobar(options);
+    nanobar.go(30);
+    nanobar.go(76);
+    nanobar.go(100);
+  </script>
+
+</body>
+
+</html>
