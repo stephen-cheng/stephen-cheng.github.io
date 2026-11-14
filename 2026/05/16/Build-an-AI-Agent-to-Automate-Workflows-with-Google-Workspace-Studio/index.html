@@ -204,11 +204,11 @@
 <p>Workspace Studio isn’t limited to the Google ecosystem. It includes built-in connectors for external tools. This means we can create agents that handle complex cross-platform tasks, such as automatically creating a Jira ticket when a client reports a bug via email, or logging a new sales lead directly into Salesforce.</p>
 <h2 id="Getting-Started-with-Google-Workspace-Studio"><a href="#Getting-Started-with-Google-Workspace-Studio" class="headerlink" title="Getting Started with Google Workspace Studio"></a>Getting Started with Google Workspace Studio</h2><p>We’ll build a practical agent that automatically detects emails with data submission in the subject, saves any attachments to a dedicated Google Drive folder, and logs metadata (sender, subject, date, and file name) in a Google Sheet.</p>
 <p>Access to Google Workspace Studio is simple with an eligible Google Workspace plan. Here’s what we need to do:</p>
-<ol>
+<ul>
 <li>Confirm our edition supports it (most Business, Enterprise, and Education plans do, but check with your admin).</li>
 <li>Visit <a href="https://studio.workspace.google.com/" target="_blank" rel="noopener">studio.workspace.google.com</a> and sign in.</li>
 <li>Explore the Discover page for templates or start creating.</li>
-</ol>
+</ul>
 <p>Key concepts before diving in: </p>
 <ul>
 <li>Starter: The trigger that starts the agent (e.g., a new email arriving or a scheduled time).</li>
@@ -220,7 +220,7 @@
 <li>Use Describe a task for Gemini (or start blank for full manual control; we’ll cover refinements manually anyway).</li>
 <li>In the prompt field, enter: </li>
 </ul>
-<p><l>When a new email arrives with data submission in the subject and attachments, save each attachment to a Google Drive folder called Incoming Data Files, then add a row to a Google Sheet called Data Submission Log with the sender’s email, subject, date received, and attachment file names.</l></p>
+<p><i>When a new email arrives with data submission in the subject and attachments, save each attachment to a Google Drive folder called Incoming Data Files, then add a row to a Google Sheet called Data Submission Log with the sender’s email, subject, date received, and attachment file names.</i></p>
 <p>Gemini generates a complete flow in seconds. This gives us a strong starting point without building every piece manually.</p>
 <p><img src="https://raw.githubusercontent.com/stephen-cheng/images/refs/heads/master/blog/2026/google-workspace-1.jpg" alt=""></p>
 <h4 id="Step-2-Configure-the-starter"><a href="#Step-2-Configure-the-starter" class="headerlink" title="Step 2: Configure the starter"></a>Step 2: Configure the starter</h4><p>Open the generated flow. The first block is the starter: here, New email.</p>
