@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <!-- Minima -->
+  <!-- Hexo theme created by @adisaktijrs -->
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+
+  
+  <title>Natural Language Processing with PyTorch for Sentiment Analysis</title>
+  
+  <link rel="canonical" href="https://stephen-cheng.github.io/2026/02/09/Natural-Language-Processing-with-PyTorch/">
+  
+  <meta name="description" content="Stephen Cheng &amp;nbsp;  IntroNatural Language Processing (NLP) is a critical component of modern AI, enabling machines to understand and respond to huma">
+  
+  
+  <meta name="keywords" content="AI, Tech, CS">
+  
+  <meta name="author" content="Stephen">
+  
+  
+  
+  <meta property="og:site_name" content="Stephen&#39;s Blog" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Natural Language Processing with PyTorch for Sentiment Analysis" />
+  
+  <meta property="og:description" content="Stephen Cheng &amp;nbsp;  IntroNatural Language Processing (NLP) is a critical component of modern AI, enabling machines to understand and respond to huma">
+  
+  <meta property="og:url" content="https://stephen-cheng.github.io/2026/02/09/Natural-Language-Processing-with-PyTorch/" />
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Natural Language Processing with PyTorch for Sentiment Analysis">
+  
+  <meta name="twitter:description" content="Stephen Cheng &amp;nbsp;  IntroNatural Language Processing (NLP) is a critical component of modern AI, enabling machines to understand and respond to huma">
+  
+  
+  
+  
+  <meta name="twitter:url" content="https://stephen-cheng.github.io/2026/02/09/Natural-Language-Processing-with-PyTorch/" />
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Preload fonts
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="preload" href="/fonts/dm-serif-display-v4-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/inter-v2-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  
+<link rel="stylesheet" href="/css/normalize.css">
+
+  
+<link rel="stylesheet" href="/css/skeleton.css">
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+  
+<link rel="stylesheet" href="/css/prism-dark.css">
+
+  
+<link rel="stylesheet" href="/css/prism-line-numbers.css">
+
+  <!-- User css -->
+  
+  
+<link rel="stylesheet" href="/css/user.css">
+
+  
+
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="icon" type="image/png" href="/images/favicon.png">
+
+  <!-- Custom Theme Color Style
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <style>
+  a:not(.icon) {
+    text-decoration-color: #0FA0CE;
+    background-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 50%,
+      #0FA0CE 50%
+    );
+  }
+  blockquote {
+    border-left: 8px solid #0FA0CE;
+  }
+  .nanobar .bar {
+    background: #0FA0CE;
+  }
+  .button.button-primary:hover,
+  button.button-primary:hover,
+  input[type="submit"].button-primary:hover,
+  input[type="reset"].button-primary:hover,
+  input[type="button"].button-primary:hover,
+  .button.button-primary:focus,
+  button.button-primary:focus,
+  input[type="submit"].button-primary:focus,
+  input[type="reset"].button-primary:focus,
+  input[type="button"].button-primary:focus {
+    background-color: #0FA0CE;
+    border-color: #0FA0CE;
+  }
+  input[type="email"]:focus,
+  input[type="number"]:focus,
+  input[type="search"]:focus,
+  input[type="text"]:focus,
+  input[type="tel"]:focus,
+  input[type="url"]:focus,
+  input[type="password"]:focus,
+  textarea:focus,
+  select:focus {
+    border: 1px solid #0FA0CE;
+  }
+</style>
+
+  <!-- Google Analytics (With Privacy Settings On)
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  
+
+  
+  <script src="/js/pic.min.js" defer></script>
+  
+
+  
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div>
+
+        <div class="row">
+  <div class="two columns" style="max-width: 50px">
+    <h1 class="mt-2 mode">
+      <div onclick=setDarkMode(true) id="darkBtn">🌑</div>
+      <div onclick=setDarkMode(false) id="lightBtn" class=hidden>☀️</div>
+      <script >
+        if (localStorage.getItem('preferredTheme') == 'dark') {
+          setDarkMode(true)
+        }
+        function setDarkMode(isDark) {
+          var darkBtn = document.getElementById('darkBtn')
+          var lightBtn = document.getElementById('lightBtn')
+          if (isDark) {
+            lightBtn.style.display = "block"
+            darkBtn.style.display = "none"
+            localStorage.setItem('preferredTheme', 'dark');
+          } else {
+            lightBtn.style.display = "none"
+            darkBtn.style.display = "block"
+            localStorage.removeItem('preferredTheme');
+          }
+          document.body.classList.toggle("darkmode");
+        }
+      </script>
+    </h1>
+  </div>
+
+  <div class="six columns ml-1">
+    <h1 class="mt-2">
+      Stephen&#39;s Blog
+    </h1>
+  </div>
+
+  <div class="twelve columns">
+    <div class="row">
+      <div class="nine columns left">
+        <a href="/">Home</a>
+        
+          
+          <a href="/archives" class="ml">Archives</a>
+          
+        
+          
+          <a href="/about" class="ml">About</a>
+          
+        
+        
+      </div>
+    </div>
+    <hr style="margin-bottom: 2.6rem">
+  </div>
+</div>
+
+        <div class="trans">
+            <h2>Natural Language Processing with PyTorch for Sentiment Analysis</h2>
+
+  <p>Stephen Cheng</p>
+<p>&nbsp;</p>
+
+<h2 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h2><p>Natural Language Processing (NLP) is a critical component of modern AI, enabling machines to understand and respond to human language. PyTorch, a popular open-source machine learning library, provides robust tools for NLP tasks due to its flexibility and efficient tensor computations. Its dynamic computational graph also aids in easily modifying and building complex models.</p>
+<h2 id="Tensors"><a href="#Tensors" class="headerlink" title="Tensors"></a>Tensors</h2><p>Tensors are fundamental data structures in mathematics and physics that generalize scalars, vectors, and matrices. They are multi-dimensional arrays capable of storing and manipulating large amounts of numerical data efficiently. Tensors have a defined shape, size, and data type, making them versatile for various computational operations.</p>
+<p>In the context of PyTorch, tensors are the primary building blocks and data representation objects. Tensors in PyTorch are similar to NumPy arrays but come with additional functionalities and optimizations specifically designed for deep learning computations. PyTorch’s tensor operations leverage hardware acceleration, such as GPUs, for efficient computation of complex neural networks.</p>
+<p>Tensors play a critical role in natural language processing (NLP) tasks due to the inherent sequential and hierarchical nature of language data. NLP involves processing and understanding textual information. Tensors enable the representation and manipulation of text data by encoding words, sentences, or documents as numerical vectors.</p>
+<p><img src="https://raw.githubusercontent.com/stephen-cheng/images/refs/heads/master/blog/2026/tensors.png" alt=""></p>
+<h2 id="Word-Embeddings"><a href="#Word-Embeddings" class="headerlink" title="Word Embeddings"></a>Word Embeddings</h2><p>Word embeddings are dense vector representations of words in a continuous vector space. They aim to capture semantic and syntactic relationships between words, allowing for better understanding and contextualization of textual data. By representing words as numerical vectors, word embeddings capture semantic similarities and differences, enabling algorithms to work with words as meaningful numerical inputs.</p>
+<p>Word2Vec and GloVe are two popular methods for generating word embeddings. Word2Vec is a neural network-based model that learns word representations by predicting the surrounding words given a target word (continuous bag of words - CBOW) or predicting the target word based on its context (skip-gram).</p>
+<p>GloVe (Global Vectors for Word Representation) is a count-based method that constructs word vectors based on the co-occurrence statistics of words in a large corpus. It captures global word relationships and often leads to better performance in word analogy tasks.</p>
+<p><img src="https://raw.githubusercontent.com/stephen-cheng/images/refs/heads/master/blog/2026/word-embeddings.png" alt=""></p>
+<h2 id="Model-Architecture"><a href="#Model-Architecture" class="headerlink" title="Model Architecture"></a>Model Architecture</h2><p>Sentiment Analysis is a common task in NLP where the objective is to understand the sentiment expressed in a piece of text, often classified as positive, negative, or neutral. To tackle this task, a simple recurrent neural network (RNN) or a more advanced version called long short-term memory (LSTM) can be used.</p>
+<p><img src="https://raw.githubusercontent.com/stephen-cheng/images/refs/heads/master/blog/2026/model-architecture.png" alt=""></p>
+<h4 id="RNNs"><a href="#RNNs" class="headerlink" title="RNNs"></a>RNNs</h4><p>RNN architecture processes the text sequentially, where each word is input one after another. The network maintains a hidden state that changes with each word input, capturing the information from the sequence processed so far. This hidden state acts as the memory of the network. </p>
+<p>However, standard RNNs struggle with long sequences due to what’s known as the vanishing gradient problem, where the contribution of information decays geometrically over time, making the network forget the earlier inputs. </p>
+<h4 id="LSTMs"><a href="#LSTMs" class="headerlink" title="LSTMs"></a>LSTMs</h4><p>To combat this, LSTM, a variant of RNN, was developed. An LSTM maintains a longer context or ‘memory’ by having a more complex internal structure in its hidden state. It has a series of ‘gates’ (input, forget, and output gate) that control the flow of information in and out of the memory state. The input gate determines how much of the incoming information should be stored in the memory state. The forget gate decides what information should be discarded, and the output gate defines how much of the internal state is exposed to the next LSTM unit in the sequence.</p>
+<p>RNN or LSTM model would take a sequence of words in a sentence or document as the input. Each word is typically represented as a dense vector, or embedding, which captures the semantic meaning of the word. The network processes the sequence word by word, updating its internal state based on the current word and the previous state.</p>
+<p>The final state of the network is then used to predict the sentiment. It is passed through a fully connected layer, followed by a softmax activation function to output a probability distribution over the sentiment classes (e.g., positive, negative, neutral). The class with the highest probability is chosen as the model’s prediction.</p>
+<h2 id="Training-the-LSTM-Model-with-PyTorch-for-Sentiment-Analysis"><a href="#Training-the-LSTM-Model-with-PyTorch-for-Sentiment-Analysis" class="headerlink" title="Training the LSTM Model with PyTorch for Sentiment Analysis"></a>Training the LSTM Model with PyTorch for Sentiment Analysis</h2><ol>
+<li>Load the dataset</li>
+</ol>
+<p>In this example, we will be using the <a href="https://www.kaggle.com/datasets/lakshmi25npathi/imdb-dataset-of-50k-movie-reviews" target="_blank" rel="noopener">IMDB Dataset of 50K Movie Reviews</a>. The goal is to train a LSTM model to predict the sentiment. There are two possible values: ‘positive’ and ‘negative’. Hence this is a binary classification task.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line"><span class="comment"># Input data</span></span><br><span class="line">file_name = <span class="string">'IMDB Dataset.csv'</span></span><br><span class="line">df = pd.read_csv(file_name)</span><br><span class="line">print(df.head())</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>Exploratory data analysis</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"></span><br><span class="line"><span class="comment"># 1. Split the data</span></span><br><span class="line">X, y = df[<span class="string">'review'</span>].values, df[<span class="string">'sentiment'</span>].values</span><br><span class="line">x_train, x_test, y_train, y_test = train_test_split(X, y, stratify=y, random_state=<span class="number">42</span>)</span><br><span class="line"></span><br><span class="line">print(<span class="string">f'train data shape: <span class="subst">&#123;x_train.shape&#125;</span>'</span>)</span><br><span class="line">print(<span class="string">f'test data shape: <span class="subst">&#123;x_test.shape&#125;</span>'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. Visualize class distribution</span></span><br><span class="line">dd = pd.Series(y_train).value_counts()</span><br><span class="line">sns.barplot(x=np.array([<span class="string">'negative'</span>, <span class="string">'positive'</span>]), y=dd.values)</span><br><span class="line">plt.title(<span class="string">'Training Set Class Distribution'</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/stephen-cheng/images/refs/heads/master/blog/2026/data-analysis.png" alt=""></p>
+<ol start="3">
+<li>Text preprocessing</li>
+</ol>
+<p>Text preprocessing and tokenization is a critical step. First, we clean up the text data by removing punctuation, extra spaces, and numbers.</p>
+<p>We then transform sentences into individual words, remove common words (known as “stop words”), and keep track of the 1000 most frequently used words in the dataset. These words are then assigned a unique identifier, forming a dictionary for one-hot encoding.</p>
+<p>The code essentially is converting the original text sentences into sequences of these unique identifiers, translating human language into a format that a machine learning model can understand.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> Counter</span><br><span class="line"><span class="comment"># import nltk</span></span><br><span class="line"><span class="comment"># nltk.download('stopwords')</span></span><br><span class="line"><span class="keyword">from</span> nltk.corpus <span class="keyword">import</span> stopwords</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">preprocess_string</span><span class="params">(s)</span>:</span></span><br><span class="line">    <span class="comment"># Remove all non-word characters (everything except numbers and letters)</span></span><br><span class="line">    s = re.sub(<span class="string">r"[^\w\s]"</span>, <span class="string">''</span>, s)</span><br><span class="line">    <span class="comment"># Replace all runs of whitespaces with no space</span></span><br><span class="line">    s = re.sub(<span class="string">r"\s+"</span>, <span class="string">''</span>, s)</span><br><span class="line">    <span class="comment"># replace digits with no space</span></span><br><span class="line">    s = re.sub(<span class="string">r"\d"</span>, <span class="string">''</span>, s)</span><br><span class="line">    <span class="keyword">return</span> s</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">tokenize</span><span class="params">(x_train, y_train, x_val, y_val)</span>:</span></span><br><span class="line">    word_list = []</span><br><span class="line">    stop_words = set(stopwords.words(<span class="string">'english'</span>))</span><br><span class="line">    <span class="keyword">for</span> sent <span class="keyword">in</span> x_train:</span><br><span class="line">        <span class="keyword">for</span> word <span class="keyword">in</span> sent.lower().split():</span><br><span class="line">            word = preprocess_string(word)</span><br><span class="line">            <span class="keyword">if</span> word <span class="keyword">not</span> <span class="keyword">in</span> stop_words <span class="keyword">and</span> word != <span class="string">''</span>:</span><br><span class="line">                word_list.append(word)</span><br><span class="line"> </span><br><span class="line">    corpus = Counter(word_list)</span><br><span class="line">    <span class="comment"># sorting on the basis of most common words</span></span><br><span class="line">    corpus_ = sorted(corpus, key=corpus.get,reverse=<span class="literal">True</span>)[:<span class="number">1000</span>]</span><br><span class="line">    <span class="comment"># creating a dict</span></span><br><span class="line">    onehot_dict = &#123;w:i+<span class="number">1</span> <span class="keyword">for</span> i,w <span class="keyword">in</span> enumerate(corpus_)&#125;</span><br><span class="line">   </span><br><span class="line">    <span class="comment"># tokenize</span></span><br><span class="line">    final_list_train, final_list_test = [], []</span><br><span class="line">    <span class="keyword">for</span> sent <span class="keyword">in</span> x_train:</span><br><span class="line">      final_list_train.append([onehot_dict[preprocess_string(word)] <span class="keyword">for</span> word <span class="keyword">in</span> sent.lower().split() </span><br><span class="line">        <span class="keyword">if</span> preprocess_string(word) <span class="keyword">in</span> onehot_dict.keys()])</span><br><span class="line">    <span class="keyword">for</span> sent <span class="keyword">in</span> x_val:</span><br><span class="line">      final_list_test.append([onehot_dict[preprocess_string(word)] <span class="keyword">for</span> word <span class="keyword">in</span> sent.lower().split()</span><br><span class="line">        <span class="keyword">if</span> preprocess_string(word) <span class="keyword">in</span> onehot_dict.keys()])</span><br><span class="line">    </span><br><span class="line">    encoded_train = [<span class="number">1</span> <span class="keyword">if</span> label ==<span class="string">'positive'</span> <span class="keyword">else</span> <span class="number">0</span> <span class="keyword">for</span> label <span class="keyword">in</span> y_train]  </span><br><span class="line">    encoded_test = [<span class="number">1</span> <span class="keyword">if</span> label ==<span class="string">'positive'</span> <span class="keyword">else</span> <span class="number">0</span> <span class="keyword">for</span> label <span class="keyword">in</span> y_val]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> final_list_train, np.array(encoded_train), final_list_test, np.array(encoded_test), onehot_dict</span><br><span class="line"></span><br><span class="line"><span class="comment"># Execute tokenization</span></span><br><span class="line">x_train, y_train, x_test, y_test, vocab = tokenize(x_train, y_train, x_test, y_test)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Analyze the token length in x_train.</span></span><br><span class="line">rev_len = [len(i) <span class="keyword">for</span> i <span class="keyword">in</span> x_train]</span><br><span class="line"></span><br><span class="line"><span class="comment"># Plot the histogram</span></span><br><span class="line">pd.Series(rev_len).hist(bins=<span class="number">50</span>, color=<span class="string">'skyblue'</span>, edgecolor=<span class="string">'black'</span>, grid=<span class="literal">False</span>)</span><br><span class="line">plt.title(<span class="string">'Distribution of Review Lengths'</span>)</span><br><span class="line">plt.xlabel(<span class="string">'Number of Words per Review'</span>)</span><br><span class="line">plt.ylabel(<span class="string">'Frequency'</span>)</span><br><span class="line">plt.show()</span><br><span class="line"></span><br><span class="line"><span class="comment"># Check percentiles to choose a smart 'max_len' for padding</span></span><br><span class="line">print(<span class="string">f"90th percentile length: <span class="subst">&#123;np.percentile(rev_len, <span class="number">90</span>)&#125;</span>"</span>)</span><br><span class="line">print(<span class="string">f"95th percentile length: <span class="subst">&#123;np.percentile(rev_len, <span class="number">95</span>)&#125;</span>"</span>)</span><br><span class="line">print(<span class="string">f"99th percentile length: <span class="subst">&#123;np.percentile(rev_len, <span class="number">99</span>)&#125;</span>"</span>)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/stephen-cheng/images/refs/heads/master/blog/2026/token-length.png" alt=""></p>
+<ol start="4">
+<li>Prepare the data</li>
+</ol>
+<p>Given the variable token lengths of each review, it’s necessary to standardize them for consistency. As the majority of reviews contain less than 500 tokens, we’ll establish 500 as the fixed length for all reviews.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">from</span> torch.utils.data <span class="keyword">import</span> TensorDataset, DataLoader</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">padding_</span><span class="params">(sentences, seq_len)</span>:</span></span><br><span class="line">    features = np.zeros((len(sentences), seq_len), dtype=int)</span><br><span class="line">    <span class="keyword">for</span> ii, review <span class="keyword">in</span> enumerate(sentences):</span><br><span class="line">      <span class="keyword">if</span> len(review) != <span class="number">0</span>:</span><br><span class="line">        features[ii, -len(review):] = np.array(review)[:seq_len]</span><br><span class="line">    <span class="keyword">return</span> features</span><br><span class="line"></span><br><span class="line">x_train_pad = padding_(x_train, <span class="number">500</span>)</span><br><span class="line">x_test_pad = padding_(x_test, <span class="number">500</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># create Tensor datasets</span></span><br><span class="line">train_data = TensorDataset(torch.from_numpy(x_train_pad), torch.from_numpy(y_train))</span><br><span class="line">valid_data = TensorDataset(torch.from_numpy(x_test_pad), torch.from_numpy(y_test))</span><br><span class="line"></span><br><span class="line"><span class="comment"># dataloaders</span></span><br><span class="line">batch_size = <span class="number">50</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># make sure to SHUFFLE your data</span></span><br><span class="line">train_loader = DataLoader(train_data, shuffle=<span class="literal">True</span>, batch_size=batch_size)</span><br><span class="line">valid_loader = DataLoader(valid_data, shuffle=<span class="literal">True</span>, batch_size=batch_size)</span><br><span class="line"></span><br><span class="line"><span class="comment"># obtain one batch of training data</span></span><br><span class="line">dataiter = iter(train_loader)</span><br><span class="line">sample_x, sample_y = next(dataiter)</span><br><span class="line"></span><br><span class="line">print(<span class="string">'Sample input size: '</span>, sample_x.size()) <span class="comment"># batch_size, seq_length</span></span><br><span class="line">print(<span class="string">'Sample input: \n'</span>, sample_x)</span><br><span class="line">print(<span class="string">'Sample output: \n'</span>, sample_y)</span><br></pre></td></tr></table></figure>
+
+<ol start="5">
+<li>Define the LSTM model</li>
+</ol>
+<p>This part of the code defines a sentiment analysis model using a recurrent neural network (RNN) architecture, specifically a type of RNN called Long Short-Term Memory (LSTM) as we mentioned above. The SentimentRNN class is a PyTorch model that starts with an embedding layer, which transforms word indices into a dense representation that captures the semantic meaning of words. This is followed by an LSTM layer that processes the sequence of word embeddings.</p>
+<p>The LSTM’s hidden state is passed through a dropout layer (for regularizing the model and preventing overfitting) and a fully connected layer, which maps the LSTM outputs to the final prediction. The prediction is then passed through a sigmoid activation function, converting raw output values into probabilities. The forward method defines the forward pass of data through this network, and the init_hidden method initializes the hidden states of the LSTM layer to zeros.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">import</span> torch.nn <span class="keyword">as</span> nn</span><br><span class="line"></span><br><span class="line"><span class="comment"># Setup device (GPU if available, otherwise CPU)</span></span><br><span class="line">device = torch.device(<span class="string">"cuda"</span> <span class="keyword">if</span> torch.cuda.is_available() <span class="keyword">else</span> <span class="string">"cpu"</span>)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SentimentRNN</span><span class="params">(nn.Module)</span>:</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, no_layers, vocab_size, hidden_dim, embedding_dim, output_dim, drop_prob=<span class="number">0.5</span>)</span>:</span></span><br><span class="line">    super(SentimentRNN,self).__init__()</span><br><span class="line"></span><br><span class="line">    self.output_dim = output_dim</span><br><span class="line">    self.hidden_dim = hidden_dim</span><br><span class="line">    self.no_layers = no_layers</span><br><span class="line">    self.vocab_size = vocab_size</span><br><span class="line"></span><br><span class="line">    <span class="comment"># embedding and LSTM layers</span></span><br><span class="line">    self.embedding = nn.Embedding(vocab_size, embedding_dim)</span><br><span class="line">    </span><br><span class="line">    <span class="comment">#lstm</span></span><br><span class="line">    self.lstm = nn.LSTM(input_size=embedding_dim, hidden_size=self.hidden_dim,</span><br><span class="line">                        num_layers=no_layers, batch_first=<span class="literal">True</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># dropout layer</span></span><br><span class="line">    self.dropout = nn.Dropout(drop_prob)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># linear and sigmoid layer</span></span><br><span class="line">    self.fc = nn.Linear(self.hidden_dim, output_dim)</span><br><span class="line">    self.sig = nn.Sigmoid()</span><br><span class="line">    </span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">forward</span><span class="params">(self, x, hidden)</span>:</span></span><br><span class="line">    batch_size = x.size(<span class="number">0</span>)</span><br><span class="line">    <span class="comment"># embeddings and lstm_out</span></span><br><span class="line">    embeds = self.embedding(x)  <span class="comment"># shape: B x S x Feature   since batch = True</span></span><br><span class="line">    lstm_out, hidden = self.lstm(embeds, hidden)</span><br><span class="line">    lstm_out = lstm_out.contiguous().view(<span class="number">-1</span>, self.hidden_dim)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># dropout and fully connected layer</span></span><br><span class="line">    out = self.dropout(lstm_out)</span><br><span class="line">    out = self.fc(out)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># sigmoid function</span></span><br><span class="line">    sig_out = self.sig(out)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># reshape to be batch_size first</span></span><br><span class="line">    sig_out = sig_out.view(batch_size, <span class="number">-1</span>)</span><br><span class="line">    sig_out = sig_out[:, <span class="number">-1</span>] <span class="comment"># get last batch of labels</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># return last sigmoid output and hidden state</span></span><br><span class="line">    <span class="keyword">return</span> sig_out, hidden</span><br><span class="line">      </span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">init_hidden</span><span class="params">(self, batch_size)</span>:</span></span><br><span class="line">    <span class="string">''' Initializes hidden state '''</span></span><br><span class="line">    <span class="comment"># Create two new tensors with sizes n_layers x batch_size x hidden_dim,</span></span><br><span class="line">    <span class="comment"># initialized to zero, for hidden state and cell state of LSTM</span></span><br><span class="line">    h0 = torch.zeros((self.no_layers, batch_size, self.hidden_dim)).to(device)</span><br><span class="line">    c0 = torch.zeros((self.no_layers, batch_size, self.hidden_dim)).to(device)</span><br><span class="line">    hidden = (h0, c0)</span><br><span class="line">    <span class="keyword">return</span> hidden </span><br><span class="line"></span><br><span class="line"><span class="comment"># Initialize the SentimentRNN class</span></span><br><span class="line">no_layers = <span class="number">2</span></span><br><span class="line">vocab_size = len(vocab) + <span class="number">1</span> <span class="comment">#extra 1 for padding</span></span><br><span class="line">hidden_dim = <span class="number">256</span></span><br><span class="line">embedding_dim = <span class="number">64</span></span><br><span class="line">output_dim = <span class="number">1</span></span><br><span class="line"></span><br><span class="line">model = SentimentRNN(no_layers, vocab_size, hidden_dim, embedding_dim, output_dim, drop_prob=<span class="number">0.5</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#moving to gpu</span></span><br><span class="line">model.to(device)</span><br><span class="line">print(model)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/stephen-cheng/images/refs/heads/master/blog/2026/sentiment-rnn.png" alt=""></p>
+<ol start="6">
+<li>Start training</li>
+</ol>
+<p>In this part, the sentiment analysis model is trained and validated. Each epoch (iteration) involves a training phase and a validation phase. During the training phase, the model learns by adjusting its parameters to minimize the loss. In the validation phase, the model’s performance is evaluated on a separate dataset to ensure it’s learning generalized patterns and not just memorizing the training data.</p>
+<p>The loss function used is Binary Cross-Entropy Loss (nn.BCELoss), which is commonly used for binary classification tasks. The optimization method is Adam (torch.optim.Adam), a popular choice due to its efficiency and low memory requirements. The learning rate for Adam is set to 0.001. The acc function is a helper function designed to calculate the accuracy of our model’s predictions. It rounds off the predicted probabilities to the nearest integer (0 or 1), compares these predictions to the actual labels, and then calculates the percentage of correct predictions.</p>
+<p>The training loop starts by initializing the hidden states of the LSTM and setting the model to training mode. For each batch of data, the model’s predictions are compared to the actual labels to compute the loss, which is then backpropagated to update the model’s parameters. Gradients are clipped to a maximum value to prevent them from getting too large, it is a common issue in training RNNs and LSTMs.</p>
+<p>In the validation loop, the model is set to evaluation mode, and its performance is assessed by using the validation data without updating any parameters. For both training and validation phases, the code tracks the loss and accuracy for each epoch. If the validation loss improves, the current model’s parameters are saved, capturing the best model found during training. After each epoch, the average loss and accuracy for that epoch are printed out, giving insight into the model’s learning progress.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># loss and optimization functions</span></span><br><span class="line">lr = <span class="number">0.001</span></span><br><span class="line">criterion = nn.BCELoss()</span><br><span class="line">optimizer = torch.optim.Adam(model.parameters(), lr=lr)</span><br><span class="line"></span><br><span class="line"><span class="comment"># function to predict accuracy</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">acc</span><span class="params">(pred, label)</span>:</span></span><br><span class="line">  pred = torch.round(pred.squeeze())</span><br><span class="line">  <span class="keyword">return</span> torch.sum(pred == label.squeeze()).item()</span><br><span class="line"></span><br><span class="line">clip = <span class="number">5</span></span><br><span class="line">epochs = <span class="number">5</span> </span><br><span class="line">valid_loss_min = np.Inf</span><br><span class="line"><span class="comment"># train for some number of epochs</span></span><br><span class="line">epoch_tr_loss, epoch_vl_loss = [], []</span><br><span class="line">epoch_tr_acc, epoch_vl_acc = [], []</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> epoch <span class="keyword">in</span> range(epochs):</span><br><span class="line">  train_losses = []</span><br><span class="line">  train_acc = <span class="number">0.0</span></span><br><span class="line">  model.train()</span><br><span class="line">  <span class="comment"># initialize hidden state</span></span><br><span class="line">  h = model.init_hidden(batch_size)</span><br><span class="line">  <span class="keyword">for</span> inputs, labels <span class="keyword">in</span> train_loader:</span><br><span class="line">    inputs, labels = inputs.to(device), labels.to(device)  </span><br><span class="line">    <span class="comment"># Creating new variables for the hidden state, otherwise</span></span><br><span class="line">    <span class="comment"># we'd backprop through the entire training history</span></span><br><span class="line">    h = tuple([each.data <span class="keyword">for</span> each <span class="keyword">in</span> h])</span><br><span class="line">    model.zero_grad()</span><br><span class="line">    output, h = model(inputs, h)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># calculate the loss and perform backprop</span></span><br><span class="line">    loss = criterion(output.squeeze(), labels.float())</span><br><span class="line">    loss.backward()</span><br><span class="line">    train_losses.append(loss.item())</span><br><span class="line">    <span class="comment"># calculating accuracy</span></span><br><span class="line">    accuracy = acc(output, labels)</span><br><span class="line">    train_acc += accuracy</span><br><span class="line">    <span class="comment">#`clip_grad_norm` helps prevent the exploding gradient problem in RNNs / LSTMs.</span></span><br><span class="line">    nn.utils.clip_grad_norm_(model.parameters(), clip)</span><br><span class="line">    optimizer.step()</span><br><span class="line">    val_h = model.init_hidden(batch_size)</span><br><span class="line">    val_losses = []</span><br><span class="line">    val_acc = <span class="number">0.0</span></span><br><span class="line">    model.eval()</span><br><span class="line">    <span class="keyword">for</span> inputs, labels <span class="keyword">in</span> valid_loader:</span><br><span class="line">      val_h = tuple([each.data <span class="keyword">for</span> each <span class="keyword">in</span> val_h])</span><br><span class="line">      inputs, labels = inputs.to(device), labels.to(device)</span><br><span class="line">      output, val_h = model(inputs, val_h)</span><br><span class="line">      val_loss = criterion(output.squeeze(), labels.float())</span><br><span class="line">      val_losses.append(val_loss.item())</span><br><span class="line">      accuracy = acc(output,labels)</span><br><span class="line">      val_acc += accuracy</span><br><span class="line">    </span><br><span class="line">    epoch_train_loss = np.mean(train_losses)</span><br><span class="line">    epoch_val_loss = np.mean(val_losses)</span><br><span class="line">    epoch_train_acc = train_acc/len(train_loader.dataset)</span><br><span class="line">    epoch_val_acc = val_acc/len(valid_loader.dataset)</span><br><span class="line">    epoch_tr_loss.append(epoch_train_loss)</span><br><span class="line">    epoch_vl_loss.append(epoch_val_loss)</span><br><span class="line">    epoch_tr_acc.append(epoch_train_acc)</span><br><span class="line">    epoch_vl_acc.append(epoch_val_acc)</span><br><span class="line">    print(<span class="string">f'Epoch <span class="subst">&#123;epoch+<span class="number">1</span>&#125;</span>'</span>)</span><br><span class="line">    print(<span class="string">f'train_loss : <span class="subst">&#123;epoch_train_loss&#125;</span> val_loss : <span class="subst">&#123;epoch_val_loss&#125;</span>'</span>)</span><br><span class="line">    print(<span class="string">f'train_accuracy : <span class="subst">&#123;epoch_train_acc*<span class="number">100</span>&#125;</span> val_accuracy : <span class="subst">&#123;epoch_val_acc*<span class="number">100</span>&#125;</span>'</span>)</span><br><span class="line">    <span class="keyword">if</span> epoch_val_loss &lt;= valid_loss_min:</span><br><span class="line">      torch.save(model.state_dict(), <span class="string">'state_dict.pt'</span>)</span><br><span class="line">      print(<span class="string">'Validation loss decreased (&#123;:.6f&#125; --&gt; &#123;:.6f&#125;).  Saving model ...'</span>.format(valid_loss_min,epoch_val_loss))</span><br><span class="line">      valid_loss_min = epoch_val_loss</span><br><span class="line">    print(<span class="number">25</span>*<span class="string">'=='</span>)</span><br></pre></td></tr></table></figure>
+
+<ol start="7">
+<li>Model evaluation</li>
+</ol>
+<p>This part generates two plots to visually represent the training and validation accuracy and loss over the course of model training. The first subplot displays a line graph of the training and validation accuracy after each epoch. It is useful for observing how well the model is learning and generalizing over time. The second subplot displays a line graph of the training and validation loss. This helps us see whether our model is overfitting, underfitting, or fitting just right.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">fig = plt.figure(figsize = (<span class="number">20</span>, <span class="number">6</span>))</span><br><span class="line">plt.subplot(<span class="number">1</span>, <span class="number">2</span>, <span class="number">1</span>)</span><br><span class="line">plt.plot(epoch_tr_acc, label=<span class="string">'Train Acc'</span>)</span><br><span class="line">plt.plot(epoch_vl_acc, label=<span class="string">'Validation Acc'</span>)</span><br><span class="line">plt.title(<span class="string">"Accuracy"</span>)</span><br><span class="line">plt.legend()</span><br><span class="line">plt.grid()</span><br><span class="line">  </span><br><span class="line">plt.subplot(<span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>)</span><br><span class="line">plt.plot(epoch_tr_loss, label=<span class="string">'Train loss'</span>)</span><br><span class="line">plt.plot(epoch_vl_loss, label=<span class="string">'Validation loss'</span>)</span><br><span class="line">plt.title(<span class="string">"Loss"</span>)</span><br><span class="line">plt.legend()</span><br><span class="line">plt.grid()</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/stephen-cheng/images/refs/heads/master/blog/2026/model-eval.png" alt=""></p>
+<ol start="8">
+<li>Inference / Prediction</li>
+</ol>
+<p>In this part, we create a function predict_text for predicting the sentiment of a given text, and a demonstration of its use. The predict_text function takes as input a string of text, transforms it into a sequence of word indices (according to a pre-defined vocabulary), and prepares it for input into the model by padding and reshaping. The function then initializes the hidden states of the LSTM, feeds the input into the model, and returns the model’s output probability of the raw text.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">predict_text</span><span class="params">(text)</span>:</span></span><br><span class="line">  word_seq = np.array([vocab[preprocess_string(word)] <span class="keyword">for</span> word <span class="keyword">in</span> text.split()</span><br><span class="line">                    <span class="keyword">if</span> preprocess_string(word) <span class="keyword">in</span> vocab.keys()])</span><br><span class="line">  word_seq = np.expand_dims(word_seq,axis=<span class="number">0</span>)</span><br><span class="line">  pad = torch.from_numpy(padding_(word_seq, <span class="number">500</span>))</span><br><span class="line">  inputs = pad.to(device)</span><br><span class="line">  batch_size = <span class="number">1</span></span><br><span class="line">  h = model.init_hidden(batch_size)</span><br><span class="line">  h = tuple([each.data <span class="keyword">for</span> each <span class="keyword">in</span> h])</span><br><span class="line">  output, h = model(inputs, h)</span><br><span class="line">  <span class="keyword">return</span>(output.item())</span><br><span class="line"></span><br><span class="line">index = <span class="number">30</span></span><br><span class="line">print(df[<span class="string">'review'</span>][index])</span><br><span class="line">print(<span class="string">'='</span>*<span class="number">70</span>)</span><br><span class="line">print(<span class="string">f'Actual sentiment is  : <span class="subst">&#123;df[<span class="string">"sentiment"</span>][index]&#125;</span>'</span>)</span><br><span class="line">print(<span class="string">'='</span>*<span class="number">70</span>)</span><br><span class="line">pro = predict_text(df[<span class="string">'review'</span>][index])</span><br><span class="line">status = <span class="string">"positive"</span> <span class="keyword">if</span> pro &gt; <span class="number">0.5</span> <span class="keyword">else</span> <span class="string">"negative"</span></span><br><span class="line">pro = (<span class="number">1</span> - pro) <span class="keyword">if</span> status == <span class="string">"negative"</span> <span class="keyword">else</span> pro</span><br><span class="line">print(<span class="string">f'Predicted sentiment is <span class="subst">&#123;status&#125;</span> with a probability of <span class="subst">&#123;pro&#125;</span>'</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="Improving-the-Model"><a href="#Improving-the-Model" class="headerlink" title="Improving the Model"></a>Improving the Model</h2><p>Improving an NLP model often involves multiple strategies tailored to the specific requirements and constraints of the task at hand. Hyperparameter tuning is a common approach that involves adjusting parameters such as learning rate, batch size, or the number of layers in a neural network. These hyperparameters can significantly influence the model’s performance and are typically optimized through techniques like grid search or random search.</p>
+<p>Transfer learning, particularly with models like BERT or GPT, has shown significant potential in improving NLP tasks. These models are pre-trained on large corpora of text and then fine-tuned on a specific task, allowing them to leverage the general language understanding they’ve gained during pre-training. This approach has consistently led to state-of-the-art results in a wide range of NLP tasks, including sentiment analysis.</p>
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>PyTorch offers a powerful and flexible platform for building NLP models. In this post, we have walked through the process of developing a sentiment analysis model using an LSTM architecture, highlighting key steps such as preprocessing text data, building the model, training and validating it, and finally making predictions on unseen data. This is just the tip of the iceberg for what is possible with NLP and PyTorch. NLP has vast applications, from chatbots and recommendation systems to sentiment analysis tools and beyond. Mastering NLP with PyTorch is challenging yet rewarding, as it opens up a new dimension of understanding and interacting with the world around us.</p>
+
+  <p><a class="classtest-link" href="/tags/Deep-Learning/" rel="tag">Deep Learning</a>, <a class="classtest-link" href="/tags/LSTM/" rel="tag">LSTM</a>, <a class="classtest-link" href="/tags/NLP/" rel="tag">NLP</a>, <a class="classtest-link" href="/tags/PyTorch/" rel="tag">PyTorch</a>, <a class="classtest-link" href="/tags/Sentiment-Analysis/" rel="tag">Sentiment Analysis</a> — Feb 9, 2026</p>
+  
+
+
+        </div>
+        <div class="row mt-2">
+  <h3>Search</h3>
+  <div><input id="search-text" title="search" class="search-text" type="text" placeholder="search......"></div>
+  <div style="margin-top: 1.5rem;">
+    <ul id="result"></ul>
+  </div>
+</div>
+        <div class="row mt-2">
+  
+    <div class="eight columns">
+      <p id="madewith">Made with ❤️ and ☀️
+        <!-- <a class="footer-link icon" href="https://hexo.io" target="_blank" style="text-decoration: none;" rel="noreferrer" aria-label="Hexo.io"> -->
+        <!-- <svg class="hexo svg-hov" width="14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Hexo.js</title><path d="M12 .007L1.57 6.056V18.05L12 23.995l10.43-6.049V5.952L12 .007zm4.798 17.105l-.939.521-.939-.521V12.94H9.08v4.172l-.94.521-.938-.521V6.89l.939-.521.939.521v4.172h5.84V6.89l.94-.521.938.521v10.222z"/></svg> -->
+        <!-- </a> -->
+        
+        on <a href="https://en.wikipedia.org/wiki/Earth" target="_blank" rel="noreferrer">Earth</a>.</p>
+        
+    </div>
+
+    <!-- Sepcial thanks to https://simpleicons.org/ for the icons -->
+    <div class="four columns mb-3 posisi" >
+      
+      <a class="ml-0 footer-link icon" href="https://github.com/stephen-cheng" target="_blank" style="text-decoration: none" rel="noreferrer" aria-label="GitHub">
+        <svg class="github svg-hov" width="18" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+      </a>
+      
+
+      
+      <a class="ml-0 footer-link icon" href="https://linkedin.com/in/stephen-cheng" target="_blank" style="text-decoration: none" rel="noreferrer" aria-label="LinkedIn">
+        <svg class="linkedin svg-hov" width="18" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>LinkedIn</title><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      </a>
+      
+
+      
+
+      
+        <a class="ml-0 footer-link icon" href="https://facebook.com/stephen.cheeng" target="_blank" style="text-decoration: none" rel="noreferrer" aria-label="Facebook">
+          <svg class="facebook svg-hov" width="18" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Facebook</title><path d="M8.258 4.458c0-0.144 0.02-0.455 0.06-0.931c0.043-0.477 0.223-0.976 0.546-1.5c0.32-0.522 0.839-0.991 1.561-1.406 C11.144 0.208 12.183 0 13.539 0h3.82v4.163h-2.797c-0.277 0-0.535 0.104-0.768 0.309c-0.231 0.205-0.35 0.4-0.35 0.581v2.59h3.914 c-0.041 0.507-0.086 1-0.138 1.476l-0.155 1.258c-0.062 0.425-0.125 0.819-0.187 1.182h-3.462v11.542H8.258V11.558H5.742V7.643 h2.516V4.458z"/></svg>
+        </a>
+      
+
+      
+      <a class="ml-0 footer-link icon" href="https://instagram.com/stephen.cheeng" target="_blank" style="text-decoration: none" rel="noreferrer" aria-label="Instagram">
+        <svg class="instagram svg-hov" width="18" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Instagram</title><path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z"/></svg>
+      </a>
+      
+
+      
+
+    </div>
+  
+</div>
+
+      </div>
+
+    </div>
+
+  </div>
+  <script src="/js/nanobar.min.js"></script>
+
+  <script>
+    var options = {
+      classname: 'nanobar',
+      id: 'myNanobar'
+    };
+    var nanobar = new Nanobar(options);
+    nanobar.go(30);
+    nanobar.go(76);
+    nanobar.go(100);
+  </script>
+
+</body>
+
+</html>

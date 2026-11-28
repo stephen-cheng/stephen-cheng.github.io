@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <!-- Minima -->
+  <!-- Hexo theme created by @adisaktijrs -->
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+
+  
+  <title>Next-Gen Scientific Peer Review Powered by Agentic AI: Google Deep Review</title>
+  
+  <link rel="canonical" href="https://stephen-cheng.github.io/2026/12/15/Next-Gen-Scientific-Peer-Review-Powered-by-Agentic-AI-Google-Deep-Review/">
+  
+  <meta name="description" content="Stephen Cheng &amp;nbsp;  IntroImagine handing a friend a 50-page report and giving them 10 minutes to find mistakes. They’ll catch a few typos, sure, but">
+  
+  
+  <meta name="keywords" content="AI, Tech, CS">
+  
+  <meta name="author" content="Stephen">
+  
+  
+  
+  <meta property="og:site_name" content="Stephen&#39;s Blog" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Next-Gen Scientific Peer Review Powered by Agentic AI: Google Deep Review" />
+  
+  <meta property="og:description" content="Stephen Cheng &amp;nbsp;  IntroImagine handing a friend a 50-page report and giving them 10 minutes to find mistakes. They’ll catch a few typos, sure, but">
+  
+  <meta property="og:url" content="https://stephen-cheng.github.io/2026/12/15/Next-Gen-Scientific-Peer-Review-Powered-by-Agentic-AI-Google-Deep-Review/" />
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Next-Gen Scientific Peer Review Powered by Agentic AI: Google Deep Review">
+  
+  <meta name="twitter:description" content="Stephen Cheng &amp;nbsp;  IntroImagine handing a friend a 50-page report and giving them 10 minutes to find mistakes. They’ll catch a few typos, sure, but">
+  
+  
+  
+  
+  <meta name="twitter:url" content="https://stephen-cheng.github.io/2026/12/15/Next-Gen-Scientific-Peer-Review-Powered-by-Agentic-AI-Google-Deep-Review/" />
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Preload fonts
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="preload" href="/fonts/dm-serif-display-v4-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/inter-v2-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  
+<link rel="stylesheet" href="/css/normalize.css">
+
+  
+<link rel="stylesheet" href="/css/skeleton.css">
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+  
+<link rel="stylesheet" href="/css/prism-dark.css">
+
+  
+<link rel="stylesheet" href="/css/prism-line-numbers.css">
+
+  <!-- User css -->
+  
+  
+<link rel="stylesheet" href="/css/user.css">
+
+  
+
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="icon" type="image/png" href="/images/favicon.png">
+
+  <!-- Custom Theme Color Style
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <style>
+  a:not(.icon) {
+    text-decoration-color: #0FA0CE;
+    background-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 50%,
+      #0FA0CE 50%
+    );
+  }
+  blockquote {
+    border-left: 8px solid #0FA0CE;
+  }
+  .nanobar .bar {
+    background: #0FA0CE;
+  }
+  .button.button-primary:hover,
+  button.button-primary:hover,
+  input[type="submit"].button-primary:hover,
+  input[type="reset"].button-primary:hover,
+  input[type="button"].button-primary:hover,
+  .button.button-primary:focus,
+  button.button-primary:focus,
+  input[type="submit"].button-primary:focus,
+  input[type="reset"].button-primary:focus,
+  input[type="button"].button-primary:focus {
+    background-color: #0FA0CE;
+    border-color: #0FA0CE;
+  }
+  input[type="email"]:focus,
+  input[type="number"]:focus,
+  input[type="search"]:focus,
+  input[type="text"]:focus,
+  input[type="tel"]:focus,
+  input[type="url"]:focus,
+  input[type="password"]:focus,
+  textarea:focus,
+  select:focus {
+    border: 1px solid #0FA0CE;
+  }
+</style>
+
+  <!-- Google Analytics (With Privacy Settings On)
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  
+
+  
+  <script src="/js/pic.min.js" defer></script>
+  
+
+  
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div>
+
+        <div class="row">
+  <div class="two columns" style="max-width: 50px">
+    <h1 class="mt-2 mode">
+      <div onclick=setDarkMode(true) id="darkBtn">🌑</div>
+      <div onclick=setDarkMode(false) id="lightBtn" class=hidden>☀️</div>
+      <script >
+        if (localStorage.getItem('preferredTheme') == 'dark') {
+          setDarkMode(true)
+        }
+        function setDarkMode(isDark) {
+          var darkBtn = document.getElementById('darkBtn')
+          var lightBtn = document.getElementById('lightBtn')
+          if (isDark) {
+            lightBtn.style.display = "block"
+            darkBtn.style.display = "none"
+            localStorage.setItem('preferredTheme', 'dark');
+          } else {
+            lightBtn.style.display = "none"
+            darkBtn.style.display = "block"
+            localStorage.removeItem('preferredTheme');
+          }
+          document.body.classList.toggle("darkmode");
+        }
+      </script>
+    </h1>
+  </div>
+
+  <div class="six columns ml-1">
+    <h1 class="mt-2">
+      Stephen&#39;s Blog
+    </h1>
+  </div>
+
+  <div class="twelve columns">
+    <div class="row">
+      <div class="nine columns left">
+        <a href="/">Home</a>
+        
+          
+          <a href="/archives" class="ml">Archives</a>
+          
+        
+          
+          <a href="/about" class="ml">About</a>
+          
+        
+        
+      </div>
+    </div>
+    <hr style="margin-bottom: 2.6rem">
+  </div>
+</div>
+
+        <div class="trans">
+            <h2>Next-Gen Scientific Peer Review Powered by Agentic AI: Google Deep Review</h2>
+
+  <p>Stephen Cheng</p>
+<p>&nbsp;</p>
+
+<h2 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h2><p>Imagine handing a friend a 50-page report and giving them 10 minutes to find mistakes. They’ll catch a few typos, sure, but they’ll likely miss that a number on page 5 contradicts page 35.</p>
+<p>Now imagine giving that report to a team of specialists. Everyone gets the full context, one person checks the math, another reviews the experiments, and an editor compiles and verifies their notes. That team catches the mistakes that actually matter.</p>
+<p><a href="https://research.google/deepreview/" target="_blank" rel="noopener">Google Deep Review</a> turns that team approach into software. Built by <a href="https://research.google/blog/analyzing-technical-documents-with-deep-review/" target="_blank" rel="noopener">Google Research</a>, this agentic AI system checks long, complex documents by splitting them into sections, reviewing them in parallel, and combining the findings into one final report.</p>
+<p>This article explores what Deep Review is, how its 4-stage pipeline works, what Google’s published results show, and how we can build this pattern by ourselves.</p>
+<h2 id="What-Is-Google-Deep-Review"><a href="#What-Is-Google-Deep-Review" class="headerlink" title="What Is Google Deep Review?"></a>What Is Google Deep Review?</h2><p>Google Deep Review is an agentic AI system that gives feedback and technical verification on long, complex documents. It splits a document into sections, checks each section in parallel, and combines the results into one report.</p>
+<p>Deep Review was first built for research papers. According to Google, it also works for design documents, presentations, and legal and financial documents now. It is like the team plus the editor. It splits the work up so that each part gets a careful look, instead of reading the document once and giving a first impression.</p>
+<h4 id="In-a-Nutshell"><a href="#In-a-Nutshell" class="headerlink" title="In a Nutshell"></a>In a Nutshell</h4><ul>
+<li>Deep Review splits a document into sections, gives harder sections more compute, reviews every section in parallel with the full document in view, then merges and fact-checks the findings.</li>
+<li>On a math and computer science subset of the SPOT benchmark (26 papers, 29 errors), Google’s Paper Assistant Tool (PAT) caught 89.7% of errors, against 55.2% for Gemini 3.1 Pro used on its own.</li>
+<li>Every user gets 2 free reviews per week. It accepts PDFs and plain text only.</li>
+<li>All accuracy numbers come from Google and from authors who opted in. Nobody has independently tested the public version yet.</li>
+<li>It checks the reasoning in our document, not our code, so a pipeline bug can still produce wrong numbers that look consistent.</li>
+</ul>
+<h4 id="Why-did-Google-build-Deep-Review"><a href="#Why-did-Google-build-Deep-Review" class="headerlink" title="Why did Google build Deep Review?"></a>Why did Google build Deep Review?</h4><p>AI has made writing documents cheap, but checking them is still slow and expensive. Google calls this the validation bottleneck: information is generated faster than it can be rigorously reviewed.</p>
+<p>According to Google, combined submissions to 3 major AI conferences (ICLR, NeurIPS, and ICML) grew from about 23,000 in 2023 to roughly 74,000 in 2026. However, the number of qualified reviewers did not triple over the same period.</p>
+<h4 id="From-PAT-to-Deep-Review"><a href="#From-PAT-to-Deep-Review" class="headerlink" title="From PAT to Deep Review"></a>From PAT to Deep Review</h4><p>Deep Review started out as the PAT. Google piloted it with 4 computer science conferences: STOC 2026, ICML 2026, NeurIPS 2026, and ICLR 2027.</p>
+<p>Authors could opt in and get private feedback on their paper before the deadline. More than 16,000 papers went through the pilots. The feedback was kept separate from the official peer review, so it had no effect on whether a paper was accepted.</p>
+<p>The public version adds support for Gemini 4 Argon, which Google says makes it stronger than the older PAT. Google has also built a related pattern into Antigravity, its agent-based coding environment.</p>
+<p><img src="https://raw.githubusercontent.com/stephen-cheng/images/refs/heads/master/blog/2026/google-deep-review-1.jpg" alt=""></p>
+<h2 id="How-Does-Deep-Review-Work"><a href="#How-Does-Deep-Review-Work" class="headerlink" title="How Does Deep Review Work?"></a>How Does Deep Review Work?</h2><p>Deep Review works as a 4-stage pipeline: it splits the document, budgets effort per section, reviews the sections in parallel, and merges the findings.</p>
+<p>The obvious way to review a paper with a large language model (LLM) is to paste the whole thing in and ask for feedback. Google gives 3 reasons it falls short:</p>
+<ul>
+<li>The model runs out of thinking budget before it reaches the hard parts.</li>
+<li>It misses dependencies between distant sections.</li>
+<li>It accepts nuanced claims without scrutinizing them.</li>
+</ul>
+<p>Let’s go through each stage.</p>
+<h4 id="Stage-1-Document-segmentation"><a href="#Stage-1-Document-segmentation" class="headerlink" title="Stage 1: Document segmentation"></a>Stage 1: Document segmentation</h4><p>A segmenter agent breaks the document into logical pieces such as the introduction, methods, experiments, and proofs. The pieces can overlap, but together they must cover the whole document. This is like the team deciding who checks which chapter before anybody starts reading. No part of the document gets skipped.</p>
+<h4 id="Stage-2-Adaptive-compute-budgeting"><a href="#Stage-2-Adaptive-compute-budgeting" class="headerlink" title="Stage 2: Adaptive compute budgeting"></a>Stage 2: Adaptive compute budgeting</h4><p>Some sections are much harder to check than others. A long mathematical proof needs far more careful thought than a related work section, which is mostly a list of other papers. So, Deep Review inspects how dense each piece is and gives the harder ones more compute.</p>
+<p>Google’s paper describes light, medium, and high thinking tracks, with proofs and theory getting the high track. It’s like a model with a “thinking” setting and applied to each section separately.</p>
+<h4 id="Stage-3-Deep-parallel-verification"><a href="#Stage-3-Deep-parallel-verification" class="headerlink" title="Stage 3: Deep parallel verification"></a>Stage 3: Deep parallel verification</h4><p>Next, reviewer agents check all the sections at the same time. Each agent focuses on its own section, but every agent can still see the whole document. Say, in a paper, Section 5 uses a result that was worked out in Section 3. The agent checking Section 5 can go back and see whether the two match. A model that only had Section 5 in front of it would have no chance of catching that.</p>
+<h4 id="Stage-4-Global-synthesis-and-grounding"><a href="#Stage-4-Global-synthesis-and-grounding" class="headerlink" title="Stage 4: Global synthesis and grounding"></a>Stage 4: Global synthesis and grounding</h4><p>Lastly, a synthesis agent plays the role of our editor. It combines the section reports, removes duplicate comments, looks for contradictions between sections, and reruns any logic checks it isn’t sure about. It also runs grounding checks against outside sources, including Google Search, to catch hallucinations such as papers or theorems that don’t exist. Without this step, the reviewer could confidently flag problems that aren’t real and waste our time.</p>
+<h2 id="How-to-Use-Google-Deep-Review"><a href="#How-to-Use-Google-Deep-Review" class="headerlink" title="How to Use Google Deep Review?"></a>How to Use Google Deep Review?</h2><h4 id="Setting-up-the-first-review"><a href="#Setting-up-the-first-review" class="headerlink" title="Setting up the first review"></a>Setting up the first review</h4><p>Using Deep Review takes a few minutes of setup, then a wait while the agents work:</p>
+<ul>
+<li>Go to the Deep Review Portal.</li>
+<li>Sign in with a Google account.</li>
+<li>Upload a PDF or paste in plain text.</li>
+<li>Optionally, add custom context to tell it what to check, and set the review depth and thinking level. Free reviews use Medium for both.</li>
+<li>Start the review. It takes about 10 to 30 minutes.</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/stephen-cheng/images/refs/heads/master/blog/2026/google-deep-review-2.jpg" alt=""></p>
+<p>A few limits to know about:</p>
+<ul>
+<li>We get 2 free reviews each week, and we don’t need an API key for them.</li>
+<li>PDFs and plain text are the only accepted formats right now.</li>
+<li>Multi-file support is coming soon, which would suit a paper plus its appendix.</li>
+</ul>
+<h4 id="Reading-the-report"><a href="#Reading-the-report" class="headerlink" title="Reading the report"></a>Reading the report</h4><p>The report starts with an Overall Feedback, a summary, then gives Detailed Feedback underneath. We can filter the detailed comments into major concerns, minor corrections, and suggestions, and each comment names the section or page it refers to.</p>
+<p>There is also a Comment view and a Copy Report button that copies the whole review as Markdown. That’s handy for pasting into our notes and working through it point by point.</p>
+<p><img src="https://raw.githubusercontent.com/stephen-cheng/images/refs/heads/master/blog/2026/google-deep-review-3.jpg" alt=""></p>
+<h2 id="How-to-Build-a-Deep-Review-Style-Pipeline-in-Python"><a href="#How-to-Build-a-Deep-Review-Style-Pipeline-in-Python" class="headerlink" title="How to Build a Deep Review-Style Pipeline in Python?"></a>How to Build a Deep Review-Style Pipeline in Python?</h2><p>Deep Review is a map-reduce pattern built from LLM agents: split the work up, check the pieces in parallel, then put the results back together. We can build a simple version in less than 100 lines. The example below uses the Google Gen AI SDK with Gemini 4.0 Hydrogen testing on <a href="https://github.com/stephen-cheng/images/blob/master/document/2026/report-demo.md" target="_blank" rel="noopener">a demo document</a>. Its thinking_level setting gives us a way to build our own version of Stage 2.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> concurrent.futures <span class="keyword">import</span> ThreadPoolExecutor</span><br><span class="line"><span class="keyword">from</span> google <span class="keyword">import</span> genai</span><br><span class="line"><span class="keyword">from</span> google.genai <span class="keyword">import</span> types</span><br><span class="line"></span><br><span class="line"><span class="comment"># Read the GEMINI_API_KEY from our environment</span></span><br><span class="line"><span class="comment"># Set the API key in the terminal before running Python:</span></span><br><span class="line"><span class="comment"># export GEMINI_API_KEY="our_actual_api_key_here"</span></span><br><span class="line"><span class="comment"># Check Gemini API keys from [Google AI Studio](https://aistudio.google.com/docs/api-key)</span></span><br><span class="line"></span><br><span class="line">client = genai.Client()  </span><br><span class="line">MODEL = <span class="string">"gemini-4-hydrogen"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Stage 1: Split a Markdown document on its headings.</span></span><br><span class="line"><span class="comment"># Deep Review uses a segmenter agent for this step.</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">split_into_sections</span><span class="params">(text)</span>:</span></span><br><span class="line">    sections, current = [], []</span><br><span class="line">    <span class="keyword">for</span> line <span class="keyword">in</span> text.splitlines():</span><br><span class="line">        <span class="keyword">if</span> line.startswith(<span class="string">"#"</span>) <span class="keyword">and</span> current:</span><br><span class="line">            sections.append(<span class="string">"\n"</span>.join(current))</span><br><span class="line">            current = []</span><br><span class="line">        current.append(line)</span><br><span class="line">    <span class="keyword">if</span> current:</span><br><span class="line">        sections.append(<span class="string">"\n"</span>.join(current))</span><br><span class="line">    <span class="keyword">return</span> sections</span><br><span class="line"></span><br><span class="line"><span class="comment"># Stage 2: A very rough version of adaptive budgeting. </span></span><br><span class="line"><span class="comment"># More math, more thinking.</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">thinking_level</span><span class="params">(section)</span>:</span></span><br><span class="line">    math_signals = section.count(<span class="string">"$"</span>) + section.count(<span class="string">"="</span>)</span><br><span class="line">    <span class="keyword">if</span> math_signals &gt; <span class="number">20</span>:</span><br><span class="line">        <span class="keyword">return</span> types.ThinkingLevel.HIGH</span><br><span class="line">    <span class="keyword">return</span> types.ThinkingLevel.LOW</span><br><span class="line"></span><br><span class="line"><span class="comment"># Stage 3: review one section while still seeing the full document.</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">review_section</span><span class="params">(section, full_doc)</span>:</span></span><br><span class="line">    prompt = (</span><br><span class="line">        <span class="string">"You are reviewing one section of a technical document.\n\n"</span></span><br><span class="line">        <span class="string">f"Full document for context:\n<span class="subst">&#123;full_doc&#125;</span>\n\n"</span></span><br><span class="line">        <span class="string">f"Section to review:\n<span class="subst">&#123;section&#125;</span>\n\n"</span></span><br><span class="line">        <span class="string">"List math errors, logic gaps, and claims not supported by evidence. "</span></span><br><span class="line">        <span class="string">"Quote the exact text for each issue. Say 'No issues' if there are none."</span></span><br><span class="line">    )</span><br><span class="line">    response = client.models.generate_content(</span><br><span class="line">        model=MODEL,</span><br><span class="line">        contents=prompt,</span><br><span class="line">        config=types.GenerateContentConfig(</span><br><span class="line">            thinking_config=types.ThinkingConfig(</span><br><span class="line">                thinking_level=thinking_level(section)</span><br><span class="line">            )</span><br><span class="line">        ),</span><br><span class="line">    )</span><br><span class="line">    <span class="keyword">return</span> response.text</span><br><span class="line"></span><br><span class="line"><span class="comment">#Stage 4 Merge, remove duplicates, drop issues the document resolves.</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">deep_review</span><span class="params">(full_doc)</span>:</span></span><br><span class="line">    sections = split_into_sections(full_doc)</span><br><span class="line">    <span class="comment"># Map step: Review every section in parallel</span></span><br><span class="line">    <span class="keyword">with</span> ThreadPoolExecutor(max_workers=<span class="number">4</span>) <span class="keyword">as</span> pool:</span><br><span class="line">        reports = list(pool.map(<span class="keyword">lambda</span> s: review_section(s, full_doc), sections))</span><br><span class="line">    <span class="comment"># Reduce step: Merge nad remove duplicates</span></span><br><span class="line">    merge_prompt = (</span><br><span class="line">        <span class="string">"Merge these section reviews into one report with three headings: "</span></span><br><span class="line">        <span class="string">"Major concerns, Minor corrections, Suggestions. "</span></span><br><span class="line">        <span class="string">"Remove duplicates and drop any issue the full document clearly resolves.\n\n"</span></span><br><span class="line">        <span class="string">f"Full document:\n<span class="subst">&#123;full_doc&#125;</span>\n\n"</span></span><br><span class="line">        <span class="string">"Section reviews:\n\n"</span> + <span class="string">"\n\n---\n\n"</span>.join(reports)</span><br><span class="line">    )</span><br><span class="line">    final = client.models.generate_content(model=MODEL, contents=merge_prompt)</span><br><span class="line">    <span class="keyword">return</span> final.text</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    <span class="keyword">with</span> open(<span class="string">"report-demo.md"</span>, encoding=<span class="string">"utf-8"</span>) <span class="keyword">as</span> f:</span><br><span class="line">        print(deep_review(f.read()))</span><br></pre></td></tr></table></figure>
+
+<p>Here is how it lines up with the 4 stages:</p>
+<ul>
+<li>split_into_sections() is our segmenter (Stage 1).</li>
+<li>thinking_level() decides the effort for each section (Stage 2).</li>
+<li>ThreadPoolExecutor runs the reviewers in parallel, and each one gets the full document (Stage 3).</li>
+<li>The merge_prompt at the end is our editor (Stage 4).</li>
+</ul>
+<p>It is much simpler than the real thing. There is no segmenter agent, no check against Google Search, and no second look at uncertain findings. It does address 2 of the 3 problems Google lists: running out of thinking budget and missing connections between sections. It also has costs to watch.</p>
+<p>Yet, every reviewer call carries the full document, so token usage grows with the number of sections. The splitter also treats any line starting with # as a heading, including comments inside code blocks, so test it on our own files first.</p>
+<h2 id="How-Can-We-Use-Deep-Review"><a href="#How-Can-We-Use-Deep-Review" class="headerlink" title="How Can We Use Deep Review?"></a>How Can We Use Deep Review?</h2><p>We don’t need to write math proofs to find Deep Review useful. Here are a few places where we think it makes sense:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Document</th>
+<th align="right">What Deep Review can help check</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Analysis reports</td>
+<td align="right">Whether each conclusion is supported by a number in the report</td>
+</tr>
+<tr>
+<td align="left">A/B test write-ups</td>
+<td align="right">Weak statistical claims, or sample sizes that change between sections</td>
+</tr>
+<tr>
+<td align="left">ML design docs</td>
+<td align="right">Places where the architecture section and the evaluation section don’t agree</td>
+</tr>
+<tr>
+<td align="left">Notebook write-ups</td>
+<td align="right">The explanation around our results (export the notebook as a PDF first)</td>
+</tr>
+</tbody></table>
+<h4 id="When-Should-We-Use-Google-Deep-Review"><a href="#When-Should-We-Use-Google-Deep-Review" class="headerlink" title="When Should We Use Google Deep Review?"></a>When Should We Use Google Deep Review?</h4><p>Google describes Deep Review as checking the reasoning in our document. It doesn’t say anything about running our code, so a bug in our pipeline can still leave us with wrong numbers that look perfectly consistent.</p>
+<p>A good workflow looks like this:</p>
+<ul>
+<li>Finish a full draft first. Reviewing half a document uses up one of our 2 weekly reviews.</li>
+<li>Run Deep Review and check every major concern ourselves before changing anything.</li>
+<li>Fix whatever turns out to be a real problem, and rerun it if we still have a review left.</li>
+</ul>
+<p>To use it inside our own tools, the Deep Review API lets us run reviews from code, for example, as part of a continuous integration (CI) pipeline. We connect our own Gemini API key, so usage is billed through our Gemini API account. And the cost depends on document length and reasoning effort, so test it on one document before building anything around it.</p>
+<h4 id="How-Accurate-Is-Google-Deep-Review"><a href="#How-Accurate-Is-Google-Deep-Review" class="headerlink" title="How Accurate Is Google Deep Review?"></a>How Accurate Is Google Deep Review?</h4><p><a href="https://arxiv.org/abs/2606.28277" target="_blank" rel="noopener">Google’s own results</a> show that Deep Review’s predecessor, PAT, caught 89.7% of math and computer science errors on the SPOT benchmark, against 55.2% for Gemini 3.1 Pro used on its own. SPOT is a benchmark built from real mistakes in papers that were later retracted or corrected. Google tested PAT on the math and computer science subset with equation and proof errors: 26 papers containing 29 errors. PAT’s recall was about 34 percentage points higher than the single-call baseline.</p>
+<p>Two caveats apply. First, the authors used their own grader, which accepts logically equivalent descriptions of an error, so we can’t compare these numbers directly with the original SPOT results. Second, the paper isn’t consistent about the model: its text describes PAT as powered by Gemini Deep Think, while the results table labels the 89.7% figure as PAT with Gemini 3.1 Pro. Either way, this isn’t the public Deep Review.</p>
+<p>The pilot feedback also looks good. Google surveyed authors from the STOC and ICML pilots, which reviewed more than 4,700 submissions in total. Among the 857 respondents (124 at STOC, 733 at ICML):</p>
+<ul>
+<li>92.7% of STOC and 90.7% of ICML respondents said the feedback was very or mostly helpful.</li>
+<li>About 1 in 10 STOC authors and more than 1 in 3 ICML authors (35.4%) said it found a significant theory error that took over an hour to fix.</li>
+<li>31% of ICML respondents ran new experiments because of what PAT told them.</li>
+</ul>
+<p>Running extra experiments right before a deadline is a big ask, so the feedback must have been convincing. Still, all of these numbers come from Google and from authors who chose to take part, and nobody has tested the public Deep Review independently yet. Treat them as a promising signal, not proof of how it will do on our own documents.</p>
+<h4 id="What-Are-Google-Deep-Review’s-Limitations"><a href="#What-Are-Google-Deep-Review’s-Limitations" class="headerlink" title="What Are Google Deep Review’s Limitations?"></a>What Are Google Deep Review’s Limitations?</h4><p>The biggest limitation is that Deep Review can be wrong in both directions. The PAT paper says the pilots surfaced cases where the tool wrongly called a correct proof incorrect because of a reasoning failure, and the authors say they are still working on it.</p>
+<p>Grounding is the other number to watch. Only 55.8% of STOC respondents and 64.8% of ICML respondents said the feedback was mostly or fully grounded, so roughly 35% to 44% of respondents did not find it mostly grounded.</p>
+<p>It also doesn’t make judgment calls. It won’t tell you whether your idea is new or interesting, and it doesn’t rank papers. That part is still up to us and our reviewers.</p>
+<p>Then there’s privacy. Google says it never uses uploaded documents to train, fine-tune, or improve its models, but it does keep them for 1 year so we can see them in the interface. If we’re working on something under a non-disclosure agreement (NDA), we should think twice before uploading it.</p>
+<p>Other limitations:</p>
+<ul>
+<li>It’s a closed system with no open weights and no way to host it ourselves, so we rely fully on Google’s models.</li>
+<li>It only accepts PDFs and plain text for now.</li>
+<li>2 free reviews a week go quickly if we’re making lots of changes to a draft.</li>
+<li>Every accuracy number so far has come from Google.</li>
+</ul>
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>Deep Review behaves less like a rushed peer and more like a structured review panel, serving best as a final pass before submission so long as we manually audit its major critiques. Despite current limitations around false positives, novelty assessment, and pending third-party testing, the system’s design provides a strong blueprint for long-document agents: task decomposition, dynamic effort allocation, parallel verification, and result aggregation.</p>
+
+  <p><a class="classtest-link" href="/tags/AI/" rel="tag">AI</a>, <a class="classtest-link" href="/tags/Agentic-AI/" rel="tag">Agentic AI</a>, <a class="classtest-link" href="/tags/Google/" rel="tag">Google</a>, <a class="classtest-link" href="/tags/Peer-Review/" rel="tag">Peer Review</a> — Dec 15, 2026</p>
+  
+
+
+        </div>
+        <div class="row mt-2">
+  <h3>Search</h3>
+  <div><input id="search-text" title="search" class="search-text" type="text" placeholder="search......"></div>
+  <div style="margin-top: 1.5rem;">
+    <ul id="result"></ul>
+  </div>
+</div>
+        <div class="row mt-2">
+  
+    <div class="eight columns">
+      <p id="madewith">Made with ❤️ and ☀️
+        <!-- <a class="footer-link icon" href="https://hexo.io" target="_blank" style="text-decoration: none;" rel="noreferrer" aria-label="Hexo.io"> -->
+        <!-- <svg class="hexo svg-hov" width="14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Hexo.js</title><path d="M12 .007L1.57 6.056V18.05L12 23.995l10.43-6.049V5.952L12 .007zm4.798 17.105l-.939.521-.939-.521V12.94H9.08v4.172l-.94.521-.938-.521V6.89l.939-.521.939.521v4.172h5.84V6.89l.94-.521.938.521v10.222z"/></svg> -->
+        <!-- </a> -->
+        
+        on <a href="https://en.wikipedia.org/wiki/Earth" target="_blank" rel="noreferrer">Earth</a>.</p>
+        
+    </div>
+
+    <!-- Sepcial thanks to https://simpleicons.org/ for the icons -->
+    <div class="four columns mb-3 posisi" >
+      
+      <a class="ml-0 footer-link icon" href="https://github.com/stephen-cheng" target="_blank" style="text-decoration: none" rel="noreferrer" aria-label="GitHub">
+        <svg class="github svg-hov" width="18" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+      </a>
+      
+
+      
+      <a class="ml-0 footer-link icon" href="https://linkedin.com/in/stephen-cheng" target="_blank" style="text-decoration: none" rel="noreferrer" aria-label="LinkedIn">
+        <svg class="linkedin svg-hov" width="18" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>LinkedIn</title><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      </a>
+      
+
+      
+
+      
+        <a class="ml-0 footer-link icon" href="https://facebook.com/stephen.cheeng" target="_blank" style="text-decoration: none" rel="noreferrer" aria-label="Facebook">
+          <svg class="facebook svg-hov" width="18" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Facebook</title><path d="M8.258 4.458c0-0.144 0.02-0.455 0.06-0.931c0.043-0.477 0.223-0.976 0.546-1.5c0.32-0.522 0.839-0.991 1.561-1.406 C11.144 0.208 12.183 0 13.539 0h3.82v4.163h-2.797c-0.277 0-0.535 0.104-0.768 0.309c-0.231 0.205-0.35 0.4-0.35 0.581v2.59h3.914 c-0.041 0.507-0.086 1-0.138 1.476l-0.155 1.258c-0.062 0.425-0.125 0.819-0.187 1.182h-3.462v11.542H8.258V11.558H5.742V7.643 h2.516V4.458z"/></svg>
+        </a>
+      
+
+      
+      <a class="ml-0 footer-link icon" href="https://instagram.com/stephen.cheeng" target="_blank" style="text-decoration: none" rel="noreferrer" aria-label="Instagram">
+        <svg class="instagram svg-hov" width="18" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Instagram</title><path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z"/></svg>
+      </a>
+      
+
+      
+
+    </div>
+  
+</div>
+
+      </div>
+
+    </div>
+
+  </div>
+  <script src="/js/nanobar.min.js"></script>
+
+  <script>
+    var options = {
+      classname: 'nanobar',
+      id: 'myNanobar'
+    };
+    var nanobar = new Nanobar(options);
+    nanobar.go(30);
+    nanobar.go(76);
+    nanobar.go(100);
+  </script>
+
+</body>
+
+</html>

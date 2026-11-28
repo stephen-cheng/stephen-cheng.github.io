@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <!-- Minima -->
+  <!-- Hexo theme created by @adisaktijrs -->
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+
+  
+  <title>Object Detection with Luminoth Step by Step</title>
+  
+  <link rel="canonical" href="https://stephen-cheng.github.io/2020/02/14/object-detection-with-luminoth-step-by-step/">
+  
+  <meta name="description" content="Stephen Cheng &amp;nbsp;  Intro Luminoth is an open source toolkit for computer vision. It supports object detection and it’s built in Python, using Tenso">
+  
+  
+  <meta name="keywords" content="AI, Tech, CS">
+  
+  <meta name="author" content="Stephen">
+  
+  
+  
+  <meta property="og:site_name" content="Stephen&#39;s Blog" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Object Detection with Luminoth Step by Step" />
+  
+  <meta property="og:description" content="Stephen Cheng &amp;nbsp;  Intro Luminoth is an open source toolkit for computer vision. It supports object detection and it’s built in Python, using Tenso">
+  
+  <meta property="og:url" content="https://stephen-cheng.github.io/2020/02/14/object-detection-with-luminoth-step-by-step/" />
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Object Detection with Luminoth Step by Step">
+  
+  <meta name="twitter:description" content="Stephen Cheng &amp;nbsp;  Intro Luminoth is an open source toolkit for computer vision. It supports object detection and it’s built in Python, using Tenso">
+  
+  
+  
+  
+  <meta name="twitter:url" content="https://stephen-cheng.github.io/2020/02/14/object-detection-with-luminoth-step-by-step/" />
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Preload fonts
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="preload" href="/fonts/dm-serif-display-v4-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/inter-v2-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  
+<link rel="stylesheet" href="/css/normalize.css">
+
+  
+<link rel="stylesheet" href="/css/skeleton.css">
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+  
+<link rel="stylesheet" href="/css/prism-dark.css">
+
+  
+<link rel="stylesheet" href="/css/prism-line-numbers.css">
+
+  <!-- User css -->
+  
+  
+<link rel="stylesheet" href="/css/user.css">
+
+  
+
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="icon" type="image/png" href="/images/favicon.png">
+
+  <!-- Custom Theme Color Style
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <style>
+  a:not(.icon) {
+    text-decoration-color: #0FA0CE;
+    background-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 50%,
+      #0FA0CE 50%
+    );
+  }
+  blockquote {
+    border-left: 8px solid #0FA0CE;
+  }
+  .nanobar .bar {
+    background: #0FA0CE;
+  }
+  .button.button-primary:hover,
+  button.button-primary:hover,
+  input[type="submit"].button-primary:hover,
+  input[type="reset"].button-primary:hover,
+  input[type="button"].button-primary:hover,
+  .button.button-primary:focus,
+  button.button-primary:focus,
+  input[type="submit"].button-primary:focus,
+  input[type="reset"].button-primary:focus,
+  input[type="button"].button-primary:focus {
+    background-color: #0FA0CE;
+    border-color: #0FA0CE;
+  }
+  input[type="email"]:focus,
+  input[type="number"]:focus,
+  input[type="search"]:focus,
+  input[type="text"]:focus,
+  input[type="tel"]:focus,
+  input[type="url"]:focus,
+  input[type="password"]:focus,
+  textarea:focus,
+  select:focus {
+    border: 1px solid #0FA0CE;
+  }
+</style>
+
+  <!-- Google Analytics (With Privacy Settings On)
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  
+
+  
+  <script src="/js/pic.min.js" defer></script>
+  
+
+  
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div>
+
+        <div class="row">
+  <div class="two columns" style="max-width: 50px">
+    <h1 class="mt-2 mode">
+      <div onclick=setDarkMode(true) id="darkBtn">🌑</div>
+      <div onclick=setDarkMode(false) id="lightBtn" class=hidden>☀️</div>
+      <script >
+        if (localStorage.getItem('preferredTheme') == 'dark') {
+          setDarkMode(true)
+        }
+        function setDarkMode(isDark) {
+          var darkBtn = document.getElementById('darkBtn')
+          var lightBtn = document.getElementById('lightBtn')
+          if (isDark) {
+            lightBtn.style.display = "block"
+            darkBtn.style.display = "none"
+            localStorage.setItem('preferredTheme', 'dark');
+          } else {
+            lightBtn.style.display = "none"
+            darkBtn.style.display = "block"
+            localStorage.removeItem('preferredTheme');
+          }
+          document.body.classList.toggle("darkmode");
+        }
+      </script>
+    </h1>
+  </div>
+
+  <div class="six columns ml-1">
+    <h1 class="mt-2">
+      Stephen&#39;s Blog
+    </h1>
+  </div>
+
+  <div class="twelve columns">
+    <div class="row">
+      <div class="nine columns left">
+        <a href="/">Home</a>
+        
+          
+          <a href="/archives" class="ml">Archives</a>
+          
+        
+          
+          <a href="/about" class="ml">About</a>
+          
+        
+        
+      </div>
+    </div>
+    <hr style="margin-bottom: 2.6rem">
+  </div>
+</div>
+
+        <div class="trans">
+            <h2>Object Detection with Luminoth Step by Step</h2>
+
+  <p>Stephen Cheng</p>
+<p>&nbsp;</p>
+
+<h3 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h3><p><img src="https://raw.githubusercontent.com/steven-cheng-com/images/master/blog/2020/202002/20200214/0.jpg" alt=""></p>
+<p>Luminoth is an open source toolkit for computer vision. It supports object detection and it’s built in Python, using TensorFlow. The code is open source and available on <a href="https://github.com/tryolabs/luminoth" target="_blank" rel="noopener">GitHub</a>.</p>
+<h3 id="Detecting-Objects-with-a-Pre-trained-Model"><a href="#Detecting-Objects-with-a-Pre-trained-Model" class="headerlink" title="Detecting Objects with a Pre-trained Model"></a>Detecting Objects with a Pre-trained Model</h3><p>The first thing is being familiarized with the Luminoth CLI tool, that is, the tool that you interact with using the lumi command. This is the main gate to Luminoth, allowing you to train new models, evaluate them, use them for predictions, manage the checkpoints and more.</p>
+<p>If we want Luminoth to predict the objects present in one of  pictures (image.jpg). The way to do that is by running the following command:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lumi predict image.jpg</span><br></pre></td></tr></table></figure>
+
+<p>The result will be like this:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Found 1 files to predict.</span><br><span class="line">Neither checkpoint not config specified, assuming `accurate`.</span><br><span class="line">Checkpoint not found. Check remote repository? [y/N]:</span><br></pre></td></tr></table></figure>
+
+<p>Since you didn’t tell Luminoth what an “object” is for you, nor have taught it how to recognize said objects. So one way to do this is to use a pre-trained model that has been trained to detect popular types of objects. E.g., it can be a model trained with COCO dataset or Pascal VOC. What’s more, each pre-trained model might be associated with a different algorithm. The checkpoints correspond to the weights of a particular model (Faster R-CNN or SSD), trained with a particular dataset. The case of “accurate” is just a label for a particular Deep Learning model underneath, here, Faster R-CNN, trained with images from the COCO dataset.</p>
+<p>After the checkpoint download, with these commands we can output everything (a resulting image and a json file) to a preds directory:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir preds</span><br><span class="line">lumi predict image.jpg -f preds/objects.json -d preds/</span><br></pre></td></tr></table></figure>
+
+<h3 id="Exploring-the-Pre-trained-Checkpoints"><a href="#Exploring-the-Pre-trained-Checkpoints" class="headerlink" title="Exploring the Pre-trained Checkpoints"></a>Exploring the Pre-trained Checkpoints</h3><p>First, run the lumi checkpoint refresh command, so Luminoth knows about the checkpoints that it has available for download. After refreshing the local index, you can list the available checkpoints running lumi checkpoint list:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">================================================================================</span><br><span class="line">|           id |                  name |       alias | source |         status |</span><br><span class="line">================================================================================</span><br><span class="line">| e1c2565b51e9 |   Faster R-CNN w/COCO |    accurate | remote |     DOWNLOADED |</span><br><span class="line">| aad6912e94d9 |      SSD w/Pascal VOC |        fast | remote | NOT_DOWNLOADED |</span><br><span class="line">================================================================================</span><br></pre></td></tr></table></figure>
+
+<p>Here, you can see the “accurate” checkpoint and another “fast” checkpoint that is the SSD model trained with Pascal VOC dataset. Let’s get some information about the “accurate” checkpoint by the following command:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lumi checkpoint info e1c2565b51e9</span><br></pre></td></tr></table></figure>
+<p>or</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lumi checkpoint info accurate</span><br></pre></td></tr></table></figure>
+
+<p>If getting predictions for an image or video using a specific checkpoint (e.g., fast) you can do so by using the –checkpoint parameter:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lumi predict img.jpg --checkpoint fast -f preds/objects.json -d preds/</span><br></pre></td></tr></table></figure>
+
+<h3 id="Playing-Around-with-the-Built-in-Interface"><a href="#Playing-Around-with-the-Built-in-Interface" class="headerlink" title="Playing Around with the Built-in Interface"></a>Playing Around with the Built-in Interface</h3><p>Luminoth includes a simple web frontend so you can play around with detected objects in images using different thresholds. To launch this, simply type lumi server web and then open your browser at <a href="http://localhost:5000" target="_blank" rel="noopener">http://localhost:5000</a>. If you are running on an external VM, you can do lumi server web –host 0.0.0.0 –port <port> to open in a custom port.</p>
+<p><img src="https://raw.githubusercontent.com/steven-cheng-com/images/master/blog/2020/202002/20200214/1.jpg" alt=""></p>
+<h3 id="Building-Custom-dataset"><a href="#Building-Custom-dataset" class="headerlink" title="Building Custom dataset"></a>Building Custom dataset</h3><p>In order to use a custom dataset, we must first transform whatever format your data is in, to TFRecords files (one for each split — train, val, test). Luminoth reads datasets natively only in TensorFlow’s TFRecords format. This is a binary format that will let Luminoth consume the data very efficiently. Fortunately, Luminoth provides several CLI tools for transforming popular dataset format (such as Pascal VOC, ImageNet, COCO, CSV, etc.) into TFRecords.</p>
+<p>We should start by downloading the <a href="https://storage.googleapis.com/openimages/web/download.html" target="_blank" rel="noopener">annotation files</a> (<a href="https://storage.googleapis.com/openimages/2018_04/train/train-annotations-bbox.csv" target="_blank" rel="noopener">this</a> and <a href="https://storage.googleapis.com/openimages/2018_04/train/train-annotations-human-imagelabels-boxable.csv" target="_blank" rel="noopener">this</a>, for train) and the <a href="https://storage.googleapis.com/openimages/2018_04/class-descriptions-boxable.csv" target="_blank" rel="noopener">class description</a> file.</p>
+<p>After we get the class-descriptions-boxable.csv file, we can go over all the classes available in the OpenImages dataset and see which ones are related to traffic dataset. The following were hand-picked after examining the full file:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">/m/015qff,Traffic light</span><br><span class="line">/m/0199g,Bicycle</span><br><span class="line">/m/01bjv,Bus</span><br><span class="line">/m/01g317,Person</span><br><span class="line">/m/04_sv,Motorcycle</span><br><span class="line">/m/07r04,Truck</span><br><span class="line">/m/0h2r6,Van</span><br><span class="line">/m/0k4j,Car</span><br></pre></td></tr></table></figure>
+
+<p>Luminoth includes a dataset reader that can take OpenImages format, the dataset reader expects a particular directory layout so it knows where the files are located. In this case, files corresponding to the examples must be in a folder named like their split (train, test, …). So, you should have the following:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── class-descriptions-boxable.csv</span><br><span class="line">└── train</span><br><span class="line">    ├── train-annotations-bbox.csv</span><br><span class="line">    └── train-annotations-human-imagelabels-boxable.csv</span><br></pre></td></tr></table></figure>
+
+<p>Then run the following command:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">lumi dataset transform \</span><br><span class="line">      --type openimages \</span><br><span class="line">      --data-dir . \</span><br><span class="line">      --output-dir ./out \</span><br><span class="line">      --split train  \</span><br><span class="line">      --class-examples 100 \</span><br><span class="line">      --only-classes=/m/015qff,/m/0199g,/m/01bjv,/m/01g317,/m/04_sv,/m/07r04,/m/0h2r6,/m/0k4j</span><br></pre></td></tr></table></figure>
+
+<p>This will generate TFRecord file for the train split:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">INFO:tensorflow:Saved 360 records to "./out/train.tfrecords"</span><br><span class="line">INFO:tensorflow:Composition per class (train):</span><br><span class="line">INFO:tensorflow:        Person (/m/01g317): 380</span><br><span class="line">INFO:tensorflow:        Car (/m/0k4j): 255</span><br><span class="line">INFO:tensorflow:        Bicycle (/m/0199g): 126</span><br><span class="line">INFO:tensorflow:        Bus (/m/01bjv): 106</span><br><span class="line">INFO:tensorflow:        Traffic light (/m/015qff): 105</span><br><span class="line">INFO:tensorflow:        Truck (/m/07r04): 101</span><br><span class="line">INFO:tensorflow:        Van (/m/0h2r6): 100</span><br><span class="line">INFO:tensorflow:        Motorcycle (/m/04_sv): 100</span><br></pre></td></tr></table></figure>
+
+<h3 id="Training-the-Model"><a href="#Training-the-Model" class="headerlink" title="Training the Model"></a>Training the Model</h3><p>Training orchestration, including the model to be used, the dataset location and training schedule, is specified in a YAML config file. This file will be consumed by Luminoth and merged to the default configuration, to start the training session.</p>
+<p>You can see a minimal config file example in <a href="https://github.com/tryolabs/luminoth/blob/master/examples/sample_config.yml" target="_blank" rel="noopener">sample_config.yml</a>. This file illustrates the entries you’ll most probably need to modify, which are:</p>
+<p>1) train.run_name: the run name for the training session, used to identify it.<br>2) train.job_dir: directory in which both model checkpoints and summaries (for TensorBoard consumption) will be saved. The actual files will be stored under <job_dir>/<run_name>.<br>3) dataset.dir: directory from which to read the TFRecord files.<br>4) model.type: model to use for object detection (fasterrcnn, or ssd).<br>5) network.num_classes: number of classes to predict (depends on your dataset).</p>
+<p>For looking at all the possible configuration options, mostly related to the model itself, you can check the <a href="https://github.com/tryolabs/luminoth/blob/master/luminoth/models/fasterrcnn/base_config.yml" target="_blank" rel="noopener">base_config.yml</a> file.</p>
+<h5 id="Building-the-config-file-for-the-dataset"><a href="#Building-the-config-file-for-the-dataset" class="headerlink" title="Building the config file for the dataset"></a>Building the config file for the dataset</h5><p>Probably the most important setting for training is the learning rate. You will most likely want to tune this depending on your dataset, and you can do it via the train.learning_rate setting in the configuration. For example, this would be a good setting for training on the full COCO dataset:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">learning_rate:</span><br><span class="line">  decay_method: piecewise_constant</span><br><span class="line">  boundaries: [250000, 450000, 600000]</span><br><span class="line">  values: [0.0003, 0.0001, 0.00003, 0.00001]</span><br></pre></td></tr></table></figure>
+
+<p>To get to this, you will need to run some experiments and see what works best.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">train:</span><br><span class="line"><span class="meta">  #</span><span class="bash"> Run name <span class="keyword">for</span> the training session.</span></span><br><span class="line">  run_name: traffic</span><br><span class="line">  job_dir: &lt;change this directory&gt;</span><br><span class="line">  learning_rate:</span><br><span class="line">    decay_method: piecewise_constant</span><br><span class="line">    # Custom dataset for Luminoth Tutorial</span><br><span class="line">    boundaries: [90000, 160000, 250000]</span><br><span class="line">    values: [0.0003, 0.0001, 0.00003, 0.00001]</span><br><span class="line">dataset:</span><br><span class="line">  type: object_detection</span><br><span class="line">  dir: &lt;directory with your dataset&gt;</span><br><span class="line">model:</span><br><span class="line">  type: fasterrcnn</span><br><span class="line">  network:</span><br><span class="line">    num_classes: 8</span><br><span class="line">  anchors:</span><br><span class="line">    # Add one more scale to be better at detecting small objects</span><br><span class="line">    scales: [0.125, 0.25, 0.5, 1, 2]</span><br></pre></td></tr></table></figure>
+
+<h5 id="Running-the-training"><a href="#Running-the-training" class="headerlink" title="Running the training"></a>Running the training</h5><p>Assuming you already have both your dataset (TFRecords) and the config file ready, you can start your training session by running the command as follows:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lumi train -c config.yml</span><br></pre></td></tr></table></figure>
+
+<p>You can use the <code>-o</code> option to override any configuration option using dot notation (e.g. -o model.rpn.proposals.nms_threshold=0.8). If you are using a CUDA-based GPU, you can select the GPU to use by setting the <code>CUDA_VISIBLE_DEVICES</code> environment variable.</p>
+<h5 id="Storing-checkpoints-partial-weights"><a href="#Storing-checkpoints-partial-weights" class="headerlink" title="Storing checkpoints (partial weights)"></a>Storing checkpoints (partial weights)</h5><p>As the training progresses, Luminoth will periodically save a checkpoint with the current weights of the model. The files will be output in your <job_dir>/<run_name> folder. By default, they will be saved every 600 seconds of training, but you can configure this with the train.save_checkpoint_secs setting in your config file. The default is to only store the latest checkpoint (that is, when a checkpoint is generated, the previous checkpoint gets deleted) in order to conserve storage.</p>
+<h3 id="Evaluating-Models"><a href="#Evaluating-Models" class="headerlink" title="Evaluating Models"></a>Evaluating Models</h3><p>Generally, datasets (like OpenImages, which we just used) provide “splits”. The “train” split is the largest, and the one from which the model actually does the learning. Then, you have the “validation” (or “val”) split, which consists of different images, in which you can draw metrics of your model’s performance, in order to better tune your hyperparameters. Finally, a “test” split is provided in order to conduct the final evaluation of how your model would perform in the real world once it is trained.</p>
+<h5 id="Building-a-validation-dataset"><a href="#Building-a-validation-dataset" class="headerlink" title="Building a validation dataset"></a>Building a validation dataset</h5><p>Let’s start by building TFRecords from the validation split of <a href="https://storage.googleapis.com/openimages/web/download.html" target="_blank" rel="noopener">OpenImages</a>. For this, we can download the files with the annotations and use the same lumi dataset transform that we used to build our training data.</p>
+<p>In your dataset folder (where the class-descriptions-boxable.csv is located), run the following commands:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir validation</span><br><span class="line">wget -P validation https://storage.googleapis.com/openimages/2018_04/validation/validation-annotations-bbox.csv</span><br><span class="line">wget -P validation https://storage.googleapis.com/openimages/2018_04/validation/validation-annotations-human-imagelabels-boxable.csv</span><br></pre></td></tr></table></figure>
+
+<p>After the downloads finish, we can build the TFRecords with the following:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">lumi dataset transform \</span><br><span class="line">      --type openimages \</span><br><span class="line">      --data-dir . \</span><br><span class="line">      --output-dir ./out \</span><br><span class="line">      --split validation  \</span><br><span class="line">      --class-examples 100 \</span><br><span class="line">      --only-classes=/m/015qff,/m/0199g,/m/01bjv,/m/01g317,/m/04_sv,/m/07r04,/m/0h2r6,/m/0k4j</span><br></pre></td></tr></table></figure>
+
+<h5 id="The-lumi-eval-command"><a href="#The-lumi-eval-command" class="headerlink" title="The lumi eval command"></a>The lumi eval command</h5><p>In Luminoth, lumi eval will make a run through your chosen dataset split (ie. validation or test), and run the model through every image, and then compute metrics like loss and mAP. If you are lucky and happen to have more than one GPU in your machine, it is advisable to run both train and eval at the same time.</p>
+<p>Start by running the evaluation:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lumi eval --split validation -c custom.yml</span><br></pre></td></tr></table></figure>
+
+<h5 id="The-mAP-metrics"><a href="#The-mAP-metrics" class="headerlink" title="The mAP metrics"></a>The mAP metrics</h5><p>Mean Average Precision (mAP) is the metric commonly used to evaluate object detection task. It computes how well your classifier works across all classes, mAP will be a number between 0 and 1, and the higher the better. Moreover, it can be calculated across different IoU (Intersection over Union) thresholds. For example, Pascal VOC challenge metric uses 0.5 as threshold (notation <a href="mailto:mAP@0.5">mAP@0.5</a>), and COCO dataset uses mAP at different thresholds and averages them all out (notation mAP@[0.5:0.95]). Luminoth will print out several of these metrics, specifying the thresholds that were used under this notation.</p>
+<h3 id="Using-TensorBoard-for-Visualizing"><a href="#Using-TensorBoard-for-Visualizing" class="headerlink" title="Using TensorBoard for Visualizing"></a>Using TensorBoard for Visualizing</h3><p><a href="https://www.tensorflow.org/guide/summaries_and_tensorboard" target="_blank" rel="noopener">TensorBoard</a> is a very good tool for this, allowing you to see plenty of plots with the training related metrics. By default, Luminoth writes TensorBoard summaries during training, so you can leverage this tool without any effort:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tensorboard --logdir &lt;job_dir&gt;/&lt;run_name&gt;</span><br></pre></td></tr></table></figure>
+
+<p>If you are running from an external VM, make sure to use <code>--host 0.0.0.0</code> and <code>--port</code> if you need other one than the default 6006.</p>
+<h5 id="What-to-look-for"><a href="#What-to-look-for" class="headerlink" title="What to look for"></a>What to look for</h5><p>First, go to the “Scalars” tab. You are going to see several tags.</p>
+<p><img src="https://raw.githubusercontent.com/steven-cheng-com/images/master/blog/2020/202002/20200214/2.png" alt=""></p>
+<h5 id="validation-losses"><a href="#validation-losses" class="headerlink" title="validation_losses"></a>validation_losses</h5><p>Here, you will get the same loss values that Luminoth computes for the train, but for the chosen dataset split (validation, in this case). As in the case of train, you should mostly look at validation_losses/no_reg_loss.</p>
+<p>These will be the mAP metrics that will help you judge how well your model perform:</p>
+<p><img src="https://raw.githubusercontent.com/steven-cheng-com/images/master/blog/2020/202002/20200214/3.png" alt=""></p>
+<p>The mAP values refer to the entire dataset split, so it will not jump around as much as other metrics.</p>
+<h5 id="Manually-inspecting-with-lumi-server-web"><a href="#Manually-inspecting-with-lumi-server-web" class="headerlink" title="Manually inspecting with lumi server web"></a>Manually inspecting with lumi server web</h5><p>You can also use lumi server web command that we have seen before and try your partially trained model in a bunch of novel images. For this, you can launch it with a config file like:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lumi server web -c config.yml</span><br></pre></td></tr></table></figure>
+
+<p>Here you can also use –host and –port options.</p>
+<p><img src="https://raw.githubusercontent.com/steven-cheng-com/images/master/blog/2020/202002/20200214/4.jpg" alt=""></p>
+<h3 id="Creating-and-Sharing-Your-Own-Checkpoints"><a href="#Creating-and-Sharing-Your-Own-Checkpoints" class="headerlink" title="Creating and Sharing Your Own Checkpoints"></a>Creating and Sharing Your Own Checkpoints</h3><h5 id="Creating-a-checkpoint"><a href="#Creating-a-checkpoint" class="headerlink" title="Creating a checkpoint"></a>Creating a checkpoint</h5><p>We can create checkpoints and set some metadata like name, alias, etc. This time, we are going to create the checkpoint for our traffic model:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">lumi checkpoint create \</span><br><span class="line">    config.yml \</span><br><span class="line">    -e name="OpenImages Traffic" \</span><br><span class="line">    -e alias=traffic</span><br></pre></td></tr></table></figure>
+
+<p>You can verify that you do indeed have the checkpoint when running lumi checkpoint list, which should get you an output similar to this:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">================================================================================</span><br><span class="line">|           id |                  name |       alias | source |         status |</span><br><span class="line">================================================================================</span><br><span class="line">| e1c2565b51e9 |   Faster R-CNN w/COCO |    accurate | remote |     DOWNLOADED |</span><br><span class="line">| aad6912e94d9 |      SSD w/Pascal VOC |        fast | remote |     DOWNLOADED |</span><br><span class="line">| cb0e5d92a854 |    OpenImages Traffic |     traffic |  local |          LOCAL |</span><br><span class="line">================================================================================</span><br></pre></td></tr></table></figure>
+
+<p>Moreover, if you inspect the <code>~/.luminoth/checkpoints/</code> folder, you will see that now you have a folder that corresponds to your newly created checkpoint. Inside this folder are the actual weights of the model, plus some metadata and the configuration file that was used during training.</p>
+<h5 id="Sharing-checkpoints"><a href="#Sharing-checkpoints" class="headerlink" title="Sharing checkpoints"></a>Sharing checkpoints</h5><p>Simply run <code>lumi checkpoint export cb0e5d92a854</code>. You will get a file named cb0e5d92a854.tar in your current directory, which you can easily share to somebody else. By running <code>lumi checkpoint import cb0e5d92a854.tar</code>, the checkpoint will be listed locally.</p>
+<h3 id="Using-Luminoth-with-Python"><a href="#Using-Luminoth-with-Python" class="headerlink" title="Using Luminoth with Python"></a>Using Luminoth with Python</h3><p>Calling Luminoth from your Python app is very straightforward.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> luminoth <span class="keyword">import</span> Detector, read_image, vis_objects</span><br><span class="line"></span><br><span class="line">image = read_image(<span class="string">'traffic-image.png'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># If no checkpoint specified, will assume `accurate` by default. In this case,</span></span><br><span class="line"><span class="comment"># we want to use our traffic checkpoint. The Detector can also take a config</span></span><br><span class="line"><span class="comment"># object.</span></span><br><span class="line">detector = Detector(checkpoint=<span class="string">'traffic'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Returns a dictionary with the detections.</span></span><br><span class="line">objects = detector.predict(image)</span><br><span class="line"></span><br><span class="line">print(objects)</span><br><span class="line"></span><br><span class="line">vis_objects(image, objects).save(<span class="string">'traffic-out.png'</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="The-End"><a href="#The-End" class="headerlink" title="The End"></a>The End</h3><p>Hope you enjoyed the simple tutorial! :)</p>
+
+  <p><a class="classtest-link" href="/tags/Computer-Vision/" rel="tag">Computer-Vision</a>, <a class="classtest-link" href="/tags/Object-Detection/" rel="tag">Object-Detection</a> — Feb 14, 2020</p>
+  
+
+
+        </div>
+        <div class="row mt-2">
+  <h3>Search</h3>
+  <div><input id="search-text" title="search" class="search-text" type="text" placeholder="search......"></div>
+  <div style="margin-top: 1.5rem;">
+    <ul id="result"></ul>
+  </div>
+</div>
+        <div class="row mt-2">
+  
+    <div class="eight columns">
+      <p id="madewith">Made with ❤️ and ☀️
+        <!-- <a class="footer-link icon" href="https://hexo.io" target="_blank" style="text-decoration: none;" rel="noreferrer" aria-label="Hexo.io"> -->
+        <!-- <svg class="hexo svg-hov" width="14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Hexo.js</title><path d="M12 .007L1.57 6.056V18.05L12 23.995l10.43-6.049V5.952L12 .007zm4.798 17.105l-.939.521-.939-.521V12.94H9.08v4.172l-.94.521-.938-.521V6.89l.939-.521.939.521v4.172h5.84V6.89l.94-.521.938.521v10.222z"/></svg> -->
+        <!-- </a> -->
+        
+        on <a href="https://en.wikipedia.org/wiki/Earth" target="_blank" rel="noreferrer">Earth</a>.</p>
+        
+    </div>
+
+    <!-- Sepcial thanks to https://simpleicons.org/ for the icons -->
+    <div class="four columns mb-3 posisi" >
+      
+      <a class="ml-0 footer-link icon" href="https://github.com/stephen-cheng" target="_blank" style="text-decoration: none" rel="noreferrer" aria-label="GitHub">
+        <svg class="github svg-hov" width="18" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+      </a>
+      
+
+      
+      <a class="ml-0 footer-link icon" href="https://linkedin.com/in/stephen-cheng" target="_blank" style="text-decoration: none" rel="noreferrer" aria-label="LinkedIn">
+        <svg class="linkedin svg-hov" width="18" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>LinkedIn</title><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      </a>
+      
+
+      
+
+      
+        <a class="ml-0 footer-link icon" href="https://facebook.com/stephen.cheeng" target="_blank" style="text-decoration: none" rel="noreferrer" aria-label="Facebook">
+          <svg class="facebook svg-hov" width="18" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Facebook</title><path d="M8.258 4.458c0-0.144 0.02-0.455 0.06-0.931c0.043-0.477 0.223-0.976 0.546-1.5c0.32-0.522 0.839-0.991 1.561-1.406 C11.144 0.208 12.183 0 13.539 0h3.82v4.163h-2.797c-0.277 0-0.535 0.104-0.768 0.309c-0.231 0.205-0.35 0.4-0.35 0.581v2.59h3.914 c-0.041 0.507-0.086 1-0.138 1.476l-0.155 1.258c-0.062 0.425-0.125 0.819-0.187 1.182h-3.462v11.542H8.258V11.558H5.742V7.643 h2.516V4.458z"/></svg>
+        </a>
+      
+
+      
+      <a class="ml-0 footer-link icon" href="https://instagram.com/stephen.cheeng" target="_blank" style="text-decoration: none" rel="noreferrer" aria-label="Instagram">
+        <svg class="instagram svg-hov" width="18" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Instagram</title><path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z"/></svg>
+      </a>
+      
+
+      
+
+    </div>
+  
+</div>
+
+      </div>
+
+    </div>
+
+  </div>
+  <script src="/js/nanobar.min.js"></script>
+
+  <script>
+    var options = {
+      classname: 'nanobar',
+      id: 'myNanobar'
+    };
+    var nanobar = new Nanobar(options);
+    nanobar.go(30);
+    nanobar.go(76);
+    nanobar.go(100);
+  </script>
+
+</body>
+
+</html>
